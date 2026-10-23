@@ -25,3 +25,13 @@ test('logarithms', async ({ page }) => {
   await viz.getByRole('switch', { name: 'Log scale' }).click();
   await expect(readout).toContainText('log scale on');
 });
+
+test('slope-derivative', async ({ page }) => {
+  const { readout } = await exercise(page, 'derivative', 'slope-derivative', (v) => v.getByRole('slider', { name: 'Second point' }), [
+    'ArrowLeft',
+    'ArrowLeft',
+    'ArrowLeft',
+  ]);
+  await expect(readout).toContainText('slope at the point 2.00');
+  await expect(readout).toContainText('Gap 1.85');
+});

@@ -160,3 +160,14 @@
     y var(--motion),
     height var(--motion);
 }
+
+.viz-label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.viz-hint {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
