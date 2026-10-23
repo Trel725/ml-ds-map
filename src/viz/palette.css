@@ -149,3 +149,14 @@
 .viz-axis path {
   stroke: var(--viz-axis);
 }
+
+.viz-note {
+  font-size: 12px;
+  fill: var(--muted);
+}
+
+.viz-bar {
+  transition:
+    y var(--motion),
+    height var(--motion);
+}
