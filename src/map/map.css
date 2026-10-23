@@ -1,0 +1,195 @@
+.map-area {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  user-select: none;
+}
+
+.map:active {
+  cursor: grabbing;
+}
+
+.lane-band {
+  opacity: 0.55;
+}
+
+.lane + .lane .lane-band {
+  stroke: var(--bg);
+  stroke-width: 2;
+}
+
+.lane-label {
+  font-size: 14px;
+  font-weight: 700;
+  fill: var(--muted);
+}
+
+.lane-label-big {
+  font-size: 20px;
+  fill: var(--fg);
+}
+
+.group,
+.node,
+.tool {
+  cursor: pointer;
+  transition:
+    transform var(--motion) ease,
+    opacity var(--motion) ease;
+}
+
+.group:focus-visible,
+.group-header:focus-visible,
+.node:focus-visible,
+.tool:focus-visible {
+  outline: none;
+}
+
+.group:focus-visible .group-shape,
+.group-header:focus-visible .group-header-hit,
+.node:focus-visible .node-shape,
+.tool:focus-visible .tool-shape {
+  stroke: var(--focus);
+  stroke-width: 3;
+}
+
+.group-shape {
+  fill: var(--surface);
+  stroke: var(--layer-strong);
+  stroke-width: 1.5;
+}
+
+.group-stack {
+  fill: none;
+  stroke: var(--layer-strong);
+  stroke-opacity: 0.35;
+}
+
+.group-label {
+  font-size: 14px;
+  font-weight: 700;
+  fill: var(--fg);
+  pointer-events: none;
+}
+
+.group-outline {
+  fill: var(--surface);
+  fill-opacity: 0.6;
+  stroke: var(--layer-strong);
+  stroke-opacity: 0.5;
+  stroke-dasharray: 4 3;
+}
+
+.group-header-hit {
+  fill: transparent;
+}
+
+.group-header-label {
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--layer-strong);
+}
+
+.group-header-hint {
+  font-weight: 400;
+  fill: var(--muted);
+}
+
+.node-shape {
+  fill: var(--surface);
+  stroke: var(--layer-strong);
+  stroke-width: 1.5;
+}
+
+.node-foundation .node-shape,
+.node-math .node-shape {
+  fill: var(--layer);
+}
+
+.node-hit {
+  fill: transparent;
+}
+
+.node-label {
+  font-size: 13px;
+  fill: var(--fg);
+  pointer-events: none;
+}
+
+.viz-badge {
+  font-size: 10px;
+  fill: var(--layer-strong);
+}
+
+.is-selected .node-shape,
+.is-selected .tool-shape {
+  stroke-width: 3;
+  fill: var(--layer);
+}
+
+[data-faded='true'] {
+  opacity: 0.2;
+}
+
+[data-highlighted='true'] .node-shape,
+[data-highlighted='true'] .group-shape,
+[data-highlighted='true'] .tool-shape {
+  stroke-width: 2.5;
+  fill: var(--layer-strong);
+}
+
+[data-highlighted='true'] .node-label,
+[data-highlighted='true'] .group-label,
+[data-highlighted='true'] .tool-label {
+  fill: var(--bg);
+  font-weight: 700;
+}
+
+.rail-label {
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--muted);
+}
+
+.tool-shape {
+  fill: var(--surface);
+  stroke: var(--layer-tools-strong);
+  stroke-width: 1;
+}
+
+.tool-label {
+  font-size: 13px;
+  fill: var(--fg);
+  pointer-events: none;
+}
+
+.map-controls {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
+.explore {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 280px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.explore p {
+  margin: 0 0 12px;
+  font-family: var(--font-read);
+  font-size: 15px;
+}

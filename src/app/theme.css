@@ -1,0 +1,208 @@
+/* Strata palette: one muted mineral hue per layer, full strength only for the selection and its links. */
+:root {
+  color-scheme: light;
+  --bg: #eef1ee;
+  --surface: #f8faf8;
+  --panel-bg: #fbfcfb;
+  --fg: #1c2420;
+  --muted: #5d6963;
+  --line: #d3dad5;
+  --edge: #3d4842;
+  --edge-muted: #9aa59f;
+  --focus: #2457c5;
+
+  --layer-foundations: #c9d0e0;
+  --layer-foundations-strong: #3f5585;
+  --layer-math: #c3dcd8;
+  --layer-math-strong: #1f6f69;
+  --layer-core: #d6dcbc;
+  --layer-core-strong: #5c6b1e;
+  --layer-algorithms: #e7d7b6;
+  --layer-algorithms-strong: #8a5f12;
+  --layer-problems: #e3cdd8;
+  --layer-problems-strong: #7e3b5d;
+  --layer-tools: #d9dcdb;
+  --layer-tools-strong: #4b5552;
+
+  --font-ui: 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-read: 'Literata', Georgia, 'Times New Roman', serif;
+  --motion: 250ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #131917;
+    --surface: #1a211e;
+    --panel-bg: #171d1b;
+    --fg: #e4ebe7;
+    --muted: #9aa7a0;
+    --line: #2d3733;
+    --edge: #c9d3ce;
+    --edge-muted: #66726c;
+    --focus: #8fb2ff;
+
+    --layer-foundations: #273147;
+    --layer-foundations-strong: #a9bbe6;
+    --layer-math: #1f3936;
+    --layer-math-strong: #86d0c7;
+    --layer-core: #303720;
+    --layer-core-strong: #c3d27c;
+    --layer-algorithms: #3d3220;
+    --layer-algorithms-strong: #e3bb6d;
+    --layer-problems: #3b2632;
+    --layer-problems-strong: #e1a3c2;
+    --layer-tools: #2a302e;
+    --layer-tools-strong: #c2cbc7;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #131917;
+  --surface: #1a211e;
+  --panel-bg: #171d1b;
+  --fg: #e4ebe7;
+  --muted: #9aa7a0;
+  --line: #2d3733;
+  --edge: #c9d3ce;
+  --edge-muted: #66726c;
+  --focus: #8fb2ff;
+
+  --layer-foundations: #273147;
+  --layer-foundations-strong: #a9bbe6;
+  --layer-math: #1f3936;
+  --layer-math-strong: #86d0c7;
+  --layer-core: #303720;
+  --layer-core-strong: #c3d27c;
+  --layer-algorithms: #3d3220;
+  --layer-algorithms-strong: #e3bb6d;
+  --layer-problems: #3b2632;
+  --layer-problems-strong: #e1a3c2;
+  --layer-tools: #2a302e;
+  --layer-tools-strong: #c2cbc7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion: 0ms;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  height: 100%;
+}
+
+.topbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.topbar-spacer {
+  flex: 1;
+}
+
+.button {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: var(--muted);
+}
+
+.button-primary {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+.panel-area {
+  border-left: 1px solid var(--line);
+  background: var(--panel-bg);
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.notice {
+  position: fixed;
+  left: 50%;
+  top: 64px;
+  transform: translateX(-50%);
+  background: var(--fg);
+  color: var(--bg);
+  padding: 8px 16px;
+  border-radius: 6px;
+  z-index: 20;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+  .panel-area {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    max-height: 45vh;
+  }
+}
