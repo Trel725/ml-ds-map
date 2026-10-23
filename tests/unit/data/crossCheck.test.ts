@@ -17,6 +17,10 @@ test('needs-cycle message shows the path', async () => {
   const [i] = crossCheck(await withRule('needs-cycle'), VIZ_IDS).filter((i) => i.rule === 'needs-cycle');
   expect(i.message).toContain('derivative → slope → derivative');
 });
+test('code-tool-kind flags code.tool naming a non-tool node', async () => {
+  const issues = crossCheck(await withRule('code-tool-kind'), VIZ_IDS).filter((i) => i.rule === 'code-tool-kind');
+  expect(issues).toEqual([expect.objectContaining({ id: 'math-tool', severity: 'error' })]);
+});
 test('unresolved-ref reports both code.tool and fixedBy', async () => {
   const refs = crossCheck(await withRule('unresolved-ref'), VIZ_IDS).filter((i) => i.rule === 'unresolved-ref');
   expect(refs.map((i) => i.message).join(' ')).toMatch(/ghost.*phantom|phantom.*ghost/);

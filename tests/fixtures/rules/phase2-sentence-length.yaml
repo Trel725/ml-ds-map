@@ -1,0 +1,18 @@
+nodes:
+  - id: wordy-confusion
+    label: Wordy confusion
+    layer: foundations
+    group: g-found
+    kind: foundation
+    showsUpIn: Somewhere.
+    oneLiner: Short.
+    intuition: One sentence here. Another one here.
+    confusions: [one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty.]
+  - id: wordy-weakness
+    label: Wordy weakness
+    layer: algorithms
+    group: g-alg
+    kind: algorithm
+    oneLiner: Short.
+    intuition: One sentence here. Another one here.
+    weaknesses: [{ text: one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty. }, { text: Slow. }]

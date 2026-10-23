@@ -1,0 +1,14 @@
+nodes:
+  - id: concept-recipe
+    label: Concept recipe
+    layer: core
+    group: g-core
+    kind: concept
+    oneLiner: Short.
+    intuition: One sentence here. Another one here.
+    recipe:
+      problem: { text: Regression., node: regression }
+      modelFamily: { text: A line. }
+      loss: { text: Squared error. }
+      optimizer: { text: Closed form. }
+      evaluation: { text: Test error. }

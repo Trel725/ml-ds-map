@@ -24,3 +24,18 @@ test('lane-groups issue points at groups.yaml', async () =>
   expect(lintContent(await withRule('lane-groups')).find((i) => i.rule === 'lane-groups')!.file).toBe('content/groups.yaml'));
 test('splitSentences', () => expect(splitSentences('One two. Three? Four!')).toEqual(['One two.', 'Three?', 'Four!']));
 test('countWords', () => expect(countWords('  a  b c ')).toBe(3));
+
+const issuesFor = async (fixture: string, rule: string) => lintContent(await withRule(fixture)).filter((i) => i.rule === rule);
+test('code-lines flags snippets outside 3–6 lines', async () =>
+  expect((await issuesFor('code-lines', 'code-lines')).map((i) => i.id).sort()).toEqual(['long-code', 'short-code']));
+test('points-count flags 1 strength and 4 weaknesses', async () =>
+  expect((await issuesFor('points-count', 'points-count')).map((i) => i.id).sort()).toEqual(['few-strengths', 'many-weaknesses']));
+test('algorithm-only-fields flags a recipe on a concept', async () =>
+  expect(await issuesFor('algorithm-only-fields', 'algorithm-only-fields')).toEqual([
+    expect.objectContaining({ id: 'concept-recipe', severity: 'error' }),
+  ]));
+test('sentence-length covers confusions and weakness text', async () =>
+  expect((await issuesFor('phase2-sentence-length', 'sentence-length')).map((i) => i.id).sort()).toEqual([
+    'wordy-confusion',
+    'wordy-weakness',
+  ]));

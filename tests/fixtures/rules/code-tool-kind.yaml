@@ -1,0 +1,2 @@
+nodes:
+  - { id: math-tool, label: Math tool, layer: foundations, group: g-found, kind: foundation, showsUpIn: Somewhere., oneLiner: Short., intuition: One sentence here. Another one here., code: { tool: derivative, snippet: "a = 1\nb = 2\nc = 3" } }

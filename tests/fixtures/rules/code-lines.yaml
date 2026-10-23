@@ -1,0 +1,3 @@
+nodes:
+  - { id: short-code, label: Short code, layer: foundations, group: g-found, kind: foundation, showsUpIn: Somewhere., oneLiner: Short., intuition: One sentence here. Another one here., code: { tool: sklearn, snippet: "a = 1\nb = 2" } }
+  - { id: long-code, label: Long code, layer: foundations, group: g-found, kind: foundation, showsUpIn: Somewhere., oneLiner: Short., intuition: One sentence here. Another one here., code: { tool: sklearn, snippet: "a = 1\nb = 2\nc = 3\nd = 4\ne = 5\nf = 6\ng = 7" } }

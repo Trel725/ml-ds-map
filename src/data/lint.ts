@@ -10,7 +10,10 @@ export type LintRule =
   | 'needs-outgoing'
   | 'orphan-node'
   | 'lane-groups'
-  | 'signature-explanation';
+  | 'signature-explanation'
+  | 'code-lines'
+  | 'points-count'
+  | 'algorithm-only-fields';
 
 export function splitSentences(text: string): string[] {
   return text
@@ -26,6 +29,8 @@ export function countWords(text: string): number {
 const MATH_SYMBOLS = /[Σ∂∇=^Ͱ-Ͽ]/;
 const NEEDS_LAYERS: Layer[] = ['math', 'core', 'algorithms'];
 const MAX_GROUPS_PER_LANE = 12;
+const CODE_LINES = [3, 6] as const;
+const POINTS = [2, 3] as const;
 
 /** Writing-rule checks. Every rule is an error unless listed in `warningRules`. */
 export function lintContent(content: Content, opts: { warningRules?: LintRule[] } = {}): ContentIssue[] {
@@ -50,6 +55,30 @@ export function lintContent(content: Content, opts: { warningRules?: LintRule[] 
     if (oneLinerWords >= 15) report('one-liner-length', n.source, n.id, `oneLiner has ${oneLinerWords} words (max 14)`);
     for (const [field, text] of [['oneLiner', n.oneLiner], ['intuition', n.intuition], ['analogy', n.analogy], ['showsUpIn', n.showsUpIn]] as const) {
       longSentences('sentence-length', n.source, n.id, field, text);
+    }
+    const proseFields: [string, string][] = [
+      ...(n.confusions ?? []).map((t, i): [string, string] => [`confusions[${i}]`, t]),
+      ...(n.strengths ?? []).map((p, i): [string, string] => [`strengths[${i}]`, p.text]),
+      ...(n.weaknesses ?? []).map((p, i): [string, string] => [`weaknesses[${i}]`, p.text]),
+      ...Object.entries(n.recipe ?? {}).map(([k, s]): [string, string] => [`recipe.${k}`, s.text]),
+      ...Object.entries(n.reducedRecipe ?? {}).map(([k, s]): [string, string] => [`reducedRecipe.${k}`, s.text]),
+      ...(n.formula?.symbols ?? []).map((s, i): [string, string] => [`formula.symbols[${i}]`, s.meaning]),
+    ];
+    for (const [field, text] of proseFields) longSentences('sentence-length', n.source, n.id, field, text);
+    if (n.code) {
+      const lines = n.code.snippet.split('\n').filter((l) => l.trim()).length;
+      if (lines < CODE_LINES[0] || lines > CODE_LINES[1]) {
+        report('code-lines', n.source, n.id, `code.snippet has ${lines} lines (${CODE_LINES[0]}–${CODE_LINES[1]})`);
+      }
+    }
+    for (const [field, list] of [['strengths', n.strengths], ['weaknesses', n.weaknesses]] as const) {
+      if (list && (list.length < POINTS[0] || list.length > POINTS[1])) {
+        report('points-count', n.source, n.id, `${field} has ${list.length} entries (${POINTS[0]}–${POINTS[1]})`);
+      }
+    }
+    if (n.kind !== 'algorithm') {
+      const present = (['recipe', 'reducedRecipe', 'strengths', 'weaknesses'] as const).filter((f) => n[f] !== undefined);
+      if (present.length) report('algorithm-only-fields', n.source, n.id, `${present.join(', ')} only belong on algorithms`);
     }
     const sentences = splitSentences(n.intuition).length;
     if (sentences < 2 || sentences > 4) report('intuition-sentences', n.source, n.id, `intuition has ${sentences} sentences (2–4)`);

@@ -1,0 +1,3 @@
+nodes:
+  - { id: few-strengths, label: Few strengths, layer: algorithms, group: g-alg, kind: algorithm, oneLiner: Short., intuition: One sentence here. Another one here., strengths: [{ text: Fast. }] }
+  - { id: many-weaknesses, label: Many weaknesses, layer: algorithms, group: g-alg, kind: algorithm, oneLiner: Short., intuition: One sentence here. Another one here., weaknesses: [{ text: One. }, { text: Two. }, { text: Three. }, { text: Four. }] }

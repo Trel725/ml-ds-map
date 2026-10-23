@@ -36,6 +36,9 @@ export function crossCheck(content: Content, vizIds: readonly string[]): Content
       if (ref !== undefined && !nodes.has(ref)) err('unresolved-ref', n.source, n.id, `${field} "${ref}" is not a node`);
     }
 
+    const tool = n.code && nodes.get(n.code.tool);
+    if (tool && tool.kind !== 'tool') err('code-tool-kind', n.source, n.id, `code.tool "${tool.id}" is not a tool node`);
+
     if ((n.kind === 'foundation' || n.kind === 'math') && !n.showsUpIn) {
       err('shows-up-in-required', n.source, n.id, 'foundation and math nodes need showsUpIn');
     }
