@@ -5,6 +5,13 @@
   oneLiner: "Predicting a number, like a price or a temperature."
   intuition: "A regression task has a numeric target. Being close counts, and big misses hurt more. It is like guessing the price of a house from its features."
   analogy: "Guessing the price of a house from its features."
+  confusions:
+    - Regression the task means predicting a number. Logistic regression is a classifier despite the name.
+  resources:
+    - title: "MLU-Explain: Linear regression"
+      url: https://mlu-explain.github.io/linear-regression/
+    - title: "ISLR, chapter 3: Linear regression"
+      url: https://www.statlearning.com/
 
 - id: classification
   label: Classification
@@ -14,6 +21,11 @@
   intuition: "A classification task has a target with a few labels. Models usually give a probability, and a threshold turns it into a label. There can be two classes or many. It is like sorting mail into labeled trays."
   analogy: "Sorting mail into labeled trays."
   viz: classification-threshold
+  resources:
+    - title: "scikit-learn: Classifier comparison"
+      url: https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html
+    - title: "ISLR, chapter 4: Classification"
+      url: https://www.statlearning.com/
 
 - id: forecasting
   label: Forecasting
@@ -22,3 +34,8 @@
   oneLiner: "Predicting the future values of a series over time."
   intuition: "Forecasting uses the past of a series to predict what comes next. Order matters, and the future must not leak into training. It is like a weather forecast."
   analogy: "A weather forecast."
+  resources:
+    - title: "statsmodels: Time series analysis"
+      url: https://www.statsmodels.org/stable/tsa.html
+    - title: "statsmodels: Exponential smoothing"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/exponential_smoothing.html

@@ -6,6 +6,18 @@
   intuition: "A random variable gives a number to each possible outcome. The roll of a die is one. You can't know its value in advance, but you know the odds. It is like a lottery ticket before the draw."
   analogy: "A lottery ticket before the draw."
   showsUpIn: "Targets, noise and predictions in every probabilistic model."
+  formula:
+    tex: P(X = x)
+    symbols:
+      - symbol: X
+        meaning: The random variable, such as the roll of a die.
+      - symbol: x
+        meaning: One value it can take, such as six.
+      - symbol: P(X = x)
+        meaning: The chance that it takes that value.
+  resources:
+    - title: "Seeing Theory: Probability distributions"
+      url: https://seeing-theory.brown.edu/probability-distributions/index.html
 
 - id: distributions
   label: Distributions
@@ -15,6 +27,24 @@
   intuition: "A distribution lists every value and how likely it is. The normal distribution is the bell curve. Bernoulli is a single coin flip, and Poisson counts rare events. It is like a recipe for producing random numbers."
   analogy: "A recipe for producing random numbers."
   showsUpIn: "Noise assumptions, Naive Bayes and Gaussian mixtures."
+  formula:
+    tex: f(x) = \frac{1}{\sigma \sqrt{2\pi}} \, e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+    symbols:
+      - symbol: f(x)
+        meaning: How dense the bell curve is at value x.
+      - symbol: \mu
+        meaning: The center of the bell.
+      - symbol: \sigma
+        meaning: The spread, the standard deviation.
+      - symbol: \pi, e
+        meaning: Fixed constants, about 3.14 and 2.72.
+  confusions:
+    - Not everything is bell-shaped. Prices and waiting times are often skewed.
+  resources:
+    - title: "Seeing Theory: Probability distributions"
+      url: https://seeing-theory.brown.edu/probability-distributions/index.html
+    - title: "3Blue1Brown: Binomial distributions"
+      url: https://www.3blue1brown.com/lessons/binomial-distributions
 
 - id: bayes-rule
   label: Bayes' rule
@@ -25,6 +55,24 @@
   analogy: "A detective updating suspicions after each clue."
   showsUpIn: "Naive Bayes, LDA, QDA and spam filters."
   viz: bayes-rule
+  formula:
+    tex: P(A \mid B) = \frac{P(B \mid A) \, P(A)}{P(B)}
+    symbols:
+      - symbol: P(A \mid B)
+        meaning: The chance of A once you know B, such as illness given a positive test.
+      - symbol: P(B \mid A)
+        meaning: The chance of B when A is true.
+      - symbol: P(A)
+        meaning: The base rate, how common A is to begin with.
+      - symbol: P(B)
+        meaning: How common B is overall.
+  confusions:
+    - Ignoring the base rate is the classic mistake. A rare illness stays unlikely after one positive test.
+  resources:
+    - title: "3Blue1Brown: Bayes' theorem"
+      url: https://www.3blue1brown.com/lessons/bayes-theorem
+    - title: "Seeing Theory: Bayesian inference"
+      url: https://seeing-theory.brown.edu/bayesian-inference/index.html
 
 - id: expectation-variance
   label: Expectation and variance
@@ -34,6 +82,18 @@
   intuition: "Expectation is the average you would see over many repeats. Variance measures how far single results wander from it. It is like a darts player's average spot and how scattered the darts land."
   analogy: "A darts player's average spot and how scattered the darts land."
   showsUpIn: "The bias-variance tradeoff, mean squared error and standard errors."
+  formula:
+    tex: \mathbb{E}[X] = \sum_x x \, P(X = x), \quad \operatorname{Var}(X) = \mathbb{E}[(X - \mathbb{E}[X])^2]
+    symbols:
+      - symbol: \mathbb{E}[X]
+        meaning: The expectation, the long-run average of X.
+      - symbol: P(X = x)
+        meaning: The chance of each value x.
+      - symbol: \operatorname{Var}(X)
+        meaning: The variance, the average squared distance from that average.
+  resources:
+    - title: "Seeing Theory: Expectation and variance"
+      url: https://seeing-theory.brown.edu/basic-probability/index.html
 
 - id: independence
   label: Independence
@@ -43,6 +103,18 @@
   intuition: "Two events are independent if one doesn't change the odds of the other. Then you can multiply their chances. It is like two separate coin tosses. Many models assume independence to keep things simple."
   analogy: "Two separate coin tosses."
   showsUpIn: "Naive Bayes, likelihoods and many regression assumptions."
+  formula:
+    tex: P(A \cap B) = P(A) \, P(B)
+    symbols:
+      - symbol: P(A \cap B)
+        meaning: The chance that A and B both happen.
+      - symbol: P(A) \, P(B)
+        meaning: Their separate chances multiplied, which only works when they are independent.
+  confusions:
+    - Independent is not the same as uncorrelated. Zero correlation can hide a curved link.
+  resources:
+    - title: "Seeing Theory: Compound probability"
+      url: https://seeing-theory.brown.edu/compound-probability/index.html
 
 - id: mle
   label: Maximum likelihood
@@ -52,3 +124,19 @@
   intuition: "Likelihood asks how probable your data is under some parameter values. Maximum likelihood picks the values that make it most probable. Logs turn the product of many chances into an easy sum. It is like picking the suspect whose story best fits the evidence."
   analogy: "Picking the suspect whose story best fits the evidence."
   showsUpIn: "Logistic regression, OLS under normal noise and most statistical models."
+  formula:
+    tex: \hat{\theta} = \arg\max_\theta \sum_{i=1}^{n} \log p(x_i \mid \theta)
+    symbols:
+      - symbol: \theta
+        meaning: The parameters, such as a mean and a spread.
+      - symbol: p(x_i \mid \theta)
+        meaning: How likely data point i is under those parameters.
+      - symbol: \log
+        meaning: Turns the product of chances into an easier sum.
+      - symbol: \hat{\theta}
+        meaning: The parameters that make the data most likely.
+  confusions:
+    - Likelihood is about the parameters given fixed data. It is not the chance the parameters are true.
+  resources:
+    - title: "Seeing Theory: Frequentist inference"
+      url: https://seeing-theory.brown.edu/frequentist-inference/index.html

@@ -6,6 +6,20 @@
   intuition: "Each setting of the parameters gives an error. Plot error against settings and you get hills and valleys. Training means finding a low valley. It is like a hilly country seen from a plane."
   analogy: "A hilly country seen from a plane."
   showsUpIn: "Every training process, which searches this surface for a low point."
+  formula:
+    tex: L(w) = \frac{1}{n} \sum_{i=1}^{n} \ell(y_i, f(x_i; w))
+    symbols:
+      - symbol: L(w)
+        meaning: The height of the landscape at the setting w.
+      - symbol: f(x_i; w)
+        meaning: The model's prediction for example i, using setting w.
+      - symbol: \ell
+        meaning: The loss on one example.
+      - symbol: n
+        meaning: The number of training examples.
+  resources:
+    - title: "3Blue1Brown: Gradient descent"
+      url: https://www.3blue1brown.com/lessons/gradient-descent
 
 - id: analytical-solution
   label: Analytical solution
@@ -15,6 +29,22 @@
   intuition: "Some problems have a formula that gives the best answer straight away. No walking downhill is needed. OLS has one, called the normal equations. It is like looking up an answer instead of guessing."
   analogy: "Looking up an answer instead of guessing."
   showsUpIn: "Ordinary least squares and a few other simple models."
+  formula:
+    tex: X^\top X \hat{\beta} = X^\top y
+    symbols:
+      - symbol: X
+        meaning: The table of features.
+      - symbol: y
+        meaning: The column of true answers.
+      - symbol: \hat{\beta}
+        meaning: The best weights, found by solving this equation once.
+  confusions:
+    - Most models have no exact formula. That is why gradient descent exists.
+  resources:
+    - title: "NumPy: numpy.linalg.lstsq"
+      url: https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html
+    - title: "statsmodels: Ordinary least squares"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/ols.html
 
 - id: gradient-descent
   label: Gradient descent
@@ -25,6 +55,32 @@
   analogy: "Walking downhill in fog, feeling the slope with your feet."
   showsUpIn: "Training logistic regression, neural networks and boosting."
   viz: gradient-descent
+  formula:
+    tex: w \leftarrow w - \eta \, \nabla L(w)
+    symbols:
+      - symbol: w
+        meaning: The current weights.
+      - symbol: \leftarrow
+        meaning: Replace with the value on the right.
+      - symbol: \eta
+        meaning: The learning rate, the step size.
+      - symbol: \nabla L(w)
+        meaning: The gradient, the uphill direction of the loss.
+  code:
+    tool: numpy
+    snippet: |
+      import numpy as np
+      w, rate = 0.0, 0.1
+      for step in range(100):
+          slope = 2 * (w - 3)
+          w = w - rate * slope
+  confusions:
+    - Gradient descent finds a low point, not always the lowest one.
+  resources:
+    - title: "3Blue1Brown: Gradient descent"
+      url: https://www.3blue1brown.com/lessons/gradient-descent
+    - title: "scikit-learn: Stochastic gradient descent"
+      url: https://scikit-learn.org/stable/modules/sgd.html
 
 - id: sgd-adam
   label: SGD and Adam
@@ -34,6 +90,24 @@
   intuition: "Plain gradient descent looks at all the data before each step. SGD looks at a small random batch, so steps are quick but noisy. Adam also adapts the step size for each parameter. It is like asking a few people for directions instead of everyone."
   analogy: "Asking a few people for directions instead of everyone."
   showsUpIn: "Training almost every neural network."
+  formula:
+    tex: w \leftarrow w - \eta \, \frac{\hat{m}}{\sqrt{\hat{v}} + \epsilon}
+    symbols:
+      - symbol: \hat{m}
+        meaning: A running average of recent gradients, the momentum.
+      - symbol: \hat{v}
+        meaning: A running average of squared gradients, the typical step size.
+      - symbol: \eta
+        meaning: The learning rate.
+      - symbol: \epsilon
+        meaning: A tiny number that avoids dividing by zero.
+  confusions:
+    - Stochastic means each step uses a random small batch, not the whole dataset.
+  resources:
+    - title: "PyTorch: Optimizing model parameters"
+      url: https://pytorch.org/tutorials/beginner/basics/optimization_tutorial.html
+    - title: "PyTorch: torch.optim.Adam"
+      url: https://pytorch.org/docs/stable/generated/torch.optim.Adam.html
 
 - id: learning-rate
   label: Learning rate
@@ -43,6 +117,22 @@
   intuition: "The learning rate scales every step. Too small and training crawls. Too big and you leap over the valley or fly off. It is like your stride length when walking downhill."
   analogy: "Your stride length when walking downhill."
   showsUpIn: "Every model trained with gradient descent."
+  formula:
+    tex: w_{t+1} = w_t - \eta \, \nabla L(w_t)
+    symbols:
+      - symbol: \eta
+        meaning: The learning rate. Too small is slow, too big overshoots.
+      - symbol: w_t
+        meaning: The weights after t steps.
+      - symbol: \nabla L(w_t)
+        meaning: The gradient at those weights.
+  confusions:
+    - The learning rate is a hyperparameter you choose. The model does not learn it.
+  resources:
+    - title: "PyTorch: Optimizing model parameters"
+      url: https://pytorch.org/tutorials/beginner/basics/optimization_tutorial.html
+    - title: "3Blue1Brown: Gradient descent"
+      url: https://www.3blue1brown.com/lessons/gradient-descent
 
 - id: convexity
   label: Convexity
@@ -52,6 +142,18 @@
   intuition: "A convex loss curves up everywhere, like a bowl. Any downhill path ends at the same lowest point. Bumpy losses have local dips where you can get stuck. It is like a marble in a salad bowl, which always finds the middle."
   analogy: "A marble in a salad bowl."
   showsUpIn: "Why linear and logistic regression train reliably, unlike neural networks."
+  formula:
+    tex: L(t a + (1 - t) b) \le t L(a) + (1 - t) L(b)
+    symbols:
+      - symbol: a, b
+        meaning: Any two settings of the weights.
+      - symbol: t
+        meaning: A share between zero and one, picking a point between them.
+      - symbol: \le
+        meaning: The curve never rises above the straight line joining a and b.
+  resources:
+    - title: "scikit-learn: Convex loss functions"
+      url: https://scikit-learn.org/stable/auto_examples/linear_model/plot_sgd_loss_functions.html
 
 - id: newtons-method
   label: Newton's method
@@ -61,6 +163,18 @@
   intuition: "Gradient descent uses only the slope. Newton's method also uses how the slope bends. It fits a bowl where you stand and jumps to its bottom. It is like a skier reading the whole slope ahead."
   analogy: "A skier reading the whole slope ahead."
   showsUpIn: "Fitting logistic regression and GLMs in statistics software."
+  formula:
+    tex: w \leftarrow w - \frac{L'(w)}{L''(w)}
+    symbols:
+      - symbol: L'(w)
+        meaning: The slope of the loss.
+      - symbol: L''(w)
+        meaning: The curvature, how fast the slope itself changes.
+      - symbol: \leftarrow
+        meaning: Replace w with the value on the right.
+  resources:
+    - title: "statsmodels: Optimization methods"
+      url: https://www.statsmodels.org/stable/optimization.html
 
 - id: greedy-search
   label: Greedy search
@@ -70,3 +184,15 @@
   intuition: "A greedy method picks the best option at each step. It never goes back to change earlier choices. This is fast but can miss the overall best answer. It is like always taking the biggest coin when giving change."
   analogy: "Always taking the biggest coin when giving change."
   showsUpIn: "How decision trees choose their splits."
+  formula:
+    tex: s^* = \arg\min_{s} \left( L_{\text{left}}(s) + L_{\text{right}}(s) \right)
+    symbols:
+      - symbol: s
+        meaning: A candidate split, such as size below 70.
+      - symbol: s^*
+        meaning: The best split right now, chosen without looking ahead.
+      - symbol: L_{\text{left}}, L_{\text{right}}
+        meaning: The error left on each side of the split.
+  resources:
+    - title: "scikit-learn: Decision trees"
+      url: https://scikit-learn.org/stable/modules/tree.html

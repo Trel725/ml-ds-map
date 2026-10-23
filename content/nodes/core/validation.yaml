@@ -5,6 +5,20 @@
   oneLiner: "Hold back data the model never sees, to test it fairly."
   intuition: "You train on one part of the data and test on another. A separate validation part helps you choose settings. The test score then estimates real-world performance. It is like keeping some exam questions secret from the students."
   analogy: "Keeping some exam questions secret from the students."
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.model_selection import train_test_split
+      X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+      model.fit(X_train, y_train)
+      print(model.score(X_test, y_test))
+  confusions:
+    - Tuning on the test set uses it up. Keep a separate validation set for tuning.
+  resources:
+    - title: "MLU-Explain: Train, test and validation sets"
+      url: https://mlu-explain.github.io/train-test-validation/
+    - title: "scikit-learn: train_test_split"
+      url: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 
 - id: cross-validation
   label: Cross-validation
@@ -13,6 +27,22 @@
   oneLiner: "Rotate which part of the data plays the test set."
   intuition: "Split the data into several folds. Train on all but one, test on the one left out, and rotate. Average the scores for a steadier estimate. It is like every student taking a turn as the quiz master."
   analogy: "Every student taking a turn as the quiz master."
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.linear_model import LinearRegression
+      from sklearn.model_selection import cross_val_score
+      scores = cross_val_score(LinearRegression(), X, y, cv=5)
+      print(scores.mean(), scores.std())
+  confusions:
+    - Cross-validation judges a modeling recipe, not one particular fitted model.
+  resources:
+    - title: "MLU-Explain: Cross-validation"
+      url: https://mlu-explain.github.io/cross-validation/
+    - title: "scikit-learn: Cross-validation"
+      url: https://scikit-learn.org/stable/modules/cross_validation.html
+    - title: "ISLR, chapter 5: Resampling methods"
+      url: https://www.statlearning.com/
 
 - id: hyperparameter-tuning
   label: Hyperparameter tuning
@@ -21,6 +51,11 @@
   oneLiner: "Searching for the settings that work best on held-out data."
   intuition: "Try different settings, like tree depth or penalty strength. Score each one with validation data or cross-validation. Keep the best one. It is like tuning a radio until the signal is clearest."
   analogy: "Tuning a radio until the signal is clearest."
+  resources:
+    - title: "scikit-learn: Tuning the hyperparameters of an estimator"
+      url: https://scikit-learn.org/stable/modules/grid_search.html
+    - title: "scikit-learn: GridSearchCV"
+      url: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
 
 - id: data-leakage
   label: Data leakage
@@ -29,3 +64,8 @@
   oneLiner: "When test information sneaks into training and inflates scores."
   intuition: "Leakage happens when the model sees something it won't have in real life. Scaling with test data or using future values are common causes. The score looks great until the model meets real data. It is like a student who saw the answer sheet."
   analogy: "A student who saw the answer sheet."
+  confusions:
+    - Leakage often hides in preprocessing, like scaling before the split.
+  resources:
+    - title: "scikit-learn: Common pitfalls and data leakage"
+      url: https://scikit-learn.org/stable/common_pitfalls.html

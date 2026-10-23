@@ -6,6 +6,22 @@
   intuition: "Take a sample, compute an average, and repeat many times. Those averages form their own distribution. It is like polling different crowds and seeing how much the results move. This spread tells you how much to trust one sample."
   analogy: "Polling different crowds and seeing how much the results move."
   showsUpIn: "p-values, standard errors and confidence intervals."
+  formula:
+    tex: \bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i
+    symbols:
+      - symbol: \bar{X}
+        meaning: The sample mean. It changes from one sample to the next.
+      - symbol: X_i
+        meaning: Value i in the sample.
+      - symbol: n
+        meaning: The sample size.
+  confusions:
+    - The sampling distribution is of a statistic across samples, not of the data in one sample.
+  resources:
+    - title: "Seeing Theory: Frequentist inference"
+      url: https://seeing-theory.brown.edu/frequentist-inference/index.html
+    - title: "3Blue1Brown: The central limit theorem"
+      url: https://www.3blue1brown.com/lessons/clt
 
 - id: central-limit-theorem
   label: Central limit theorem
@@ -15,6 +31,24 @@
   intuition: "Average enough random values and the average behaves predictably. Its distribution looks like a bell, whatever the original data looked like. It is like a crowd's average height staying steady while individuals vary. This is why bell curves appear everywhere."
   analogy: "A crowd's average height staying steady while individuals vary."
   showsUpIn: "Confidence intervals and hypothesis tests."
+  formula:
+    tex: \bar{X} \approx \mathcal{N}\left( \mu, \frac{\sigma^2}{n} \right)
+    symbols:
+      - symbol: \bar{X}
+        meaning: The mean of a sample of size n.
+      - symbol: \approx \mathcal{N}
+        meaning: Is roughly bell-shaped.
+      - symbol: \mu, \sigma
+        meaning: The population's mean and spread.
+      - symbol: n
+        meaning: The sample size. Bigger samples give a narrower bell.
+  confusions:
+    - The theorem is about averages. The data itself does not become bell-shaped.
+  resources:
+    - title: "3Blue1Brown: But what is the central limit theorem?"
+      url: https://www.3blue1brown.com/lessons/clt
+    - title: "Seeing Theory: Probability distributions"
+      url: https://seeing-theory.brown.edu/probability-distributions/index.html
 
 - id: standard-errors
   label: Standard errors
@@ -24,6 +58,22 @@
   intuition: "Any estimate from data is a little off. The standard error measures the typical size of that wobble. Bigger samples give smaller wobbles. It is like the plus-or-minus on an opinion poll."
   analogy: "The plus-or-minus on an opinion poll."
   showsUpIn: "Regression tables in statsmodels and in econometrics."
+  formula:
+    tex: \operatorname{SE}(\bar{X}) = \frac{s}{\sqrt{n}}
+    symbols:
+      - symbol: \operatorname{SE}
+        meaning: The standard error, how much the estimate wobbles.
+      - symbol: s
+        meaning: The standard deviation of the data.
+      - symbol: n
+        meaning: The sample size.
+  confusions:
+    - The standard error is not the standard deviation. It shrinks as the sample grows.
+  resources:
+    - title: "statsmodels: OLS output with standard errors"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/ols.html
+    - title: "Seeing Theory: Frequentist inference"
+      url: https://seeing-theory.brown.edu/frequentist-inference/index.html
 
 - id: confidence-intervals
   label: Confidence intervals
@@ -33,6 +83,27 @@
   intuition: "A confidence interval puts error bars around an estimate. A 95 percent interval method catches the true value 95 times in 100. It is like casting a net rather than throwing a spear."
   analogy: "Casting a net rather than throwing a spear."
   showsUpIn: "Reporting coefficients and model scores honestly."
+  formula:
+    tex: \bar{x} \pm 1.96 \times \operatorname{SE}
+    symbols:
+      - symbol: \bar{x}
+        meaning: The estimate from your sample.
+      - symbol: "1.96"
+        meaning: The multiplier for a 95% interval from the bell curve.
+      - symbol: \operatorname{SE}
+        meaning: The standard error of the estimate.
+  code:
+    tool: statsmodels
+    snippet: |
+      import statsmodels.api as sm
+      result = sm.OLS(y, sm.add_constant(X)).fit()
+      print(result.params)
+      print(result.conf_int(alpha=0.05))
+  confusions:
+    - A 95% interval does not have a 95% chance of holding the truth. The method catches it 95% of the time.
+  resources:
+    - title: "Seeing Theory: Frequentist inference"
+      url: https://seeing-theory.brown.edu/frequentist-inference/index.html
 
 - id: hypothesis-testing
   label: Hypothesis testing
@@ -42,6 +113,32 @@
   intuition: "Assume nothing interesting is going on. Then ask how often chance alone would produce your result. That frequency is the p-value. It is like a courtroom that presumes innocence until the evidence is strong."
   analogy: "A courtroom that presumes innocence until the evidence is strong."
   showsUpIn: "Coefficient tests, A/B tests and model comparisons."
+  formula:
+    tex: p = P(|T| \ge |t_{\text{obs}}| \mid H_0)
+    symbols:
+      - symbol: p
+        meaning: The p-value.
+      - symbol: T
+        meaning: The test statistic you would get from pure chance.
+      - symbol: t_{\text{obs}}
+        meaning: The statistic you actually observed.
+      - symbol: H_0
+        meaning: The null hypothesis, that there is no real effect.
+  code:
+    tool: statsmodels
+    snippet: |
+      from statsmodels.stats.weightstats import ttest_ind
+      spam_links = links[labels == 1]
+      ham_links = links[labels == 0]
+      t_stat, p_value, df = ttest_ind(spam_links, ham_links)
+  confusions:
+    - A p-value is not the chance the null hypothesis is true.
+    - Not significant does not mean no effect. The sample may be too small.
+  resources:
+    - title: "Seeing Theory: Frequentist inference"
+      url: https://seeing-theory.brown.edu/frequentist-inference/index.html
+    - title: "statsmodels: ttest_ind"
+      url: https://www.statsmodels.org/stable/generated/statsmodels.stats.weightstats.ttest_ind.html
 
 - id: bootstrap
   label: Bootstrap
@@ -51,6 +148,31 @@
   intuition: "You only have one dataset. The bootstrap draws new datasets from it, with replacement. Each one gives a slightly different answer. It is like reshuffling a deck to see how much a hand can change."
   analogy: "Reshuffling a deck to see how much a hand can change."
   showsUpIn: "Bagging, random forests and error bars for any statistic."
+  formula:
+    tex: \hat{\theta}^{*b} = s\left( x^{*b} \right), \quad b = 1, \ldots, B
+    symbols:
+      - symbol: x^{*b}
+        meaning: Resample b, drawn from your data with replacement.
+      - symbol: s
+        meaning: The statistic you care about, such as the mean.
+      - symbol: \hat{\theta}^{*b}
+        meaning: That statistic computed on resample b.
+      - symbol: B
+        meaning: How many resamples you draw, often a thousand.
+  code:
+    tool: numpy
+    snippet: |
+      import numpy as np
+      rng = np.random.default_rng(1)
+      means = [rng.choice(prices, size=len(prices)).mean() for _ in range(1000)]
+      low, high = np.percentile(means, [2.5, 97.5])
+  confusions:
+    - The bootstrap does not create new information. It shows how much your estimate could wobble.
+  resources:
+    - title: "ISLR, chapter 5: The bootstrap"
+      url: https://www.statlearning.com/
+    - title: "scikit-learn: resample"
+      url: https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html
 
 - id: correlation-causation
   label: Correlation vs causation
@@ -60,3 +182,19 @@
   intuition: "Two things can rise together because a third thing drives both. It is like ice cream sales and sunburns both following sunny days. Prediction can use correlation. Explanation needs causation."
   analogy: "Ice cream sales and sunburns both following sunny days."
   showsUpIn: "Econometrics, causal effect estimation and reading any model."
+  formula:
+    tex: r = \frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_i (x_i - \bar{x})^2} \sqrt{\sum_i (y_i - \bar{y})^2}}
+    symbols:
+      - symbol: r
+        meaning: The correlation, from minus one to one.
+      - symbol: \bar{x}, \bar{y}
+        meaning: The averages of each variable.
+      - symbol: (x_i - \bar{x})(y_i - \bar{y})
+        meaning: Positive when both are above or both below average together.
+  confusions:
+    - Correlation only measures straight-line links. A strong curve can give a correlation near zero.
+  resources:
+    - title: "scikit-learn: Failure of machine learning to infer causal effects"
+      url: https://scikit-learn.org/stable/auto_examples/inspection/plot_causal_interpretation.html
+    - title: "pandas: DataFrame.corr"
+      url: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html

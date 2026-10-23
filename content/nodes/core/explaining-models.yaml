@@ -5,6 +5,13 @@
   oneLiner: "Getting the answer right, versus understanding why it happens."
   intuition: "Machine learning mostly cares about accurate predictions. Econometrics mostly cares about which causes matter and how much. The same model can serve either goal. It is like a weather forecast versus a climate study."
   analogy: "A weather forecast versus a climate study."
+  confusions:
+    - A model that predicts well can still give misleading coefficients.
+  resources:
+    - title: "ISLR, chapter 2: Prediction and inference"
+      url: https://www.statlearning.com/
+    - title: "scikit-learn: Failure of machine learning to infer causal effects"
+      url: https://scikit-learn.org/stable/auto_examples/inspection/plot_causal_interpretation.html
 
 - id: interpretability
   label: Interpretability
@@ -13,3 +20,10 @@
   oneLiner: "Understanding why a model makes the predictions it makes."
   intuition: "Some models are easy to read, like a small tree or a regression's coefficients. Others need tools such as feature importance or SHAP. Interpretability builds trust and catches mistakes. It is like asking a doctor to explain a diagnosis."
   analogy: "Asking a doctor to explain a diagnosis."
+  confusions:
+    - Feature importance shows what the model uses, not what causes the outcome.
+  resources:
+    - title: "scikit-learn: Permutation feature importance"
+      url: https://scikit-learn.org/stable/modules/permutation_importance.html
+    - title: "scikit-learn: Partial dependence plots"
+      url: https://scikit-learn.org/stable/modules/partial_dependence.html

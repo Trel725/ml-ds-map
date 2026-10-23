@@ -5,6 +5,13 @@
   oneLiner: "Building better input columns from the raw data."
   intuition: "Models only see the columns you give them. Making new ones, like price per square meter, can help a lot. Good features often beat fancier models. It is like a chef prepping ingredients before cooking."
   analogy: "A chef prepping ingredients before cooking."
+  confusions:
+    - Feature engineering is not cheating. Good columns often help more than a fancier model.
+  resources:
+    - title: "scikit-learn: Time-related feature engineering"
+      url: https://scikit-learn.org/stable/auto_examples/applications/plot_cyclical_feature_engineering.html
+    - title: "pandas: get_dummies"
+      url: https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html
 
 - id: feature-scaling
   label: Feature scaling
@@ -13,6 +20,21 @@
   oneLiner: "Putting columns on comparable ranges before modeling."
   intuition: "One column might be in meters and another in millions. Distance-based models and penalties are then dominated by the big one. Standardizing gives every column a similar range. It is like converting all prices to one currency."
   analogy: "Converting all prices to one currency."
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.preprocessing import StandardScaler
+      scaler = StandardScaler()
+      X_train_scaled = scaler.fit_transform(X_train)
+      X_test_scaled = scaler.transform(X_test)
+  confusions:
+    - Fit the scaler on training data only, or test information leaks in.
+    - Trees don't need scaling. Distance and penalty methods do.
+  resources:
+    - title: "scikit-learn: Importance of feature scaling"
+      url: https://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html
+    - title: "scikit-learn: Preprocessing data"
+      url: https://scikit-learn.org/stable/modules/preprocessing.html
 
 - id: class-imbalance
   label: Class imbalance
@@ -21,3 +43,10 @@
   oneLiner: "When one class is much rarer than the other."
   intuition: "If only one email in a hundred is spam, a model can always say not spam. It would be 99 percent accurate and useless. Fixes include reweighting, resampling and better metrics. It is like a smoke alarm that never rings."
   analogy: "A smoke alarm that never rings."
+  confusions:
+    - Ninety-nine percent accuracy can be useless when one class is one percent of the data.
+  resources:
+    - title: "MLU-Explain: Precision and recall"
+      url: https://mlu-explain.github.io/precision-recall/
+    - title: "scikit-learn: Precision-recall"
+      url: https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html

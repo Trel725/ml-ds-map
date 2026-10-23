@@ -6,6 +6,13 @@
   intuition: "An overfit model learns the noise along with the signal. It scores well on data it has seen and badly on new data. Underfitting is the opposite, a model too simple to learn. It is like a student who memorizes past exam answers."
   analogy: "A student who memorizes past exam answers."
   viz: overfitting
+  confusions:
+    - Low training error is not success. Only held-out error tells you about new data.
+  resources:
+    - title: "scikit-learn: Underfitting vs. overfitting"
+      url: https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html
+    - title: "MLU-Explain: The bias-variance tradeoff"
+      url: https://mlu-explain.github.io/bias-variance/
 
 - id: bias-variance
   label: Bias-variance tradeoff
@@ -14,6 +21,13 @@
   oneLiner: "Too simple misses the pattern, too flexible chases the noise."
   intuition: "Bias is error from a model that is too simple. Variance is error from a model that changes a lot with the data. Reducing one often raises the other. It is like an archer who is either always off target or all over the place."
   analogy: "An archer who is either always off target or all over the place."
+  confusions:
+    - Here bias means systematic error of a model, not unfairness or a biased sample.
+  resources:
+    - title: "MLU-Explain: The bias-variance tradeoff"
+      url: https://mlu-explain.github.io/bias-variance/
+    - title: "MLU-Explain: Double descent"
+      url: https://mlu-explain.github.io/double-descent/
 
 - id: regularization
   label: Regularization
@@ -22,6 +36,13 @@
   oneLiner: "Penalizing complexity so a model doesn't overfit."
   intuition: "Regularization adds a cost for being complicated. L1 and L2 penalties punish big weights. Pruning, dropout and early stopping do the same job in other models. It is like a word limit that forces a clear essay."
   analogy: "A word limit that forces a clear essay."
+  confusions:
+    - Regularization raises training error on purpose, to lower test error.
+  resources:
+    - title: "scikit-learn: Ridge coefficients as the penalty grows"
+      url: https://scikit-learn.org/stable/auto_examples/linear_model/plot_ridge_path.html
+    - title: "ISLR, chapter 6: Shrinkage methods"
+      url: https://www.statlearning.com/
 
 - id: curse-of-dimensionality
   label: Curse of dimensionality
@@ -30,3 +51,6 @@
   oneLiner: "With many columns, data gets sparse and distances lose meaning."
   intuition: "Each new column adds a direction for points to spread out in. Soon every point is far from every other. Methods based on closeness then struggle. It is like finding a friend in a city versus in a whole country."
   analogy: "Finding a friend in a city versus in a whole country."
+  resources:
+    - title: "ISLR, chapter 6: Considerations in high dimensions"
+      url: https://www.statlearning.com/

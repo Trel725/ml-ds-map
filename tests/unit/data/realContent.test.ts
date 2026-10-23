@@ -1,6 +1,7 @@
 import { expect, test } from 'vitest';
 import { buildContent } from '../../../src/data/build';
 import { formatIssue } from '../../../src/data/issues';
+import { checkResourceUrl } from '../../../src/data/links';
 import { realContent } from '../helpers/real';
 
 test('real content builds in strict mode', async () => {
@@ -64,4 +65,38 @@ test('required fixedBy links', async () => {
   expect(fixers('decision-stump')).toContain('gradient-boosting');
   expect(fixers('ols')).toContain('ridge');
   expect(fixers('perceptron')).toContain('neural-network');
+});
+
+test('every math node has a formula', async () => {
+  const c = await realContent();
+  for (const n of c.nodes.filter((n) => n.kind === 'math')) expect(n.formula, n.id).toBeDefined();
+});
+
+test('every non-tool node has 1–3 resources, all allow-listed', async () => {
+  const c = await realContent();
+  for (const n of c.nodes.filter((n) => n.kind !== 'tool')) {
+    expect(n.resources?.length ?? 0, n.id).toBeGreaterThanOrEqual(1);
+    for (const r of n.resources ?? []) expect(checkResourceUrl(r.url), `${n.id} ${r.url}`).toEqual({ ok: true });
+  }
+});
+
+const CODE = ['vectors', 'matrices', 'dot-product', 'gradient-descent', 'cross-validation', 'train-test-split', 'feature-scaling', 'hypothesis-testing', 'bootstrap', 'confidence-intervals', 'tf-idf', 'tokenization', 'backpropagation'];
+test('code coverage list from Shared decisions', async () => {
+  const c = await realContent();
+  const byId = new Map(c.nodes.map((n) => [n.id, n]));
+  for (const id of CODE) expect(byId.get(id)?.code, id).toBeDefined();
+});
+
+test('every not-same-as end has confusions or the edge has an explanation; ≥ 20 more nodes have confusions', async () => {
+  const c = await realContent();
+  const byId = new Map(c.nodes.map((n) => [n.id, n]));
+  const ends = new Set<string>();
+  for (const e of c.edges.filter((e) => e.type === 'not-same-as')) {
+    for (const end of [e.from, e.to]) {
+      ends.add(end);
+      expect(e.explanation !== undefined || (byId.get(end)?.confusions?.length ?? 0) > 0, `${e.id} at ${end}`).toBe(true);
+    }
+  }
+  const more = c.nodes.filter((n) => !ends.has(n.id) && (n.confusions?.length ?? 0) > 0);
+  expect(more.length).toBeGreaterThanOrEqual(20);
 });

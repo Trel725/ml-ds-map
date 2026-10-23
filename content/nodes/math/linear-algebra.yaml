@@ -6,6 +6,27 @@
   intuition: "A vector stores several numbers in a fixed order. One house could be the vector of its size, rooms and age. It is like an arrow pointing somewhere in space. Each number says how far to go along one direction."
   analogy: "An arrow pointing somewhere in space."
   showsUpIn: "Every data row, every set of model weights and every embedding."
+  formula:
+    tex: x = (x_1, x_2, \ldots, x_n)
+    symbols:
+      - symbol: x
+        meaning: A vector, for example one row of data.
+      - symbol: x_1
+        meaning: Its first entry, such as a flat's size.
+      - symbol: n
+        meaning: How many entries it has.
+  code:
+    tool: numpy
+    snippet: |
+      import numpy as np
+      flat = np.array([72.0, 3, 1.5])
+      other = np.array([60.0, 2, 4.0])
+      print(flat + other, flat * 2)
+  resources:
+    - title: "3Blue1Brown: Vectors, what even are they?"
+      url: https://www.3blue1brown.com/lessons/vectors
+    - title: "NumPy: The absolute basics for beginners"
+      url: https://numpy.org/doc/stable/user/absolute_beginners.html
 
 - id: dot-product
   label: Dot product
@@ -15,6 +36,29 @@
   intuition: "The dot product combines two vectors into one number. Multiply matching items, then add the results. It is like a shopping bill of quantities times prices. A large result means the vectors point the same way."
   analogy: "A shopping bill of quantities times prices."
   showsUpIn: "Every linear model prediction and every neuron in a network."
+  formula:
+    tex: w \cdot x = \sum_{i=1}^{n} w_i x_i
+    symbols:
+      - symbol: w \cdot x
+        meaning: The dot product of weights w and features x.
+      - symbol: \sum_{i=1}^{n}
+        meaning: Add up over every position i from one to n.
+      - symbol: w_i x_i
+        meaning: Entry i of each list, multiplied together.
+  code:
+    tool: numpy
+    snippet: |
+      import numpy as np
+      weights = np.array([2.0, -25.0, 10.0])
+      flat = np.array([72.0, 3.0, 1.0])
+      print(weights @ flat)
+  confusions:
+    - The dot product gives one number, not a new list.
+  resources:
+    - title: "3Blue1Brown: Dot products and duality"
+      url: https://www.3blue1brown.com/lessons/dot-products
+    - title: "NumPy: numpy.dot"
+      url: https://numpy.org/doc/stable/reference/generated/numpy.dot.html
 
 - id: matrices
   label: Matrices
@@ -24,6 +68,32 @@
   intuition: "A matrix is a table of numbers. A whole dataset is a matrix with one row per example. Multiplying by a matrix moves, stretches or turns vectors. It is like a recipe that turns ingredients into dishes."
   analogy: "A recipe that turns ingredients into dishes."
   showsUpIn: "Datasets, the exact solution for linear regression and neural network layers."
+  formula:
+    tex: y = A x, \quad y_i = \sum_j A_{ij} x_j
+    symbols:
+      - symbol: A
+        meaning: A matrix, a grid of numbers.
+      - symbol: x
+        meaning: The vector going in.
+      - symbol: y
+        meaning: The vector coming out.
+      - symbol: A_{ij}
+        meaning: The number in row i and column j.
+  code:
+    tool: numpy
+    snippet: |
+      import numpy as np
+      X = np.array([[72.0, 3], [60.0, 2], [95.0, 4]])
+      w = np.array([2.0, 10.0])
+      print(X @ w)
+      print(X.T.shape)
+  confusions:
+    - Matrix multiplication is not done entry by entry, and order matters.
+  resources:
+    - title: "3Blue1Brown: Linear transformations and matrices"
+      url: https://www.3blue1brown.com/lessons/linear-transformations
+    - title: "3Blue1Brown: Matrix multiplication as composition"
+      url: https://www.3blue1brown.com/lessons/matrix-multiplication
 
 - id: projections
   label: Projections
@@ -33,6 +103,20 @@
   intuition: "A projection finds the closest point along a line or flat surface. It is like the shadow a pole casts at noon. Least squares projects the target onto what the features can explain."
   analogy: "The shadow a pole casts at noon."
   showsUpIn: "Least squares regression and PCA."
+  formula:
+    tex: \operatorname{proj}_u(x) = \frac{x \cdot u}{u \cdot u} \, u
+    symbols:
+      - symbol: \operatorname{proj}_u(x)
+        meaning: The shadow of x on the line through u.
+      - symbol: x \cdot u
+        meaning: The dot product, how much x points along u.
+      - symbol: u \cdot u
+        meaning: The squared length of u, which rescales the result.
+  resources:
+    - title: "3Blue1Brown: Dot products and duality"
+      url: https://www.3blue1brown.com/lessons/dot-products
+    - title: "NumPy: numpy.linalg.lstsq, projection in practice"
+      url: https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html
 
 - id: eigen-svd
   label: Eigenvectors and SVD
@@ -42,3 +126,19 @@
   intuition: "Most directions get turned by a matrix, but a few only get stretched. Those are the eigenvectors. SVD finds the main directions of any table of data. It is like finding the grain in a piece of wood."
   analogy: "Finding the grain in a piece of wood."
   showsUpIn: "PCA and other ways to compress data."
+  formula:
+    tex: A v = \lambda v, \qquad X = U \Sigma V^\top
+    symbols:
+      - symbol: v
+        meaning: An eigenvector, a direction the matrix only stretches.
+      - symbol: \lambda
+        meaning: The eigenvalue, how much it stretches.
+      - symbol: U, V
+        meaning: Matrices of special directions, for rows and for columns.
+      - symbol: \Sigma
+        meaning: The stretch along each direction, largest first.
+  resources:
+    - title: "3Blue1Brown: Eigenvectors and eigenvalues"
+      url: https://www.3blue1brown.com/lessons/eigenvalues
+    - title: "NumPy: numpy.linalg.svd"
+      url: https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html

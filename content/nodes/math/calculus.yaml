@@ -7,6 +7,20 @@
   analogy: "A speedometer reading at one instant."
   showsUpIn: "Every training step that walks a loss downhill."
   viz: slope-derivative
+  formula:
+    tex: f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}
+    symbols:
+      - symbol: f'(x)
+        meaning: The derivative of f at the point x.
+      - symbol: h
+        meaning: A tiny step to the side.
+      - symbol: \lim_{h \to 0}
+        meaning: What the slope settles on as the step shrinks to nothing.
+  resources:
+    - title: "3Blue1Brown: The paradox of the derivative"
+      url: https://www.3blue1brown.com/lessons/derivatives
+    - title: "3Blue1Brown: Limits"
+      url: https://www.3blue1brown.com/lessons/limits
 
 - id: gradient
   label: Gradient
@@ -16,6 +30,22 @@
   intuition: "With many inputs, you can ask for the slope along each one. A partial derivative is one such slope. The gradient collects them all and points uphill. It is like a compass that points up the steepest hill."
   analogy: "A compass that points up the steepest hill."
   showsUpIn: "Gradient descent, backpropagation and every neural network."
+  formula:
+    tex: \nabla L(w) = \left( \frac{\partial L}{\partial w_1}, \ldots, \frac{\partial L}{\partial w_n} \right)
+    symbols:
+      - symbol: \nabla L(w)
+        meaning: The gradient of the loss at the weights w.
+      - symbol: \frac{\partial L}{\partial w_1}
+        meaning: The slope of the loss when only weight one moves.
+      - symbol: n
+        meaning: The number of weights.
+  confusions:
+    - The gradient points uphill. Training steps go the opposite way.
+  resources:
+    - title: "3Blue1Brown: Gradient descent"
+      url: https://www.3blue1brown.com/lessons/gradient-descent
+    - title: "NumPy: numpy.gradient"
+      url: https://numpy.org/doc/stable/reference/generated/numpy.gradient.html
 
 - id: chain-rule
   label: Chain rule
@@ -25,3 +55,17 @@
   intuition: "When one thing drives a second that drives a third, the effects multiply. The chain rule multiplies the slopes along the chain. It is like gears turning gears in a clock."
   analogy: "Gears turning gears in a clock."
   showsUpIn: "Backpropagation in every neural network."
+  formula:
+    tex: \frac{d}{dx} f(g(x)) = f'(g(x)) \cdot g'(x)
+    symbols:
+      - symbol: f(g(x))
+        meaning: A function nested inside another.
+      - symbol: f'(g(x))
+        meaning: The slope of the outer function, at the inner one's output.
+      - symbol: g'(x)
+        meaning: The slope of the inner function.
+  resources:
+    - title: "3Blue1Brown: Visualizing the chain rule"
+      url: https://www.3blue1brown.com/lessons/chain-rule-and-product-rule
+    - title: "3Blue1Brown: Backpropagation calculus"
+      url: https://www.3blue1brown.com/lessons/backpropagation-calculus

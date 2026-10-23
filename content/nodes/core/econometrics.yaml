@@ -6,6 +6,13 @@
   oneLiner: "Regression used to explain, not predict, with careful assumptions."
   intuition: "Econometricians use the same OLS formula as machine learning. Their goal is to measure how much each cause matters. So they check assumptions and standard errors, not just accuracy. It is like a detective asking why, not just what happens next."
   analogy: "A detective asking why, not just what happens next."
+  confusions:
+    - "Same formula as ML's OLS. The question is different: why, not what next."
+  resources:
+    - title: "statsmodels: Ordinary least squares"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/ols.html
+    - title: "statsmodels: Linear regression"
+      url: https://www.statsmodels.org/stable/regression.html
 
 - id: ols-assumptions
   label: OLS assumptions
@@ -15,6 +22,11 @@
   oneLiner: "Conditions under which regression coefficients can be trusted."
   intuition: "OLS gives the best simple estimates when some conditions hold. The errors should average zero and not depend on the features. This is the Gauss-Markov result. It is like a recipe that only works with the right oven."
   analogy: "A recipe that only works with the right oven."
+  confusions:
+    - The assumptions matter for trusting coefficients and p-values, much less for raw prediction.
+  resources:
+    - title: "statsmodels: Regression diagnostics"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/regression_diagnostics.html
 
 - id: coefficient-interpretation
   label: Coefficient interpretation
@@ -24,6 +36,12 @@
   oneLiner: "What one more unit of a feature does to the prediction."
   intuition: "A coefficient says how the outcome moves when one feature rises by one unit. It assumes the other features stay fixed. Units and scaling change the number. It is like a price per kilo on a market stall."
   analogy: "A price per kilo on a market stall."
+  confusions:
+    - A coefficient holds the other features fixed. It is not the effect on its own.
+    - A big coefficient may just mean small units, not a big effect.
+  resources:
+    - title: "scikit-learn: Pitfalls in interpreting coefficients"
+      url: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
 
 - id: heteroskedasticity
   label: Heteroskedasticity
@@ -33,6 +51,13 @@
   oneLiner: "When the size of the errors changes across the data."
   intuition: "Errors may be small for cheap houses and large for expensive ones. Then ordinary standard errors are wrong. Robust standard errors fix this. It is like a scale that gets less precise with heavier loads."
   analogy: "A scale that gets less precise with heavier loads."
+  confusions:
+    - It does not bias the coefficients. It makes the usual standard errors wrong.
+  resources:
+    - title: "statsmodels: Breusch-Pagan test"
+      url: https://www.statsmodels.org/stable/generated/statsmodels.stats.diagnostic.het_breuschpagan.html
+    - title: "statsmodels: Weighted least squares"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/wls.html
 
 - id: multicollinearity
   label: Multicollinearity
@@ -42,6 +67,11 @@
   oneLiner: "When features move together so their separate effects blur."
   intuition: "If two features carry the same information, the model can't split credit between them. The coefficients become unstable. Predictions can still be fine. It is like two singers in unison, where you can't tell who is louder."
   analogy: "Two singers in unison, where you can't tell who is louder."
+  confusions:
+    - Predictions can stay fine. Only the separate coefficients become unreliable.
+  resources:
+    - title: "statsmodels: Variance inflation factor"
+      url: https://www.statsmodels.org/stable/generated/statsmodels.stats.outliers_influence.variance_inflation_factor.html
 
 - id: omitted-variable-bias
   label: Omitted variable bias
@@ -51,6 +81,11 @@
   oneLiner: "Leaving out a cause makes other coefficients absorb its effect."
   intuition: "Suppose ability drives both education and pay. Leave ability out, and education gets the credit for it. The coefficient is then biased. It is like crediting the rooster for the sunrise."
   analogy: "Crediting the rooster for the sunrise."
+  confusions:
+    - Adding more data does not fix it. Only including the missing cause does.
+  resources:
+    - title: "scikit-learn: Failure of machine learning to infer causal effects"
+      url: https://scikit-learn.org/stable/auto_examples/inspection/plot_causal_interpretation.html
 
 - id: instrumental-variables
   label: Instrumental variables
@@ -60,6 +95,9 @@
   oneLiner: "Using an outside nudge to isolate a cause's real effect."
   intuition: "Sometimes a feature is tangled with hidden causes. An instrument moves that feature but affects the outcome only through it. Comparing the two movements recovers the real effect. It is like a natural experiment someone else ran for you."
   analogy: "A natural experiment someone else ran for you."
+  resources:
+    - title: "statsmodels: Generalized method of moments, including IV"
+      url: https://www.statsmodels.org/stable/gmm.html
 
 - id: panel-data
   label: Panel data
@@ -69,6 +107,9 @@
   oneLiner: "The same units observed repeatedly over time."
   intuition: "Panel data follows the same people, firms or countries across years. Fixed effects compare each unit with itself, removing stable hidden traits. It is like tracking each child's growth instead of comparing different children."
   analogy: "Tracking each child's growth instead of comparing different children."
+  resources:
+    - title: "statsmodels: Linear mixed effects models"
+      url: https://www.statsmodels.org/stable/mixed_linear.html
 
 - id: difference-in-differences
   label: Difference-in-differences
@@ -78,6 +119,9 @@
   oneLiner: "Compare the change in a treated group with an untreated group's change."
   intuition: "Two groups are tracked before and after a policy. Only one of them gets the policy. The extra change in that group estimates the effect. It is like comparing two gardens when only one got new fertilizer."
   analogy: "Comparing two gardens when only one got new fertilizer."
+  resources:
+    - title: "statsmodels: Formulas with interaction terms"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/formulas.html
 
 - id: logit-probit
   label: Logit and probit
@@ -87,3 +131,8 @@
   oneLiner: "Regression models for yes-or-no outcomes."
   intuition: "A straight line can predict chances below zero or above one. Logit and probit bend the line into an S shape that stays between them. Logit is logistic regression by another name. It is like a dimmer switch between no and yes."
   analogy: "A dimmer switch between no and yes."
+  confusions:
+    - Logit and probit give nearly the same predictions. Their coefficients are on different scales.
+  resources:
+    - title: "statsmodels: Discrete choice models overview"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/discrete_choice_overview.html

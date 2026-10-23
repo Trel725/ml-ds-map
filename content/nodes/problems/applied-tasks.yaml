@@ -5,6 +5,9 @@
   oneLiner: "Measuring what actually happens when you change something."
   intuition: "Prediction asks what will happen. Causal estimation asks what would happen if you stepped in. Experiments answer it best, and econometric tools imitate them. It is like testing a medicine against a sugar pill."
   analogy: "Testing a medicine against a sugar pill."
+  resources:
+    - title: "scikit-learn: Failure of machine learning to infer causal effects"
+      url: https://scikit-learn.org/stable/auto_examples/inspection/plot_causal_interpretation.html
 
 - id: text-tasks
   label: Text tasks
@@ -13,3 +16,6 @@
   oneLiner: "Classifying text, scoring sentiment and finding topics."
   intuition: "Text tasks turn words into predictions or structure. Examples are spam filtering, sentiment and topic discovery. The text must first become numbers. It is like a librarian sorting and summarizing books."
   analogy: "A librarian sorting and summarizing books."
+  resources:
+    - title: "scikit-learn: Classifying text documents"
+      url: https://scikit-learn.org/stable/auto_examples/text/plot_document_classification_20newsgroups.html

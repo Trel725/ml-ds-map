@@ -6,6 +6,11 @@
   oneLiner: "The long-run direction and the repeating calendar pattern of a series."
   intuition: "Trend is the slow drift up or down. Seasonality is a pattern that repeats, like summer peaks. What is left over is noise. It is like a rising tide with waves coming and going on top."
   analogy: "A rising tide with waves coming and going on top."
+  resources:
+    - title: "statsmodels: Seasonal-trend decomposition (STL)"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/stl_decomposition.html
+    - title: "statsmodels: seasonal_decompose"
+      url: https://www.statsmodels.org/stable/generated/statsmodels.tsa.seasonal.seasonal_decompose.html
 
 - id: stationarity
   label: Stationarity
@@ -15,6 +20,11 @@
   oneLiner: "When a series keeps the same average and spread over time."
   intuition: "A stationary series wanders around a fixed level with steady swings. Many time series models assume this. Differencing, which means taking changes, often makes a series stationary. It is like a resting heartbeat rather than one during a run."
   analogy: "A resting heartbeat rather than one during a run."
+  confusions:
+    - Stationary does not mean flat. It means the pattern's average and spread don't drift.
+  resources:
+    - title: "statsmodels: Augmented Dickey-Fuller test"
+      url: https://www.statsmodels.org/stable/generated/statsmodels.tsa.stattools.adfuller.html
 
 - id: autocorrelation
   label: Autocorrelation
@@ -24,6 +34,11 @@
   oneLiner: "How much a series resembles its own past."
   intuition: "Today's value often looks like yesterday's. Autocorrelation measures that link at each time gap. It shows which past values help predict the future. It is like today's weather hinting at tomorrow's."
   analogy: "Today's weather hinting at tomorrow's."
+  resources:
+    - title: "statsmodels: plot_acf"
+      url: https://www.statsmodels.org/stable/generated/statsmodels.graphics.tsaplots.plot_acf.html
+    - title: "pandas: Series.autocorr"
+      url: https://pandas.pydata.org/docs/reference/api/pandas.Series.autocorr.html
 
 - id: lag-features
   label: Lag features
@@ -33,6 +48,11 @@
   oneLiner: "Past values of a series used as input columns."
   intuition: "To predict tomorrow, give the model today's and yesterday's values. These shifted copies are lag features. They turn forecasting into ordinary supervised learning. It is like checking last week's sales before ordering stock."
   analogy: "Checking last week's sales before ordering stock."
+  resources:
+    - title: "scikit-learn: Lagged features for forecasting"
+      url: https://scikit-learn.org/stable/auto_examples/applications/plot_time_series_lagged_features.html
+    - title: "pandas: Series.shift"
+      url: https://pandas.pydata.org/docs/reference/api/pandas.Series.shift.html
 
 - id: time-series-cv
   label: Time series validation
@@ -42,3 +62,10 @@
   oneLiner: "Validation that always trains on the past and tests on the future."
   intuition: "Random folds would let a model peek at the future. Time-aware validation keeps the order. Each fold trains on earlier data and tests on later data. It is like grading a forecaster only on days that hadn't happened yet."
   analogy: "Grading a forecaster only on days that hadn't happened yet."
+  confusions:
+    - Shuffled cross-validation on a series lets the model peek at the future.
+  resources:
+    - title: "scikit-learn: TimeSeriesSplit"
+      url: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html
+    - title: "scikit-learn: Visualizing cross-validation behavior"
+      url: https://scikit-learn.org/stable/auto_examples/model_selection/plot_cv_indices.html

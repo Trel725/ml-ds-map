@@ -6,6 +6,11 @@
   intuition: "A function takes something in and gives exactly one thing back. It is like a vending machine where each button gives one snack. A graph draws every input next to its output."
   analogy: "A vending machine where each button gives one snack."
   showsUpIn: "Every model is a function from features to a prediction."
+  confusions:
+    - A model is a function. Training only picks which function from a family.
+  resources:
+    - title: "ISLR, chapter 2: What is statistical learning?"
+      url: https://www.statlearning.com/
 
 - id: exponents-and-logarithms
   label: Logarithms
@@ -16,6 +21,14 @@
   analogy: "Counting the zeros on a price tag."
   showsUpIn: "Log loss, likelihood, softmax and log-transforming skewed data."
   viz: logarithms
+  confusions:
+    - In ML, log almost always means the natural log, base e.
+    - The log of zero is not defined, which is why probabilities get clipped.
+  resources:
+    - title: "3Blue1Brown: Triangle of power"
+      url: https://www.3blue1brown.com/lessons/triangle-of-power
+    - title: "NumPy: numpy.log"
+      url: https://numpy.org/doc/stable/reference/generated/numpy.log.html
 
 - id: notation
   label: "Notation: Σ, vectors"
@@ -25,6 +38,11 @@
   intuition: "Math writing uses short symbols for long instructions. A big sigma means add up every item in a list. A small number below a letter says which item you mean. It is like a shopping list whose prices you total at the till."
   analogy: "A shopping list whose prices you total at the till."
   showsUpIn: "Every loss function and every average."
+  confusions:
+    - A subscript like x_i picks one item from a list. It is not multiplication.
+  resources:
+    - title: "NumPy: numpy.sum, the sigma sign in code"
+      url: https://numpy.org/doc/stable/reference/generated/numpy.sum.html
 
 - id: slope
   label: Slope
@@ -34,6 +52,11 @@
   intuition: "Slope tells you how steep a line is. It is the rise divided by the run. It is like the steepness of a hill on a road sign. A bigger slope means the output changes faster."
   analogy: "The steepness of a hill on a road sign."
   showsUpIn: "The seed of derivatives and gradient descent."
+  resources:
+    - title: "3Blue1Brown: The paradox of the derivative"
+      url: https://www.3blue1brown.com/lessons/derivatives
+    - title: "Seeing Theory: Regression analysis"
+      url: https://seeing-theory.brown.edu/regression-analysis/index.html
 
 - id: distance
   label: Distance
@@ -43,3 +66,10 @@
   intuition: "Distance measures how far apart two points are. On a map you use Pythagoras with two directions. With data you do the same across every column. It is like measuring as the crow flies between two towns."
   analogy: "Measuring as the crow flies between two towns."
   showsUpIn: "kNN, k-means and regularization norms."
+  confusions:
+    - Distance depends on units. A column in metres swamps one in kilometres.
+  resources:
+    - title: "NumPy: numpy.linalg.norm"
+      url: https://numpy.org/doc/stable/reference/generated/numpy.linalg.norm.html
+    - title: "scikit-learn: Nearest neighbors"
+      url: https://scikit-learn.org/stable/modules/neighbors.html

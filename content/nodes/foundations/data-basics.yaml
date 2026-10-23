@@ -6,6 +6,14 @@
   intuition: "An average gives the typical value. Spread tells you how far values stray from it. It is like the heights in a class photo. The average is the middle height, and the spread is how ragged the line looks."
   analogy: "The heights in a class photo."
   showsUpIn: "Mean squared error, standardization and data exploration."
+  confusions:
+    - The mean is pulled by extreme values. The median is not.
+    - Variance is in squared units. The standard deviation brings it back to the original units.
+  resources:
+    - title: "Seeing Theory: Basic probability, expectation and variance"
+      url: https://seeing-theory.brown.edu/basic-probability/index.html
+    - title: "pandas: DataFrame.describe"
+      url: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html
 
 - id: basic-probability
   label: Basic probability
@@ -15,6 +23,13 @@
   intuition: "Probability is a number from zero to one for how likely something is. A conditional probability only looks at cases where something else happened. It is like asking about rain only on cloudy days."
   analogy: "Asking about rain only on cloudy days."
   showsUpIn: "Class probabilities and Naive Bayes."
+  confusions:
+    - The chance of A given B is usually not the chance of B given A.
+  resources:
+    - title: "Seeing Theory: Basic probability"
+      url: https://seeing-theory.brown.edu/basic-probability/index.html
+    - title: "Seeing Theory: Compound probability"
+      url: https://seeing-theory.brown.edu/compound-probability/index.html
 
 - id: reading-plots
   label: Reading plots
@@ -24,3 +39,8 @@
   intuition: "A plot turns numbers into shapes your eye can compare. First read the axes and their scales. A scatter plot shows pairs, and a histogram shows counts. It is like reading the legend before the map."
   analogy: "Reading the legend before the map."
   showsUpIn: "All exploratory work and every check of a model."
+  resources:
+    - title: "pandas: Chart visualization"
+      url: https://pandas.pydata.org/docs/user_guide/visualization.html
+    - title: "statsmodels: Regression plots"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/regression_plots.html
