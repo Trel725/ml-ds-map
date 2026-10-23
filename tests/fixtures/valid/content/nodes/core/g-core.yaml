@@ -1,0 +1,5 @@
+- id: overfitting
+  label: Overfitting
+  kind: concept
+  oneLiner: A model that memorizes training data instead of learning patterns.
+  intuition: The model learns the noise, not the signal. It does well on old data and badly on new data.

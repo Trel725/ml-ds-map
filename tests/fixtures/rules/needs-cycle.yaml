@@ -1,0 +1,2 @@
+edges:
+  - { from: slope, type: needs, to: derivative, sentence: Slope needs derivative. }

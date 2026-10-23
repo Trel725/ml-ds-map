@@ -1,0 +1,5 @@
+- id: sklearn
+  label: scikit-learn
+  kind: tool
+  oneLiner: The standard Python library for classic machine learning.
+  intuition: It puts most models behind one interface. You call fit, then predict.

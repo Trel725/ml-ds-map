@@ -1,0 +1,2 @@
+nodes:
+  - { id: bad-viz, label: Bad viz, layer: foundations, group: g-found, viz: nope, kind: foundation, oneLiner: A short line., intuition: One sentence here. Another one here., showsUpIn: Somewhere. }

@@ -1,0 +1,2 @@
+edges:
+  - { from: derivative, type: needs, to: ghost, sentence: Derivative needs a ghost. }

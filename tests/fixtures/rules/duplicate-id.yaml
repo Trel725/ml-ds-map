@@ -1,0 +1,2 @@
+groups:
+  - { id: slope, label: Dup, layer: foundations, order: 2 }

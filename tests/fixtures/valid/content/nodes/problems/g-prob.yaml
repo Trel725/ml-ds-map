@@ -1,0 +1,5 @@
+- id: regression
+  label: Regression
+  kind: problem
+  oneLiner: Predicting a number.
+  intuition: You guess a quantity, like a price. Being close counts.

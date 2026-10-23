@@ -1,0 +1,5 @@
+- { from: derivative, type: needs, to: slope, sentence: A derivative needs slope. }
+- { from: overfitting, type: needs, to: derivative, sentence: Overfitting needs derivatives. }
+- { from: ols, type: needs, to: overfitting, sentence: OLS needs the idea of overfitting. }
+- { from: ols, type: solves, to: regression, sentence: OLS solves regression. }
+- { from: ols, type: implemented-in, to: sklearn, sentence: OLS is implemented in scikit-learn. }

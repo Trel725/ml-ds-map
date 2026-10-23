@@ -1,0 +1,6 @@
+- id: ols
+  label: OLS
+  synonyms: [linear regression]
+  kind: algorithm
+  oneLiner: Fits the straight line with the smallest squared errors.
+  intuition: Draw the line that sits closest to all points. Closeness is measured with squares.

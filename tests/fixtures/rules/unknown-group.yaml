@@ -1,0 +1,2 @@
+nodes:
+  - { id: orphan-node, label: Orphan, layer: foundations, group: nope, kind: foundation, oneLiner: A short line., intuition: One sentence here. Another one here., showsUpIn: Somewhere. }

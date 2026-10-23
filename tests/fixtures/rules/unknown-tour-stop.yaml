@@ -1,0 +1,9 @@
+tours:
+  - id: t1
+    title: Test tour
+    stops:
+      - { node: slope, caption: Start. }
+      - { node: derivative, caption: Next. }
+      - { node: ghost, caption: Nobody. }
+      - { node: ols, caption: Then. }
+      - { node: regression, caption: End. }

@@ -1,0 +1,11 @@
+nodes:
+  - id: bad-ref
+    label: Bad ref
+    layer: foundations
+    group: g-found
+    kind: foundation
+    oneLiner: A short line.
+    intuition: One sentence here. Another one here.
+    showsUpIn: Somewhere.
+    code: { tool: ghost, snippet: "import ghost" }
+    weaknesses: [{ text: Slow., fixedBy: phantom }]

@@ -1,0 +1,2 @@
+edges:
+  - { from: ols, type: needs, to: g-math, sentence: OLS needs math. }

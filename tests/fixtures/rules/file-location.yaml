@@ -1,0 +1,2 @@
+nodes:
+  - { id: misfiled, label: Misfiled, layer: foundations, group: g-found, source: content/nodes/math/g-found.yaml, kind: foundation, oneLiner: A short line., intuition: One sentence here. Another one here., showsUpIn: Somewhere. }

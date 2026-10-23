@@ -1,0 +1,6 @@
+- id: slope
+  label: Slope
+  kind: foundation
+  oneLiner: How fast one thing changes when another does.
+  intuition: Slope tells you how steep a line is. A steep road climbs fast.
+  showsUpIn: The seed of derivatives.

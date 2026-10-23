@@ -1,0 +1,2 @@
+edges:
+  - { from: ols, type: implemented-in, to: slope, sentence: OLS is implemented in slope. }

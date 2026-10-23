@@ -1,0 +1,2 @@
+nodes:
+  - { id: no-shows-up, label: No shows, layer: foundations, group: g-found, kind: foundation, oneLiner: A short line., intuition: One sentence here. Another one here. }
