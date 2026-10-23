@@ -1,6 +1,12 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useApp, useGraph } from '../app/StoreContext';
+import { visibleEdges, visualId } from '../graph/visibleEdges';
 import { layout } from '../layout/layout';
+import type { Box } from '../layout/layout';
+import { EdgeLayer } from './EdgeLayer';
+import { EdgeMarkers } from './EdgeMarkers';
+import { EdgeTooltip } from './EdgeTooltip';
+import type { TooltipState } from './EdgeTooltip';
 import { GroupNode } from './GroupNode';
 import { Lanes } from './Lanes';
 import { NodeShape } from './NodeShape';
@@ -13,6 +19,7 @@ export function MapView() {
   const expanded = useApp((s) => s.expandedGroups);
   const selection = useApp((s) => s.selection);
   const focusRequest = useApp((s) => s.focusRequest);
+  const highlight = useApp((s) => s.highlight);
   const toggleGroup = useApp((s) => s.toggleGroup);
   const select = useApp((s) => s.select);
   const clearSelection = useApp((s) => s.clearSelection);
@@ -22,6 +29,36 @@ export function MapView() {
   const lay = useMemo(() => layout(groups, nodes, expanded), [groups, nodes, expanded]);
   const laneGroups = useMemo(() => groups.filter((g) => lay.groupBoxes.has(g.id)), [groups, lay]);
   const tools = useMemo(() => nodes.filter((n) => n.kind === 'tool'), [nodes]);
+
+  const { edges, related } = useMemo(() => {
+    const extra = new Set([...highlight.ids].filter((id) => graph.edgesById.has(id)));
+    return visibleEdges(graph, selection, expanded, extra);
+  }, [graph, selection, expanded, highlight]);
+  const highlightNodes = useMemo(() => new Set([...highlight.ids].filter((id) => graph.nodesById.has(id))), [graph, highlight]);
+  const focusing = selection !== null || highlight.ids.size > 0;
+  const lit = useMemo(() => {
+    const s = new Set(related);
+    for (const id of highlightNodes) s.add(visualId(graph, id, expanded));
+    return s;
+  }, [graph, related, highlightNodes, expanded]);
+  const nodeFaded = (id: string) => focusing && !lit.has(visualId(graph, id, expanded));
+  const groupFaded = (id: string) =>
+    focusing && !lit.has(id) && !(graph.membersByGroup.get(id) ?? []).some((n) => lit.has(n.id));
+  const groupHighlighted = (id: string) => (graph.membersByGroup.get(id) ?? []).some((n) => highlightNodes.has(n.id));
+
+  /** The drawn shape's box, so edges end at what the eye sees (circles sit at the left of their cell). */
+  const boxOf = (vid: string): Box | undefined => {
+    const pos = lay.nodePositions.get(vid);
+    if (pos?.visible) {
+      const kind = graph.nodesById.get(vid)?.kind;
+      if (kind === 'foundation' || kind === 'math') return { x: pos.x + 4, y: pos.y + 4, w: pos.h - 8, h: pos.h - 8 };
+      return { x: pos.x, y: pos.y + 4, w: pos.w, h: pos.h - 8 };
+    }
+    return lay.toolPositions.get(vid) ?? lay.groupBoxes.get(vid);
+  };
+
+  const [tip, setTip] = useState<TooltipState | null>(null);
+  useEffect(() => setTip(null), [selection, expanded]);
 
   const svgRef = useRef<SVGSVGElement>(null);
   const viewportRef = useRef<SVGGElement>(null);
@@ -57,6 +94,7 @@ export function MapView() {
     <section className="map-area" aria-label="Concept map">
       <svg ref={svgRef} className="map" onClick={() => clearSelection()}>
         <g ref={viewportRef} className="viewport">
+          <EdgeMarkers />
           <Lanes lay={lay} prominent={!showGroups} />
           {showGroups && (
             <>
@@ -66,9 +104,19 @@ export function MapView() {
                   group={g}
                   box={lay.groupBoxes.get(g.id)!}
                   memberCount={graph.membersByGroup.get(g.id)?.length ?? 0}
+                  faded={groupFaded(g.id)}
+                  highlighted={groupHighlighted(g.id)}
                   onToggle={() => toggleGroup(g.id)}
                 />
               ))}
+              {/* Above group boxes, below nodes. */}
+              <EdgeLayer
+                graph={graph}
+                edges={edges}
+                boxOf={boxOf}
+                onSelect={(id) => select({ kind: 'edge', id })}
+                onHover={(lines, at) => setTip(lines && at ? { lines, ...at } : null)}
+              />
               {nodes.map((n) => {
                 const pos = lay.nodePositions.get(n.id);
                 if (!pos?.visible) return null;
@@ -79,6 +127,8 @@ export function MapView() {
                     box={pos}
                     from={lay.groupBoxes.get(n.group)}
                     selected={selectedId === n.id}
+                    faded={nodeFaded(n.id)}
+                    highlighted={highlightNodes.has(n.id)}
                     onActivate={() => select({ kind: 'node', id: n.id })}
                   />
                 );
@@ -86,8 +136,8 @@ export function MapView() {
               <ToolsRail
                 tools={tools}
                 lay={lay}
-                isFaded={() => false}
-                isHighlighted={() => false}
+                isFaded={nodeFaded}
+                isHighlighted={(id) => highlightNodes.has(id)}
                 selectedId={selectedId}
                 onSelect={(id) => select({ kind: 'node', id })}
               />
@@ -95,6 +145,7 @@ export function MapView() {
           )}
         </g>
       </svg>
+      <EdgeTooltip tip={tip} />
       <div className="map-controls">
         {showGroups ? (
           <button type="button" className="button" onClick={fit} aria-label="Fit map to screen">
