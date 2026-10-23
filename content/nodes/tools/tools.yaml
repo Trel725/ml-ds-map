@@ -37,6 +37,9 @@
   oneLiner: "Statistical models with full tables of tests and standard errors."
   intuition: "statsmodels fits regressions the econometric way. It reports standard errors, p-values and diagnostics. It also has ARIMA and other time series models. It is like a lab notebook that records every detail."
   analogy: "A lab notebook that records every detail."
+  lenses:
+    - econometrics
+    - time-series
 
 - id: xgboost-lightgbm
   label: XGBoost / LightGBM
@@ -53,6 +56,8 @@
   oneLiner: "A library for building and training neural networks."
   intuition: "PyTorch works with tensors, which are arrays that track their own slopes. Its autograd feature does backpropagation for you. It is like a calculator that also shows its working backward."
   analogy: "A calculator that also shows its working backward."
+  lenses:
+    - neural-nets
 
 - id: nltk-spacy
   label: NLTK / spaCy
@@ -61,3 +66,5 @@
   oneLiner: "Libraries for tokenizing and preparing text."
   intuition: "They split text into tokens and sentences. They also tag parts of speech and names. It is like a kitchen prep station for text."
   analogy: "A kitchen prep station for text."
+  lenses:
+    - nlp

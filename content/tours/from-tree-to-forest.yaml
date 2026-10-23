@@ -1,0 +1,17 @@
+id: from-tree-to-forest
+title: From one tree to a forest
+stops:
+  - node: decision-tree
+    caption: "A decision tree is a stack of yes-or-no questions. It is easy to read and quick to grow."
+  - node: overfitting
+    caption: "Grow it deep and it memorizes the training data. New data then trips it up."
+  - node: bias-variance
+    caption: "That is high variance. A slightly different sample would give a very different tree."
+  - node: bootstrap
+    caption: "The bootstrap fakes new samples by resampling the data you have."
+  - node: bagging-method
+    caption: "Bagging grows one tree per resample and averages them. Their random mistakes partly cancel."
+  - node: random-forest
+    caption: "A random forest also hides features at random. The trees differ more, so averaging helps more."
+  - node: gradient-boosting
+    caption: "Boosting takes the other road. Small trees are added one by one, each fixing the last errors."

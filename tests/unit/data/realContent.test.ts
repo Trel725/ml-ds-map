@@ -100,3 +100,28 @@ test('every not-same-as end has confusions or the edge has an explanation; ≥ 2
   const more = c.nodes.filter((n) => !ends.has(n.id) && (n.confusions?.length ?? 0) > 0);
   expect(more.length).toBeGreaterThanOrEqual(20);
 });
+
+const LENS_MEMBERS = {
+  econometrics: ['ols', 'logistic-regression', 'glm', 'hypothesis-testing', 'standard-errors', 'confidence-intervals', 'correlation-causation', 'prediction-vs-explanation', 'causal-effect-estimation', 'statsmodels'],
+  nlp: ['naive-bayes', 'logistic-regression', 'text-tasks', 'nltk-spacy'],
+  'time-series': ['forecasting', 'statsmodels'],
+  'neural-nets': ['chain-rule', 'gradient-descent', 'sgd-adam', 'logistic-regression', 'transformers', 'word-embeddings', 'pytorch'],
+} as const;
+test.each(Object.entries(LENS_MEMBERS))('lens %s includes its cross-layer members', async (lens, ids) => {
+  const c = await realContent();
+  const members = new Set(c.nodes.filter((n) => (n.lenses as string[]).includes(lens)).map((n) => n.id));
+  for (const id of ids) expect(members.has(id), id).toBe(true);
+});
+
+const TOURS = [
+  ['from-tree-to-forest', 'From one tree to a forest', ['decision-tree', 'overfitting', 'bias-variance', 'bootstrap', 'bagging-method', 'random-forest', 'gradient-boosting']],
+  ['why-logs-are-everywhere', 'Why logs are everywhere', ['exponents-and-logarithms', 'basic-probability', 'distributions', 'mle', 'log-loss', 'logistic-regression']],
+  ['explain-vs-predict', 'Explain vs predict', ['ols', 'prediction-vs-explanation', 'econometric-ols', 'coefficient-interpretation', 'omitted-variable-bias', 'train-test-split']],
+  ['from-neuron-to-network', 'From a neuron to a network', ['logistic-regression', 'perceptron', 'neural-network', 'chain-rule', 'backpropagation']],
+] as const;
+test.each(TOURS)('tour %s has its title and stops', async (id, title, stops) => {
+  const t = (await realContent()).tours.find((t) => t.id === id);
+  expect(t?.title).toBe(title);
+  expect(t?.stops.map((s) => s.node)).toEqual(stops);
+});
+test('there are 5 tours', async () => expect((await realContent()).tours.length).toBe(5));

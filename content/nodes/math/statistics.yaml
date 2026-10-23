@@ -74,6 +74,8 @@
       url: https://www.statsmodels.org/stable/examples/notebooks/generated/ols.html
     - title: "Seeing Theory: Frequentist inference"
       url: https://seeing-theory.brown.edu/frequentist-inference/index.html
+  lenses:
+    - econometrics
 
 - id: confidence-intervals
   label: Confidence intervals
@@ -104,6 +106,8 @@
   resources:
     - title: "Seeing Theory: Frequentist inference"
       url: https://seeing-theory.brown.edu/frequentist-inference/index.html
+  lenses:
+    - econometrics
 
 - id: hypothesis-testing
   label: Hypothesis testing
@@ -139,6 +143,8 @@
       url: https://seeing-theory.brown.edu/frequentist-inference/index.html
     - title: "statsmodels: ttest_ind"
       url: https://www.statsmodels.org/stable/generated/statsmodels.stats.weightstats.ttest_ind.html
+  lenses:
+    - econometrics
 
 - id: bootstrap
   label: Bootstrap
@@ -198,3 +204,5 @@
       url: https://scikit-learn.org/stable/auto_examples/inspection/plot_causal_interpretation.html
     - title: "pandas: DataFrame.corr"
       url: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html
+  lenses:
+    - econometrics

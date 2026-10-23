@@ -39,3 +39,5 @@
       url: https://www.statsmodels.org/stable/tsa.html
     - title: "statsmodels: Exponential smoothing"
       url: https://www.statsmodels.org/stable/examples/notebooks/generated/exponential_smoothing.html
+  lenses:
+    - time-series

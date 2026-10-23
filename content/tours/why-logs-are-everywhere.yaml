@@ -1,0 +1,15 @@
+id: why-logs-are-everywhere
+title: Why logs are everywhere
+stops:
+  - node: exponents-and-logarithms
+    caption: "A log turns multiplying into adding. Keep that trick in mind."
+  - node: basic-probability
+    caption: "The chance of several independent events is their chances multiplied. Products of many small numbers get tiny fast."
+  - node: distributions
+    caption: "A distribution gives the chance of each value. A whole dataset's chance is a long product of them."
+  - node: mle
+    caption: "Maximum likelihood picks parameters that make that product largest. Taking the log turns it into an easy sum."
+  - node: log-loss
+    caption: "Flip the sign of that log-likelihood and you get log loss. Confident wrong guesses cost the most."
+  - node: logistic-regression
+    caption: "Logistic regression is trained by making log loss small. The log came all the way from probability."

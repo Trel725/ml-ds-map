@@ -1,0 +1,15 @@
+id: explain-vs-predict
+title: Explain vs predict
+stops:
+  - node: ols
+    caption: "OLS fits the straight line with the smallest squared errors. Both economists and ML people use it."
+  - node: prediction-vs-explanation
+    caption: "They ask different questions, though. One wants good guesses, the other wants to know why."
+  - node: econometric-ols
+    caption: "In econometrics, the same formula is used to explain. The weights themselves are the answer."
+  - node: coefficient-interpretation
+    caption: "So each weight must mean something. It is the change in the outcome per unit, others held fixed."
+  - node: omitted-variable-bias
+    caption: "Leave out a cause and the other weights absorb it. A prediction can stay fine while the story turns wrong."
+  - node: train-test-split
+    caption: "For prediction, the test is simpler. Hold back data and see how well the line guesses it."

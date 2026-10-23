@@ -8,6 +8,8 @@
   resources:
     - title: "scikit-learn: Failure of machine learning to infer causal effects"
       url: https://scikit-learn.org/stable/auto_examples/inspection/plot_causal_interpretation.html
+  lenses:
+    - econometrics
 
 - id: text-tasks
   label: Text tasks
@@ -19,3 +21,5 @@
   resources:
     - title: "scikit-learn: Classifying text documents"
       url: https://scikit-learn.org/stable/auto_examples/text/plot_document_classification_20newsgroups.html
+  lenses:
+    - nlp

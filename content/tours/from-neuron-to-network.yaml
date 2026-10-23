@@ -1,0 +1,13 @@
+id: from-neuron-to-network
+title: From a neuron to a network
+stops:
+  - node: logistic-regression
+    caption: "Logistic regression is a weighted sum bent into a probability. It draws one straight boundary."
+  - node: perceptron
+    caption: "A perceptron is the same idea with a hard yes-or-no. It is one artificial neuron."
+  - node: neural-network
+    caption: "Stack layers of such units with bends between them. Simple boundaries combine into curved ones."
+  - node: chain-rule
+    caption: "Training needs the slope of the loss for every weight. The chain rule passes slopes through nested functions."
+  - node: backpropagation
+    caption: "Backpropagation applies the chain rule from the output backward. Every weight gets its share of the blame."

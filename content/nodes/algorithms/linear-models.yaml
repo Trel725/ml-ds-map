@@ -61,6 +61,8 @@
       url: https://scikit-learn.org/stable/modules/linear_model.html
     - title: "ISLR, chapter 3: Linear regression"
       url: https://www.statlearning.com/
+  lenses:
+    - econometrics
 
 - id: ridge
   label: Ridge regression
@@ -294,6 +296,10 @@
       url: https://scikit-learn.org/stable/modules/linear_model.html
     - title: "ISLR, chapter 4: Classification"
       url: https://www.statlearning.com/
+  lenses:
+    - econometrics
+    - nlp
+    - neural-nets
 
 - id: glm
   label: Generalized linear models
@@ -346,3 +352,5 @@
       url: https://www.statsmodels.org/stable/glm.html
     - title: "scikit-learn: Generalized linear models"
       url: https://scikit-learn.org/stable/modules/linear_model.html
+  lenses:
+    - econometrics
