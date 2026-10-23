@@ -2,6 +2,7 @@ import { Component, useEffect, useId, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { VizId } from './ids';
 import { registry } from './registry';
+import type { VizLoaders } from './registry';
 import type { VizModule } from './types';
 import './palette.css';
 
@@ -21,7 +22,7 @@ type LoadState =
   | { vizId: VizId; status: 'failed' };
 
 /** Loads a visualization on demand and draws takeaway → visual, with fallbacks for load and render failures. */
-export function VizSection({ vizId, loaders = registry }: { vizId: VizId; loaders?: typeof registry }) {
+export function VizSection({ vizId, loaders = registry }: { vizId: VizId; loaders?: VizLoaders }) {
   const loader = loaders[vizId];
   const [attempt, setAttempt] = useState(0);
   const [state, setState] = useState<LoadState>({ vizId, status: 'loading' });

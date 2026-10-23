@@ -73,3 +73,22 @@ test('classification-threshold', async ({ page }) => {
   await page.keyboard.press('ArrowLeft');
   await expect(readout).not.toHaveText(before!);
 });
+
+test('bayes-rule', async ({ page }) => {
+  const { readout } = await exercise(page, 'bayes-rule', 'bayes-rule', (v) => v.getByRole('slider', { name: 'Base rate' }), right3);
+  await expect(readout).toHaveText(/^Base rate \d+\.\d% · \d+ true positives, \d+ false positives · chance of the condition after a positive test \d+%$/);
+});
+
+test('every P1 visualization renders', async ({ page }) => {
+  const pairs = [
+    ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
+    ['ols', 'ols-fit'], ['overfitting', 'overfitting'], ['decision-tree', 'decision-tree'],
+    ['classification', 'classification-threshold'], ['bayes-rule', 'bayes-rule'],
+  ];
+  await gotoMap(page);
+  for (const [node, id] of pairs) {
+    await page.evaluate((h) => (window.location.hash = h), `#/n/${node}`);
+    await expect(page.locator(`[data-viz-id="${id}"] [data-testid="viz-readout"]`)).toBeVisible();
+    await expect(page.locator('.viz-fallback')).toHaveCount(0);
+  }
+});
