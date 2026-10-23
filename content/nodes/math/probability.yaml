@@ -1,0 +1,54 @@
+- id: random-variables
+  label: Random variables
+  synonyms: [random variable]
+  kind: math
+  oneLiner: "A number whose value depends on chance."
+  intuition: "A random variable gives a number to each possible outcome. The roll of a die is one. You can't know its value in advance, but you know the odds. It is like a lottery ticket before the draw."
+  analogy: "A lottery ticket before the draw."
+  showsUpIn: "Targets, noise and predictions in every probabilistic model."
+
+- id: distributions
+  label: Distributions
+  synonyms: [normal distribution, gaussian, bernoulli, binomial, poisson, bell curve]
+  kind: math
+  oneLiner: "The pattern of how likely each value is."
+  intuition: "A distribution lists every value and how likely it is. The normal distribution is the bell curve. Bernoulli is a single coin flip, and Poisson counts rare events. It is like a recipe for producing random numbers."
+  analogy: "A recipe for producing random numbers."
+  showsUpIn: "Noise assumptions, Naive Bayes and Gaussian mixtures."
+
+- id: bayes-rule
+  label: Bayes' rule
+  synonyms: [bayes theorem, bayes, conditional probability]
+  kind: math
+  oneLiner: "Turn the chance of evidence given a cause into the reverse."
+  intuition: "Bayes' rule updates a belief when new evidence arrives. Start with how common something is. Then weigh how well the evidence fits it. It is like a detective updating suspicions after each clue."
+  analogy: "A detective updating suspicions after each clue."
+  showsUpIn: "Naive Bayes, LDA, QDA and spam filters."
+  viz: bayes-rule
+
+- id: expectation-variance
+  label: Expectation and variance
+  synonyms: [expected value, mean, variance]
+  kind: math
+  oneLiner: "The long-run average of a random value, and its spread."
+  intuition: "Expectation is the average you would see over many repeats. Variance measures how far single results wander from it. It is like a darts player's average spot and how scattered the darts land."
+  analogy: "A darts player's average spot and how scattered the darts land."
+  showsUpIn: "The bias-variance tradeoff, mean squared error and standard errors."
+
+- id: independence
+  label: Independence
+  synonyms: [independent events]
+  kind: math
+  oneLiner: "When knowing one thing tells you nothing about another."
+  intuition: "Two events are independent if one doesn't change the odds of the other. Then you can multiply their chances. It is like two separate coin tosses. Many models assume independence to keep things simple."
+  analogy: "Two separate coin tosses."
+  showsUpIn: "Naive Bayes, likelihoods and many regression assumptions."
+
+- id: mle
+  label: Maximum likelihood
+  synonyms: [MLE, likelihood, maximum likelihood estimation]
+  kind: math
+  oneLiner: "Choose the parameters that make the observed data most likely."
+  intuition: "Likelihood asks how probable your data is under some parameter values. Maximum likelihood picks the values that make it most probable. Logs turn the product of many chances into an easy sum. It is like picking the suspect whose story best fits the evidence."
+  analogy: "Picking the suspect whose story best fits the evidence."
+  showsUpIn: "Logistic regression, OLS under normal noise and most statistical models."

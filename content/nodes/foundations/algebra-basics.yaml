@@ -1,0 +1,45 @@
+- id: functions-and-graphs
+  label: Functions and graphs
+  synonyms: [function, graph, input and output]
+  kind: foundation
+  oneLiner: "A rule that turns an input into an output."
+  intuition: "A function takes something in and gives exactly one thing back. It is like a vending machine where each button gives one snack. A graph draws every input next to its output."
+  analogy: "A vending machine where each button gives one snack."
+  showsUpIn: "Every model is a function from features to a prediction."
+
+- id: exponents-and-logarithms
+  label: Logarithms
+  synonyms: [exponents, log, logs, logarithm, powers]
+  kind: foundation
+  oneLiner: "A log asks what power gives this number."
+  intuition: "Exponents mean multiplying a number by itself, and logs undo that. The log of a number counts how many times you multiply by ten to reach it. It is like counting the zeros on a price tag. So logs turn huge numbers into small, friendly ones."
+  analogy: "Counting the zeros on a price tag."
+  showsUpIn: "Log loss, likelihood, softmax and log-transforming skewed data."
+  viz: logarithms
+
+- id: notation
+  label: "Notation: Σ, vectors"
+  synonyms: [sigma notation, summation, subscripts, math symbols]
+  kind: foundation
+  oneLiner: "Shorthand for adding things up and for lists of numbers."
+  intuition: "Math writing uses short symbols for long instructions. A big sigma means add up every item in a list. A small number below a letter says which item you mean. It is like a shopping list whose prices you total at the till."
+  analogy: "A shopping list whose prices you total at the till."
+  showsUpIn: "Every loss function and every average."
+
+- id: slope
+  label: Slope
+  synonyms: [rate of change, steepness]
+  kind: foundation
+  oneLiner: "How fast one thing changes when another does."
+  intuition: "Slope tells you how steep a line is. It is the rise divided by the run. It is like the steepness of a hill on a road sign. A bigger slope means the output changes faster."
+  analogy: "The steepness of a hill on a road sign."
+  showsUpIn: "The seed of derivatives and gradient descent."
+
+- id: distance
+  label: Distance
+  synonyms: [euclidean distance, pythagoras, norm]
+  kind: foundation
+  oneLiner: "Pythagoras, extended to many columns."
+  intuition: "Distance measures how far apart two points are. On a map you use Pythagoras with two directions. With data you do the same across every column. It is like measuring as the crow flies between two towns."
+  analogy: "Measuring as the crow flies between two towns."
+  showsUpIn: "kNN, k-means and regularization norms."

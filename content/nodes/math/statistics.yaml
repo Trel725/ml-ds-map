@@ -1,0 +1,62 @@
+- id: sampling-distributions
+  label: Sampling distributions
+  synonyms: [sampling, samples, sampling distribution]
+  kind: math
+  oneLiner: "How a statistic would vary across many repeated samples."
+  intuition: "Take a sample, compute an average, and repeat many times. Those averages form their own distribution. It is like polling different crowds and seeing how much the results move. This spread tells you how much to trust one sample."
+  analogy: "Polling different crowds and seeing how much the results move."
+  showsUpIn: "p-values, standard errors and confidence intervals."
+
+- id: central-limit-theorem
+  label: Central limit theorem
+  synonyms: [clt]
+  kind: math
+  oneLiner: "Averages of many samples pile up into a bell curve."
+  intuition: "Average enough random values and the average behaves predictably. Its distribution looks like a bell, whatever the original data looked like. It is like a crowd's average height staying steady while individuals vary. This is why bell curves appear everywhere."
+  analogy: "A crowd's average height staying steady while individuals vary."
+  showsUpIn: "Confidence intervals and hypothesis tests."
+
+- id: standard-errors
+  label: Standard errors
+  synonyms: [standard error, estimators, estimator]
+  kind: math
+  oneLiner: "How much an estimate would wobble from sample to sample."
+  intuition: "Any estimate from data is a little off. The standard error measures the typical size of that wobble. Bigger samples give smaller wobbles. It is like the plus-or-minus on an opinion poll."
+  analogy: "The plus-or-minus on an opinion poll."
+  showsUpIn: "Regression tables in statsmodels and in econometrics."
+
+- id: confidence-intervals
+  label: Confidence intervals
+  synonyms: [confidence interval, error bars]
+  kind: math
+  oneLiner: "A range of plausible values for an unknown quantity."
+  intuition: "A confidence interval puts error bars around an estimate. A 95 percent interval method catches the true value 95 times in 100. It is like casting a net rather than throwing a spear."
+  analogy: "Casting a net rather than throwing a spear."
+  showsUpIn: "Reporting coefficients and model scores honestly."
+
+- id: hypothesis-testing
+  label: Hypothesis testing
+  synonyms: [p-values, p-value, significance test, statistical test]
+  kind: math
+  oneLiner: "Checking whether a pattern could easily be pure chance."
+  intuition: "Assume nothing interesting is going on. Then ask how often chance alone would produce your result. That frequency is the p-value. It is like a courtroom that presumes innocence until the evidence is strong."
+  analogy: "A courtroom that presumes innocence until the evidence is strong."
+  showsUpIn: "Coefficient tests, A/B tests and model comparisons."
+
+- id: bootstrap
+  label: Bootstrap
+  synonyms: [bootstrapping, resampling]
+  kind: math
+  oneLiner: "Resample your own data to see how results would vary."
+  intuition: "You only have one dataset. The bootstrap draws new datasets from it, with replacement. Each one gives a slightly different answer. It is like reshuffling a deck to see how much a hand can change."
+  analogy: "Reshuffling a deck to see how much a hand can change."
+  showsUpIn: "Bagging, random forests and error bars for any statistic."
+
+- id: correlation-causation
+  label: Correlation vs causation
+  synonyms: [correlation, causation, confounding]
+  kind: math
+  oneLiner: "Moving together does not mean one causes the other."
+  intuition: "Two things can rise together because a third thing drives both. It is like ice cream sales and sunburns both following sunny days. Prediction can use correlation. Explanation needs causation."
+  analogy: "Ice cream sales and sunburns both following sunny days."
+  showsUpIn: "Econometrics, causal effect estimation and reading any model."

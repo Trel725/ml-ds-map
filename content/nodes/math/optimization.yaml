@@ -1,0 +1,72 @@
+- id: loss-landscape
+  label: Loss landscape
+  synonyms: [loss surface, error surface]
+  kind: math
+  oneLiner: "The error of a model over every possible setting."
+  intuition: "Each setting of the parameters gives an error. Plot error against settings and you get hills and valleys. Training means finding a low valley. It is like a hilly country seen from a plane."
+  analogy: "A hilly country seen from a plane."
+  showsUpIn: "Every training process, which searches this surface for a low point."
+
+- id: analytical-solution
+  label: Analytical solution
+  synonyms: [closed form, closed-form solution, normal equations]
+  kind: math
+  oneLiner: "Solving for the best parameters directly, in one step."
+  intuition: "Some problems have a formula that gives the best answer straight away. No walking downhill is needed. OLS has one, called the normal equations. It is like looking up an answer instead of guessing."
+  analogy: "Looking up an answer instead of guessing."
+  showsUpIn: "Ordinary least squares and a few other simple models."
+
+- id: gradient-descent
+  label: Gradient descent
+  synonyms: [gd, steepest descent]
+  kind: math
+  oneLiner: "Repeatedly step downhill on the loss to improve a model."
+  intuition: "Start with any guess for the parameters. Feel which way the loss slopes and take a small step down. Repeat until the ground is flat. It is like walking downhill in fog, feeling the slope with your feet."
+  analogy: "Walking downhill in fog, feeling the slope with your feet."
+  showsUpIn: "Training logistic regression, neural networks and boosting."
+  viz: gradient-descent
+
+- id: sgd-adam
+  label: SGD and Adam
+  synonyms: [stochastic gradient descent, adam, mini-batch, optimizer]
+  kind: math
+  oneLiner: "Faster gradient descent using small batches and adaptive step sizes."
+  intuition: "Plain gradient descent looks at all the data before each step. SGD looks at a small random batch, so steps are quick but noisy. Adam also adapts the step size for each parameter. It is like asking a few people for directions instead of everyone."
+  analogy: "Asking a few people for directions instead of everyone."
+  showsUpIn: "Training almost every neural network."
+
+- id: learning-rate
+  label: Learning rate
+  synonyms: [step size]
+  kind: math
+  oneLiner: "How big each gradient descent step is."
+  intuition: "The learning rate scales every step. Too small and training crawls. Too big and you leap over the valley or fly off. It is like your stride length when walking downhill."
+  analogy: "Your stride length when walking downhill."
+  showsUpIn: "Every model trained with gradient descent."
+
+- id: convexity
+  label: Convexity
+  synonyms: [convex, local minima, local minimum]
+  kind: math
+  oneLiner: "A bowl-shaped loss with exactly one bottom."
+  intuition: "A convex loss curves up everywhere, like a bowl. Any downhill path ends at the same lowest point. Bumpy losses have local dips where you can get stuck. It is like a marble in a salad bowl, which always finds the middle."
+  analogy: "A marble in a salad bowl."
+  showsUpIn: "Why linear and logistic regression train reliably, unlike neural networks."
+
+- id: newtons-method
+  label: Newton's method
+  synonyms: [newton raphson, second order]
+  kind: math
+  oneLiner: "Jumping toward the bottom using the slope and the curvature."
+  intuition: "Gradient descent uses only the slope. Newton's method also uses how the slope bends. It fits a bowl where you stand and jumps to its bottom. It is like a skier reading the whole slope ahead."
+  analogy: "A skier reading the whole slope ahead."
+  showsUpIn: "Fitting logistic regression and GLMs in statistics software."
+
+- id: greedy-search
+  label: Greedy search
+  synonyms: [greedy algorithm, greedy splitting]
+  kind: math
+  oneLiner: "Always take the best-looking step now, without planning ahead."
+  intuition: "A greedy method picks the best option at each step. It never goes back to change earlier choices. This is fast but can miss the overall best answer. It is like always taking the biggest coin when giving change."
+  analogy: "Always taking the biggest coin when giving change."
+  showsUpIn: "How decision trees choose their splits."

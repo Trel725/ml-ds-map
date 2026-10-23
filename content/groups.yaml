@@ -1,1 +1,36 @@
-[]
+# Groups per lane, left to right by `order`.
+- { id: algebra-basics, label: Algebra basics, layer: foundations, order: 1 }
+- { id: data-basics, label: Data basics, layer: foundations, order: 2 }
+
+- { id: linear-algebra, label: Linear algebra, layer: math, order: 1 }
+- { id: calculus, label: Calculus, layer: math, order: 2 }
+- { id: optimization, label: Optimization, layer: math, order: 3 }
+- { id: probability, label: Probability, layer: math, order: 4 }
+- { id: statistics, label: Statistics, layer: math, order: 5 }
+
+- { id: modeling-basics, label: Modeling basics, layer: core, order: 1 }
+- { id: generalization, label: Generalization, layer: core, order: 2 }
+- { id: validation, label: Validation, layer: core, order: 3 }
+- { id: data-preparation, label: Data preparation, layer: core, order: 4 }
+- { id: explaining-models, label: Explaining models, layer: core, order: 5 }
+- { id: econometrics, label: Econometrics, layer: core, order: 6 }
+- { id: text-processing, label: Text processing, layer: core, order: 7 }
+- { id: time-series-basics, label: Time series basics, layer: core, order: 8 }
+
+- { id: linear-models, label: Linear models, layer: algorithms, order: 1 }
+- { id: neural-networks, label: Neural networks, layer: algorithms, order: 2 }
+- { id: trees, label: Trees, layer: algorithms, order: 3 }
+- { id: bagging, label: Bagging, layer: algorithms, order: 4 }
+- { id: boosting, label: Boosting, layer: algorithms, order: 5 }
+- { id: probabilistic-models, label: Probabilistic models, layer: algorithms, order: 6 }
+- { id: instance-based, label: Instance-based, layer: algorithms, order: 7 }
+- { id: kernel-methods, label: Kernel methods, layer: algorithms, order: 8 }
+- { id: clustering, label: Clustering, layer: algorithms, order: 9 }
+- { id: dimensionality-reduction, label: Dimensionality reduction, layer: algorithms, order: 10 }
+- { id: time-series-models, label: Time series models, layer: algorithms, order: 11 }
+
+- { id: prediction-tasks, label: Prediction tasks, layer: problems, order: 1 }
+- { id: structure-tasks, label: Finding structure, layer: problems, order: 2 }
+- { id: applied-tasks, label: Applied tasks, layer: problems, order: 3 }
+
+- { id: tools, label: Tools, layer: tools, order: 1 }

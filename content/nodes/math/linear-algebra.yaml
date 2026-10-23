@@ -1,0 +1,44 @@
+- id: vectors
+  label: Vectors
+  synonyms: [vector, array, row of data]
+  kind: math
+  oneLiner: "A list of numbers, like one row of data."
+  intuition: "A vector stores several numbers in a fixed order. One house could be the vector of its size, rooms and age. It is like an arrow pointing somewhere in space. Each number says how far to go along one direction."
+  analogy: "An arrow pointing somewhere in space."
+  showsUpIn: "Every data row, every set of model weights and every embedding."
+
+- id: dot-product
+  label: Dot product
+  synonyms: [inner product, weighted sum]
+  kind: math
+  oneLiner: "Multiply two lists item by item, then add it all up."
+  intuition: "The dot product combines two vectors into one number. Multiply matching items, then add the results. It is like a shopping bill of quantities times prices. A large result means the vectors point the same way."
+  analogy: "A shopping bill of quantities times prices."
+  showsUpIn: "Every linear model prediction and every neuron in a network."
+
+- id: matrices
+  label: Matrices
+  synonyms: [matrix, matrix multiplication]
+  kind: math
+  oneLiner: "A grid of numbers that transforms vectors."
+  intuition: "A matrix is a table of numbers. A whole dataset is a matrix with one row per example. Multiplying by a matrix moves, stretches or turns vectors. It is like a recipe that turns ingredients into dishes."
+  analogy: "A recipe that turns ingredients into dishes."
+  showsUpIn: "Datasets, the exact solution for linear regression and neural network layers."
+
+- id: projections
+  label: Projections
+  synonyms: [projection, orthogonal projection]
+  kind: math
+  oneLiner: "The shadow of one vector on a line or surface."
+  intuition: "A projection finds the closest point along a line or flat surface. It is like the shadow a pole casts at noon. Least squares projects the target onto what the features can explain."
+  analogy: "The shadow a pole casts at noon."
+  showsUpIn: "Least squares regression and PCA."
+
+- id: eigen-svd
+  label: Eigenvectors and SVD
+  synonyms: [eigenvalues, eigenvectors, singular value decomposition, svd]
+  kind: math
+  oneLiner: "The special directions that a matrix only stretches."
+  intuition: "Most directions get turned by a matrix, but a few only get stretched. Those are the eigenvectors. SVD finds the main directions of any table of data. It is like finding the grain in a piece of wood."
+  analogy: "Finding the grain in a piece of wood."
+  showsUpIn: "PCA and other ways to compress data."

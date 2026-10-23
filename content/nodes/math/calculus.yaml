@@ -1,0 +1,27 @@
+- id: derivative
+  label: Derivative
+  synonyms: [derivatives, differentiation, instantaneous rate]
+  kind: math
+  oneLiner: "The slope of a curve at a single point."
+  intuition: "Zoom in on a smooth curve until it looks straight. The slope of that tiny straight piece is the derivative. It is like a speedometer reading at one instant."
+  analogy: "A speedometer reading at one instant."
+  showsUpIn: "Every training step that walks a loss downhill."
+  viz: slope-derivative
+
+- id: gradient
+  label: Gradient
+  synonyms: [partial derivatives, partial derivative, gradients]
+  kind: math
+  oneLiner: "A list of slopes, one per parameter."
+  intuition: "With many inputs, you can ask for the slope along each one. A partial derivative is one such slope. The gradient collects them all and points uphill. It is like a compass that points up the steepest hill."
+  analogy: "A compass that points up the steepest hill."
+  showsUpIn: "Gradient descent, backpropagation and every neural network."
+
+- id: chain-rule
+  label: Chain rule
+  synonyms: [composite functions]
+  kind: math
+  oneLiner: "How changes pass through functions nested inside each other."
+  intuition: "When one thing drives a second that drives a third, the effects multiply. The chain rule multiplies the slopes along the chain. It is like gears turning gears in a clock."
+  analogy: "Gears turning gears in a clock."
+  showsUpIn: "Backpropagation in every neural network."
