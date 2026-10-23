@@ -9,4 +9,5 @@ export const registry: Partial<Record<VizId, () => Promise<{ default: VizModule 
   'ols-fit': () => import('./ols-fit'),
   overfitting: () => import('./overfitting'),
   'decision-tree': () => import('./decision-tree'),
+  'classification-threshold': () => import('./classification-threshold'),
 };

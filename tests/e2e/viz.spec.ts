@@ -64,3 +64,12 @@ test('decision-tree', async ({ page }) => {
   const { readout } = await exercise(page, 'decision-tree', 'decision-tree', (v) => v.getByRole('slider', { name: 'Depth' }), right3);
   await expect(readout).toHaveText(/^Depth 4 · \d+ regions · training accuracy \d+%$/);
 });
+
+test('classification-threshold', async ({ page }) => {
+  const { viz, readout } = await exercise(page, 'classification', 'classification-threshold', (v) => v.getByRole('slider', { name: 'Threshold', exact: true }), right3);
+  await expect(readout).toHaveText(/^Threshold 0\.65 · precision \d\.\d\d · recall \d\.\d\d$/);
+  const before = await readout.textContent();
+  await viz.getByRole('slider', { name: 'Threshold line' }).focus();
+  await page.keyboard.press('ArrowLeft');
+  await expect(readout).not.toHaveText(before!);
+});
