@@ -5,4 +5,5 @@ import type { VizModule } from './types';
 export const registry: Partial<Record<VizId, () => Promise<{ default: VizModule }>>> = {
   logarithms: () => import('./logarithms'),
   'slope-derivative': () => import('./slope-derivative'),
+  'gradient-descent': () => import('./gradient-descent'),
 };

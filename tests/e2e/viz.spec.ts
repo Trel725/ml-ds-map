@@ -35,3 +35,17 @@ test('slope-derivative', async ({ page }) => {
   await expect(readout).toContainText('slope at the point 2.00');
   await expect(readout).toContainText('Gap 1.85');
 });
+
+test('gradient-descent', async ({ page }) => {
+  const { viz, readout } = await exercise(page, 'gradient-descent', 'gradient-descent', (v) => v.getByRole('button', { name: 'Step' }), [
+    'Enter',
+  ]);
+  await expect(readout).toContainText('Step 1');
+  const slider = viz.getByRole('slider', { name: 'Learning rate' });
+  await slider.focus();
+  await page.keyboard.press('End');
+  await expect(readout).toHaveText(/^Step 0 · learning rate 1\.20/);
+  await viz.getByRole('button', { name: 'Step' }).focus();
+  for (let i = 0; i < 25; i++) await page.keyboard.press('Enter');
+  await expect(readout).toContainText('exploding');
+});
