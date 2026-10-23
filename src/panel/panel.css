@@ -127,3 +127,71 @@
 .crumb:hover {
   background: var(--bg);
 }
+
+.recipe {
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.recipe-row {
+  display: grid;
+  grid-template-columns: 7.5em 1fr;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.recipe dt {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.recipe dd {
+  margin: 0;
+  font-family: var(--font-read);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.recipe dd .chip {
+  text-align: left;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+/* A trace from a heavily used foundation lists dozens of ideas: keep it one scrollable list. */
+.uses-list {
+  max-height: 240px;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.sw {
+  display: grid;
+  gap: 12px;
+}
+
+.sw h4 {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.sw ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+  font-family: var(--font-read);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.fixed-by {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-left: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}

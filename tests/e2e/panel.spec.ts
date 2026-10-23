@@ -58,3 +58,65 @@ test('no selection shows welcome with Start the tour', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Start the tour' })).toBeVisible();
   await expect(page.getByTestId('panel')).toHaveCount(0);
 });
+
+test('OLS recipe card: five slots in order, optimizer links to analytical solution', async ({ page }) => {
+  await gotoMap(page, '#/n/ols');
+  const slots = page.getByTestId('recipe-slot');
+  await expect(slots).toHaveCount(5);
+  expect(await slots.evaluateAll((els) => els.map((e) => e.getAttribute('data-slot')))).toEqual(['problem', 'modelFamily', 'loss', 'optimizer', 'evaluation']);
+  await page.locator('[data-slot="optimizer"] [data-node-ref="analytical-solution"]').click();
+  await expect(page).toHaveURL(/#\/n\/analytical-solution$/);
+});
+
+test('k-means shows the reduced recipe with four slots', async ({ page }) => {
+  await gotoMap(page, '#/n/k-means');
+  const slots = page.getByTestId('recipe-slot');
+  expect(await slots.evaluateAll((els) => els.map((e) => e.getAttribute('data-slot')))).toEqual(['goal', 'optimizes', 'optimizer', 'judgedBy']);
+  await expect(page.getByTestId('recipe')).toContainText('Judged by');
+});
+
+test('Light up the recipe highlights slot nodes across layers', async ({ page }) => {
+  await gotoMap(page, '#/n/logistic-regression');
+  const button = page.getByRole('button', { name: 'Light up the recipe' });
+  await expect(button).toHaveAttribute('aria-pressed', 'false');
+  await button.click();
+  await expect(button).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('[data-node-id="log-loss"]')).toHaveAttribute('data-highlighted', 'true');
+  await expect(page.locator('[data-node-id="classification"]')).toHaveAttribute('data-highlighted', 'true');
+});
+
+test('Trace all uses from slope highlights groups, lists uses, expands nothing new', async ({ page }) => {
+  await gotoMap(page, '#/n/slope');
+  const button = page.getByRole('button', { name: 'Trace all uses' });
+  await button.click();
+  await expect(button).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByTestId('uses-chip').first()).toBeVisible();
+  await expect(page.getByTestId('panel')).toContainText(/Used by \d+ ideas:/);
+  await expect(page.locator('[data-group-id="optimization"]')).toHaveAttribute('data-highlighted', 'true');
+  await expect(page.locator('[data-node-id="gradient-descent"]')).toHaveCount(0); // its group stays collapsed
+});
+
+test('decision tree weakness links to random forest via fixed-by chip', async ({ page }) => {
+  await gotoMap(page, '#/n/decision-tree');
+  const section = page.getByRole('region', { name: 'Strengths and weaknesses' });
+  await expect(section).toContainText('Fixed by');
+  await section.locator('[data-testid="fixed-by-chip"][data-node-ref="random-forest"]').click();
+  await expect(page).toHaveURL(/#\/n\/random-forest$/);
+});
+
+test('a concept node has no recipe and no strengths section', async ({ page }) => {
+  await gotoMap(page, '#/n/overfitting');
+  await expect(page.getByTestId('panel')).toBeVisible();
+  await expect(page.getByTestId('recipe')).toHaveCount(0);
+  await expect(page.getByText('Strengths and weaknesses')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Light up the recipe' })).toHaveCount(0);
+});
+
+test('section order is fixed', async ({ page }) => {
+  await gotoMap(page, '#/n/ols');
+  const headings = await page.getByTestId('panel').locator('h3').allTextContents();
+  const at = (h: string) => headings.indexOf(h);
+  expect(at('Recipe')).toBeGreaterThanOrEqual(0);
+  expect(at('Recipe')).toBeLessThan(at('What you need first'));
+  expect(at('What you need first')).toBeLessThan(at('Strengths and weaknesses'));
+});
