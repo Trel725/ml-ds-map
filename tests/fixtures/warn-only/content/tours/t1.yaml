@@ -1,0 +1,8 @@
+id: t1
+title: Test tour
+stops:
+  - { node: slope, caption: Start with slope. }
+  - { node: derivative, caption: Then the derivative. }
+  - { node: overfitting, caption: Then overfitting. }
+  - { node: ols, caption: Then OLS. }
+  - { node: regression, caption: End with regression. }

@@ -1,0 +1,7 @@
+- id: derivative
+  label: Derivative
+  kind: math
+  oneLiner: The slope of a curve at one point.
+  intuition: Zoom in on a curve until it looks straight. The slope of that tiny line is the derivative.
+  showsUpIn: Every training step that walks downhill.
+  viz: slope-derivative

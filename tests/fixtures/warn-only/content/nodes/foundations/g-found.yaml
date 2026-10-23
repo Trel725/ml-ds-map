@@ -1,0 +1,12 @@
+- id: slope
+  label: Slope
+  kind: foundation
+  oneLiner: How fast one thing changes when another does.
+  intuition: Slope tells you how steep a line is. A steep road climbs fast.
+  showsUpIn: The seed of derivatives.
+- id: lonely
+  label: Lonely
+  kind: foundation
+  oneLiner: A node with no edges yet.
+  intuition: It sits alone on the map. Nothing points to it.
+  showsUpIn: Nowhere yet.

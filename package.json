@@ -10,7 +10,9 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "lint": "eslint .",
-    "typecheck": "tsc -b --noEmit"
+    "typecheck": "tsc -b --noEmit",
+    "content:check": "tsx scripts/content-check.ts",
+    "content:report": "tsx scripts/content-report.ts"
   },
   "dependencies": {
     "d3-array": "^3.2.4",

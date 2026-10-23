@@ -1,0 +1,6 @@
+- { id: g-found, label: Foundations group, layer: foundations, order: 1 }
+- { id: g-math, label: Math group, layer: math, order: 1 }
+- { id: g-core, label: Core group, layer: core, order: 1 }
+- { id: g-alg, label: Algorithm group, layer: algorithms, order: 1 }
+- { id: g-prob, label: Problem group, layer: problems, order: 1 }
+- { id: g-tools, label: Tools, layer: tools, order: 1 }
