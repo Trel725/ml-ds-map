@@ -6,6 +6,55 @@
   intuition: "The tree asks one question about one feature at each step. Each answer sends you down a branch. The leaf you reach gives the prediction. It is like a game of twenty questions."
   analogy: "A game of twenty questions."
   viz: decision-tree
+  recipe:
+    problem:
+      text: Either regression or classification.
+      node: classification
+    modelFamily:
+      text: Piecewise constant, one value per leaf.
+    loss:
+      text: Gini, entropy or squared error.
+      node: loss-function
+    optimizer:
+      text: Greedy splitting, the best cut at each step.
+      node: greedy-search
+    evaluation:
+      text: Depends on the problem, measured on held-out data.
+      node: train-test-split
+  strengths:
+    - text: Easy to read and explain as a flowchart.
+    - text: Needs no feature scaling and handles mixed feature types.
+    - text: Captures interactions between features on its own.
+  weaknesses:
+    - text: High variance. Small changes in data give a very different tree.
+      fixedBy: random-forest
+    - text: Deep trees overfit badly.
+      fixedBy: hyperparameters
+  formula:
+    tex: G = 1 - \sum_k p_k^2
+    symbols:
+      - symbol: G
+        meaning: The Gini impurity of a group. Zero means all one class.
+      - symbol: k
+        meaning: A class, such as spam or not spam.
+      - symbol: p_k
+        meaning: The share of the group that belongs to class k.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.tree import DecisionTreeClassifier, export_text
+      model = DecisionTreeClassifier(max_depth=3)
+      model.fit(X_train, y_train)
+      print(export_text(model))
+  confusions:
+    - A deeper tree is not a better tree. It fits the training data, noise included.
+  resources:
+    - title: "MLU-Explain: Decision trees"
+      url: https://mlu-explain.github.io/decision-tree/
+    - title: "scikit-learn: Decision trees"
+      url: https://scikit-learn.org/stable/modules/tree.html
+    - title: "ISLR, chapter 8: Tree-based methods"
+      url: https://www.statlearning.com/
 
 - id: decision-stump
   label: Decision stump
@@ -14,3 +63,21 @@
   oneLiner: "A decision tree that asks just one question."
   intuition: "A stump splits the data once and stops. On its own it is weak and very biased. Boosting stacks many of them into a strong model. It is like a single rule of thumb."
   analogy: "A single rule of thumb."
+  strengths:
+    - text: Tiny, fast and impossible to overfit badly.
+    - text: The perfect weak learner for boosting.
+  weaknesses:
+    - text: High bias. One question can't capture much.
+      fixedBy: gradient-boosting
+    - text: Sees only one feature at a time.
+      fixedBy: adaboost
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.tree import DecisionTreeClassifier
+      stump = DecisionTreeClassifier(max_depth=1)
+      stump.fit(X_train, y_train)
+      print(stump.tree_.feature[0], stump.tree_.threshold[0])
+  resources:
+    - title: "scikit-learn: AdaBoost with stumps"
+      url: https://scikit-learn.org/stable/modules/ensemble.html

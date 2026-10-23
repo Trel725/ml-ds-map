@@ -5,3 +5,52 @@
   oneLiner: "Predict like the most similar examples you have seen."
   intuition: "To predict for a new point, find the k closest training points. Let them vote, or average their values. There is no real training step. It is like asking your nearest neighbors for advice."
   analogy: "Asking your nearest neighbors for advice."
+  recipe:
+    problem:
+      text: Either regression or classification.
+      node: classification
+    modelFamily:
+      text: Nonparametric. The training data is the model.
+      node: parametric-vs-nonparametric
+    loss:
+      text: None. Nothing is fitted.
+    optimizer:
+      text: None. It just stores the examples.
+    evaluation:
+      text: Accuracy or error on held-out data, with k chosen by cross-validation.
+      node: cross-validation
+  strengths:
+    - text: Simple and needs no training.
+    - text: Draws boundaries of any shape.
+  weaknesses:
+    - text: Slow to predict on big data, since it compares with every example.
+    - text: Unscaled features distort the distances.
+      fixedBy: feature-scaling
+    - text: Works poorly with many features.
+      fixedBy: curse-of-dimensionality
+  formula:
+    tex: \hat{y}(x) = \frac{1}{k} \sum_{i \in N_k(x)} y_i
+    symbols:
+      - symbol: \hat{y}(x)
+        meaning: The prediction for a new point x.
+      - symbol: k
+        meaning: How many neighbors to ask.
+      - symbol: N_k(x)
+        meaning: The k training points closest to x.
+      - symbol: y_i
+        meaning: The answer of neighbor i. For classes, this becomes a vote.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.neighbors import KNeighborsClassifier
+      from sklearn.pipeline import make_pipeline
+      from sklearn.preprocessing import StandardScaler
+      model = make_pipeline(StandardScaler(), KNeighborsClassifier(n_neighbors=5))
+      model.fit(X_train, y_train)
+  confusions:
+    - The k in kNN is not the k in k-means. One counts neighbors, the other counts clusters.
+  resources:
+    - title: "scikit-learn: Nearest neighbors"
+      url: https://scikit-learn.org/stable/modules/neighbors.html
+    - title: "ISLR, chapter 2: K-nearest neighbors"
+      url: https://www.statlearning.com/

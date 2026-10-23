@@ -6,6 +6,52 @@
   oneLiner: "The simplest artificial neuron, a weighted vote with a threshold."
   intuition: "A perceptron adds up weighted inputs. If the total passes a threshold, it says yes. It can only draw straight boundaries. It is like a committee vote with weighted ballots."
   analogy: "A committee vote with weighted ballots."
+  recipe:
+    problem:
+      text: Classification.
+      node: classification
+    modelFamily:
+      text: Linear with a hard threshold.
+    loss:
+      text: Perceptron loss, counting only the mistakes.
+      node: loss-function
+    optimizer:
+      text: One example at a time, a simple form of SGD.
+      node: sgd-adam
+    evaluation:
+      text: Accuracy on held-out data.
+      node: train-test-split
+  strengths:
+    - text: Very simple and fast.
+    - text: The building block of neural networks.
+  weaknesses:
+    - text: Only straight boundaries, so it fails when classes sit in opposite corners.
+      fixedBy: neural-network
+    - text: Gives no probabilities and never settles if classes overlap.
+      fixedBy: logistic-regression
+  formula:
+    tex: \hat{y} = \begin{cases} 1 & \text{if } w^\top x + b > 0 \\ 0 & \text{otherwise} \end{cases}
+    symbols:
+      - symbol: \hat{y}
+        meaning: The predicted class, one or zero.
+      - symbol: w^\top x
+        meaning: The weighted sum of the inputs x.
+      - symbol: b
+        meaning: The bias, which moves the threshold.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.linear_model import Perceptron
+      model = Perceptron()
+      model.fit(X_train, y_train)
+      labels = model.predict(X_test)
+  confusions:
+    - A perceptron is not a neural network. It is one neuron, with a hard yes-or-no output.
+  resources:
+    - title: "scikit-learn: Perceptron"
+      url: https://scikit-learn.org/stable/modules/linear_model.html
+    - title: "3Blue1Brown: But what is a neural network?"
+      url: https://www.3blue1brown.com/lessons/neural-networks
 
 - id: neural-network
   label: Neural network
@@ -15,6 +61,66 @@
   oneLiner: "Layers of simple units stacked to learn complex patterns."
   intuition: "Each unit works like a small logistic regression. Stacking layers, with bends between them, lets the network draw curved boundaries. It is trained by gradient descent. It is like a team where each member spots one simple pattern."
   analogy: "A team where each member spots one simple pattern."
+  recipe:
+    problem:
+      text: Either regression or classification.
+      node: classification
+    modelFamily:
+      text: Stacked linear and nonlinear layers.
+      node: perceptron
+    loss:
+      text: Any differentiable loss.
+      node: loss-function
+    optimizer:
+      text: SGD or Adam, with slopes from backprop.
+      node: sgd-adam
+    evaluation:
+      text: Depends on the problem, measured on held-out data.
+      node: train-test-split
+  strengths:
+    - text: Learns curved, complex patterns.
+    - text: Works on images, sound and text.
+    - text: Scales up with more data and compute.
+  weaknesses:
+    - text: Needs a lot of data and careful tuning.
+      fixedBy: hyperparameter-tuning
+    - text: Hard to explain why it made a prediction.
+      fixedBy: interpretability
+    - text: Overfits easily on small datasets.
+      fixedBy: regularization
+  formula:
+    tex: h = \phi(W_1 x + b_1), \quad \hat{y} = W_2 h + b_2
+    symbols:
+      - symbol: x
+        meaning: The input features.
+      - symbol: W_1, b_1
+        meaning: The first layer's weights and biases.
+      - symbol: \phi
+        meaning: The bend, a nonlinear function like ReLU or tanh.
+      - symbol: h
+        meaning: The hidden layer's outputs.
+      - symbol: W_2, b_2
+        meaning: The output layer's weights and biases.
+      - symbol: \hat{y}
+        meaning: The prediction.
+  code:
+    tool: pytorch
+    snippet: |
+      import torch.nn as nn
+      model = nn.Sequential(nn.Linear(10, 32), nn.ReLU(), nn.Linear(32, 1))
+      loss_fn = nn.MSELoss()
+      loss = loss_fn(model(X_train), y_train)
+      loss.backward()
+  confusions:
+    - Deep learning means many layers. It is not a different kind of model.
+    - Neurons are only loosely inspired by brains. They are weighted sums with a bend.
+  resources:
+    - title: "3Blue1Brown: But what is a neural network?"
+      url: https://www.3blue1brown.com/lessons/neural-networks
+    - title: "MLU-Explain: Neural networks"
+      url: https://mlu-explain.github.io/neural-networks/
+    - title: "PyTorch: Build the neural network"
+      url: https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
 
 - id: backpropagation
   label: Backpropagation
@@ -24,3 +130,32 @@
   oneLiner: "Working out each weight's share of the blame for an error."
   intuition: "After a prediction, the error flows backward through the network. The chain rule turns it into a slope for every weight. Gradient descent then nudges each weight. It is like tracing a factory defect back along the assembly line."
   analogy: "Tracing a factory defect back along the assembly line."
+  formula:
+    tex: \frac{\partial L}{\partial w} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial h} \cdot \frac{\partial h}{\partial w}
+    symbols:
+      - symbol: L
+        meaning: The loss, how wrong the prediction was.
+      - symbol: w
+        meaning: One weight deep inside the network.
+      - symbol: \hat{y}
+        meaning: The network's prediction.
+      - symbol: h
+        meaning: A hidden unit between the weight and the output.
+      - symbol: \frac{\partial L}{\partial w}
+        meaning: How much the loss changes when this weight moves a little.
+  code:
+    tool: pytorch
+    snippet: |
+      prediction = model(X_train)
+      loss = loss_fn(prediction, y_train)
+      loss.backward()
+      print(model[0].weight.grad)
+  confusions:
+    - Backpropagation only computes the slopes. Gradient descent is what changes the weights.
+  resources:
+    - title: "3Blue1Brown: What is backpropagation really doing?"
+      url: https://www.3blue1brown.com/lessons/backpropagation
+    - title: "3Blue1Brown: Backpropagation calculus"
+      url: https://www.3blue1brown.com/lessons/backpropagation-calculus
+    - title: "PyTorch: Automatic differentiation"
+      url: https://pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html

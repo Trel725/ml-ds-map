@@ -5,6 +5,51 @@
   oneLiner: "Split points into k groups around centers that keep moving."
   intuition: "Place k centers anywhere. Assign each point to its nearest center, then move each center to its group's average. Repeat until nothing changes. It is like placing ice cream stands so every beachgoer is close to one."
   analogy: "Placing ice cream stands so every beachgoer is close to one."
+  reducedRecipe:
+    goal:
+      text: Group similar points.
+      node: clustering-task
+    optimizes:
+      text: Total squared distance from points to their center.
+    optimizer:
+      text: Alternate two steps, assign and move.
+    judgedBy:
+      text: Total distance, how well separated the groups are, and whether they make sense.
+  strengths:
+    - text: Simple, fast and scales to large data.
+    - text: Easy to explain.
+  weaknesses:
+    - text: Assumes round clusters of similar size.
+      fixedBy: gaussian-mixtures
+    - text: You must choose k in advance.
+      fixedBy: hierarchical-clustering
+    - text: Unscaled features distort the distances.
+      fixedBy: feature-scaling
+  formula:
+    tex: \min \sum_{k=1}^{K} \sum_{x \in C_k} \lVert x - \mu_k \rVert^2
+    symbols:
+      - symbol: K
+        meaning: The number of clusters you choose.
+      - symbol: C_k
+        meaning: The points assigned to cluster k.
+      - symbol: \mu_k
+        meaning: The center of cluster k, the average of its points.
+      - symbol: \lVert x - \mu_k \rVert^2
+        meaning: The squared distance from a point to its center.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.cluster import KMeans
+      model = KMeans(n_clusters=3, n_init=10)
+      labels = model.fit_predict(X)
+      print(model.inertia_)
+  confusions:
+    - k-means always finds k groups, even in data with no real groups.
+  resources:
+    - title: "scikit-learn: k-means"
+      url: https://scikit-learn.org/stable/modules/clustering.html
+    - title: "ISLR, chapter 12: Clustering methods"
+      url: https://www.statlearning.com/
 
 - id: hierarchical-clustering
   label: Hierarchical clustering
@@ -13,6 +58,44 @@
   oneLiner: "Merge the closest groups step by step into a tree."
   intuition: "Start with every point in its own group. Repeatedly merge the two closest groups. The result is a tree you can cut at any level. It is like a family tree of the data."
   analogy: "A family tree of the data."
+  reducedRecipe:
+    goal:
+      text: Group points into a tree of nested clusters.
+      node: clustering-task
+    optimizes:
+      text: Each merge joins the two closest groups.
+    optimizer:
+      text: Greedy merging, one step at a time.
+      node: greedy-search
+    judgedBy:
+      text: The dendrogram, and whether the groups make sense.
+  strengths:
+    - text: No need to choose the number of clusters in advance.
+    - text: The tree shows structure at every scale.
+  weaknesses:
+    - text: Slow on large datasets.
+      fixedBy: k-means
+    - text: A bad early merge can never be undone.
+  formula:
+    tex: d(A, B) = \frac{1}{|A| |B|} \sum_{a \in A} \sum_{b \in B} \lVert a - b \rVert
+    symbols:
+      - symbol: d(A, B)
+        meaning: The distance between groups A and B, here the average linkage.
+      - symbol: "|A|, |B|"
+        meaning: The number of points in each group.
+      - symbol: \lVert a - b \rVert
+        meaning: The distance between one point from each group.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.cluster import AgglomerativeClustering
+      model = AgglomerativeClustering(n_clusters=4, linkage="average")
+      labels = model.fit_predict(X)
+  resources:
+    - title: "scikit-learn: Hierarchical clustering"
+      url: https://scikit-learn.org/stable/modules/clustering.html
+    - title: "ISLR, chapter 12: Hierarchical clustering"
+      url: https://www.statlearning.com/
 
 - id: dbscan
   label: DBSCAN
@@ -21,3 +104,39 @@
   oneLiner: "Find clusters as dense crowds and leave loners as noise."
   intuition: "DBSCAN looks for points with many close neighbors. Dense regions grow into clusters of any shape. Isolated points are marked as noise. It is like spotting groups of friends at a party from above."
   analogy: "Spotting groups of friends at a party from above."
+  reducedRecipe:
+    goal:
+      text: Find dense groups and flag loners.
+      node: clustering-task
+    optimizes:
+      text: Nothing global. It follows chains of dense neighbors.
+    optimizer:
+      text: A single pass that grows clusters from dense points.
+    judgedBy:
+      text: How sensible the clusters and noise points look.
+  strengths:
+    - text: Finds clusters of any shape.
+    - text: Marks outliers as noise instead of forcing them in.
+  weaknesses:
+    - text: Struggles when clusters have different densities.
+    - text: The distance setting is hard to choose.
+      fixedBy: hyperparameter-tuning
+  formula:
+    tex: "N_\\varepsilon(x) = \\{ z : \\lVert x - z \\rVert \\le \\varepsilon \\}, \\quad |N_\\varepsilon(x)| \\ge m"
+    symbols:
+      - symbol: \varepsilon
+        meaning: The neighborhood radius.
+      - symbol: N_\varepsilon(x)
+        meaning: All points within that radius of x.
+      - symbol: m
+        meaning: The minimum neighbors for x to count as a dense core point.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.cluster import DBSCAN
+      model = DBSCAN(eps=0.5, min_samples=5)
+      labels = model.fit_predict(X)
+      noise = labels == -1
+  resources:
+    - title: "scikit-learn: DBSCAN"
+      url: https://scikit-learn.org/stable/modules/clustering.html

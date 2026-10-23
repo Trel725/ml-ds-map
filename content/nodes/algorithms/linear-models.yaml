@@ -6,6 +6,61 @@
   intuition: "OLS draws the line or flat surface closest to all the points. Closeness is measured by squaring each miss and adding them up. A formula gives the answer directly. It is like a rod pulled into place by springs to each point."
   analogy: "A rod pulled into place by springs to each point."
   viz: ols-fit
+  recipe:
+    problem:
+      text: Regression, predicting a number.
+      node: regression
+    modelFamily:
+      text: Linear, a weighted sum of features.
+    loss:
+      text: Squared error.
+      node: loss-function
+    optimizer:
+      text: Analytical (normal equations) or gradient descent.
+      node: analytical-solution
+    evaluation:
+      text: RMSE and R² on held-out data.
+      node: train-test-split
+  strengths:
+    - text: Fast to fit, with an exact answer.
+    - text: Each weight has a clear meaning.
+    - text: A strong baseline for almost any number to predict.
+  weaknesses:
+    - text: Overfits when there are many features.
+      fixedBy: ridge
+    - text: Only draws straight lines unless you add features yourself.
+    - text: A few extreme points can drag the line far.
+  formula:
+    tex: \hat{\beta} = (X^\top X)^{-1} X^\top y
+    symbols:
+      - symbol: \hat{\beta}
+        meaning: The fitted weights, one per feature.
+      - symbol: X
+        meaning: The table of features, one row per example.
+      - symbol: ^\top
+        meaning: The transpose, which swaps rows and columns.
+      - symbol: ^{-1}
+        meaning: The matrix inverse, the matrix version of dividing.
+      - symbol: y
+        meaning: The column of true answers.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.linear_model import LinearRegression
+      model = LinearRegression()
+      model.fit(X_train, y_train)
+      print(model.coef_, model.intercept_)
+      predictions = model.predict(X_test)
+  confusions:
+    - Linear means linear in the weights. You can still fit curves by adding squared features.
+    - A high R² does not mean the model will predict new data well.
+  resources:
+    - title: "MLU-Explain: Linear regression"
+      url: https://mlu-explain.github.io/linear-regression/
+    - title: "scikit-learn: Ordinary least squares"
+      url: https://scikit-learn.org/stable/modules/linear_model.html
+    - title: "ISLR, chapter 3: Linear regression"
+      url: https://www.statlearning.com/
 
 - id: ridge
   label: Ridge regression
@@ -14,6 +69,58 @@
   oneLiner: "OLS with a penalty that shrinks every weight a little."
   intuition: "Ridge adds the squared size of the weights to the loss. Big weights become costly, so the fit calms down. It helps when features are many or correlated. It is like a leash that keeps every weight close to home."
   analogy: "A leash that keeps every weight close to home."
+  recipe:
+    problem:
+      text: Regression.
+      node: regression
+    modelFamily:
+      text: Linear, like OLS.
+      node: ols
+    loss:
+      text: Squared error plus the squared size of the weights.
+      node: loss-function
+    optimizer:
+      text: Analytical, a slightly changed normal equation.
+      node: analytical-solution
+    evaluation:
+      text: RMSE on held-out data, with the penalty chosen by cross-validation.
+      node: cross-validation
+  strengths:
+    - text: Calms down overfitting with many features.
+    - text: Copes well with correlated features.
+    - text: Still has an exact, fast solution.
+  weaknesses:
+    - text: Keeps every feature, so it never simplifies the model.
+      fixedBy: lasso
+    - text: Features must be scaled first, or the penalty is unfair.
+      fixedBy: feature-scaling
+  formula:
+    tex: \min_\beta \sum_i (y_i - x_i^\top \beta)^2 + \lambda \sum_j \beta_j^2
+    symbols:
+      - symbol: \beta
+        meaning: The weights being fitted.
+      - symbol: y_i
+        meaning: The true answer for example i.
+      - symbol: x_i^\top \beta
+        meaning: The model's prediction for example i.
+      - symbol: \lambda
+        meaning: The penalty strength you choose. Bigger means smaller weights.
+      - symbol: \beta_j^2
+        meaning: The squared size of weight j.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.linear_model import Ridge
+      model = Ridge(alpha=1.0)
+      model.fit(X_train, y_train)
+      predictions = model.predict(X_test)
+  confusions:
+    - Ridge shrinks weights toward zero but almost never makes them exactly zero.
+  resources:
+    - title: "scikit-learn: Ridge regression"
+      url: https://scikit-learn.org/stable/modules/linear_model.html
+    - title: "ISLR, chapter 6: Shrinkage methods"
+      url: https://www.statlearning.com/
 
 - id: lasso
   label: Lasso
@@ -22,6 +129,57 @@
   oneLiner: "OLS with a penalty that can set weights exactly to zero."
   intuition: "Lasso penalizes the absolute size of the weights. This pushes useless features all the way to zero. So it also picks which features to keep. It is like a strict editor cutting whole sentences."
   analogy: "A strict editor cutting whole sentences."
+  recipe:
+    problem:
+      text: Regression.
+      node: regression
+    modelFamily:
+      text: Linear, like OLS.
+      node: ols
+    loss:
+      text: Squared error plus the absolute size of the weights.
+      node: loss-function
+    optimizer:
+      text: Coordinate descent, a cousin of gradient descent.
+      node: gradient-descent
+    evaluation:
+      text: RMSE on held-out data, with the penalty chosen by cross-validation.
+      node: cross-validation
+  strengths:
+    - text: Picks features by setting useless weights to exactly zero.
+    - text: Gives small models that are easy to read.
+  weaknesses:
+    - text: Among correlated features, it keeps one almost at random.
+      fixedBy: elastic-net
+    - text: Features must be scaled first.
+      fixedBy: feature-scaling
+  formula:
+    tex: \min_\beta \sum_i (y_i - x_i^\top \beta)^2 + \lambda \sum_j |\beta_j|
+    symbols:
+      - symbol: \beta
+        meaning: The weights being fitted.
+      - symbol: y_i
+        meaning: The true answer for example i.
+      - symbol: x_i^\top \beta
+        meaning: The model's prediction for example i.
+      - symbol: \lambda
+        meaning: The penalty strength. Bigger means more weights at zero.
+      - symbol: "|\\beta_j|"
+        meaning: The absolute size of weight j.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.linear_model import Lasso
+      model = Lasso(alpha=0.1)
+      model.fit(X_train, y_train)
+      kept = model.coef_ != 0
+  confusions:
+    - A feature Lasso drops is not proven useless. It may just overlap with a kept one.
+  resources:
+    - title: "scikit-learn: Lasso"
+      url: https://scikit-learn.org/stable/modules/linear_model.html
+    - title: "ISLR, chapter 6: The lasso"
+      url: https://www.statlearning.com/
 
 - id: elastic-net
   label: Elastic net
@@ -30,6 +188,50 @@
   oneLiner: "A blend of the ridge and lasso penalties."
   intuition: "Elastic net mixes both penalties. It shrinks like ridge and drops features like lasso. It handles groups of correlated features better than lasso alone. It is like a leash and an editor working together."
   analogy: "A leash and an editor working together."
+  recipe:
+    problem:
+      text: Regression.
+      node: regression
+    modelFamily:
+      text: Linear, like OLS.
+      node: ols
+    loss:
+      text: Squared error plus a mix of both penalties.
+      node: loss-function
+    optimizer:
+      text: Coordinate descent.
+      node: gradient-descent
+    evaluation:
+      text: RMSE on held-out data, with both settings chosen by cross-validation.
+      node: cross-validation
+  strengths:
+    - text: Drops features like Lasso and shrinks like Ridge.
+    - text: Keeps groups of correlated features together.
+  weaknesses:
+    - text: Two settings to tune instead of one.
+      fixedBy: hyperparameter-tuning
+    - text: Still only draws straight lines.
+  formula:
+    tex: \min_\beta \sum_i (y_i - x_i^\top \beta)^2 + \lambda \left( \alpha \sum_j |\beta_j| + (1 - \alpha) \sum_j \beta_j^2 \right)
+    symbols:
+      - symbol: \beta
+        meaning: The weights being fitted.
+      - symbol: x_i^\top \beta
+        meaning: The prediction for example i, compared with its answer y_i.
+      - symbol: \lambda
+        meaning: The overall penalty strength.
+      - symbol: \alpha
+        meaning: The mix. One is pure Lasso, zero is pure Ridge.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.linear_model import ElasticNet
+      model = ElasticNet(alpha=0.1, l1_ratio=0.5)
+      model.fit(X_train, y_train)
+      predictions = model.predict(X_test)
+  resources:
+    - title: "scikit-learn: Elastic-Net"
+      url: https://scikit-learn.org/stable/modules/linear_model.html
 
 - id: logistic-regression
   label: Logistic regression
@@ -38,6 +240,60 @@
   oneLiner: "A linear model bent into probabilities for yes-or-no questions."
   intuition: "Compute a weighted sum of features, just like OLS. Squash it through an S-shaped curve so it lands between zero and one. Train it with log loss and gradient descent. It is like a dimmer switch between no and yes."
   analogy: "A dimmer switch between no and yes."
+  recipe:
+    problem:
+      text: Classification, answering yes or no.
+      node: classification
+    modelFamily:
+      text: Linear plus a sigmoid squash.
+    loss:
+      text: Log loss.
+      node: log-loss
+    optimizer:
+      text: Gradient descent or Newton's method.
+      node: gradient-descent
+    evaluation:
+      text: Accuracy, AUC and log loss on held-out data.
+      node: train-test-split
+  strengths:
+    - text: Gives probabilities, not just labels.
+    - text: Fast, and each weight has a clear meaning.
+    - text: A strong baseline for yes-or-no questions.
+  weaknesses:
+    - text: The boundary between classes is a straight line.
+      fixedBy: neural-network
+    - text: Overfits with many features unless it is regularized.
+      fixedBy: regularization
+  formula:
+    tex: p(y = 1 \mid x) = \sigma(w^\top x + b) = \frac{1}{1 + e^{-(w^\top x + b)}}
+    symbols:
+      - symbol: p(y = 1 \mid x)
+        meaning: The chance the answer is yes, given the features.
+      - symbol: \sigma
+        meaning: The sigmoid, an S-curve that squashes any number into zero to one.
+      - symbol: w^\top x
+        meaning: The weighted sum of the features x.
+      - symbol: b
+        meaning: The bias, which shifts the curve left or right.
+      - symbol: e
+        meaning: Euler's number, about 2.718.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.linear_model import LogisticRegression
+      model = LogisticRegression()
+      model.fit(X_train, y_train)
+      probabilities = model.predict_proba(X_test)[:, 1]
+  confusions:
+    - Despite its name, logistic regression is used for classification.
+    - Its weights change the log-odds, not the probability, by a fixed amount.
+  resources:
+    - title: "MLU-Explain: Logistic regression"
+      url: https://mlu-explain.github.io/logistic-regression/
+    - title: "scikit-learn: Logistic regression"
+      url: https://scikit-learn.org/stable/modules/linear_model.html
+    - title: "ISLR, chapter 4: Classification"
+      url: https://www.statlearning.com/
 
 - id: glm
   label: Generalized linear models
@@ -46,3 +302,47 @@
   oneLiner: "Linear models stretched to handle counts, yes-or-no answers and more."
   intuition: "A GLM keeps the weighted sum of features. It adds a link function and a matching noise distribution. OLS, logistic regression and Poisson regression are all GLMs. It is like one engine fitted to different vehicles."
   analogy: "One engine fitted to different vehicles."
+  recipe:
+    problem:
+      text: Regression on counts, rates or yes-or-no answers.
+      node: regression
+    modelFamily:
+      text: Linear, passed through a link function.
+    loss:
+      text: The negative log-likelihood of the chosen distribution.
+      node: loss-function
+    optimizer:
+      text: Newton's method, a fast curvature-aware search.
+      node: newtons-method
+    evaluation:
+      text: Deviance and held-out error.
+      node: train-test-split
+  strengths:
+    - text: One framework covers OLS, logistic and Poisson regression.
+    - text: Weights stay easy to explain.
+  weaknesses:
+    - text: You must choose the right distribution and link.
+    - text: Still linear on the link scale.
+  formula:
+    tex: g(\mathbb{E}[y \mid x]) = w^\top x + b
+    symbols:
+      - symbol: g
+        meaning: The link function, for example the log for counts.
+      - symbol: \mathbb{E}[y \mid x]
+        meaning: The average answer you expect for these features.
+      - symbol: w^\top x + b
+        meaning: The usual weighted sum of features plus a bias.
+  code:
+    tool: statsmodels
+    snippet: |
+      import statsmodels.api as sm
+      model = sm.GLM(y, sm.add_constant(X), family=sm.families.Poisson())
+      result = model.fit()
+      print(result.summary())
+  confusions:
+    - A GLM is not the same as the general linear model, which only means OLS with many outcomes.
+  resources:
+    - title: "statsmodels: Generalized linear models"
+      url: https://www.statsmodels.org/stable/glm.html
+    - title: "scikit-learn: Generalized linear models"
+      url: https://scikit-learn.org/stable/modules/linear_model.html

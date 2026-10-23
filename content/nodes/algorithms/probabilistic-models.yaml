@@ -5,6 +5,56 @@
   oneLiner: "Classify with Bayes' rule, assuming features are independent."
   intuition: "Naive Bayes learns how often each word appears in spam and in normal mail. Bayes' rule flips that into the chance a message is spam. It assumes words don't influence each other. It is like a detective weighing each clue separately."
   analogy: "A detective weighing each clue separately."
+  recipe:
+    problem:
+      text: Classification, often of text.
+      node: classification
+    modelFamily:
+      text: Bayes' rule with independent features.
+      node: bayes-rule
+    loss:
+      text: The negative log-likelihood of the data.
+      node: log-loss
+    optimizer:
+      text: Counting, which gives a closed-form answer.
+      node: analytical-solution
+    evaluation:
+      text: Accuracy or F1 on held-out data.
+      node: train-test-split
+  strengths:
+    - text: Extremely fast to train and predict.
+    - text: Works well with little data and many words.
+  weaknesses:
+    - text: Assumes features are independent, which is rarely true.
+      fixedBy: logistic-regression
+    - text: Its probabilities are often far too confident.
+  formula:
+    tex: P(c \mid x) \propto P(c) \prod_j P(x_j \mid c)
+    symbols:
+      - symbol: P(c \mid x)
+        meaning: The chance of class c given the features.
+      - symbol: \propto
+        meaning: Proportional to. The scores are scaled to sum to one at the end.
+      - symbol: P(c)
+        meaning: How common class c is overall.
+      - symbol: \prod_j
+        meaning: Multiply over every feature j.
+      - symbol: P(x_j \mid c)
+        meaning: How likely feature j is within class c.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.feature_extraction.text import CountVectorizer
+      from sklearn.naive_bayes import MultinomialNB
+      X_counts = CountVectorizer().fit_transform(texts)
+      model = MultinomialNB().fit(X_counts, y)
+  confusions:
+    - Naive refers to the independence assumption, not to the method being poor.
+  resources:
+    - title: "scikit-learn: Naive Bayes"
+      url: https://scikit-learn.org/stable/modules/naive_bayes.html
+    - title: "3Blue1Brown: Bayes' theorem"
+      url: https://www.3blue1brown.com/lessons/bayes-theorem
 
 - id: lda-classifier
   label: LDA classifier
@@ -13,6 +63,52 @@
   oneLiner: "Model each class as a bell-shaped cloud, then apply Bayes' rule."
   intuition: "LDA assumes each class forms a cloud of the same shape. It learns where each cloud is centered. Bayes' rule then says which cloud a new point most likely came from. It is like guessing which flock a stray bird came from."
   analogy: "Guessing which flock a stray bird came from."
+  recipe:
+    problem:
+      text: Classification.
+      node: classification
+    modelFamily:
+      text: Bell-shaped class clouds with a shared shape.
+      node: distributions
+    loss:
+      text: The negative log-likelihood of the data.
+      node: log-loss
+    optimizer:
+      text: Closed form, from class averages and spread.
+      node: analytical-solution
+    evaluation:
+      text: Accuracy on held-out data.
+      node: train-test-split
+  strengths:
+    - text: Fast, stable and works with small datasets.
+    - text: Can also squash data into fewer dimensions.
+  weaknesses:
+    - text: Assumes every class has the same cloud shape.
+      fixedBy: qda
+    - text: Boundaries are straight lines.
+  formula:
+    tex: \delta_k(x) = x^\top \Sigma^{-1} \mu_k - \tfrac{1}{2} \mu_k^\top \Sigma^{-1} \mu_k + \log \pi_k
+    symbols:
+      - symbol: \delta_k(x)
+        meaning: The score for class k. The highest score wins.
+      - symbol: \mu_k
+        meaning: The center of class k's cloud.
+      - symbol: \Sigma
+        meaning: The shared shape and tilt of all clouds.
+      - symbol: \pi_k
+        meaning: How common class k is.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+      model = LinearDiscriminantAnalysis()
+      model.fit(X_train, y_train)
+      labels = model.predict(X_test)
+  resources:
+    - title: "scikit-learn: Linear and quadratic discriminant analysis"
+      url: https://scikit-learn.org/stable/modules/lda_qda.html
+    - title: "ISLR, chapter 4: Discriminant analysis"
+      url: https://www.statlearning.com/
 
 - id: qda
   label: QDA
@@ -21,6 +117,52 @@
   oneLiner: "Like the LDA classifier, but each class gets its own cloud shape."
   intuition: "QDA lets every class have its own spread and tilt. The boundaries between classes become curves. It needs more data than LDA. It is like flocks that each fly in their own formation."
   analogy: "Flocks that each fly in their own formation."
+  recipe:
+    problem:
+      text: Classification.
+      node: classification
+    modelFamily:
+      text: Bell-shaped class clouds, each with its own shape.
+      node: distributions
+    loss:
+      text: The negative log-likelihood of the data.
+      node: log-loss
+    optimizer:
+      text: Closed form, from each class's average and spread.
+      node: analytical-solution
+    evaluation:
+      text: Accuracy on held-out data.
+      node: train-test-split
+  strengths:
+    - text: Draws curved boundaries.
+    - text: Still fast, with a closed-form fit.
+  weaknesses:
+    - text: Needs many examples per class to estimate each shape.
+      fixedBy: lda-classifier
+    - text: Assumes each class is bell-shaped.
+  formula:
+    tex: \delta_k(x) = -\tfrac{1}{2} \log |\Sigma_k| - \tfrac{1}{2} (x - \mu_k)^\top \Sigma_k^{-1} (x - \mu_k) + \log \pi_k
+    symbols:
+      - symbol: \delta_k(x)
+        meaning: The score for class k. The highest score wins.
+      - symbol: \mu_k
+        meaning: The center of class k's cloud.
+      - symbol: \Sigma_k
+        meaning: The shape and tilt of class k's own cloud.
+      - symbol: \pi_k
+        meaning: How common class k is.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
+      model = QuadraticDiscriminantAnalysis()
+      model.fit(X_train, y_train)
+      labels = model.predict(X_test)
+  resources:
+    - title: "scikit-learn: Linear and quadratic discriminant analysis"
+      url: https://scikit-learn.org/stable/modules/lda_qda.html
+    - title: "ISLR, chapter 4: Quadratic discriminant analysis"
+      url: https://www.statlearning.com/
 
 - id: gaussian-mixtures
   label: Gaussian mixtures
@@ -29,3 +171,44 @@
   oneLiner: "Describe data as a blend of several bell-shaped clouds."
   intuition: "A mixture model assumes each point came from one of a few bell-shaped clouds. It learns where the clouds are and how big they are. Each point gets a chance of belonging to each cloud. It is like unmixing paint colors from a blend."
   analogy: "Unmixing paint colors from a blend."
+  reducedRecipe:
+    goal:
+      text: Group points, allowing soft membership.
+      node: clustering-task
+    optimizes:
+      text: The likelihood of the data under the mixture.
+      node: mle
+    optimizer:
+      text: Expectation maximization, alternating two steps.
+    judgedBy:
+      text: BIC, a fit score that punishes extra clusters, and how sensible they look.
+  strengths:
+    - text: Gives each point a chance of belonging to each cluster.
+    - text: Clusters can be stretched and tilted.
+  weaknesses:
+    - text: Assumes clusters are bell-shaped.
+      fixedBy: dbscan
+    - text: Results depend on the starting guess.
+  formula:
+    tex: p(x) = \sum_{k=1}^{K} \pi_k \, \mathcal{N}(x \mid \mu_k, \Sigma_k)
+    symbols:
+      - symbol: p(x)
+        meaning: How likely a point is under the whole mixture.
+      - symbol: K
+        meaning: The number of clouds.
+      - symbol: \pi_k
+        meaning: The share of points from cloud k.
+      - symbol: \mathcal{N}
+        meaning: A bell-shaped distribution.
+      - symbol: \mu_k, \Sigma_k
+        meaning: The center and shape of cloud k.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.mixture import GaussianMixture
+      model = GaussianMixture(n_components=3)
+      model.fit(X)
+      membership = model.predict_proba(X)
+  resources:
+    - title: "scikit-learn: Gaussian mixture models"
+      url: https://scikit-learn.org/stable/modules/mixture.html

@@ -5,6 +5,52 @@
   oneLiner: "Add weak models one by one, focusing on past mistakes."
   intuition: "AdaBoost trains a simple model, then gives more weight to the examples it got wrong. The next model concentrates on those. The final answer is a weighted vote. It is like a tutor who drills the questions you missed."
   analogy: "A tutor who drills the questions you missed."
+  recipe:
+    problem:
+      text: Mostly classification.
+      node: classification
+    modelFamily:
+      text: A weighted vote of decision stumps.
+      node: decision-stump
+    loss:
+      text: Exponential loss.
+      node: loss-function
+    optimizer:
+      text: Greedy, one stump at a time.
+      node: greedy-search
+    evaluation:
+      text: Accuracy on held-out data.
+      node: train-test-split
+  strengths:
+    - text: Turns very weak models into a strong one.
+    - text: Few settings to tune.
+  weaknesses:
+    - text: Sensitive to noisy labels and outliers.
+    - text: Usually beaten by gradient boosting.
+      fixedBy: gradient-boosting
+  formula:
+    tex: F(x) = \sum_{m=1}^{M} \alpha_m h_m(x)
+    symbols:
+      - symbol: F(x)
+        meaning: The combined score. Its sign is the predicted class.
+      - symbol: M
+        meaning: The number of weak models.
+      - symbol: h_m(x)
+        meaning: The vote of weak model m.
+      - symbol: \alpha_m
+        meaning: How much model m's vote counts. Accurate models count more.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.ensemble import AdaBoostClassifier
+      model = AdaBoostClassifier(n_estimators=200)
+      model.fit(X_train, y_train)
+      labels = model.predict(X_test)
+  resources:
+    - title: "scikit-learn: AdaBoost"
+      url: https://scikit-learn.org/stable/modules/ensemble.html
+    - title: "ISLR, chapter 8: Boosting"
+      url: https://www.statlearning.com/
 
 - id: gradient-boosting
   label: Gradient boosting
@@ -13,6 +59,58 @@
   oneLiner: "Add small trees one by one, each fixing the remaining errors."
   intuition: "Start with a simple guess. Fit a small tree to what the guess got wrong, and add it. Repeat many times with small steps. It is like a sculptor removing a little more stone each pass."
   analogy: "A sculptor removing a little more stone each pass."
+  recipe:
+    problem:
+      text: Either regression or classification.
+      node: regression
+    modelFamily:
+      text: A sum of small trees.
+      node: decision-tree
+    loss:
+      text: Any differentiable loss.
+      node: loss-function
+    optimizer:
+      text: Gradient descent in function space.
+      node: gradient-descent
+    evaluation:
+      text: Depends on the problem, measured on held-out data.
+      node: train-test-split
+  strengths:
+    - text: Often the most accurate model on table-shaped data.
+    - text: Works with any differentiable loss.
+  weaknesses:
+    - text: Overfits if you add too many trees.
+      fixedBy: cross-validation
+    - text: Trees are built one after another, so training is slower.
+      fixedBy: lightgbm
+    - text: Has several settings that interact.
+      fixedBy: hyperparameter-tuning
+  formula:
+    tex: F_m(x) = F_{m-1}(x) + \eta \, h_m(x)
+    symbols:
+      - symbol: F_m(x)
+        meaning: The prediction after m trees.
+      - symbol: F_{m-1}(x)
+        meaning: The prediction before adding the new tree.
+      - symbol: \eta
+        meaning: The learning rate, a small step size like 0.1.
+      - symbol: h_m(x)
+        meaning: The new tree, fitted to what is still wrong.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.ensemble import HistGradientBoostingRegressor
+      model = HistGradientBoostingRegressor(learning_rate=0.1, max_iter=300)
+      model.fit(X_train, y_train)
+      predictions = model.predict(X_test)
+  confusions:
+    - Gradient boosting uses the gradient of the loss, not of the model's weights.
+    - Unlike a random forest, more trees can overfit here.
+  resources:
+    - title: "scikit-learn: Gradient boosting"
+      url: https://scikit-learn.org/stable/modules/ensemble.html
+    - title: "ISLR, chapter 8: Boosting"
+      url: https://www.statlearning.com/
 
 - id: xgboost
   label: XGBoost
@@ -21,6 +119,56 @@
   oneLiner: "A fast, regularized version of gradient boosting."
   intuition: "XGBoost is gradient boosting with extra care. It penalizes complex trees and uses clever tricks for speed. It wins many contests on table-shaped data. It is like a tuned race car built from a family car."
   analogy: "A tuned race car built from a family car."
+  recipe:
+    problem:
+      text: Either regression or classification.
+      node: regression
+    modelFamily:
+      text: A sum of small, penalized trees.
+      node: decision-tree
+    loss:
+      text: Any differentiable loss, plus a tree-size penalty.
+      node: loss-function
+    optimizer:
+      text: Boosting with second-order Newton steps.
+      node: newtons-method
+    evaluation:
+      text: Held-out error, often with early stopping.
+      node: cross-validation
+  strengths:
+    - text: Very accurate on table-shaped data.
+    - text: Handles missing values on its own.
+    - text: Built-in penalties fight overfitting.
+  weaknesses:
+    - text: Many settings to tune.
+      fixedBy: hyperparameter-tuning
+    - text: Slower than LightGBM on very large data.
+      fixedBy: lightgbm
+  formula:
+    tex: \mathcal{L} = \sum_i \ell(y_i, \hat{y}_i) + \sum_k \left( \gamma T_k + \tfrac{1}{2} \lambda \lVert w_k \rVert^2 \right)
+    symbols:
+      - symbol: \ell(y_i, \hat{y}_i)
+        meaning: The loss on example i.
+      - symbol: T_k
+        meaning: The number of leaves in tree k.
+      - symbol: \gamma
+        meaning: The cost of each extra leaf.
+      - symbol: w_k
+        meaning: The leaf values of tree k.
+      - symbol: \lambda
+        meaning: The penalty on large leaf values.
+  code:
+    tool: xgboost-lightgbm
+    snippet: |
+      from xgboost import XGBRegressor
+      model = XGBRegressor(n_estimators=500, learning_rate=0.05, max_depth=4)
+      model.fit(X_train, y_train)
+      predictions = model.predict(X_test)
+  confusions:
+    - XGBoost is not a new kind of model. It is a carefully engineered gradient boosting.
+  resources:
+    - title: "scikit-learn: Gradient boosting (same ideas)"
+      url: https://scikit-learn.org/stable/modules/ensemble.html
 
 - id: lightgbm
   label: LightGBM
@@ -29,3 +177,46 @@
   oneLiner: "Gradient boosting built for speed on large datasets."
   intuition: "LightGBM grows trees leaf by leaf and buckets feature values. This makes training much faster. Results are usually close to XGBoost. It is like a lighter, faster model of the same car."
   analogy: "A lighter, faster model of the same car."
+  recipe:
+    problem:
+      text: Either regression or classification.
+      node: regression
+    modelFamily:
+      text: A sum of trees grown leaf by leaf.
+      node: decision-tree
+    loss:
+      text: Any differentiable loss.
+      node: loss-function
+    optimizer:
+      text: Boosting with second-order Newton steps on binned features.
+      node: newtons-method
+    evaluation:
+      text: Held-out error, often with early stopping.
+      node: cross-validation
+  strengths:
+    - text: Very fast on large datasets.
+    - text: Handles category features directly.
+  weaknesses:
+    - text: Leaf-by-leaf growth can overfit small datasets.
+      fixedBy: hyperparameter-tuning
+    - text: As hard to explain as any boosted model.
+      fixedBy: interpretability
+  formula:
+    tex: F_m(x) = F_{m-1}(x) + \eta \, h_m(x)
+    symbols:
+      - symbol: F_m(x)
+        meaning: The prediction after m trees.
+      - symbol: \eta
+        meaning: The learning rate.
+      - symbol: h_m(x)
+        meaning: The new tree, grown leaf by leaf.
+  code:
+    tool: xgboost-lightgbm
+    snippet: |
+      from lightgbm import LGBMRegressor
+      model = LGBMRegressor(n_estimators=500, learning_rate=0.05)
+      model.fit(X_train, y_train)
+      predictions = model.predict(X_test)
+  resources:
+    - title: "scikit-learn: Histogram gradient boosting, inspired by LightGBM"
+      url: https://scikit-learn.org/stable/modules/ensemble.html

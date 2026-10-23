@@ -5,6 +5,51 @@
   oneLiner: "Find the few directions that keep most of the spread."
   intuition: "PCA turns the data to line up with its widest directions. Keeping only the first few squeezes many columns into a few. It is like photographing an object from its most revealing angle."
   analogy: "Photographing an object from its most revealing angle."
+  reducedRecipe:
+    goal:
+      text: Compress many columns into a few.
+      node: dimensionality-reduction-task
+    optimizes:
+      text: The spread kept along the new directions.
+    optimizer:
+      text: An exact matrix factorization, the SVD.
+      node: eigen-svd
+    judgedBy:
+      text: The share of spread kept, the explained variance.
+  strengths:
+    - text: Fast, exact and deterministic.
+    - text: Removes redundancy between correlated columns.
+  weaknesses:
+    - text: Finds only straight directions.
+      fixedBy: umap
+    - text: Unscaled columns dominate the result.
+      fixedBy: feature-scaling
+    - text: New directions mix all features, so they are hard to name.
+  formula:
+    tex: w_1 = \arg\max_{\lVert w \rVert = 1} \operatorname{Var}(X w)
+    symbols:
+      - symbol: w_1
+        meaning: The first principal direction.
+      - symbol: \lVert w \rVert = 1
+        meaning: Only directions of length one count.
+      - symbol: X w
+        meaning: Every point projected onto direction w.
+      - symbol: \operatorname{Var}
+        meaning: The spread, or variance, of those projections.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.decomposition import PCA
+      pca = PCA(n_components=2)
+      X_2d = pca.fit_transform(X)
+      print(pca.explained_variance_ratio_)
+  confusions:
+    - PCA ignores the target. The directions with most spread are not always the most useful.
+  resources:
+    - title: "scikit-learn: PCA"
+      url: https://scikit-learn.org/stable/modules/decomposition.html
+    - title: "ISLR, chapter 12: Principal components analysis"
+      url: https://www.statlearning.com/
 
 - id: t-sne
   label: t-SNE
@@ -13,6 +58,44 @@
   oneLiner: "Squash data into a flat picture while keeping neighbors close."
   intuition: "t-SNE builds a 2D picture where nearby points stay nearby. Distances between far-apart clusters mean little. It is great for looking, not for modeling. It is like a seating plan that keeps friends together."
   analogy: "A seating plan that keeps friends together."
+  reducedRecipe:
+    goal:
+      text: Draw data with many columns as a 2D picture.
+      node: dimensionality-reduction-task
+    optimizes:
+      text: How well near neighbors stay near in the picture.
+    optimizer:
+      text: Gradient descent on the point positions.
+      node: gradient-descent
+    judgedBy:
+      text: Whether known groups appear as separate islands.
+  strengths:
+    - text: Shows local clusters very clearly.
+    - text: Works on curved structure that PCA misses.
+  weaknesses:
+    - text: Distances between clusters mean little.
+    - text: Slow, and different runs give different pictures.
+      fixedBy: umap
+  formula:
+    tex: \min \sum_{i \ne j} p_{ij} \log \frac{p_{ij}}{q_{ij}}
+    symbols:
+      - symbol: p_{ij}
+        meaning: How close points i and j are in the original data.
+      - symbol: q_{ij}
+        meaning: How close they are in the 2D picture.
+      - symbol: \log
+        meaning: The penalty grows fast when close points end up far apart.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.manifold import TSNE
+      tsne = TSNE(n_components=2, perplexity=30)
+      X_2d = tsne.fit_transform(X)
+  confusions:
+    - Use t-SNE for looking, not as features for another model.
+  resources:
+    - title: "scikit-learn: t-SNE"
+      url: https://scikit-learn.org/stable/modules/manifold.html
 
 - id: umap
   label: UMAP
@@ -21,3 +104,40 @@
   oneLiner: "A faster neighbor-keeping map of data with many columns."
   intuition: "UMAP also makes a 2D picture that keeps neighbors together. It is faster than t-SNE and keeps more of the big picture. It is like a seating plan that also seats families at nearby tables."
   analogy: "A seating plan that also seats families at nearby tables."
+  reducedRecipe:
+    goal:
+      text: Draw data with many columns in a few dimensions.
+      node: dimensionality-reduction-task
+    optimizes:
+      text: How well the neighbor graph is kept in the picture.
+    optimizer:
+      text: Stochastic gradient descent on the point positions.
+      node: sgd-adam
+    judgedBy:
+      text: Whether known groups separate, and runs agree.
+  strengths:
+    - text: Faster than t-SNE on large data.
+    - text: Keeps more of the big picture between clusters.
+  weaknesses:
+    - text: Distances in the picture are still only rough.
+    - text: Results depend on its settings.
+      fixedBy: hyperparameter-tuning
+  formula:
+    tex: \min \sum_{i,j} \left[ v_{ij} \log \frac{v_{ij}}{w_{ij}} + (1 - v_{ij}) \log \frac{1 - v_{ij}}{1 - w_{ij}} \right]
+    symbols:
+      - symbol: v_{ij}
+        meaning: How strongly points i and j are linked in the original data.
+      - symbol: w_{ij}
+        meaning: How strongly they are linked in the picture.
+      - symbol: \log
+        meaning: Penalizes both lost links and false new ones.
+  code:
+    tool: scikit-learn
+    snippet: |
+      # umap-learn follows the scikit-learn interface
+      from umap import UMAP
+      reducer = UMAP(n_components=2, n_neighbors=15)
+      X_2d = reducer.fit_transform(X)
+  resources:
+    - title: "scikit-learn: Manifold learning, the family UMAP belongs to"
+      url: https://scikit-learn.org/stable/modules/manifold.html

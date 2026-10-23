@@ -44,3 +44,10 @@ test('layer and group are optional in input', () => {
   const { layer: _l, group: _g, ...rest } = minimalNode;
   expect(nodeSchema.safeParse(rest).success).toBe(true);
 });
+test('nested Phase 2 objects reject unknown keys (a YAML flow-map comma splits an unquoted value)', () => {
+  const slot = { text: 'Inertia', 'silhouette score': null };
+  const recipe = { problem: slot, modelFamily: { text: 'a' }, loss: { text: 'a' }, optimizer: { text: 'a' }, evaluation: { text: 'a' } };
+  expect(nodeSchema.safeParse({ ...minimalNode, kind: 'algorithm', recipe }).success).toBe(false);
+  expect(nodeSchema.safeParse({ ...minimalNode, strengths: [{ text: 'Fast', 'and simple.': null }] }).success).toBe(false);
+  expect(nodeSchema.safeParse({ ...minimalNode, formula: { tex: 'x', symbols: [{ symbol: 'x', meaning: 'A', 'b.': null }] } }).success).toBe(false);
+});

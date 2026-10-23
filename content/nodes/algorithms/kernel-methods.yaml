@@ -5,6 +5,59 @@
   oneLiner: "Find the boundary with the widest gap between the classes."
   intuition: "An SVM draws the line that keeps the classes as far apart as possible. Only the closest points, the support vectors, decide where it goes. It is like laying the widest road between two villages."
   analogy: "Laying the widest road between two villages."
+  recipe:
+    problem:
+      text: Mostly classification.
+      node: classification
+    modelFamily:
+      text: A widest-gap boundary, curved by a kernel.
+      node: kernel-trick
+    loss:
+      text: Hinge loss, which ignores points safely past the gap.
+      node: loss-function
+    optimizer:
+      text: A convex solver, or SGD for big data.
+      node: sgd-adam
+    evaluation:
+      text: Accuracy on held-out data, with settings chosen by cross-validation.
+      node: cross-validation
+  strengths:
+    - text: Strong on small and medium datasets with many features.
+    - text: Kernels give curved boundaries without new features.
+  weaknesses:
+    - text: Slow on large datasets.
+      fixedBy: sgd-adam
+    - text: Gives no probabilities by default.
+      fixedBy: logistic-regression
+    - text: Sensitive to feature scaling and its settings.
+      fixedBy: feature-scaling
+  formula:
+    tex: \min_{w, b} \tfrac{1}{2} \lVert w \rVert^2 + C \sum_i \max(0, 1 - y_i (w^\top x_i + b))
+    symbols:
+      - symbol: w
+        meaning: The weights that set the boundary's direction.
+      - symbol: \lVert w \rVert^2
+        meaning: Small weights mean a wide gap.
+      - symbol: C
+        meaning: How much each point inside the gap costs.
+      - symbol: y_i
+        meaning: The class of example i, written as plus or minus one.
+      - symbol: \max(0, \ldots)
+        meaning: The hinge. Points safely past the gap cost nothing.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.svm import SVC
+      model = SVC(kernel="rbf", C=1.0)
+      model.fit(X_train, y_train)
+      labels = model.predict(X_test)
+  confusions:
+    - Support vectors are training points, not a special kind of vector.
+  resources:
+    - title: "scikit-learn: Support vector machines"
+      url: https://scikit-learn.org/stable/modules/svm.html
+    - title: "ISLR, chapter 9: Support vector machines"
+      url: https://www.statlearning.com/
 
 - id: kernel-trick
   label: Kernel trick
@@ -13,3 +66,19 @@
   oneLiner: "Get curved boundaries by quietly working in a richer space."
   intuition: "Some classes can't be split by a straight line. A kernel compares points as if they had extra features. A straight cut there becomes a curve here. It is like lifting a tangled rope off the table to separate it."
   analogy: "Lifting a tangled rope off the table to separate it."
+  formula:
+    tex: k(x, z) = \exp\left( -\gamma \lVert x - z \rVert^2 \right)
+    symbols:
+      - symbol: k(x, z)
+        meaning: How similar points x and z are, from zero to one.
+      - symbol: \lVert x - z \rVert^2
+        meaning: The squared distance between the two points.
+      - symbol: \gamma
+        meaning: How fast similarity fades with distance.
+  confusions:
+    - A kernel never builds the extra features. It only computes how similar points would be.
+  resources:
+    - title: "scikit-learn: Kernel functions"
+      url: https://scikit-learn.org/stable/modules/svm.html
+    - title: "ISLR, chapter 9: Support vector machines"
+      url: https://www.statlearning.com/

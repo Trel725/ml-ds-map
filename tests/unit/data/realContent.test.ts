@@ -1,6 +1,7 @@
 import { expect, test } from 'vitest';
 import { buildContent } from '../../../src/data/build';
 import { formatIssue } from '../../../src/data/issues';
+import { realContent } from '../helpers/real';
 
 test('real content builds in strict mode', async () => {
   const r = await buildContent('content', { strict: true });
@@ -13,4 +14,54 @@ test('tour 1 exists with 6 stops', async () => {
   const t = (await buildContent('content', { strict: true })).content.tours.find((t) => t.id === 'how-a-model-learns')!;
   expect(t.title).toBe('How a model learns');
   expect(t.stops.map((s) => s.node)).toEqual(['functions-and-graphs', 'loss-function', 'slope', 'gradient', 'gradient-descent', 'logistic-regression']);
+});
+
+const RECIPE = ['ols','ridge','lasso','elastic-net','logistic-regression','glm','perceptron','neural-network','decision-tree','bagging-method','random-forest','adaboost','gradient-boosting','xgboost','lightgbm','naive-bayes','lda-classifier','qda','knn','svm','arima','exponential-smoothing'];
+const REDUCED = ['gaussian-mixtures','k-means','hierarchical-clustering','dbscan','pca','t-sne','umap'];
+const NO_RECIPE = ['backpropagation', 'kernel-trick', 'decision-stump'];
+
+test('algorithms carry recipes', async () => {
+  const c = await realContent();
+  const byId = new Map(c.nodes.map((n) => [n.id, n]));
+  for (const id of RECIPE) expect(byId.get(id)?.recipe, id).toBeDefined();
+  for (const id of REDUCED) expect(byId.get(id)?.reducedRecipe, id).toBeDefined();
+  for (const id of NO_RECIPE) expect(byId.get(id)?.recipe ?? byId.get(id)?.reducedRecipe, id).toBeUndefined();
+  expect(byId.get('ols')!.recipe!.optimizer.node).toBe('analytical-solution');
+  expect(byId.get('logistic-regression')!.recipe!.loss.node).toBe('log-loss');
+});
+
+test('recipe slots link problems, optimizers and losses to the shared nodes', async () => {
+  const c = await realContent();
+  const byId = new Map(c.nodes.map((n) => [n.id, n]));
+  for (const id of RECIPE) {
+    const r = byId.get(id)!.recipe!;
+    expect(['regression', 'classification', 'forecasting'], `${id} problem`).toContain(r.problem.node);
+    // kNN stores the examples and fits nothing, so its optimizer slot has no node to link.
+    if (id === 'knn') expect(r.optimizer.node).toBeUndefined();
+    else expect(['analytical-solution', 'gradient-descent', 'sgd-adam', 'newtons-method', 'greedy-search'], `${id} optimizer`).toContain(r.optimizer.node);
+    if (r.loss.node !== undefined) expect(['log-loss', 'loss-function'], `${id} loss`).toContain(r.loss.node);
+  }
+});
+
+test('recipe algorithms have strengths, weaknesses, formula and code', async () => {
+  const c = await realContent();
+  const byId = new Map(c.nodes.map((n) => [n.id, n]));
+  for (const id of [...RECIPE, ...REDUCED]) {
+    const n = byId.get(id)!;
+    expect(n.strengths?.length, `${id} strengths`).toBeGreaterThanOrEqual(2);
+    expect(n.weaknesses?.length, `${id} weaknesses`).toBeGreaterThanOrEqual(2);
+    expect(n.formula, `${id} formula`).toBeDefined();
+    expect(n.code, `${id} code`).toBeDefined();
+    expect(n.resources?.length, `${id} resources`).toBeGreaterThanOrEqual(1);
+  }
+  expect(byId.get('decision-stump')!.weaknesses?.length).toBeGreaterThanOrEqual(2);
+});
+
+test('required fixedBy links', async () => {
+  const c = await realContent();
+  const fixers = (id: string) => (c.nodes.find((n) => n.id === id)!.weaknesses ?? []).map((w) => w.fixedBy);
+  expect(fixers('decision-tree')).toContain('random-forest');
+  expect(fixers('decision-stump')).toContain('gradient-boosting');
+  expect(fixers('ols')).toContain('ridge');
+  expect(fixers('perceptron')).toContain('neural-network');
 });

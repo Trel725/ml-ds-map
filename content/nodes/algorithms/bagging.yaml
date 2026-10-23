@@ -5,6 +5,52 @@
   oneLiner: "Train many models on resampled data and average them."
   intuition: "Draw many bootstrap samples from the data. Fit one model to each and average their answers. Their random errors partly cancel out. It is like many people guessing the weight of a cow."
   analogy: "Many people guessing the weight of a cow."
+  recipe:
+    problem:
+      text: Either regression or classification.
+      node: classification
+    modelFamily:
+      text: An average of many models, usually trees.
+      node: decision-tree
+    loss:
+      text: Whatever loss the base model uses.
+      node: loss-function
+    optimizer:
+      text: Each tree is grown greedily on its own bootstrap sample.
+      node: greedy-search
+    evaluation:
+      text: Held-out error, or the free out-of-bag estimate.
+      node: train-test-split
+  strengths:
+    - text: Cuts the variance of unstable models like trees.
+    - text: Trees train in parallel.
+  weaknesses:
+    - text: The trees stay similar, since they all see every feature.
+      fixedBy: random-forest
+    - text: Does little for models that are already stable, like OLS.
+  formula:
+    tex: \hat{f}(x) = \frac{1}{B} \sum_{b=1}^{B} \hat{f}_b(x)
+    symbols:
+      - symbol: \hat{f}(x)
+        meaning: The bagged prediction for input x.
+      - symbol: B
+        meaning: The number of bootstrap samples, one model each.
+      - symbol: \hat{f}_b(x)
+        meaning: The prediction of the model trained on sample b.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.ensemble import BaggingClassifier
+      from sklearn.tree import DecisionTreeClassifier
+      model = BaggingClassifier(DecisionTreeClassifier(), n_estimators=100)
+      model.fit(X_train, y_train)
+  confusions:
+    - Bagging trains models side by side. Boosting trains them one after another.
+  resources:
+    - title: "scikit-learn: Bagging"
+      url: https://scikit-learn.org/stable/modules/ensemble.html
+    - title: "ISLR, chapter 8: Bagging"
+      url: https://www.statlearning.com/
 
 - id: random-forest
   label: Random forest
@@ -13,3 +59,54 @@
   oneLiner: "Many varied decision trees voting together."
   intuition: "Each tree sees a bootstrap sample and random subsets of features. The trees make different mistakes. Averaging them cancels much of each tree's variance. It is like many people guessing the weight of a cow."
   analogy: "Many people guessing the weight of a cow."
+  recipe:
+    problem:
+      text: Either regression or classification.
+      node: classification
+    modelFamily:
+      text: Many decision trees, averaged.
+      node: decision-tree
+    loss:
+      text: Gini or squared error inside each tree.
+      node: loss-function
+    optimizer:
+      text: Greedy splitting on random feature subsets.
+      node: greedy-search
+    evaluation:
+      text: Held-out error, or the out-of-bag estimate.
+      node: train-test-split
+  strengths:
+    - text: Accurate with almost no tuning.
+    - text: Much lower variance than a single tree.
+    - text: Shows which features matter most.
+  weaknesses:
+    - text: Harder to explain than one tree.
+      fixedBy: interpretability
+    - text: Large forests are slow to predict and big to store.
+    - text: Often a little less accurate than tuned boosting.
+      fixedBy: gradient-boosting
+  formula:
+    tex: \hat{f}(x) = \frac{1}{B} \sum_{b=1}^{B} T_b(x)
+    symbols:
+      - symbol: \hat{f}(x)
+        meaning: The forest's prediction for input x.
+      - symbol: B
+        meaning: The number of trees.
+      - symbol: T_b(x)
+        meaning: The prediction of tree b, grown on random rows and features.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.ensemble import RandomForestClassifier
+      model = RandomForestClassifier(n_estimators=300)
+      model.fit(X_train, y_train)
+      print(model.feature_importances_)
+  confusions:
+    - More trees never cause overfitting. They only cost time.
+  resources:
+    - title: "MLU-Explain: Random forest"
+      url: https://mlu-explain.github.io/random-forest/
+    - title: "scikit-learn: Random forests"
+      url: https://scikit-learn.org/stable/modules/ensemble.html
+    - title: "ISLR, chapter 8: Random forests"
+      url: https://www.statlearning.com/

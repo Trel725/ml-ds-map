@@ -6,6 +6,57 @@
   oneLiner: "Forecast a series from its own past values and past errors."
   intuition: "ARIMA combines three ideas. It uses past values, past forecast errors and differencing to remove trend. It is like predicting tomorrow's queue from today's queue and how wrong you were."
   analogy: "Predicting tomorrow's queue from today's queue and how wrong you were."
+  recipe:
+    problem:
+      text: Forecasting future values of a series.
+      node: forecasting
+    modelFamily:
+      text: Linear in past values and past errors.
+    loss:
+      text: The negative log-likelihood of the errors.
+      node: loss-function
+    optimizer:
+      text: A quasi-Newton search for the best fit.
+      node: newtons-method
+    evaluation:
+      text: Forecast error on later, held-out periods.
+      node: time-series-cv
+  strengths:
+    - text: A well-understood classic with prediction intervals.
+    - text: Works with short series.
+  weaknesses:
+    - text: The series must be made stationary first.
+      fixedBy: stationarity
+    - text: Captures only linear patterns.
+  formula:
+    tex: y'_t = c + \sum_{i=1}^{p} \phi_i y'_{t-i} + \sum_{j=1}^{q} \theta_j \varepsilon_{t-j} + \varepsilon_t
+    symbols:
+      - symbol: y'_t
+        meaning: The value at time t after differencing d times.
+      - symbol: p, q
+        meaning: How many past values and past errors to use.
+      - symbol: \phi_i
+        meaning: The weight on the value i steps back.
+      - symbol: \theta_j
+        meaning: The weight on the forecast error j steps back.
+      - symbol: \varepsilon_t
+        meaning: The new surprise at time t.
+      - symbol: c
+        meaning: A constant level.
+  code:
+    tool: statsmodels
+    snippet: |
+      from statsmodels.tsa.arima.model import ARIMA
+      model = ARIMA(series, order=(1, 1, 1))
+      result = model.fit()
+      forecast = result.forecast(steps=12)
+  confusions:
+    - The I in ARIMA means integrated. It is the differencing step, not a separate model.
+  resources:
+    - title: "statsmodels: ARIMA"
+      url: https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html
+    - title: "statsmodels: ARMA example with sunspots"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/tsa_arma_0.html
 
 - id: exponential-smoothing
   label: Exponential smoothing
@@ -15,3 +66,44 @@
   oneLiner: "Forecast with a weighted average that favors recent values."
   intuition: "Recent observations count most, and older ones fade away. Extensions add trend and seasonality. It is like remembering last week clearly and last year vaguely."
   analogy: "Remembering last week clearly and last year vaguely."
+  recipe:
+    problem:
+      text: Forecasting future values of a series.
+      node: forecasting
+    modelFamily:
+      text: Weighted averages that fade with age.
+    loss:
+      text: Squared one-step forecast error.
+      node: loss-function
+    optimizer:
+      text: A quasi-Newton search for the smoothing weights.
+      node: newtons-method
+    evaluation:
+      text: Forecast error on later, held-out periods.
+      node: time-series-cv
+  strengths:
+    - text: Simple, fast and often hard to beat.
+    - text: Handles trend and seasonality with small extensions.
+  weaknesses:
+    - text: Can't use outside features like price or weather.
+      fixedBy: lag-features
+    - text: Assumes the recent pattern continues.
+  formula:
+    tex: \ell_t = \alpha y_t + (1 - \alpha) \ell_{t-1}
+    symbols:
+      - symbol: \ell_t
+        meaning: The smoothed level at time t, also the next forecast.
+      - symbol: y_t
+        meaning: The value observed at time t.
+      - symbol: \alpha
+        meaning: Between zero and one. Bigger means recent values count more.
+  code:
+    tool: statsmodels
+    snippet: |
+      from statsmodels.tsa.holtwinters import ExponentialSmoothing
+      model = ExponentialSmoothing(series, trend="add", seasonal="add", seasonal_periods=12)
+      result = model.fit()
+      forecast = result.forecast(12)
+  resources:
+    - title: "statsmodels: Exponential smoothing"
+      url: https://www.statsmodels.org/stable/examples/notebooks/generated/exponential_smoothing.html
