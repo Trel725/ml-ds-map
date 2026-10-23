@@ -6,4 +6,5 @@ export const registry: Partial<Record<VizId, () => Promise<{ default: VizModule 
   logarithms: () => import('./logarithms'),
   'slope-derivative': () => import('./slope-derivative'),
   'gradient-descent': () => import('./gradient-descent'),
+  'ols-fit': () => import('./ols-fit'),
 };

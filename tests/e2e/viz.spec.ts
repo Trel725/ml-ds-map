@@ -49,3 +49,8 @@ test('gradient-descent', async ({ page }) => {
   for (let i = 0; i < 25; i++) await page.keyboard.press('Enter');
   await expect(readout).toContainText('exploding');
 });
+
+test('ols-fit', async ({ page }) => {
+  const { readout } = await exercise(page, 'ols', 'ols-fit', (v) => v.getByRole('slider').first(), ['ArrowUp', 'ArrowUp', 'ArrowUp']);
+  await expect(readout).toHaveText(/^Total square area \d+$/);
+});
