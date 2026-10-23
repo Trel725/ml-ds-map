@@ -1,0 +1,2 @@
+nodes:
+  - { id: no-needs, label: No needs, layer: core, group: g-core, kind: concept, oneLiner: Short., intuition: One here. Two here. }

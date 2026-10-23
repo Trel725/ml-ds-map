@@ -1,0 +1,2 @@
+nodes:
+  - { id: wordy, label: Wordy, layer: foundations, group: g-found, kind: foundation, showsUpIn: Somewhere., oneLiner: This one liner goes on and on with many words well beyond the fifteen word limit, intuition: One here. Two here. }

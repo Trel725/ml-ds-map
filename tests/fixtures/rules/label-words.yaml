@@ -1,0 +1,2 @@
+nodes:
+  - { id: long-label, label: Four words in label, layer: foundations, group: g-found, kind: foundation, showsUpIn: Somewhere., oneLiner: Short., intuition: One here. Two here. }

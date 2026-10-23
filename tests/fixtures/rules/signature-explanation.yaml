@@ -1,0 +1,2 @@
+edges:
+  - { from: slope, type: needs, to: x, sentence: Slope needs x., signature: true }

@@ -1,0 +1,2 @@
+nodes:
+  - { id: one-sentence, label: One sentence, layer: foundations, group: g-found, kind: foundation, showsUpIn: Somewhere., oneLiner: Short., intuition: Only one sentence. }

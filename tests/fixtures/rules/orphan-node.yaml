@@ -1,0 +1,2 @@
+nodes:
+  - { id: lonely, label: Lonely, layer: foundations, group: g-found, kind: foundation, showsUpIn: Somewhere., oneLiner: Short., intuition: One here. Two here. }

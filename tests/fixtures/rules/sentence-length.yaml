@@ -1,0 +1,2 @@
+nodes:
+  - { id: rambling, label: Rambling, layer: foundations, group: g-found, kind: foundation, showsUpIn: Somewhere., oneLiner: Short., intuition: This single sentence keeps going and going for far too long so that it ends up with more than twenty words in it. Two here. }
