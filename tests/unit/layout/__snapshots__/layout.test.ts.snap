@@ -1,0 +1,4732 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`allExpanded > snapshot 1`] = `
+{
+  "groupBoxes": [
+    [
+      "algebra-basics",
+      {
+        "expanded": true,
+        "h": 140,
+        "w": 660,
+        "x": 120,
+        "y": 740,
+      },
+    ],
+    [
+      "applied-tasks",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 336,
+        "x": 1164,
+        "y": 20,
+      },
+    ],
+    [
+      "bagging",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 336,
+        "x": 1686,
+        "y": 172,
+      },
+    ],
+    [
+      "boosting",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 660,
+        "x": 2046,
+        "y": 172,
+      },
+    ],
+    [
+      "calculus",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 498,
+        "x": 804,
+        "y": 588,
+      },
+    ],
+    [
+      "clustering",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 498,
+        "x": 3972,
+        "y": 172,
+      },
+    ],
+    [
+      "data-basics",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 498,
+        "x": 804,
+        "y": 768,
+      },
+    ],
+    [
+      "data-preparation",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 498,
+        "x": 2172,
+        "y": 380,
+      },
+    ],
+    [
+      "dimensionality-reduction",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 498,
+        "x": 4494,
+        "y": 172,
+      },
+    ],
+    [
+      "econometrics",
+      {
+        "expanded": true,
+        "h": 196,
+        "w": 660,
+        "x": 3054,
+        "y": 324,
+      },
+    ],
+    [
+      "explaining-models",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 336,
+        "x": 2694,
+        "y": 380,
+      },
+    ],
+    [
+      "generalization",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 660,
+        "x": 804,
+        "y": 380,
+      },
+    ],
+    [
+      "instance-based",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 174,
+        "x": 3414,
+        "y": 172,
+      },
+    ],
+    [
+      "kernel-methods",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 336,
+        "x": 3612,
+        "y": 172,
+      },
+    ],
+    [
+      "linear-algebra",
+      {
+        "expanded": true,
+        "h": 140,
+        "w": 660,
+        "x": 120,
+        "y": 560,
+      },
+    ],
+    [
+      "linear-models",
+      {
+        "expanded": true,
+        "h": 140,
+        "w": 660,
+        "x": 120,
+        "y": 144,
+      },
+    ],
+    [
+      "modeling-basics",
+      {
+        "expanded": true,
+        "h": 140,
+        "w": 660,
+        "x": 120,
+        "y": 352,
+      },
+    ],
+    [
+      "neural-networks",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 498,
+        "x": 804,
+        "y": 172,
+      },
+    ],
+    [
+      "optimization",
+      {
+        "expanded": true,
+        "h": 140,
+        "w": 660,
+        "x": 1326,
+        "y": 560,
+      },
+    ],
+    [
+      "prediction-tasks",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 498,
+        "x": 120,
+        "y": 20,
+      },
+    ],
+    [
+      "probabilistic-models",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 660,
+        "x": 2730,
+        "y": 172,
+      },
+    ],
+    [
+      "probability",
+      {
+        "expanded": true,
+        "h": 140,
+        "w": 660,
+        "x": 2010,
+        "y": 560,
+      },
+    ],
+    [
+      "statistics",
+      {
+        "expanded": true,
+        "h": 140,
+        "w": 660,
+        "x": 2694,
+        "y": 560,
+      },
+    ],
+    [
+      "structure-tasks",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 498,
+        "x": 642,
+        "y": 20,
+      },
+    ],
+    [
+      "text-processing",
+      {
+        "expanded": true,
+        "h": 140,
+        "w": 660,
+        "x": 3738,
+        "y": 352,
+      },
+    ],
+    [
+      "time-series-basics",
+      {
+        "expanded": true,
+        "h": 140,
+        "w": 660,
+        "x": 4422,
+        "y": 352,
+      },
+    ],
+    [
+      "time-series-models",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 336,
+        "x": 5016,
+        "y": 172,
+      },
+    ],
+    [
+      "trees",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 336,
+        "x": 1326,
+        "y": 172,
+      },
+    ],
+    [
+      "validation",
+      {
+        "expanded": true,
+        "h": 84,
+        "w": 660,
+        "x": 1488,
+        "y": 380,
+      },
+    ],
+  ],
+  "height": 900,
+  "lanes": [
+    {
+      "h": 124,
+      "label": "Problems",
+      "layer": "problems",
+      "y": 0,
+    },
+    {
+      "h": 180,
+      "label": "Algorithms",
+      "layer": "algorithms",
+      "y": 124,
+    },
+    {
+      "h": 236,
+      "label": "Core concepts",
+      "layer": "core",
+      "y": 304,
+    },
+    {
+      "h": 180,
+      "label": "Math",
+      "layer": "math",
+      "y": 540,
+    },
+    {
+      "h": 180,
+      "label": "Foundations",
+      "layer": "foundations",
+      "y": 720,
+    },
+  ],
+  "nodePositions": [
+    [
+      "adaboost",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2058,
+        "y": 200,
+      },
+    ],
+    [
+      "analytical-solution",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1500,
+        "y": 588,
+      },
+    ],
+    [
+      "anomaly-detection",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 978,
+        "y": 48,
+      },
+    ],
+    [
+      "arima",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 5028,
+        "y": 200,
+      },
+    ],
+    [
+      "autocorrelation",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4758,
+        "y": 380,
+      },
+    ],
+    [
+      "averages-and-spread",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 816,
+        "y": 796,
+      },
+    ],
+    [
+      "backpropagation",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1140,
+        "y": 200,
+      },
+    ],
+    [
+      "bag-of-words",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3912,
+        "y": 380,
+      },
+    ],
+    [
+      "bagging-method",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1698,
+        "y": 200,
+      },
+    ],
+    [
+      "basic-probability",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 978,
+        "y": 796,
+      },
+    ],
+    [
+      "bayes-rule",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2346,
+        "y": 588,
+      },
+    ],
+    [
+      "bias-variance",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 978,
+        "y": 408,
+      },
+    ],
+    [
+      "bootstrap",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2868,
+        "y": 644,
+      },
+    ],
+    [
+      "causal-effect-estimation",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1176,
+        "y": 48,
+      },
+    ],
+    [
+      "central-limit-theorem",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2868,
+        "y": 588,
+      },
+    ],
+    [
+      "class-imbalance",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2508,
+        "y": 408,
+      },
+    ],
+    [
+      "classification",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 294,
+        "y": 48,
+      },
+    ],
+    [
+      "clustering-task",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 654,
+        "y": 48,
+      },
+    ],
+    [
+      "coefficient-interpretation",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3390,
+        "y": 352,
+      },
+    ],
+    [
+      "confidence-intervals",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3192,
+        "y": 588,
+      },
+    ],
+    [
+      "convexity",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1500,
+        "y": 644,
+      },
+    ],
+    [
+      "correlation-causation",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3030,
+        "y": 644,
+      },
+    ],
+    [
+      "cross-validation",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1662,
+        "y": 408,
+      },
+    ],
+    [
+      "curse-of-dimensionality",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1302,
+        "y": 408,
+      },
+    ],
+    [
+      "data-leakage",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1986,
+        "y": 408,
+      },
+    ],
+    [
+      "dbscan",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4308,
+        "y": 200,
+      },
+    ],
+    [
+      "decision-stump",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1500,
+        "y": 200,
+      },
+    ],
+    [
+      "decision-tree",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1338,
+        "y": 200,
+      },
+    ],
+    [
+      "derivative",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 816,
+        "y": 616,
+      },
+    ],
+    [
+      "difference-in-differences",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3066,
+        "y": 464,
+      },
+    ],
+    [
+      "dimensionality-reduction-task",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 816,
+        "y": 48,
+      },
+    ],
+    [
+      "distance",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 132,
+        "y": 824,
+      },
+    ],
+    [
+      "distributions",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2184,
+        "y": 588,
+      },
+    ],
+    [
+      "dot-product",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 294,
+        "y": 588,
+      },
+    ],
+    [
+      "econometric-ols",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3066,
+        "y": 352,
+      },
+    ],
+    [
+      "eigen-svd",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 132,
+        "y": 644,
+      },
+    ],
+    [
+      "elastic-net",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 618,
+        "y": 172,
+      },
+    ],
+    [
+      "expectation-variance",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2508,
+        "y": 588,
+      },
+    ],
+    [
+      "exponential-smoothing",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 5190,
+        "y": 200,
+      },
+    ],
+    [
+      "exponents-and-logarithms",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 294,
+        "y": 768,
+      },
+    ],
+    [
+      "feature-engineering",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2184,
+        "y": 408,
+      },
+    ],
+    [
+      "feature-scaling",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2346,
+        "y": 408,
+      },
+    ],
+    [
+      "features-and-target",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 132,
+        "y": 380,
+      },
+    ],
+    [
+      "forecasting",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 456,
+        "y": 48,
+      },
+    ],
+    [
+      "functions-and-graphs",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 132,
+        "y": 768,
+      },
+    ],
+    [
+      "gaussian-mixtures",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3228,
+        "y": 200,
+      },
+    ],
+    [
+      "generative-vs-discriminative",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 294,
+        "y": 436,
+      },
+    ],
+    [
+      "glm",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 294,
+        "y": 228,
+      },
+    ],
+    [
+      "gradient",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 978,
+        "y": 616,
+      },
+    ],
+    [
+      "gradient-boosting",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2220,
+        "y": 200,
+      },
+    ],
+    [
+      "gradient-descent",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1662,
+        "y": 588,
+      },
+    ],
+    [
+      "greedy-search",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1824,
+        "y": 644,
+      },
+    ],
+    [
+      "heteroskedasticity",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3552,
+        "y": 352,
+      },
+    ],
+    [
+      "hierarchical-clustering",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4146,
+        "y": 200,
+      },
+    ],
+    [
+      "hyperparameter-tuning",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1824,
+        "y": 408,
+      },
+    ],
+    [
+      "hyperparameters",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 294,
+        "y": 380,
+      },
+    ],
+    [
+      "hypothesis-testing",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2706,
+        "y": 644,
+      },
+    ],
+    [
+      "chain-rule",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1140,
+        "y": 616,
+      },
+    ],
+    [
+      "independence",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2022,
+        "y": 644,
+      },
+    ],
+    [
+      "instrumental-variables",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3390,
+        "y": 408,
+      },
+    ],
+    [
+      "interpretability",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2868,
+        "y": 408,
+      },
+    ],
+    [
+      "k-means",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3984,
+        "y": 200,
+      },
+    ],
+    [
+      "kernel-trick",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3786,
+        "y": 200,
+      },
+    ],
+    [
+      "knn",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3426,
+        "y": 200,
+      },
+    ],
+    [
+      "lag-features",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4920,
+        "y": 380,
+      },
+    ],
+    [
+      "lasso",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 456,
+        "y": 172,
+      },
+    ],
+    [
+      "lda-classifier",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2904,
+        "y": 200,
+      },
+    ],
+    [
+      "learning-rate",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1338,
+        "y": 644,
+      },
+    ],
+    [
+      "lightgbm",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2544,
+        "y": 200,
+      },
+    ],
+    [
+      "log-loss",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 618,
+        "y": 380,
+      },
+    ],
+    [
+      "logistic-regression",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 132,
+        "y": 228,
+      },
+    ],
+    [
+      "logit-probit",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3228,
+        "y": 464,
+      },
+    ],
+    [
+      "loss-function",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 456,
+        "y": 380,
+      },
+    ],
+    [
+      "loss-landscape",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1338,
+        "y": 588,
+      },
+    ],
+    [
+      "matrices",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 456,
+        "y": 588,
+      },
+    ],
+    [
+      "mle",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2184,
+        "y": 644,
+      },
+    ],
+    [
+      "multicollinearity",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3066,
+        "y": 408,
+      },
+    ],
+    [
+      "naive-bayes",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2742,
+        "y": 200,
+      },
+    ],
+    [
+      "neural-network",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 978,
+        "y": 200,
+      },
+    ],
+    [
+      "newtons-method",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1662,
+        "y": 644,
+      },
+    ],
+    [
+      "notation",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 456,
+        "y": 768,
+      },
+    ],
+    [
+      "ols",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 132,
+        "y": 172,
+      },
+    ],
+    [
+      "ols-assumptions",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3228,
+        "y": 352,
+      },
+    ],
+    [
+      "omitted-variable-bias",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3228,
+        "y": 408,
+      },
+    ],
+    [
+      "overfitting",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 816,
+        "y": 408,
+      },
+    ],
+    [
+      "panel-data",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3552,
+        "y": 408,
+      },
+    ],
+    [
+      "parametric-vs-nonparametric",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 132,
+        "y": 436,
+      },
+    ],
+    [
+      "pca",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4506,
+        "y": 200,
+      },
+    ],
+    [
+      "perceptron",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 816,
+        "y": 200,
+      },
+    ],
+    [
+      "prediction-vs-explanation",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2706,
+        "y": 408,
+      },
+    ],
+    [
+      "projections",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 618,
+        "y": 588,
+      },
+    ],
+    [
+      "qda",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3066,
+        "y": 200,
+      },
+    ],
+    [
+      "random-forest",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1860,
+        "y": 200,
+      },
+    ],
+    [
+      "random-variables",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2022,
+        "y": 588,
+      },
+    ],
+    [
+      "reading-plots",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1140,
+        "y": 796,
+      },
+    ],
+    [
+      "regression",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 132,
+        "y": 48,
+      },
+    ],
+    [
+      "regularization",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1140,
+        "y": 408,
+      },
+    ],
+    [
+      "ridge",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 294,
+        "y": 172,
+      },
+    ],
+    [
+      "sampling-distributions",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2706,
+        "y": 588,
+      },
+    ],
+    [
+      "sgd-adam",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1824,
+        "y": 588,
+      },
+    ],
+    [
+      "slope",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 618,
+        "y": 768,
+      },
+    ],
+    [
+      "standard-errors",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3030,
+        "y": 588,
+      },
+    ],
+    [
+      "stationarity",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4596,
+        "y": 380,
+      },
+    ],
+    [
+      "svm",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3624,
+        "y": 200,
+      },
+    ],
+    [
+      "t-sne",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4668,
+        "y": 200,
+      },
+    ],
+    [
+      "text-tasks",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1338,
+        "y": 48,
+      },
+    ],
+    [
+      "tf-idf",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4074,
+        "y": 380,
+      },
+    ],
+    [
+      "time-series-cv",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4434,
+        "y": 436,
+      },
+    ],
+    [
+      "tokenization",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3750,
+        "y": 380,
+      },
+    ],
+    [
+      "topic-models",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3750,
+        "y": 436,
+      },
+    ],
+    [
+      "train-test-split",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1500,
+        "y": 408,
+      },
+    ],
+    [
+      "transformers",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 3912,
+        "y": 436,
+      },
+    ],
+    [
+      "trend-seasonality",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4434,
+        "y": 380,
+      },
+    ],
+    [
+      "umap",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4830,
+        "y": 200,
+      },
+    ],
+    [
+      "vectors",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 132,
+        "y": 588,
+      },
+    ],
+    [
+      "word-embeddings",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 4236,
+        "y": 380,
+      },
+    ],
+    [
+      "xgboost",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 2382,
+        "y": 200,
+      },
+    ],
+  ],
+  "toolPositions": [
+    [
+      "matplotlib-seaborn",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 5392,
+        "y": 92,
+      },
+    ],
+    [
+      "nltk-spacy",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 5392,
+        "y": 272,
+      },
+    ],
+    [
+      "numpy",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 5392,
+        "y": 20,
+      },
+    ],
+    [
+      "pandas",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 5392,
+        "y": 56,
+      },
+    ],
+    [
+      "pytorch",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 5392,
+        "y": 236,
+      },
+    ],
+    [
+      "scikit-learn",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 5392,
+        "y": 128,
+      },
+    ],
+    [
+      "statsmodels",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 5392,
+        "y": 164,
+      },
+    ],
+    [
+      "xgboost-lightgbm",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 5392,
+        "y": 200,
+      },
+    ],
+  ],
+  "width": 5552,
+}
+`;
+
+exports[`collapsed > snapshot 1`] = `
+{
+  "groupBoxes": [
+    [
+      "algebra-basics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 144,
+        "x": 120,
+        "y": 340,
+      },
+    ],
+    [
+      "applied-tasks",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 136,
+        "x": 496,
+        "y": 20,
+      },
+    ],
+    [
+      "bagging",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 96,
+        "x": 576,
+        "y": 100,
+      },
+    ],
+    [
+      "boosting",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 96,
+        "x": 696,
+        "y": 100,
+      },
+    ],
+    [
+      "calculus",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 96,
+        "x": 288,
+        "y": 260,
+      },
+    ],
+    [
+      "clustering",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 112,
+        "x": 1368,
+        "y": 100,
+      },
+    ],
+    [
+      "data-basics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 120,
+        "x": 288,
+        "y": 340,
+      },
+    ],
+    [
+      "data-preparation",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 160,
+        "x": 600,
+        "y": 180,
+      },
+    ],
+    [
+      "dimensionality-reduction",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 220,
+        "x": 1504,
+        "y": 100,
+      },
+    ],
+    [
+      "econometrics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "explaining-models",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 168,
+        "x": 784,
+        "y": 180,
+      },
+    ],
+    [
+      "generalization",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 144,
+        "x": 296,
+        "y": 180,
+      },
+    ],
+    [
+      "instance-based",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 144,
+        "x": 1032,
+        "y": 100,
+      },
+    ],
+    [
+      "kernel-methods",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 144,
+        "x": 1200,
+        "y": 100,
+      },
+    ],
+    [
+      "linear-algebra",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 144,
+        "x": 120,
+        "y": 260,
+      },
+    ],
+    [
+      "linear-models",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "modeling-basics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "neural-networks",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 152,
+        "x": 280,
+        "y": 100,
+      },
+    ],
+    [
+      "optimization",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 128,
+        "x": 408,
+        "y": 260,
+      },
+    ],
+    [
+      "prediction-tasks",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 160,
+        "x": 120,
+        "y": 20,
+      },
+    ],
+    [
+      "probabilistic-models",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 192,
+        "x": 816,
+        "y": 100,
+      },
+    ],
+    [
+      "probability",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 120,
+        "x": 560,
+        "y": 260,
+      },
+    ],
+    [
+      "statistics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 112,
+        "x": 704,
+        "y": 260,
+      },
+    ],
+    [
+      "structure-tasks",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 168,
+        "x": 304,
+        "y": 20,
+      },
+    ],
+    [
+      "text-processing",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "time-series-basics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "time-series-models",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 176,
+        "x": 1748,
+        "y": 100,
+      },
+    ],
+    [
+      "trees",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 96,
+        "x": 456,
+        "y": 100,
+      },
+    ],
+    [
+      "validation",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 112,
+        "x": 464,
+        "y": 180,
+      },
+    ],
+  ],
+  "height": 400,
+  "lanes": [
+    {
+      "h": 80,
+      "label": "Problems",
+      "layer": "problems",
+      "y": 0,
+    },
+    {
+      "h": 80,
+      "label": "Algorithms",
+      "layer": "algorithms",
+      "y": 80,
+    },
+    {
+      "h": 80,
+      "label": "Core concepts",
+      "layer": "core",
+      "y": 160,
+    },
+    {
+      "h": 80,
+      "label": "Math",
+      "layer": "math",
+      "y": 240,
+    },
+    {
+      "h": 80,
+      "label": "Foundations",
+      "layer": "foundations",
+      "y": 320,
+    },
+  ],
+  "nodePositions": [
+    [
+      "adaboost",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 696,
+        "y": 100,
+      },
+    ],
+    [
+      "analytical-solution",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 408,
+        "y": 260,
+      },
+    ],
+    [
+      "anomaly-detection",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 168,
+        "x": 304,
+        "y": 20,
+      },
+    ],
+    [
+      "arima",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1748,
+        "y": 100,
+      },
+    ],
+    [
+      "autocorrelation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "averages-and-spread",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 288,
+        "y": 340,
+      },
+    ],
+    [
+      "backpropagation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 280,
+        "y": 100,
+      },
+    ],
+    [
+      "bag-of-words",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "bagging-method",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 576,
+        "y": 100,
+      },
+    ],
+    [
+      "basic-probability",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 288,
+        "y": 340,
+      },
+    ],
+    [
+      "bayes-rule",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 560,
+        "y": 260,
+      },
+    ],
+    [
+      "bias-variance",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 296,
+        "y": 180,
+      },
+    ],
+    [
+      "bootstrap",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 704,
+        "y": 260,
+      },
+    ],
+    [
+      "causal-effect-estimation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 496,
+        "y": 20,
+      },
+    ],
+    [
+      "central-limit-theorem",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 704,
+        "y": 260,
+      },
+    ],
+    [
+      "class-imbalance",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 600,
+        "y": 180,
+      },
+    ],
+    [
+      "classification",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 120,
+        "y": 20,
+      },
+    ],
+    [
+      "clustering-task",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 168,
+        "x": 304,
+        "y": 20,
+      },
+    ],
+    [
+      "coefficient-interpretation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "confidence-intervals",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 704,
+        "y": 260,
+      },
+    ],
+    [
+      "convexity",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 408,
+        "y": 260,
+      },
+    ],
+    [
+      "correlation-causation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 704,
+        "y": 260,
+      },
+    ],
+    [
+      "cross-validation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 464,
+        "y": 180,
+      },
+    ],
+    [
+      "curse-of-dimensionality",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 296,
+        "y": 180,
+      },
+    ],
+    [
+      "data-leakage",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 464,
+        "y": 180,
+      },
+    ],
+    [
+      "dbscan",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1368,
+        "y": 100,
+      },
+    ],
+    [
+      "decision-stump",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 456,
+        "y": 100,
+      },
+    ],
+    [
+      "decision-tree",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 456,
+        "y": 100,
+      },
+    ],
+    [
+      "derivative",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 288,
+        "y": 260,
+      },
+    ],
+    [
+      "difference-in-differences",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "dimensionality-reduction-task",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 168,
+        "x": 304,
+        "y": 20,
+      },
+    ],
+    [
+      "distance",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 340,
+      },
+    ],
+    [
+      "distributions",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 560,
+        "y": 260,
+      },
+    ],
+    [
+      "dot-product",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 260,
+      },
+    ],
+    [
+      "econometric-ols",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "eigen-svd",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 260,
+      },
+    ],
+    [
+      "elastic-net",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "expectation-variance",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 560,
+        "y": 260,
+      },
+    ],
+    [
+      "exponential-smoothing",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1748,
+        "y": 100,
+      },
+    ],
+    [
+      "exponents-and-logarithms",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 340,
+      },
+    ],
+    [
+      "feature-engineering",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 600,
+        "y": 180,
+      },
+    ],
+    [
+      "feature-scaling",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 600,
+        "y": 180,
+      },
+    ],
+    [
+      "features-and-target",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "forecasting",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 120,
+        "y": 20,
+      },
+    ],
+    [
+      "functions-and-graphs",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 340,
+      },
+    ],
+    [
+      "gaussian-mixtures",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 192,
+        "x": 816,
+        "y": 100,
+      },
+    ],
+    [
+      "generative-vs-discriminative",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "glm",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "gradient",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 288,
+        "y": 260,
+      },
+    ],
+    [
+      "gradient-boosting",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 696,
+        "y": 100,
+      },
+    ],
+    [
+      "gradient-descent",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 408,
+        "y": 260,
+      },
+    ],
+    [
+      "greedy-search",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 408,
+        "y": 260,
+      },
+    ],
+    [
+      "heteroskedasticity",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "hierarchical-clustering",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1368,
+        "y": 100,
+      },
+    ],
+    [
+      "hyperparameter-tuning",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 464,
+        "y": 180,
+      },
+    ],
+    [
+      "hyperparameters",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "hypothesis-testing",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 704,
+        "y": 260,
+      },
+    ],
+    [
+      "chain-rule",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 288,
+        "y": 260,
+      },
+    ],
+    [
+      "independence",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 560,
+        "y": 260,
+      },
+    ],
+    [
+      "instrumental-variables",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "interpretability",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 168,
+        "x": 784,
+        "y": 180,
+      },
+    ],
+    [
+      "k-means",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1368,
+        "y": 100,
+      },
+    ],
+    [
+      "kernel-trick",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 1200,
+        "y": 100,
+      },
+    ],
+    [
+      "knn",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 1032,
+        "y": 100,
+      },
+    ],
+    [
+      "lag-features",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "lasso",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "lda-classifier",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 192,
+        "x": 816,
+        "y": 100,
+      },
+    ],
+    [
+      "learning-rate",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 408,
+        "y": 260,
+      },
+    ],
+    [
+      "lightgbm",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 696,
+        "y": 100,
+      },
+    ],
+    [
+      "log-loss",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "logistic-regression",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "logit-probit",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "loss-function",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "loss-landscape",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 408,
+        "y": 260,
+      },
+    ],
+    [
+      "matrices",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 260,
+      },
+    ],
+    [
+      "mle",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 560,
+        "y": 260,
+      },
+    ],
+    [
+      "multicollinearity",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "naive-bayes",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 192,
+        "x": 816,
+        "y": 100,
+      },
+    ],
+    [
+      "neural-network",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 280,
+        "y": 100,
+      },
+    ],
+    [
+      "newtons-method",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 408,
+        "y": 260,
+      },
+    ],
+    [
+      "notation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 340,
+      },
+    ],
+    [
+      "ols",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "ols-assumptions",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "omitted-variable-bias",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "overfitting",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 296,
+        "y": 180,
+      },
+    ],
+    [
+      "panel-data",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "parametric-vs-nonparametric",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "pca",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 220,
+        "x": 1504,
+        "y": 100,
+      },
+    ],
+    [
+      "perceptron",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 280,
+        "y": 100,
+      },
+    ],
+    [
+      "prediction-vs-explanation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 168,
+        "x": 784,
+        "y": 180,
+      },
+    ],
+    [
+      "projections",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 260,
+      },
+    ],
+    [
+      "qda",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 192,
+        "x": 816,
+        "y": 100,
+      },
+    ],
+    [
+      "random-forest",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 576,
+        "y": 100,
+      },
+    ],
+    [
+      "random-variables",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 560,
+        "y": 260,
+      },
+    ],
+    [
+      "reading-plots",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 288,
+        "y": 340,
+      },
+    ],
+    [
+      "regression",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 120,
+        "y": 20,
+      },
+    ],
+    [
+      "regularization",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 296,
+        "y": 180,
+      },
+    ],
+    [
+      "ridge",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "sampling-distributions",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 704,
+        "y": 260,
+      },
+    ],
+    [
+      "sgd-adam",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 408,
+        "y": 260,
+      },
+    ],
+    [
+      "slope",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 340,
+      },
+    ],
+    [
+      "standard-errors",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 704,
+        "y": 260,
+      },
+    ],
+    [
+      "stationarity",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "svm",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 1200,
+        "y": 100,
+      },
+    ],
+    [
+      "t-sne",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 220,
+        "x": 1504,
+        "y": 100,
+      },
+    ],
+    [
+      "text-tasks",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 496,
+        "y": 20,
+      },
+    ],
+    [
+      "tf-idf",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "time-series-cv",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "tokenization",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "topic-models",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "train-test-split",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 464,
+        "y": 180,
+      },
+    ],
+    [
+      "transformers",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "trend-seasonality",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "umap",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 220,
+        "x": 1504,
+        "y": 100,
+      },
+    ],
+    [
+      "vectors",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 260,
+      },
+    ],
+    [
+      "word-embeddings",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "xgboost",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 696,
+        "y": 100,
+      },
+    ],
+  ],
+  "toolPositions": [
+    [
+      "matplotlib-seaborn",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 92,
+      },
+    ],
+    [
+      "nltk-spacy",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 272,
+      },
+    ],
+    [
+      "numpy",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 20,
+      },
+    ],
+    [
+      "pandas",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 56,
+      },
+    ],
+    [
+      "pytorch",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 236,
+      },
+    ],
+    [
+      "scikit-learn",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 128,
+      },
+    ],
+    [
+      "statsmodels",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 164,
+      },
+    ],
+    [
+      "xgboost-lightgbm",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 200,
+      },
+    ],
+  ],
+  "width": 2124,
+}
+`;
+
+exports[`oneExpanded > snapshot 1`] = `
+{
+  "groupBoxes": [
+    [
+      "algebra-basics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 144,
+        "x": 120,
+        "y": 440,
+      },
+    ],
+    [
+      "applied-tasks",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 136,
+        "x": 496,
+        "y": 20,
+      },
+    ],
+    [
+      "bagging",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 96,
+        "x": 576,
+        "y": 100,
+      },
+    ],
+    [
+      "boosting",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 96,
+        "x": 696,
+        "y": 100,
+      },
+    ],
+    [
+      "calculus",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 96,
+        "x": 288,
+        "y": 310,
+      },
+    ],
+    [
+      "clustering",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 112,
+        "x": 1368,
+        "y": 100,
+      },
+    ],
+    [
+      "data-basics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 120,
+        "x": 288,
+        "y": 440,
+      },
+    ],
+    [
+      "data-preparation",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 160,
+        "x": 600,
+        "y": 180,
+      },
+    ],
+    [
+      "dimensionality-reduction",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 220,
+        "x": 1504,
+        "y": 100,
+      },
+    ],
+    [
+      "econometrics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "explaining-models",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 168,
+        "x": 784,
+        "y": 180,
+      },
+    ],
+    [
+      "generalization",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 144,
+        "x": 296,
+        "y": 180,
+      },
+    ],
+    [
+      "instance-based",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 144,
+        "x": 1032,
+        "y": 100,
+      },
+    ],
+    [
+      "kernel-methods",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 144,
+        "x": 1200,
+        "y": 100,
+      },
+    ],
+    [
+      "linear-algebra",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 144,
+        "x": 120,
+        "y": 310,
+      },
+    ],
+    [
+      "linear-models",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "modeling-basics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "neural-networks",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 152,
+        "x": 280,
+        "y": 100,
+      },
+    ],
+    [
+      "optimization",
+      {
+        "expanded": true,
+        "h": 140,
+        "w": 660,
+        "x": 408,
+        "y": 260,
+      },
+    ],
+    [
+      "prediction-tasks",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 160,
+        "x": 120,
+        "y": 20,
+      },
+    ],
+    [
+      "probabilistic-models",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 192,
+        "x": 816,
+        "y": 100,
+      },
+    ],
+    [
+      "probability",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 120,
+        "x": 1092,
+        "y": 310,
+      },
+    ],
+    [
+      "statistics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 112,
+        "x": 1236,
+        "y": 310,
+      },
+    ],
+    [
+      "structure-tasks",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 168,
+        "x": 304,
+        "y": 20,
+      },
+    ],
+    [
+      "text-processing",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "time-series-basics",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "time-series-models",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 176,
+        "x": 1748,
+        "y": 100,
+      },
+    ],
+    [
+      "trees",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 96,
+        "x": 456,
+        "y": 100,
+      },
+    ],
+    [
+      "validation",
+      {
+        "expanded": false,
+        "h": 40,
+        "w": 112,
+        "x": 464,
+        "y": 180,
+      },
+    ],
+  ],
+  "height": 500,
+  "lanes": [
+    {
+      "h": 80,
+      "label": "Problems",
+      "layer": "problems",
+      "y": 0,
+    },
+    {
+      "h": 80,
+      "label": "Algorithms",
+      "layer": "algorithms",
+      "y": 80,
+    },
+    {
+      "h": 80,
+      "label": "Core concepts",
+      "layer": "core",
+      "y": 160,
+    },
+    {
+      "h": 180,
+      "label": "Math",
+      "layer": "math",
+      "y": 240,
+    },
+    {
+      "h": 80,
+      "label": "Foundations",
+      "layer": "foundations",
+      "y": 420,
+    },
+  ],
+  "nodePositions": [
+    [
+      "adaboost",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 696,
+        "y": 100,
+      },
+    ],
+    [
+      "analytical-solution",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 582,
+        "y": 288,
+      },
+    ],
+    [
+      "anomaly-detection",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 168,
+        "x": 304,
+        "y": 20,
+      },
+    ],
+    [
+      "arima",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1748,
+        "y": 100,
+      },
+    ],
+    [
+      "autocorrelation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "averages-and-spread",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 288,
+        "y": 440,
+      },
+    ],
+    [
+      "backpropagation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 280,
+        "y": 100,
+      },
+    ],
+    [
+      "bag-of-words",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "bagging-method",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 576,
+        "y": 100,
+      },
+    ],
+    [
+      "basic-probability",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 288,
+        "y": 440,
+      },
+    ],
+    [
+      "bayes-rule",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 1092,
+        "y": 310,
+      },
+    ],
+    [
+      "bias-variance",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 296,
+        "y": 180,
+      },
+    ],
+    [
+      "bootstrap",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1236,
+        "y": 310,
+      },
+    ],
+    [
+      "causal-effect-estimation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 496,
+        "y": 20,
+      },
+    ],
+    [
+      "central-limit-theorem",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1236,
+        "y": 310,
+      },
+    ],
+    [
+      "class-imbalance",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 600,
+        "y": 180,
+      },
+    ],
+    [
+      "classification",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 120,
+        "y": 20,
+      },
+    ],
+    [
+      "clustering-task",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 168,
+        "x": 304,
+        "y": 20,
+      },
+    ],
+    [
+      "coefficient-interpretation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "confidence-intervals",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1236,
+        "y": 310,
+      },
+    ],
+    [
+      "convexity",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 582,
+        "y": 344,
+      },
+    ],
+    [
+      "correlation-causation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1236,
+        "y": 310,
+      },
+    ],
+    [
+      "cross-validation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 464,
+        "y": 180,
+      },
+    ],
+    [
+      "curse-of-dimensionality",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 296,
+        "y": 180,
+      },
+    ],
+    [
+      "data-leakage",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 464,
+        "y": 180,
+      },
+    ],
+    [
+      "dbscan",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1368,
+        "y": 100,
+      },
+    ],
+    [
+      "decision-stump",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 456,
+        "y": 100,
+      },
+    ],
+    [
+      "decision-tree",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 456,
+        "y": 100,
+      },
+    ],
+    [
+      "derivative",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 288,
+        "y": 310,
+      },
+    ],
+    [
+      "difference-in-differences",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "dimensionality-reduction-task",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 168,
+        "x": 304,
+        "y": 20,
+      },
+    ],
+    [
+      "distance",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 440,
+      },
+    ],
+    [
+      "distributions",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 1092,
+        "y": 310,
+      },
+    ],
+    [
+      "dot-product",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 310,
+      },
+    ],
+    [
+      "econometric-ols",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "eigen-svd",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 310,
+      },
+    ],
+    [
+      "elastic-net",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "expectation-variance",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 1092,
+        "y": 310,
+      },
+    ],
+    [
+      "exponential-smoothing",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1748,
+        "y": 100,
+      },
+    ],
+    [
+      "exponents-and-logarithms",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 440,
+      },
+    ],
+    [
+      "feature-engineering",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 600,
+        "y": 180,
+      },
+    ],
+    [
+      "feature-scaling",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 600,
+        "y": 180,
+      },
+    ],
+    [
+      "features-and-target",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "forecasting",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 120,
+        "y": 20,
+      },
+    ],
+    [
+      "functions-and-graphs",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 440,
+      },
+    ],
+    [
+      "gaussian-mixtures",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 192,
+        "x": 816,
+        "y": 100,
+      },
+    ],
+    [
+      "generative-vs-discriminative",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "glm",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "gradient",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 288,
+        "y": 310,
+      },
+    ],
+    [
+      "gradient-boosting",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 696,
+        "y": 100,
+      },
+    ],
+    [
+      "gradient-descent",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 744,
+        "y": 288,
+      },
+    ],
+    [
+      "greedy-search",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 906,
+        "y": 344,
+      },
+    ],
+    [
+      "heteroskedasticity",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "hierarchical-clustering",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1368,
+        "y": 100,
+      },
+    ],
+    [
+      "hyperparameter-tuning",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 464,
+        "y": 180,
+      },
+    ],
+    [
+      "hyperparameters",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "hypothesis-testing",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1236,
+        "y": 310,
+      },
+    ],
+    [
+      "chain-rule",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 288,
+        "y": 310,
+      },
+    ],
+    [
+      "independence",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 1092,
+        "y": 310,
+      },
+    ],
+    [
+      "instrumental-variables",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "interpretability",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 168,
+        "x": 784,
+        "y": 180,
+      },
+    ],
+    [
+      "k-means",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1368,
+        "y": 100,
+      },
+    ],
+    [
+      "kernel-trick",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 1200,
+        "y": 100,
+      },
+    ],
+    [
+      "knn",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 1032,
+        "y": 100,
+      },
+    ],
+    [
+      "lag-features",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "lasso",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "lda-classifier",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 192,
+        "x": 816,
+        "y": 100,
+      },
+    ],
+    [
+      "learning-rate",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 420,
+        "y": 344,
+      },
+    ],
+    [
+      "lightgbm",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 696,
+        "y": 100,
+      },
+    ],
+    [
+      "log-loss",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "logistic-regression",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "logit-probit",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "loss-function",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "loss-landscape",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 420,
+        "y": 288,
+      },
+    ],
+    [
+      "matrices",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 310,
+      },
+    ],
+    [
+      "mle",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 1092,
+        "y": 310,
+      },
+    ],
+    [
+      "multicollinearity",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "naive-bayes",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 192,
+        "x": 816,
+        "y": 100,
+      },
+    ],
+    [
+      "neural-network",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 280,
+        "y": 100,
+      },
+    ],
+    [
+      "newtons-method",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 744,
+        "y": 344,
+      },
+    ],
+    [
+      "notation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 440,
+      },
+    ],
+    [
+      "ols",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "ols-assumptions",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "omitted-variable-bias",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "overfitting",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 296,
+        "y": 180,
+      },
+    ],
+    [
+      "panel-data",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 128,
+        "x": 976,
+        "y": 180,
+      },
+    ],
+    [
+      "parametric-vs-nonparametric",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 120,
+        "y": 180,
+      },
+    ],
+    [
+      "pca",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 220,
+        "x": 1504,
+        "y": 100,
+      },
+    ],
+    [
+      "perceptron",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 280,
+        "y": 100,
+      },
+    ],
+    [
+      "prediction-vs-explanation",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 168,
+        "x": 784,
+        "y": 180,
+      },
+    ],
+    [
+      "projections",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 310,
+      },
+    ],
+    [
+      "qda",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 192,
+        "x": 816,
+        "y": 100,
+      },
+    ],
+    [
+      "random-forest",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 576,
+        "y": 100,
+      },
+    ],
+    [
+      "random-variables",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 1092,
+        "y": 310,
+      },
+    ],
+    [
+      "reading-plots",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 120,
+        "x": 288,
+        "y": 440,
+      },
+    ],
+    [
+      "regression",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 160,
+        "x": 120,
+        "y": 20,
+      },
+    ],
+    [
+      "regularization",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 296,
+        "y": 180,
+      },
+    ],
+    [
+      "ridge",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 120,
+        "y": 100,
+      },
+    ],
+    [
+      "sampling-distributions",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1236,
+        "y": 310,
+      },
+    ],
+    [
+      "sgd-adam",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 906,
+        "y": 288,
+      },
+    ],
+    [
+      "slope",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 440,
+      },
+    ],
+    [
+      "standard-errors",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 1236,
+        "y": 310,
+      },
+    ],
+    [
+      "stationarity",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "svm",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 1200,
+        "y": 100,
+      },
+    ],
+    [
+      "t-sne",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 220,
+        "x": 1504,
+        "y": 100,
+      },
+    ],
+    [
+      "text-tasks",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 136,
+        "x": 496,
+        "y": 20,
+      },
+    ],
+    [
+      "tf-idf",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "time-series-cv",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "tokenization",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "topic-models",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "train-test-split",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 112,
+        "x": 464,
+        "y": 180,
+      },
+    ],
+    [
+      "transformers",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "trend-seasonality",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 176,
+        "x": 1304,
+        "y": 180,
+      },
+    ],
+    [
+      "umap",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 220,
+        "x": 1504,
+        "y": 100,
+      },
+    ],
+    [
+      "vectors",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 144,
+        "x": 120,
+        "y": 310,
+      },
+    ],
+    [
+      "word-embeddings",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 152,
+        "x": 1128,
+        "y": 180,
+      },
+    ],
+    [
+      "xgboost",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 696,
+        "y": 100,
+      },
+    ],
+  ],
+  "toolPositions": [
+    [
+      "matplotlib-seaborn",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 92,
+      },
+    ],
+    [
+      "nltk-spacy",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 272,
+      },
+    ],
+    [
+      "numpy",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 20,
+      },
+    ],
+    [
+      "pandas",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 56,
+      },
+    ],
+    [
+      "pytorch",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 236,
+      },
+    ],
+    [
+      "scikit-learn",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 128,
+      },
+    ],
+    [
+      "statsmodels",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 164,
+      },
+    ],
+    [
+      "xgboost-lightgbm",
+      {
+        "h": 28,
+        "w": 140,
+        "x": 1964,
+        "y": 200,
+      },
+    ],
+  ],
+  "width": 2124,
+}
+`;

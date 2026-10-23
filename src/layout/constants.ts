@@ -1,0 +1,17 @@
+export const LANE_LABEL_W = 120;
+export const LANE_PAD = 20;
+export const LANE_MIN_H = 72;
+export const GROUP_GAP = 24;
+export const GROUP_H = 40;
+export const GROUP_W_MIN = 96;
+export const GROUP_W_MAX = 220;
+export const CHAR_W = 8;
+export const CELL_W = 150;
+export const CELL_H = 44;
+export const CELL_GAP = 12;
+export const EXPANDED_HEADER = 28;
+export const MAX_COLS = 4;
+export const RAIL_GAP = 40;
+export const TOOL_W = 140;
+export const TOOL_H = 28;
+export const TOOL_GAP = 8;
