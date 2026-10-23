@@ -1,0 +1,23 @@
+- id: feature-engineering
+  label: Feature engineering
+  synonyms: [feature creation, new features]
+  kind: concept
+  oneLiner: "Building better input columns from the raw data."
+  intuition: "Models only see the columns you give them. Making new ones, like price per square meter, can help a lot. Good features often beat fancier models. It is like a chef prepping ingredients before cooking."
+  analogy: "A chef prepping ingredients before cooking."
+
+- id: feature-scaling
+  label: Feature scaling
+  synonyms: [standardization, normalization, scaling]
+  kind: concept
+  oneLiner: "Putting columns on comparable ranges before modeling."
+  intuition: "One column might be in meters and another in millions. Distance-based models and penalties are then dominated by the big one. Standardizing gives every column a similar range. It is like converting all prices to one currency."
+  analogy: "Converting all prices to one currency."
+
+- id: class-imbalance
+  label: Class imbalance
+  synonyms: [imbalanced data, rare class, unbalanced classes]
+  kind: concept
+  oneLiner: "When one class is much rarer than the other."
+  intuition: "If only one email in a hundred is spam, a model can always say not spam. It would be 99 percent accurate and useless. Fixes include reweighting, resampling and better metrics. It is like a smoke alarm that never rings."
+  analogy: "A smoke alarm that never rings."

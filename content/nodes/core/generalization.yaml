@@ -1,0 +1,32 @@
+- id: overfitting
+  label: Overfitting
+  synonyms: [underfitting, overfit, generalization]
+  kind: concept
+  oneLiner: "Memorizing the training data instead of learning the pattern."
+  intuition: "An overfit model learns the noise along with the signal. It scores well on data it has seen and badly on new data. Underfitting is the opposite, a model too simple to learn. It is like a student who memorizes past exam answers."
+  analogy: "A student who memorizes past exam answers."
+  viz: overfitting
+
+- id: bias-variance
+  label: Bias-variance tradeoff
+  synonyms: [bias, variance, bias variance]
+  kind: concept
+  oneLiner: "Too simple misses the pattern, too flexible chases the noise."
+  intuition: "Bias is error from a model that is too simple. Variance is error from a model that changes a lot with the data. Reducing one often raises the other. It is like an archer who is either always off target or all over the place."
+  analogy: "An archer who is either always off target or all over the place."
+
+- id: regularization
+  label: Regularization
+  synonyms: [l1, l2, penalty, dropout, early stopping, pruning]
+  kind: concept
+  oneLiner: "Penalizing complexity so a model doesn't overfit."
+  intuition: "Regularization adds a cost for being complicated. L1 and L2 penalties punish big weights. Pruning, dropout and early stopping do the same job in other models. It is like a word limit that forces a clear essay."
+  analogy: "A word limit that forces a clear essay."
+
+- id: curse-of-dimensionality
+  label: Curse of dimensionality
+  synonyms: [high dimensional data, many features]
+  kind: concept
+  oneLiner: "With many columns, data gets sparse and distances lose meaning."
+  intuition: "Each new column adds a direction for points to spread out in. Soon every point is far from every other. Methods based on closeness then struggle. It is like finding a friend in a city versus in a whole country."
+  analogy: "Finding a friend in a city versus in a whole country."

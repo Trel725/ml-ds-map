@@ -1,0 +1,89 @@
+- id: econometric-ols
+  label: Econometric OLS
+  synonyms: [regression analysis, econometric regression]
+  kind: concept
+  lenses: [econometrics]
+  oneLiner: "Regression used to explain, not predict, with careful assumptions."
+  intuition: "Econometricians use the same OLS formula as machine learning. Their goal is to measure how much each cause matters. So they check assumptions and standard errors, not just accuracy. It is like a detective asking why, not just what happens next."
+  analogy: "A detective asking why, not just what happens next."
+
+- id: ols-assumptions
+  label: OLS assumptions
+  synonyms: [gauss-markov, gauss markov, blue]
+  kind: concept
+  lenses: [econometrics]
+  oneLiner: "Conditions under which regression coefficients can be trusted."
+  intuition: "OLS gives the best simple estimates when some conditions hold. The errors should average zero and not depend on the features. This is the Gauss-Markov result. It is like a recipe that only works with the right oven."
+  analogy: "A recipe that only works with the right oven."
+
+- id: coefficient-interpretation
+  label: Coefficient interpretation
+  synonyms: [coefficients, marginal effect]
+  kind: concept
+  lenses: [econometrics]
+  oneLiner: "What one more unit of a feature does to the prediction."
+  intuition: "A coefficient says how the outcome moves when one feature rises by one unit. It assumes the other features stay fixed. Units and scaling change the number. It is like a price per kilo on a market stall."
+  analogy: "A price per kilo on a market stall."
+
+- id: heteroskedasticity
+  label: Heteroskedasticity
+  synonyms: [heteroscedasticity, robust standard errors]
+  kind: concept
+  lenses: [econometrics]
+  oneLiner: "When the size of the errors changes across the data."
+  intuition: "Errors may be small for cheap houses and large for expensive ones. Then ordinary standard errors are wrong. Robust standard errors fix this. It is like a scale that gets less precise with heavier loads."
+  analogy: "A scale that gets less precise with heavier loads."
+
+- id: multicollinearity
+  label: Multicollinearity
+  synonyms: [collinearity, correlated features]
+  kind: concept
+  lenses: [econometrics]
+  oneLiner: "When features move together so their separate effects blur."
+  intuition: "If two features carry the same information, the model can't split credit between them. The coefficients become unstable. Predictions can still be fine. It is like two singers in unison, where you can't tell who is louder."
+  analogy: "Two singers in unison, where you can't tell who is louder."
+
+- id: omitted-variable-bias
+  label: Omitted variable bias
+  synonyms: [endogeneity, confounder, confounding variable]
+  kind: concept
+  lenses: [econometrics]
+  oneLiner: "Leaving out a cause makes other coefficients absorb its effect."
+  intuition: "Suppose ability drives both education and pay. Leave ability out, and education gets the credit for it. The coefficient is then biased. It is like crediting the rooster for the sunrise."
+  analogy: "Crediting the rooster for the sunrise."
+
+- id: instrumental-variables
+  label: Instrumental variables
+  synonyms: [iv, instruments, two-stage least squares, 2sls]
+  kind: concept
+  lenses: [econometrics]
+  oneLiner: "Using an outside nudge to isolate a cause's real effect."
+  intuition: "Sometimes a feature is tangled with hidden causes. An instrument moves that feature but affects the outcome only through it. Comparing the two movements recovers the real effect. It is like a natural experiment someone else ran for you."
+  analogy: "A natural experiment someone else ran for you."
+
+- id: panel-data
+  label: Panel data
+  synonyms: [fixed effects, random effects, longitudinal data]
+  kind: concept
+  lenses: [econometrics]
+  oneLiner: "The same units observed repeatedly over time."
+  intuition: "Panel data follows the same people, firms or countries across years. Fixed effects compare each unit with itself, removing stable hidden traits. It is like tracking each child's growth instead of comparing different children."
+  analogy: "Tracking each child's growth instead of comparing different children."
+
+- id: difference-in-differences
+  label: Difference-in-differences
+  synonyms: [did, diff-in-diff, diff in diff]
+  kind: concept
+  lenses: [econometrics]
+  oneLiner: "Compare the change in a treated group with an untreated group's change."
+  intuition: "Two groups are tracked before and after a policy. Only one of them gets the policy. The extra change in that group estimates the effect. It is like comparing two gardens when only one got new fertilizer."
+  analogy: "Comparing two gardens when only one got new fertilizer."
+
+- id: logit-probit
+  label: Logit and probit
+  synonyms: [logit, probit, binary choice]
+  kind: concept
+  lenses: [econometrics]
+  oneLiner: "Regression models for yes-or-no outcomes."
+  intuition: "A straight line can predict chances below zero or above one. Logit and probit bend the line into an S shape that stays between them. Logit is logistic regression by another name. It is like a dimmer switch between no and yes."
+  analogy: "A dimmer switch between no and yes."

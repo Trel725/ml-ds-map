@@ -1,0 +1,15 @@
+- id: prediction-vs-explanation
+  label: Prediction vs explanation
+  synonyms: [explain vs predict, ml vs econometrics]
+  kind: concept
+  oneLiner: "Getting the answer right, versus understanding why it happens."
+  intuition: "Machine learning mostly cares about accurate predictions. Econometrics mostly cares about which causes matter and how much. The same model can serve either goal. It is like a weather forecast versus a climate study."
+  analogy: "A weather forecast versus a climate study."
+
+- id: interpretability
+  label: Interpretability
+  synonyms: [feature importance, shap, explainability]
+  kind: concept
+  oneLiner: "Understanding why a model makes the predictions it makes."
+  intuition: "Some models are easy to read, like a small tree or a regression's coefficients. Others need tools such as feature importance or SHAP. Interpretability builds trust and catches mistakes. It is like asking a doctor to explain a diagnosis."
+  analogy: "Asking a doctor to explain a diagnosis."

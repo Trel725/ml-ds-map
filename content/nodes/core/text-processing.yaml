@@ -1,0 +1,53 @@
+- id: tokenization
+  label: Tokenization
+  synonyms: [tokens, tokenizer]
+  kind: concept
+  lenses: [nlp]
+  oneLiner: "Cutting text into words or pieces of words."
+  intuition: "Models can't read raw text, so it is split into tokens first. Tokens can be words, parts of words or characters. It is like chopping vegetables before cooking. Every later step works on these pieces."
+  analogy: "Chopping vegetables before cooking."
+
+- id: bag-of-words
+  label: Bag of words
+  synonyms: [n-grams, ngrams, word counts, count vectorizer]
+  kind: concept
+  lenses: [nlp]
+  oneLiner: "Represent text by counting each word, ignoring the order."
+  intuition: "Each document becomes a row of word counts. Word order is thrown away. Counting pairs of words, called n-grams, keeps a little order. It is like tipping a sentence into a bag and counting the tiles."
+  analogy: "Tipping a sentence into a bag and counting the tiles."
+
+- id: tf-idf
+  label: TF-IDF
+  synonyms: [tfidf, term frequency]
+  kind: concept
+  lenses: [nlp]
+  oneLiner: "Word counts that shrink words common to every document."
+  intuition: "Words like 'the' appear everywhere and tell you little. TF-IDF boosts words that are frequent in one document but rare overall. It is like noticing a guest who only comes to one party. Those words say what a document is about."
+  analogy: "Noticing a guest who only comes to one party."
+
+- id: word-embeddings
+  label: Word embeddings
+  synonyms: [word2vec, glove, embeddings]
+  kind: concept
+  lenses: [nlp]
+  oneLiner: "Words as vectors, where similar meanings sit close together."
+  intuition: "Each word gets a list of numbers learned from lots of text. Words used in similar contexts end up near each other. It is like a map where synonyms are neighbors. Directions on the map can even carry meaning."
+  analogy: "A map where synonyms are neighbors."
+
+- id: topic-models
+  label: Topic models
+  synonyms: [latent dirichlet allocation, LDA topics, topic modeling]
+  kind: concept
+  lenses: [nlp]
+  oneLiner: "Finding the themes that a pile of documents is about."
+  intuition: "A topic model assumes each document mixes a few topics. Each topic is a set of words that tend to appear together. The model discovers both from raw text. It is like sorting newspaper clippings into piles by theme."
+  analogy: "Sorting newspaper clippings into piles by theme."
+
+- id: transformers
+  label: Transformers
+  synonyms: [attention, bert, gpt, llm, language model]
+  kind: concept
+  lenses: [nlp]
+  oneLiner: "Neural networks that read text by weighing every word against others."
+  intuition: "Transformers use attention to decide which words matter for each word. They power modern language models. They go beyond this course's core, but it helps to place them. It is like a reader glancing back at the key words in a sentence."
+  analogy: "A reader glancing back at the key words in a sentence."

@@ -1,0 +1,47 @@
+- id: features-and-target
+  label: Features and target
+  synonyms: [features, target, label, predictors, training vs prediction, inputs]
+  kind: concept
+  oneLiner: "The inputs a model sees and the answer it predicts."
+  intuition: "Features are the columns you know, like a house's size. The target is what you want to predict, like its price. Training shows the model both, and prediction shows only the features. It is like flashcards with a question and an answer."
+  analogy: "Flashcards with a question and an answer."
+
+- id: hyperparameters
+  label: Parameters vs hyperparameters
+  synonyms: [hyperparameter, parameters, settings]
+  kind: concept
+  oneLiner: "What the model learns, versus the settings you choose."
+  intuition: "Parameters are learned from data, like the weights in a regression. Hyperparameters are set before training, like the depth of a tree. It is like a student's knowledge versus the hours you let them study."
+  analogy: "A student's knowledge versus the hours you let them study."
+
+- id: loss-function
+  label: Loss vs metric
+  synonyms: [loss function, evaluation metric, cost function, metric, objective]
+  kind: concept
+  oneLiner: "What training minimizes, versus how you judge the result."
+  intuition: "The loss is the score the optimizer pushes down during training. The metric is what you report and care about. They often differ, because metrics like accuracy are hard to optimize. It is like practice drills versus the final match score."
+  analogy: "Practice drills versus the final match score."
+
+- id: log-loss
+  label: Log loss
+  synonyms: [cross-entropy, cross entropy, logistic loss]
+  kind: concept
+  oneLiner: "Punishes confident wrong probability guesses very hard."
+  intuition: "Log loss scores predicted probabilities. Saying 99 percent and being wrong costs a lot. Saying 60 percent and being wrong costs a little. It is like a bet where overconfidence loses big."
+  analogy: "A bet where overconfidence loses big."
+
+- id: parametric-vs-nonparametric
+  label: Parametric vs nonparametric
+  synonyms: [parametric, nonparametric, non-parametric]
+  kind: concept
+  oneLiner: "A fixed-shape model, versus one that grows with the data."
+  intuition: "A parametric model has a fixed number of knobs, like a line's slope and intercept. A nonparametric model keeps more detail as data grows, like kNN. It is like a ready-made suit versus a tailored one."
+  analogy: "A ready-made suit versus a tailored one."
+
+- id: generative-vs-discriminative
+  label: Generative vs discriminative
+  synonyms: [generative, discriminative]
+  kind: concept
+  oneLiner: "Model how each class makes data, or just draw the boundary."
+  intuition: "A generative model learns what each class looks like. A discriminative model only learns where one class ends and the next begins. It is like learning to paint cats versus just telling cats from dogs."
+  analogy: "Learning to paint cats versus just telling cats from dogs."

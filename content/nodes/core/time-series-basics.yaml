@@ -1,0 +1,44 @@
+- id: trend-seasonality
+  label: Trend and seasonality
+  synonyms: [trend, seasonality, decomposition]
+  kind: concept
+  lenses: [time-series]
+  oneLiner: "The long-run direction and the repeating calendar pattern of a series."
+  intuition: "Trend is the slow drift up or down. Seasonality is a pattern that repeats, like summer peaks. What is left over is noise. It is like a rising tide with waves coming and going on top."
+  analogy: "A rising tide with waves coming and going on top."
+
+- id: stationarity
+  label: Stationarity
+  synonyms: [stationary, differencing]
+  kind: concept
+  lenses: [time-series]
+  oneLiner: "When a series keeps the same average and spread over time."
+  intuition: "A stationary series wanders around a fixed level with steady swings. Many time series models assume this. Differencing, which means taking changes, often makes a series stationary. It is like a resting heartbeat rather than one during a run."
+  analogy: "A resting heartbeat rather than one during a run."
+
+- id: autocorrelation
+  label: Autocorrelation
+  synonyms: [acf, serial correlation]
+  kind: concept
+  lenses: [time-series]
+  oneLiner: "How much a series resembles its own past."
+  intuition: "Today's value often looks like yesterday's. Autocorrelation measures that link at each time gap. It shows which past values help predict the future. It is like today's weather hinting at tomorrow's."
+  analogy: "Today's weather hinting at tomorrow's."
+
+- id: lag-features
+  label: Lag features
+  synonyms: [lags, lagged variables]
+  kind: concept
+  lenses: [time-series]
+  oneLiner: "Past values of a series used as input columns."
+  intuition: "To predict tomorrow, give the model today's and yesterday's values. These shifted copies are lag features. They turn forecasting into ordinary supervised learning. It is like checking last week's sales before ordering stock."
+  analogy: "Checking last week's sales before ordering stock."
+
+- id: time-series-cv
+  label: Time series validation
+  synonyms: [time series cross-validation, time-aware cross-validation, walk-forward, rolling origin]
+  kind: concept
+  lenses: [time-series]
+  oneLiner: "Validation that always trains on the past and tests on the future."
+  intuition: "Random folds would let a model peek at the future. Time-aware validation keeps the order. Each fold trains on earlier data and tests on later data. It is like grading a forecaster only on days that hadn't happened yet."
+  analogy: "Grading a forecaster only on days that hadn't happened yet."

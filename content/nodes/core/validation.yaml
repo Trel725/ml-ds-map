@@ -1,0 +1,31 @@
+- id: train-test-split
+  label: Train-test split
+  synonyms: [train test split, validation set, test set, holdout]
+  kind: concept
+  oneLiner: "Hold back data the model never sees, to test it fairly."
+  intuition: "You train on one part of the data and test on another. A separate validation part helps you choose settings. The test score then estimates real-world performance. It is like keeping some exam questions secret from the students."
+  analogy: "Keeping some exam questions secret from the students."
+
+- id: cross-validation
+  label: Cross-validation
+  synonyms: [cv, k-fold, k fold]
+  kind: concept
+  oneLiner: "Rotate which part of the data plays the test set."
+  intuition: "Split the data into several folds. Train on all but one, test on the one left out, and rotate. Average the scores for a steadier estimate. It is like every student taking a turn as the quiz master."
+  analogy: "Every student taking a turn as the quiz master."
+
+- id: hyperparameter-tuning
+  label: Hyperparameter tuning
+  synonyms: [grid search, random search, tuning, model selection]
+  kind: concept
+  oneLiner: "Searching for the settings that work best on held-out data."
+  intuition: "Try different settings, like tree depth or penalty strength. Score each one with validation data or cross-validation. Keep the best one. It is like tuning a radio until the signal is clearest."
+  analogy: "Tuning a radio until the signal is clearest."
+
+- id: data-leakage
+  label: Data leakage
+  synonyms: [leakage, target leakage]
+  kind: concept
+  oneLiner: "When test information sneaks into training and inflates scores."
+  intuition: "Leakage happens when the model sees something it won't have in real life. Scaling with test data or using future values are common causes. The score looks great until the model meets real data. It is like a student who saw the answer sheet."
+  analogy: "A student who saw the answer sheet."
