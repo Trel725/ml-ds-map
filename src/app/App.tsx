@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { MapView } from '../map/MapView';
+import { Panel } from '../panel/Panel';
 import { Notice } from './Notice';
 import { useAppStore } from './StoreContext';
 import { TopBar } from './TopBar';
@@ -19,7 +20,7 @@ export function App() {
     <div className="app">
       <TopBar />
       <MapView />
-      <aside className="panel-area" aria-label="Details" />
+      <Panel />
       <Notice />
     </div>
   );

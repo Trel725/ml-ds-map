@@ -26,7 +26,7 @@ test('hovering an edge shows its sentence; clicking opens the edge panel', async
   await expect(page).toHaveURL(/#\/e\/derivative--needs--slope$/);
 });
 
-test.fixme('clicking an edge opens the edge panel', async ({ page }) => {
+test('clicking an edge opens the edge panel', async ({ page }) => {
   await gotoMap(page, '#/n/derivative');
   await page.locator('[data-group-id="algebra-basics"]').click();
   await page.locator('[data-edge-key="derivative->slope"] .edge-hit').click();

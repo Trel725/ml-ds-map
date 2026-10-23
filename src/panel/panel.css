@@ -1,0 +1,129 @@
+.panel,
+.welcome {
+  padding: 20px 24px 32px;
+}
+
+.panel-header h2,
+.welcome h2 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.panel-where {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.panel-oneliner {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.panel-section {
+  margin-top: 22px;
+}
+
+.panel-section h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.panel-section p,
+.welcome p {
+  margin: 0 0 10px;
+  font-family: var(--font-read);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+.analogy {
+  font-style: italic;
+  background: linear-gradient(transparent 62%, var(--layer-foundations) 62%);
+}
+
+.panel-analogy {
+  padding-left: 12px;
+  border-left: 3px solid var(--line);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--chip);
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.chip:hover {
+  border-color: var(--chip);
+}
+
+.edge-type-word {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.trace-button {
+  margin-top: 12px;
+}
+
+.trace-button[aria-pressed='true'] {
+  border-color: var(--fg);
+}
+
+.trace-intro {
+  margin-top: 14px !important;
+}
+
+.trace-list {
+  margin: 0;
+  padding-left: 28px;
+  display: grid;
+  gap: 6px;
+}
+
+.trace-list li::marker {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 4px;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.crumb {
+  border: 0;
+  background: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.crumb[aria-current='page'] {
+  color: var(--fg);
+  font-weight: 700;
+}
+
+.crumb:hover {
+  background: var(--bg);
+}

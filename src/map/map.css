@@ -146,7 +146,16 @@
   fill: var(--layer-strong);
 }
 
-[data-highlighted='true'] .node-label,
+/* Circle labels sit outside the shape, so they stay in the text color. */
+.node-foundation[data-highlighted='true'] .node-label,
+.node-math[data-highlighted='true'] .node-label {
+  fill: var(--fg);
+  font-weight: 700;
+}
+
+.node-concept[data-highlighted='true'] .node-label,
+.node-algorithm[data-highlighted='true'] .node-label,
+.node-problem[data-highlighted='true'] .node-label,
 [data-highlighted='true'] .group-label,
 [data-highlighted='true'] .tool-label {
   fill: var(--bg);
@@ -253,4 +262,13 @@
   border-radius: 6px;
   font-size: 14px;
   pointer-events: none;
+}
+
+/* Circle labels sit on the open band where edges cross; a halo keeps them legible. */
+.node-foundation .node-label,
+.node-math .node-label {
+  paint-order: stroke;
+  stroke: var(--bg);
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
