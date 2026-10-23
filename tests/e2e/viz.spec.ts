@@ -59,3 +59,8 @@ test('overfitting', async ({ page }) => {
   const { readout } = await exercise(page, 'overfitting', 'overfitting', (v) => v.getByRole('slider', { name: 'Complexity' }), right3);
   await expect(readout).toHaveText(/^Degree 4 · training error \d+ · test error \d+$/);
 });
+
+test('decision-tree', async ({ page }) => {
+  const { readout } = await exercise(page, 'decision-tree', 'decision-tree', (v) => v.getByRole('slider', { name: 'Depth' }), right3);
+  await expect(readout).toHaveText(/^Depth 4 · \d+ regions · training accuracy \d+%$/);
+});
