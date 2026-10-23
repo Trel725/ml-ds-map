@@ -1,0 +1,15 @@
+id: how-a-model-learns
+title: How a model learns
+stops:
+  - node: functions-and-graphs
+    caption: "Every model is a function. It turns the features you know into a prediction."
+  - node: loss-function
+    caption: "A loss scores how wrong those predictions are. Training means making that score small."
+  - node: slope
+    caption: "Slope says how fast the loss changes when you nudge one setting."
+  - node: gradient
+    caption: "The gradient lists one slope per setting. Together they point uphill."
+  - node: gradient-descent
+    caption: "So step the other way, downhill, again and again. That is gradient descent."
+  - node: logistic-regression
+    caption: "Logistic regression learns exactly like this. Log loss is its score, and gradient descent does the training."

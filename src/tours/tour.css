@@ -1,0 +1,58 @@
+.tour-card {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 15;
+  width: min(380px, calc(100% - 32px));
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--layer-math-strong);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.16);
+}
+
+.tour-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.tour-head h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.tour-progress {
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.tour-stop {
+  margin: 8px 0 2px;
+  font-weight: 700;
+}
+
+.tour-caption {
+  margin: 0 0 12px;
+  font-family: var(--font-read);
+  line-height: 1.55;
+}
+
+.tour-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.tour-close {
+  margin-left: auto;
+}
+
+.map-column {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+}
