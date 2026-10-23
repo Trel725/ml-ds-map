@@ -1,0 +1,48 @@
+- id: ols
+  label: OLS
+  synonyms: [linear regression, ordinary least squares, least squares]
+  kind: algorithm
+  oneLiner: "Fits the straight line with the smallest total squared error."
+  intuition: "OLS draws the line or flat surface closest to all the points. Closeness is measured by squaring each miss and adding them up. A formula gives the answer directly. It is like a rod pulled into place by springs to each point."
+  analogy: "A rod pulled into place by springs to each point."
+  viz: ols-fit
+
+- id: ridge
+  label: Ridge regression
+  synonyms: [ridge, l2 regularization, tikhonov]
+  kind: algorithm
+  oneLiner: "OLS with a penalty that shrinks every weight a little."
+  intuition: "Ridge adds the squared size of the weights to the loss. Big weights become costly, so the fit calms down. It helps when features are many or correlated. It is like a leash that keeps every weight close to home."
+  analogy: "A leash that keeps every weight close to home."
+
+- id: lasso
+  label: Lasso
+  synonyms: [lasso regression, l1 regularization]
+  kind: algorithm
+  oneLiner: "OLS with a penalty that can set weights exactly to zero."
+  intuition: "Lasso penalizes the absolute size of the weights. This pushes useless features all the way to zero. So it also picks which features to keep. It is like a strict editor cutting whole sentences."
+  analogy: "A strict editor cutting whole sentences."
+
+- id: elastic-net
+  label: Elastic net
+  synonyms: [elasticnet]
+  kind: algorithm
+  oneLiner: "A blend of the ridge and lasso penalties."
+  intuition: "Elastic net mixes both penalties. It shrinks like ridge and drops features like lasso. It handles groups of correlated features better than lasso alone. It is like a leash and an editor working together."
+  analogy: "A leash and an editor working together."
+
+- id: logistic-regression
+  label: Logistic regression
+  synonyms: [logit model, logistic]
+  kind: algorithm
+  oneLiner: "A linear model bent into probabilities for yes-or-no questions."
+  intuition: "Compute a weighted sum of features, just like OLS. Squash it through an S-shaped curve so it lands between zero and one. Train it with log loss and gradient descent. It is like a dimmer switch between no and yes."
+  analogy: "A dimmer switch between no and yes."
+
+- id: glm
+  label: Generalized linear models
+  synonyms: [glm, glms, generalized linear model, poisson regression]
+  kind: algorithm
+  oneLiner: "Linear models stretched to handle counts, yes-or-no answers and more."
+  intuition: "A GLM keeps the weighted sum of features. It adds a link function and a matching noise distribution. OLS, logistic regression and Poisson regression are all GLMs. It is like one engine fitted to different vehicles."
+  analogy: "One engine fitted to different vehicles."

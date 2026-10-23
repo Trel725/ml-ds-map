@@ -1,0 +1,7 @@
+- id: knn
+  label: k-nearest neighbors
+  synonyms: [k nearest neighbors, nearest neighbours, kNN, nearest neighbors]
+  kind: algorithm
+  oneLiner: "Predict like the most similar examples you have seen."
+  intuition: "To predict for a new point, find the k closest training points. Let them vote, or average their values. There is no real training step. It is like asking your nearest neighbors for advice."
+  analogy: "Asking your nearest neighbors for advice."

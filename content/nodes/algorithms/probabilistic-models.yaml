@@ -1,0 +1,31 @@
+- id: naive-bayes
+  label: Naive Bayes
+  synonyms: [naive bayes classifier]
+  kind: algorithm
+  oneLiner: "Classify with Bayes' rule, assuming features are independent."
+  intuition: "Naive Bayes learns how often each word appears in spam and in normal mail. Bayes' rule flips that into the chance a message is spam. It assumes words don't influence each other. It is like a detective weighing each clue separately."
+  analogy: "A detective weighing each clue separately."
+
+- id: lda-classifier
+  label: LDA classifier
+  synonyms: [linear discriminant analysis]
+  kind: algorithm
+  oneLiner: "Model each class as a bell-shaped cloud, then apply Bayes' rule."
+  intuition: "LDA assumes each class forms a cloud of the same shape. It learns where each cloud is centered. Bayes' rule then says which cloud a new point most likely came from. It is like guessing which flock a stray bird came from."
+  analogy: "Guessing which flock a stray bird came from."
+
+- id: qda
+  label: QDA
+  synonyms: [quadratic discriminant analysis]
+  kind: algorithm
+  oneLiner: "Like the LDA classifier, but each class gets its own cloud shape."
+  intuition: "QDA lets every class have its own spread and tilt. The boundaries between classes become curves. It needs more data than LDA. It is like flocks that each fly in their own formation."
+  analogy: "Flocks that each fly in their own formation."
+
+- id: gaussian-mixtures
+  label: Gaussian mixtures
+  synonyms: [gmm, mixture model, gaussian mixture model, em algorithm]
+  kind: algorithm
+  oneLiner: "Describe data as a blend of several bell-shaped clouds."
+  intuition: "A mixture model assumes each point came from one of a few bell-shaped clouds. It learns where the clouds are and how big they are. Each point gets a chance of belonging to each cloud. It is like unmixing paint colors from a blend."
+  analogy: "Unmixing paint colors from a blend."

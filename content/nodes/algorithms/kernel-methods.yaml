@@ -1,0 +1,15 @@
+- id: svm
+  label: Support vector machine
+  synonyms: [svm, support vector machines, max margin]
+  kind: algorithm
+  oneLiner: "Find the boundary with the widest gap between the classes."
+  intuition: "An SVM draws the line that keeps the classes as far apart as possible. Only the closest points, the support vectors, decide where it goes. It is like laying the widest road between two villages."
+  analogy: "Laying the widest road between two villages."
+
+- id: kernel-trick
+  label: Kernel trick
+  synonyms: [kernels, kernel, rbf kernel]
+  kind: algorithm
+  oneLiner: "Get curved boundaries by quietly working in a richer space."
+  intuition: "Some classes can't be split by a straight line. A kernel compares points as if they had extra features. A straight cut there becomes a curve here. It is like lifting a tangled rope off the table to separate it."
+  analogy: "Lifting a tangled rope off the table to separate it."

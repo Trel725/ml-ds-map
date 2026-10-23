@@ -1,0 +1,26 @@
+- id: perceptron
+  label: Perceptron
+  synonyms: [neuron, artificial neuron]
+  kind: algorithm
+  lenses: [neural-nets]
+  oneLiner: "The simplest artificial neuron, a weighted vote with a threshold."
+  intuition: "A perceptron adds up weighted inputs. If the total passes a threshold, it says yes. It can only draw straight boundaries. It is like a committee vote with weighted ballots."
+  analogy: "A committee vote with weighted ballots."
+
+- id: neural-network
+  label: Neural network
+  synonyms: [mlp, multilayer perceptron, deep learning, neural net, neural networks]
+  kind: algorithm
+  lenses: [neural-nets]
+  oneLiner: "Layers of simple units stacked to learn complex patterns."
+  intuition: "Each unit works like a small logistic regression. Stacking layers, with bends between them, lets the network draw curved boundaries. It is trained by gradient descent. It is like a team where each member spots one simple pattern."
+  analogy: "A team where each member spots one simple pattern."
+
+- id: backpropagation
+  label: Backpropagation
+  synonyms: [backprop]
+  kind: algorithm
+  lenses: [neural-nets]
+  oneLiner: "Working out each weight's share of the blame for an error."
+  intuition: "After a prediction, the error flows backward through the network. The chain rule turns it into a slope for every weight. Gradient descent then nudges each weight. It is like tracing a factory defect back along the assembly line."
+  analogy: "Tracing a factory defect back along the assembly line."

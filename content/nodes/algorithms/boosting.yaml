@@ -1,0 +1,31 @@
+- id: adaboost
+  label: AdaBoost
+  synonyms: [adaptive boosting]
+  kind: algorithm
+  oneLiner: "Add weak models one by one, focusing on past mistakes."
+  intuition: "AdaBoost trains a simple model, then gives more weight to the examples it got wrong. The next model concentrates on those. The final answer is a weighted vote. It is like a tutor who drills the questions you missed."
+  analogy: "A tutor who drills the questions you missed."
+
+- id: gradient-boosting
+  label: Gradient boosting
+  synonyms: [gbm, gradient boosted trees, boosting]
+  kind: algorithm
+  oneLiner: "Add small trees one by one, each fixing the remaining errors."
+  intuition: "Start with a simple guess. Fit a small tree to what the guess got wrong, and add it. Repeat many times with small steps. It is like a sculptor removing a little more stone each pass."
+  analogy: "A sculptor removing a little more stone each pass."
+
+- id: xgboost
+  label: XGBoost
+  synonyms: [extreme gradient boosting]
+  kind: algorithm
+  oneLiner: "A fast, regularized version of gradient boosting."
+  intuition: "XGBoost is gradient boosting with extra care. It penalizes complex trees and uses clever tricks for speed. It wins many contests on table-shaped data. It is like a tuned race car built from a family car."
+  analogy: "A tuned race car built from a family car."
+
+- id: lightgbm
+  label: LightGBM
+  synonyms: [light gbm]
+  kind: algorithm
+  oneLiner: "Gradient boosting built for speed on large datasets."
+  intuition: "LightGBM grows trees leaf by leaf and buckets feature values. This makes training much faster. Results are usually close to XGBoost. It is like a lighter, faster model of the same car."
+  analogy: "A lighter, faster model of the same car."

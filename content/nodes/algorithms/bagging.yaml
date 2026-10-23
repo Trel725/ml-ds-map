@@ -1,0 +1,15 @@
+- id: bagging-method
+  label: Bagging
+  synonyms: [bootstrap aggregating, bagged trees]
+  kind: algorithm
+  oneLiner: "Train many models on resampled data and average them."
+  intuition: "Draw many bootstrap samples from the data. Fit one model to each and average their answers. Their random errors partly cancel out. It is like many people guessing the weight of a cow."
+  analogy: "Many people guessing the weight of a cow."
+
+- id: random-forest
+  label: Random forest
+  synonyms: [random forests, rf]
+  kind: algorithm
+  oneLiner: "Many varied decision trees voting together."
+  intuition: "Each tree sees a bootstrap sample and random subsets of features. The trees make different mistakes. Averaging them cancels much of each tree's variance. It is like many people guessing the weight of a cow."
+  analogy: "Many people guessing the weight of a cow."

@@ -1,0 +1,17 @@
+- id: arima
+  label: ARIMA
+  synonyms: [arma, autoregressive, sarima, ar model]
+  kind: algorithm
+  lenses: [time-series]
+  oneLiner: "Forecast a series from its own past values and past errors."
+  intuition: "ARIMA combines three ideas. It uses past values, past forecast errors and differencing to remove trend. It is like predicting tomorrow's queue from today's queue and how wrong you were."
+  analogy: "Predicting tomorrow's queue from today's queue and how wrong you were."
+
+- id: exponential-smoothing
+  label: Exponential smoothing
+  synonyms: [holt-winters, holt winters, ets]
+  kind: algorithm
+  lenses: [time-series]
+  oneLiner: "Forecast with a weighted average that favors recent values."
+  intuition: "Recent observations count most, and older ones fade away. Extensions add trend and seasonality. It is like remembering last week clearly and last year vaguely."
+  analogy: "Remembering last week clearly and last year vaguely."

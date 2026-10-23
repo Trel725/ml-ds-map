@@ -1,0 +1,23 @@
+- id: pca
+  label: PCA
+  synonyms: [principal component analysis, principal components]
+  kind: algorithm
+  oneLiner: "Find the few directions that keep most of the spread."
+  intuition: "PCA turns the data to line up with its widest directions. Keeping only the first few squeezes many columns into a few. It is like photographing an object from its most revealing angle."
+  analogy: "Photographing an object from its most revealing angle."
+
+- id: t-sne
+  label: t-SNE
+  synonyms: [tsne]
+  kind: algorithm
+  oneLiner: "Squash data into a flat picture while keeping neighbors close."
+  intuition: "t-SNE builds a 2D picture where nearby points stay nearby. Distances between far-apart clusters mean little. It is great for looking, not for modeling. It is like a seating plan that keeps friends together."
+  analogy: "A seating plan that keeps friends together."
+
+- id: umap
+  label: UMAP
+  synonyms: [uniform manifold approximation]
+  kind: algorithm
+  oneLiner: "A faster neighbor-keeping map of data with many columns."
+  intuition: "UMAP also makes a 2D picture that keeps neighbors together. It is faster than t-SNE and keeps more of the big picture. It is like a seating plan that also seats families at nearby tables."
+  analogy: "A seating plan that also seats families at nearby tables."

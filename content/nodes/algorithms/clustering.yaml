@@ -1,0 +1,23 @@
+- id: k-means
+  label: k-means
+  synonyms: [kmeans, k means]
+  kind: algorithm
+  oneLiner: "Split points into k groups around centers that keep moving."
+  intuition: "Place k centers anywhere. Assign each point to its nearest center, then move each center to its group's average. Repeat until nothing changes. It is like placing ice cream stands so every beachgoer is close to one."
+  analogy: "Placing ice cream stands so every beachgoer is close to one."
+
+- id: hierarchical-clustering
+  label: Hierarchical clustering
+  synonyms: [agglomerative clustering, dendrogram]
+  kind: algorithm
+  oneLiner: "Merge the closest groups step by step into a tree."
+  intuition: "Start with every point in its own group. Repeatedly merge the two closest groups. The result is a tree you can cut at any level. It is like a family tree of the data."
+  analogy: "A family tree of the data."
+
+- id: dbscan
+  label: DBSCAN
+  synonyms: [density clustering, density based clustering]
+  kind: algorithm
+  oneLiner: "Find clusters as dense crowds and leave loners as noise."
+  intuition: "DBSCAN looks for points with many close neighbors. Dense regions grow into clusters of any shape. Isolated points are marked as noise. It is like spotting groups of friends at a party from above."
+  analogy: "Spotting groups of friends at a party from above."

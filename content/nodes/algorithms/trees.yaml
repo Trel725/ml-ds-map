@@ -1,0 +1,16 @@
+- id: decision-tree
+  label: Decision tree
+  synonyms: [cart, regression tree, classification tree, decision trees]
+  kind: algorithm
+  oneLiner: "A flowchart of yes-or-no questions that leads to a prediction."
+  intuition: "The tree asks one question about one feature at each step. Each answer sends you down a branch. The leaf you reach gives the prediction. It is like a game of twenty questions."
+  analogy: "A game of twenty questions."
+  viz: decision-tree
+
+- id: decision-stump
+  label: Decision stump
+  synonyms: [stump]
+  kind: algorithm
+  oneLiner: "A decision tree that asks just one question."
+  intuition: "A stump splits the data once and stops. On its own it is weak and very biased. Boosting stacks many of them into a strong model. It is like a single rule of thumb."
+  analogy: "A single rule of thumb."
