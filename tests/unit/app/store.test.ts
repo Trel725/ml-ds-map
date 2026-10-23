@@ -124,3 +124,101 @@ test('notice shows and dismisses', () => {
   s.getState().dismissNotice();
   expect(s.getState().notice).toBeNull();
 });
+
+const visitedStore = () => createAppStore(g, mem({ 'mlmap.visited': '1' }));
+type Store = ReturnType<typeof visitedStore>;
+
+test('toggleLens sets the lens highlight without expanding groups, and toggles off', () => {
+  const s = visitedStore();
+  s.getState().toggleLens('nlp');
+  expect(s.getState().activeLens).toBe('nlp');
+  expect(s.getState().highlight.mode).toBe('lens');
+  expect(s.getState().highlight.ids.has('tf-idf')).toBe(true);
+  expect(s.getState().expandedGroups.size).toBe(0);
+  s.getState().toggleLens('nlp');
+  expect(s.getState().activeLens).toBeNull();
+  expect(s.getState().highlight.mode).toBe('none');
+  expect(s.getState().highlight.ids.size).toBe(0);
+});
+test('only one lens at a time', () => {
+  const s = visitedStore();
+  s.getState().toggleLens('nlp');
+  s.getState().toggleLens('econometrics');
+  expect(s.getState().activeLens).toBe('econometrics');
+  expect(s.getState().highlight.ids.has('tf-idf')).toBe(false);
+  expect(s.getState().highlight.ids.has('econometric-ols')).toBe(true);
+});
+test('the lens highlight survives select and clearSelection', () => {
+  const s = visitedStore();
+  s.getState().toggleLens('nlp');
+  s.getState().select({ kind: 'node', id: 'gradient-descent' });
+  expect(s.getState().highlight.mode).toBe('lens');
+  s.getState().clearSelection();
+  expect(s.getState().highlight.mode).toBe('lens');
+  expect(s.getState().activeLens).toBe('nlp');
+});
+test.each([
+  ['traceDown', (st: Store) => st.getState().traceDown('gradient-descent')],
+  ['traceUp', (st: Store) => st.getState().traceUp('slope')],
+  ['traceRecipe', (st: Store) => st.getState().traceRecipe('ols')],
+  ['startTour', (st: Store) => st.getState().startTour('how-a-model-learns')],
+] as const)('%s turns the lens off', (_name, act) => {
+  const s = visitedStore();
+  s.getState().toggleLens('nlp');
+  act(s);
+  expect(s.getState().activeLens).toBeNull();
+  expect(s.getState().highlight.mode).not.toBe('lens');
+});
+test('toggleLens ends a running tour', () => {
+  const s = visitedStore();
+  s.getState().startTour('how-a-model-learns');
+  s.getState().toggleLens('nlp');
+  expect(s.getState().tour).toBeNull();
+  expect(s.getState().highlight.mode).toBe('lens');
+});
+test('traceUp highlights uses without expanding groups', () => {
+  const s = visitedStore();
+  s.getState().traceUp('slope');
+  expect(s.getState().highlight.mode).toBe('trace-up');
+  expect(s.getState().highlight.ids.has('gradient-descent')).toBe(true);
+  expect(s.getState().expandedGroups.size).toBe(0);
+});
+test('traceRecipe highlights slot nodes and expands their groups', () => {
+  const s = visitedStore();
+  s.getState().traceRecipe('ols');
+  expect(s.getState().highlight.mode).toBe('recipe');
+  expect(s.getState().highlight.ids.has('regression')).toBe(true);
+  expect(s.getState().highlight.ids.has('analytical-solution')).toBe(true);
+  expect(s.getState().expandedGroups.has('prediction-tasks')).toBe(true);
+  expect(s.getState().expandedGroups.has('optimization')).toBe(true);
+});
+test('escape steps back one layer at a time: tour, selection, lens, then nothing', () => {
+  const s = visitedStore();
+  s.getState().toggleLens('nlp');
+  s.getState().select({ kind: 'node', id: 'tf-idf' });
+  // Actions never leave a tour, a selection and a lens all on, so stack the tour on directly.
+  s.setState({ tour: { id: 'how-a-model-learns', step: 0 } });
+  s.getState().escape();
+  expect(s.getState().tour).toBeNull();
+  expect(s.getState().selection).not.toBeNull();
+  expect(s.getState().activeLens).toBe('nlp');
+  expect(s.getState().highlight.mode).toBe('lens');
+  s.getState().escape();
+  expect(s.getState().selection).toBeNull();
+  expect(s.getState().activeLens).toBe('nlp');
+  s.getState().escape();
+  expect(s.getState().activeLens).toBeNull();
+  expect(s.getState().highlight.mode).toBe('none');
+  const before = s.getState();
+  s.getState().escape();
+  expect(s.getState()).toBe(before);
+});
+test('escape ends a tour started normally, then clears its selection', () => {
+  const s = visitedStore();
+  s.getState().startTour('how-a-model-learns');
+  s.getState().escape();
+  expect(s.getState().tour).toBeNull();
+  expect(s.getState().selection).not.toBeNull();
+  s.getState().escape();
+  expect(s.getState().selection).toBeNull();
+});

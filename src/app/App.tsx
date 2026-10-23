@@ -11,11 +11,7 @@ export function App() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return;
-      // Escape closes the tour first, then clears the selection.
-      const s = store.getState();
-      if (s.tour) s.endTour();
-      else s.clearSelection();
+      if (e.key === 'Escape') store.getState().escape();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);

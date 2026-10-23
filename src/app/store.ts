@@ -2,7 +2,8 @@ import { createStore } from 'zustand/vanilla';
 import type { StoreApi } from 'zustand/vanilla';
 import type { LensId } from '../data/schema';
 import type { Graph } from '../graph/graph';
-import { traceDown as computeTrace } from '../graph/trace';
+import { lensSet } from '../graph/lens';
+import { traceDown as computeTrace, recipeSet, traceUp as computeTraceUp } from '../graph/trace';
 import type { Selection } from '../graph/visibleEdges';
 import { KEYS, readJson, readString, writeJson, writeString } from './storage';
 import type { KV } from './storage';
@@ -30,13 +31,21 @@ export interface AppState {
 export interface AppActions {
   /** `reveal` expands the node's group and requests focus. */
   select(sel: Selection, opts?: { reveal?: boolean }): void;
-  /** Also clears the highlight unless a tour is running. */
+  /** Also clears the highlight unless a tour or lens fills it. */
   clearSelection(): void;
   toggleGroup(id: string): void;
   expandGroups(ids: Iterable<string>): void;
   /** Leave the first-visit layers view. */
   explore(): void;
   traceDown(nodeId: string): void;
+  /** Highlights everything that needs the node; expands no groups. */
+  traceUp(nodeId: string): void;
+  /** Highlights the node's recipe slot nodes and expands their groups. */
+  traceRecipe(nodeId: string): void;
+  /** One lens at a time: switches to `lens`, or turns it off if it is already on. Ends a tour. */
+  toggleLens(lens: LensId): void;
+  /** Steps back one layer: ends the tour, else clears the selection, else turns off the lens. */
+  escape(): void;
   startTour(id: string): void;
   tourStep(delta: 1 | -1): void;
   endTour(): void;
@@ -50,6 +59,8 @@ export type AppStore = StoreApi<AppState & AppActions>;
 const THEMES: Theme[] = ['system', 'light', 'dark'];
 const BREADCRUMB_MAX = 5;
 const NO_HIGHLIGHT = { mode: 'none' as const, ids: new Set<string>() };
+/** Highlight modes that outlive a change of selection. */
+const STICKY: HighlightMode[] = ['tour', 'lens'];
 
 const isStringArray = (v: unknown): v is string[] => Array.isArray(v) && v.every((x) => typeof x === 'string');
 const isTheme = (v: unknown): v is Theme => THEMES.includes(v as Theme);
@@ -72,6 +83,8 @@ export function createAppStore(graph: Graph, kv: KV | null): AppStore {
     }
     return out;
   };
+
+  const lensHighlight = (lens: LensId) => ({ mode: 'lens' as const, ids: lensSet(graph, lens) });
 
   const store = createStore<AppState & AppActions>()((set, get) => {
     const expand = (ids: Iterable<string>) => {
@@ -118,13 +131,13 @@ export function createAppStore(graph: Graph, kv: KV | null): AppStore {
           expandedGroups: expanded,
           focusRequest,
           zoomLevel: s.zoomLevel === 'layers' ? (expanded.size > 0 ? 'nodes' : 'groups') : zoomFor(expanded, s.zoomLevel),
-          highlight: s.tour ? s.highlight : NO_HIGHLIGHT,
+          highlight: STICKY.includes(s.highlight.mode) ? s.highlight : NO_HIGHLIGHT,
         });
       },
 
       clearSelection() {
         const s = get();
-        set({ selection: null, highlight: s.highlight.mode === 'tour' ? s.highlight : NO_HIGHLIGHT });
+        set({ selection: null, highlight: STICKY.includes(s.highlight.mode) ? s.highlight : NO_HIGHLIGHT });
       },
 
       toggleGroup(id) {
@@ -151,11 +164,41 @@ export function createAppStore(graph: Graph, kv: KV | null): AppStore {
           expandedGroups: next,
           zoomLevel: next.size > 0 ? 'nodes' : 'groups',
           highlight: { mode: 'trace-down', ids: new Set([...t.nodeIds, ...t.edgeIds]) },
+          activeLens: null,
         });
+      },
+
+      traceUp(nodeId) {
+        const t = computeTraceUp(graph, nodeId);
+        set({ highlight: { mode: 'trace-up', ids: new Set([...t.nodeIds, ...t.edgeIds]) }, activeLens: null });
+      },
+
+      traceRecipe(nodeId) {
+        const r = recipeSet(graph, nodeId);
+        const next = expand(groupsOf(r.nodeIds));
+        set({
+          expandedGroups: next,
+          zoomLevel: next.size > 0 ? 'nodes' : 'groups',
+          highlight: { mode: 'recipe', ids: new Set([...r.nodeIds, ...r.edgeIds]) },
+          activeLens: null,
+        });
+      },
+
+      toggleLens(lens) {
+        if (get().activeLens === lens) set({ activeLens: null, highlight: NO_HIGHLIGHT });
+        else set({ activeLens: lens, highlight: lensHighlight(lens), tour: null });
+      },
+
+      escape() {
+        const s = get();
+        if (s.tour) s.endTour();
+        else if (s.selection) s.clearSelection();
+        else if (s.activeLens) s.toggleLens(s.activeLens);
       },
 
       startTour(id) {
         if (!graph.content.tours.some((t) => t.id === id)) return;
+        set({ activeLens: null });
         goToStop(id, 0);
       },
 
@@ -170,7 +213,8 @@ export function createAppStore(graph: Graph, kv: KV | null): AppStore {
       },
 
       endTour() {
-        set({ tour: null, highlight: NO_HIGHLIGHT });
+        const lens = get().activeLens;
+        set({ tour: null, highlight: lens ? lensHighlight(lens) : NO_HIGHLIGHT });
       },
 
       setTheme(t) {
