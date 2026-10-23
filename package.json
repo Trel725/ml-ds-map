@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",
     "content:check": "tsx scripts/content-check.ts",
-    "content:report": "tsx scripts/content-report.ts"
+    "content:report": "tsx scripts/content-report.ts",
+    "ci": "npm run lint && npm run typecheck && npm run content:check -- --strict && npm test && CONTENT_STRICT=1 npm run build"
   },
   "dependencies": {
     "d3-array": "^3.2.4",
