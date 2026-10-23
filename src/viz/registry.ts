@@ -7,4 +7,5 @@ export const registry: Partial<Record<VizId, () => Promise<{ default: VizModule 
   'slope-derivative': () => import('./slope-derivative'),
   'gradient-descent': () => import('./gradient-descent'),
   'ols-fit': () => import('./ols-fit'),
+  overfitting: () => import('./overfitting'),
 };

@@ -54,3 +54,8 @@ test('ols-fit', async ({ page }) => {
   const { readout } = await exercise(page, 'ols', 'ols-fit', (v) => v.getByRole('slider').first(), ['ArrowUp', 'ArrowUp', 'ArrowUp']);
   await expect(readout).toHaveText(/^Total square area \d+$/);
 });
+
+test('overfitting', async ({ page }) => {
+  const { readout } = await exercise(page, 'overfitting', 'overfitting', (v) => v.getByRole('slider', { name: 'Complexity' }), right3);
+  await expect(readout).toHaveText(/^Degree 4 · training error \d+ · test error \d+$/);
+});
