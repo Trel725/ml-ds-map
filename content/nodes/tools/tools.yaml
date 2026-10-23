@@ -1,0 +1,63 @@
+- id: numpy
+  label: NumPy
+  synonyms: [np, arrays]
+  kind: tool
+  oneLiner: "Fast arrays and linear algebra for Python."
+  intuition: "NumPy stores numbers in efficient grids. It does vector and matrix math in one line. Almost every other tool is built on it. It is like the calculator inside every data science tool."
+  analogy: "The calculator inside every data science tool."
+
+- id: pandas
+  label: pandas
+  synonyms: [dataframe, data frames]
+  kind: tool
+  oneLiner: "Tables for loading, cleaning and reshaping data."
+  intuition: "pandas gives you data frames, which are spreadsheets in code. You filter, join and summarize them. Most projects start here. It is like a spreadsheet you drive with commands."
+  analogy: "A spreadsheet you drive with commands."
+
+- id: matplotlib-seaborn
+  label: matplotlib / seaborn
+  synonyms: [matplotlib, seaborn, plotting]
+  kind: tool
+  oneLiner: "Plotting libraries for charts and data exploration."
+  intuition: "matplotlib draws any chart you can describe. seaborn adds good-looking statistical plots in one line. Use them to read data before modeling. It is like a sketchbook for your data."
+  analogy: "A sketchbook for your data."
+
+- id: scikit-learn
+  label: scikit-learn
+  synonyms: [sklearn]
+  kind: tool
+  oneLiner: "The standard library for classic machine learning in Python."
+  intuition: "Every model has the same fit and predict methods. It also provides pipelines, cross-validation and metrics. It is like a toolbox where every tool has the same handle."
+  analogy: "A toolbox where every tool has the same handle."
+
+- id: statsmodels
+  label: statsmodels
+  synonyms: [stats models]
+  kind: tool
+  oneLiner: "Statistical models with full tables of tests and standard errors."
+  intuition: "statsmodels fits regressions the econometric way. It reports standard errors, p-values and diagnostics. It also has ARIMA and other time series models. It is like a lab notebook that records every detail."
+  analogy: "A lab notebook that records every detail."
+
+- id: xgboost-lightgbm
+  label: XGBoost / LightGBM
+  synonyms: [xgboost library, lightgbm library]
+  kind: tool
+  oneLiner: "Fast gradient boosting libraries for table-shaped data."
+  intuition: "These libraries implement gradient boosted trees efficiently. They work with scikit-learn style code. They are a strong default for tables. It is like a specialist workshop for one kind of job."
+  analogy: "A specialist workshop for one kind of job."
+
+- id: pytorch
+  label: PyTorch
+  synonyms: [torch, autograd]
+  kind: tool
+  oneLiner: "A library for building and training neural networks."
+  intuition: "PyTorch works with tensors, which are arrays that track their own slopes. Its autograd feature does backpropagation for you. It is like a calculator that also shows its working backward."
+  analogy: "A calculator that also shows its working backward."
+
+- id: nltk-spacy
+  label: NLTK / spaCy
+  synonyms: [nltk, spacy]
+  kind: tool
+  oneLiner: "Libraries for tokenizing and preparing text."
+  intuition: "They split text into tokens and sentences. They also tag parts of speech and names. It is like a kitchen prep station for text."
+  analogy: "A kitchen prep station for text."

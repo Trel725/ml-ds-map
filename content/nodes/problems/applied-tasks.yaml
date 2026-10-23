@@ -1,0 +1,15 @@
+- id: causal-effect-estimation
+  label: Causal effect estimation
+  synonyms: [causal inference, treatment effect, policy evaluation]
+  kind: problem
+  oneLiner: "Measuring what actually happens when you change something."
+  intuition: "Prediction asks what will happen. Causal estimation asks what would happen if you stepped in. Experiments answer it best, and econometric tools imitate them. It is like testing a medicine against a sugar pill."
+  analogy: "Testing a medicine against a sugar pill."
+
+- id: text-tasks
+  label: Text tasks
+  synonyms: [text classification, sentiment analysis, nlp, topic discovery]
+  kind: problem
+  oneLiner: "Classifying text, scoring sentiment and finding topics."
+  intuition: "Text tasks turn words into predictions or structure. Examples are spam filtering, sentiment and topic discovery. The text must first become numbers. It is like a librarian sorting and summarizing books."
+  analogy: "A librarian sorting and summarizing books."

@@ -1,0 +1,23 @@
+- id: clustering-task
+  label: Clustering
+  synonyms: [segmentation, grouping, clustering task]
+  kind: problem
+  oneLiner: "Grouping similar items when there are no labels."
+  intuition: "Clustering finds natural groups in unlabeled data. There is no right answer to check against. You judge results by how useful and tight the groups are. It is like sorting a box of buttons without instructions."
+  analogy: "Sorting a box of buttons without instructions."
+
+- id: dimensionality-reduction-task
+  label: Dimensionality reduction
+  synonyms: [visualization, compression, data visualization]
+  kind: problem
+  oneLiner: "Shrinking many columns into a few for speed or pictures."
+  intuition: "Data with hundreds of columns is hard to see and slow to model. Reducing it keeps the most important structure. It is like summarizing a long book in one page."
+  analogy: "Summarizing a long book in one page."
+
+- id: anomaly-detection
+  label: Anomaly detection
+  synonyms: [outlier detection, fraud detection, novelty detection]
+  kind: problem
+  oneLiner: "Spotting rare items that don't fit the usual pattern."
+  intuition: "Most data looks normal, and a few points don't. Anomaly detection flags those odd ones. Fraud and machine faults are common uses. It is like a guard noticing someone out of place."
+  analogy: "A guard noticing someone out of place."

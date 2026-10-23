@@ -1,0 +1,24 @@
+- id: regression
+  label: Regression
+  synonyms: [regression task, predicting numbers]
+  kind: problem
+  oneLiner: "Predicting a number, like a price or a temperature."
+  intuition: "A regression task has a numeric target. Being close counts, and big misses hurt more. It is like guessing the price of a house from its features."
+  analogy: "Guessing the price of a house from its features."
+
+- id: classification
+  label: Classification
+  synonyms: [binary classification, multiclass, classifier, classification task]
+  kind: problem
+  oneLiner: "Predicting a category, like spam or not spam."
+  intuition: "A classification task has a target with a few labels. Models usually give a probability, and a threshold turns it into a label. There can be two classes or many. It is like sorting mail into labeled trays."
+  analogy: "Sorting mail into labeled trays."
+  viz: classification-threshold
+
+- id: forecasting
+  label: Forecasting
+  synonyms: [time series forecasting, prediction over time]
+  kind: problem
+  oneLiner: "Predicting the future values of a series over time."
+  intuition: "Forecasting uses the past of a series to predict what comes next. Order matters, and the future must not leak into training. It is like a weather forecast."
+  analogy: "A weather forecast."
