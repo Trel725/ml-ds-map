@@ -1,0 +1,40 @@
+# needs edges inside the foundations and math layers.
+- { from: slope, type: needs, to: functions-and-graphs, sentence: "Slope needs functions and graphs" }
+- { from: exponents-and-logarithms, type: needs, to: functions-and-graphs, sentence: "Logarithms need functions and graphs" }
+- { from: reading-plots, type: needs, to: functions-and-graphs, sentence: "Reading plots needs functions and graphs" }
+- { from: averages-and-spread, type: needs, to: notation, sentence: "Averages and spread need summation notation" }
+- { from: distance, type: needs, to: notation, sentence: "Distance needs notation for many columns" }
+
+- { from: vectors, type: needs, to: notation, sentence: "Vectors need notation" }
+- { from: dot-product, type: needs, to: vectors, sentence: "The dot product needs vectors" }
+- { from: matrices, type: needs, to: vectors, sentence: "Matrices need vectors" }
+- { from: projections, type: needs, to: dot-product, sentence: "Projections need the dot product" }
+- { from: eigen-svd, type: needs, to: matrices, sentence: "Eigenvectors and SVD need matrices" }
+
+- { from: chain-rule, type: needs, to: derivative, sentence: "The chain rule needs derivatives" }
+
+- { from: loss-landscape, type: needs, to: functions-and-graphs, sentence: "The loss landscape needs functions and graphs" }
+- { from: analytical-solution, type: needs, to: matrices, sentence: "An analytical solution needs matrices" }
+- { from: analytical-solution, type: needs, to: derivative, sentence: "An analytical solution needs derivatives to find the flat point" }
+- { from: gradient-descent, type: needs, to: loss-landscape, sentence: "Gradient descent needs a loss landscape to walk on" }
+- { from: gradient-descent, type: needs, to: learning-rate, sentence: "Gradient descent needs a learning rate to size its steps" }
+- { from: sgd-adam, type: needs, to: gradient-descent, sentence: "SGD and Adam need gradient descent" }
+- { from: learning-rate, type: needs, to: slope, sentence: "The learning rate needs slope" }
+- { from: convexity, type: needs, to: loss-landscape, sentence: "Convexity needs the loss landscape" }
+- { from: newtons-method, type: needs, to: derivative, sentence: "Newton's method needs derivatives" }
+- { from: greedy-search, type: needs, to: loss-landscape, sentence: "Greedy search needs a loss to improve" }
+
+- { from: random-variables, type: needs, to: basic-probability, sentence: "Random variables need basic probability" }
+- { from: distributions, type: needs, to: random-variables, sentence: "Distributions need random variables" }
+- { from: bayes-rule, type: needs, to: basic-probability, sentence: "Bayes' rule needs conditional probability" }
+- { from: expectation-variance, type: needs, to: random-variables, sentence: "Expectation and variance need random variables" }
+- { from: expectation-variance, type: needs, to: averages-and-spread, sentence: "Expectation and variance need averages and spread" }
+- { from: independence, type: needs, to: basic-probability, sentence: "Independence needs basic probability" }
+- { from: mle, type: needs, to: distributions, sentence: "Maximum likelihood needs distributions" }
+
+- { from: sampling-distributions, type: needs, to: distributions, sentence: "Sampling distributions need distributions" }
+- { from: central-limit-theorem, type: needs, to: sampling-distributions, sentence: "The central limit theorem needs sampling distributions" }
+- { from: standard-errors, type: needs, to: sampling-distributions, sentence: "Standard errors need sampling distributions" }
+- { from: confidence-intervals, type: needs, to: standard-errors, sentence: "Confidence intervals need standard errors" }
+- { from: bootstrap, type: needs, to: sampling-distributions, sentence: "The bootstrap needs sampling distributions" }
+- { from: correlation-causation, type: needs, to: reading-plots, sentence: "Correlation versus causation needs reading plots" }

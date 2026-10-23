@@ -1,0 +1,23 @@
+# How models are trained and how algorithm families relate.
+- { from: neural-network, type: is-trained-by, to: sgd-adam, sentence: "A neural network is trained by SGD or Adam" }
+- { from: logistic-regression, type: is-trained-by, to: newtons-method, sentence: "Logistic regression is often trained by Newton's method in statistics software" }
+- { from: decision-tree, type: is-trained-by, to: greedy-search, sentence: "A decision tree is trained by greedy search over splits" }
+
+- { from: ols, type: is-special-case-of, to: glm, sentence: "OLS is a special case of a generalized linear model" }
+- { from: logistic-regression, type: is-special-case-of, to: glm, sentence: "Logistic regression is a special case of a generalized linear model" }
+- { from: ridge, type: is-special-case-of, to: elastic-net, sentence: "Ridge regression is a special case of elastic net" }
+- { from: lasso, type: is-special-case-of, to: elastic-net, sentence: "Lasso is a special case of elastic net" }
+- { from: decision-stump, type: is-special-case-of, to: decision-tree, sentence: "A decision stump is a special case of a decision tree" }
+- { from: random-forest, type: is-special-case-of, to: bagging-method, sentence: "Random forest is a special case of bagging" }
+- { from: xgboost, type: is-special-case-of, to: gradient-boosting, sentence: "XGBoost is a special case of gradient boosting" }
+- { from: lightgbm, type: is-special-case-of, to: gradient-boosting, sentence: "LightGBM is a special case of gradient boosting" }
+- { from: logit-probit, type: is-special-case-of, to: glm, sentence: "Logit and probit are special cases of generalized linear models" }
+
+- { from: random-forest, type: is-built-from, to: decision-tree, sentence: "Random forest is built from many decision trees" }
+- { from: gradient-boosting, type: is-built-from, to: decision-tree, sentence: "Gradient boosting is built from small decision trees" }
+- { from: adaboost, type: is-built-from, to: decision-stump, sentence: "AdaBoost is built from decision stumps" }
+- { from: neural-network, type: is-built-from, to: perceptron, sentence: "A neural network is built from neuron-like units" }
+
+- { from: regularization, type: controls, to: overfitting, sentence: "Regularization controls overfitting" }
+- { from: learning-rate, type: controls, to: gradient-descent, sentence: "The learning rate controls gradient descent" }
+- { from: hyperparameter-tuning, type: controls, to: overfitting, sentence: "Hyperparameter tuning controls overfitting" }

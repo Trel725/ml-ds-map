@@ -1,0 +1,32 @@
+# Which algorithms solve which problems.
+- { from: ols, type: solves, to: regression, sentence: "OLS solves regression" }
+- { from: ridge, type: solves, to: regression, sentence: "Ridge regression solves regression" }
+- { from: lasso, type: solves, to: regression, sentence: "Lasso solves regression" }
+- { from: logistic-regression, type: solves, to: classification, sentence: "Logistic regression solves classification" }
+- { from: decision-tree, type: solves, to: regression, sentence: "A decision tree solves regression" }
+- { from: decision-tree, type: solves, to: classification, sentence: "A decision tree solves classification" }
+- { from: random-forest, type: solves, to: classification, sentence: "Random forest solves classification" }
+- { from: random-forest, type: solves, to: regression, sentence: "Random forest solves regression" }
+- { from: gradient-boosting, type: solves, to: regression, sentence: "Gradient boosting solves regression" }
+- { from: gradient-boosting, type: solves, to: classification, sentence: "Gradient boosting solves classification" }
+- { from: neural-network, type: solves, to: classification, sentence: "A neural network solves classification" }
+- { from: neural-network, type: solves, to: regression, sentence: "A neural network solves regression" }
+- { from: knn, type: solves, to: classification, sentence: "k-nearest neighbors solves classification" }
+- { from: svm, type: solves, to: classification, sentence: "A support vector machine solves classification" }
+- { from: naive-bayes, type: solves, to: classification, sentence: "Naive Bayes solves classification" }
+- { from: lda-classifier, type: solves, to: classification, sentence: "The LDA classifier solves classification" }
+- { from: arima, type: solves, to: forecasting, sentence: "ARIMA solves forecasting" }
+- { from: exponential-smoothing, type: solves, to: forecasting, sentence: "Exponential smoothing solves forecasting" }
+- { from: k-means, type: solves, to: clustering-task, sentence: "k-means solves clustering" }
+- { from: hierarchical-clustering, type: solves, to: clustering-task, sentence: "Hierarchical clustering solves clustering" }
+- { from: dbscan, type: solves, to: clustering-task, sentence: "DBSCAN solves clustering" }
+- { from: gaussian-mixtures, type: solves, to: clustering-task, sentence: "Gaussian mixtures solve clustering" }
+- { from: pca, type: solves, to: dimensionality-reduction-task, sentence: "PCA solves dimensionality reduction" }
+- { from: t-sne, type: solves, to: dimensionality-reduction-task, sentence: "t-SNE solves dimensionality reduction for pictures" }
+- { from: umap, type: solves, to: dimensionality-reduction-task, sentence: "UMAP solves dimensionality reduction" }
+- { from: dbscan, type: solves, to: anomaly-detection, sentence: "DBSCAN solves anomaly detection by flagging noise points" }
+- { from: gaussian-mixtures, type: solves, to: anomaly-detection, sentence: "Gaussian mixtures solve anomaly detection by flagging unlikely points" }
+- { from: instrumental-variables, type: solves, to: causal-effect-estimation, sentence: "Instrumental variables solve causal effect estimation" }
+- { from: difference-in-differences, type: solves, to: causal-effect-estimation, sentence: "Difference-in-differences solves causal effect estimation" }
+- { from: naive-bayes, type: solves, to: text-tasks, sentence: "Naive Bayes solves text classification" }
+- { from: topic-models, type: solves, to: text-tasks, sentence: "Topic models solve topic discovery in text" }

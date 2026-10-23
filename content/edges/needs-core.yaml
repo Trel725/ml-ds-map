@@ -1,0 +1,63 @@
+# needs edges from the core concepts layer.
+- { from: features-and-target, type: needs, to: functions-and-graphs, sentence: "Features and target need functions" }
+- { from: hyperparameters, type: needs, to: features-and-target, sentence: "Parameters versus hyperparameters needs features and target" }
+- { from: loss-function, type: needs, to: functions-and-graphs, sentence: "A loss function needs functions and graphs" }
+- { from: log-loss, type: needs, to: loss-function, sentence: "Log loss needs the idea of a loss" }
+- { from: parametric-vs-nonparametric, type: needs, to: features-and-target, sentence: "Parametric versus nonparametric needs features and target" }
+- { from: generative-vs-discriminative, type: needs, to: bayes-rule, sentence: "Generative versus discriminative needs Bayes' rule" }
+
+- { from: overfitting, type: needs, to: loss-function, sentence: "Overfitting needs the idea of a loss" }
+- { from: overfitting, type: needs, to: train-test-split, sentence: "Overfitting needs a train-test split to be seen" }
+- { from: bias-variance, type: needs, to: overfitting, sentence: "The bias-variance tradeoff needs overfitting" }
+- { from: bias-variance, type: needs, to: expectation-variance, sentence: "The bias-variance tradeoff needs expectation and variance" }
+- { from: regularization, type: needs, to: overfitting, sentence: "Regularization needs overfitting" }
+- { from: curse-of-dimensionality, type: needs, to: distance, sentence: "The curse of dimensionality needs distance" }
+
+- { from: train-test-split, type: needs, to: features-and-target, sentence: "A train-test split needs features and target" }
+- { from: cross-validation, type: needs, to: train-test-split, sentence: "Cross-validation needs the train-test split" }
+- { from: hyperparameter-tuning, type: needs, to: cross-validation, sentence: "Hyperparameter tuning needs cross-validation" }
+- { from: hyperparameter-tuning, type: needs, to: hyperparameters, sentence: "Hyperparameter tuning needs hyperparameters" }
+- { from: data-leakage, type: needs, to: train-test-split, sentence: "Data leakage needs the train-test split" }
+
+- { from: feature-engineering, type: needs, to: features-and-target, sentence: "Feature engineering needs features" }
+- { from: feature-scaling, type: needs, to: averages-and-spread, sentence: "Feature scaling needs averages and spread" }
+- { from: class-imbalance, type: needs, to: basic-probability, sentence: "Class imbalance needs basic probability" }
+
+- { from: prediction-vs-explanation, type: needs, to: correlation-causation, sentence: "Prediction versus explanation needs correlation versus causation" }
+- { from: interpretability, type: needs, to: prediction-vs-explanation, sentence: "Interpretability needs prediction versus explanation" }
+
+- { from: econometric-ols, type: needs, to: prediction-vs-explanation, sentence: "Econometric OLS needs prediction versus explanation" }
+- { from: econometric-ols, type: needs, to: standard-errors, sentence: "Econometric OLS needs standard errors" }
+- { from: ols-assumptions, type: needs, to: econometric-ols, sentence: "OLS assumptions need econometric OLS" }
+- { from: coefficient-interpretation, type: needs, to: econometric-ols, sentence: "Coefficient interpretation needs econometric OLS" }
+- { from: heteroskedasticity, type: needs, to: ols-assumptions, sentence: "Heteroskedasticity needs the OLS assumptions" }
+- { from: heteroskedasticity, type: needs, to: standard-errors, sentence: "Heteroskedasticity needs standard errors" }
+- { from: multicollinearity, type: needs, to: coefficient-interpretation, sentence: "Multicollinearity needs coefficient interpretation" }
+- { from: omitted-variable-bias, type: needs, to: correlation-causation, sentence: "Omitted variable bias needs correlation versus causation" }
+- { from: omitted-variable-bias, type: needs, to: coefficient-interpretation, sentence: "Omitted variable bias needs coefficient interpretation" }
+- { from: instrumental-variables, type: needs, to: omitted-variable-bias, sentence: "Instrumental variables need omitted variable bias" }
+- { from: panel-data, type: needs, to: econometric-ols, sentence: "Panel data needs econometric OLS" }
+- { from: difference-in-differences, type: needs, to: panel-data, sentence: "Difference-in-differences needs panel data" }
+- { from: difference-in-differences, type: needs, to: correlation-causation, sentence: "Difference-in-differences needs correlation versus causation" }
+- { from: logit-probit, type: needs, to: econometric-ols, sentence: "Logit and probit need econometric OLS" }
+- { from: logit-probit, type: needs, to: basic-probability, sentence: "Logit and probit need basic probability" }
+
+- { from: tokenization, type: needs, to: feature-engineering, sentence: "Tokenization needs feature engineering" }
+- { from: bag-of-words, type: needs, to: tokenization, sentence: "Bag of words needs tokenization" }
+- { from: tf-idf, type: needs, to: bag-of-words, sentence: "TF-IDF needs bag of words" }
+- { from: tf-idf, type: needs, to: exponents-and-logarithms, sentence: "TF-IDF needs logarithms" }
+- { from: word-embeddings, type: needs, to: vectors, sentence: "Word embeddings need vectors" }
+- { from: word-embeddings, type: needs, to: tokenization, sentence: "Word embeddings need tokenization" }
+- { from: topic-models, type: needs, to: bag-of-words, sentence: "Topic models need bag of words" }
+- { from: topic-models, type: needs, to: distributions, sentence: "Topic models need distributions" }
+- { from: transformers, type: needs, to: word-embeddings, sentence: "Transformers need word embeddings" }
+- { from: transformers, type: needs, to: neural-network, sentence: "Transformers need neural networks" }
+
+- { from: trend-seasonality, type: needs, to: reading-plots, sentence: "Trend and seasonality need reading plots" }
+- { from: stationarity, type: needs, to: trend-seasonality, sentence: "Stationarity needs trend and seasonality" }
+- { from: stationarity, type: needs, to: expectation-variance, sentence: "Stationarity needs expectation and variance" }
+- { from: autocorrelation, type: needs, to: stationarity, sentence: "Autocorrelation needs stationarity" }
+- { from: lag-features, type: needs, to: feature-engineering, sentence: "Lag features need feature engineering" }
+- { from: lag-features, type: needs, to: autocorrelation, sentence: "Lag features need autocorrelation" }
+- { from: time-series-cv, type: needs, to: cross-validation, sentence: "Time series validation needs cross-validation" }
+- { from: time-series-cv, type: needs, to: data-leakage, sentence: "Time series validation needs data leakage" }

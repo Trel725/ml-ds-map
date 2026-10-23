@@ -1,0 +1,27 @@
+# The product spec's signature connections: the main "aha" links.
+- { from: derivative, type: needs, to: slope, signature: true, sentence: "A derivative needs slope: it is a slope at one point", explanation: "Derivatives are just slopes at a single point." }
+- { from: gradient, type: needs, to: derivative, signature: true, sentence: "A gradient needs derivatives, one per parameter", explanation: "A gradient is a list of slopes, one per parameter." }
+- { from: gradient-descent, type: needs, to: gradient, signature: true, sentence: "Gradient descent needs the gradient to know which way is downhill", explanation: "Learning means walking downhill on the loss surface." }
+- { from: logistic-regression, type: is-trained-by, to: gradient-descent, signature: true, sentence: "Logistic regression is trained by gradient descent", explanation: "One optimizer trains most of modern machine learning." }
+- { from: neural-network, type: is-trained-by, to: gradient-descent, signature: true, sentence: "A neural network is trained by gradient descent", explanation: "One optimizer trains most of modern machine learning." }
+- { from: gradient-boosting, type: is-trained-by, to: gradient-descent, signature: true, sentence: "Gradient boosting is trained by gradient descent, one tree at a time", explanation: "One optimizer trains most of modern machine learning." }
+- { from: ols, type: is-trained-by, to: analytical-solution, signature: true, sentence: "OLS is trained by an analytical solution, the normal equations", explanation: "Some problems can be solved exactly with linear algebra." }
+- { from: log-loss, type: needs, to: exponents-and-logarithms, signature: true, sentence: "Log loss needs logarithms", explanation: "This is why logs suddenly matter." }
+- { from: mle, type: needs, to: exponents-and-logarithms, signature: true, sentence: "Maximum likelihood needs logarithms to turn products into sums", explanation: "Products of probabilities become sums once you take logs." }
+- { from: ols, type: is-special-case-of, to: mle, signature: true, sentence: "OLS is a special case of maximum likelihood", explanation: "Squared error is what maximum likelihood gives under normal noise." }
+- { from: ridge, type: controls, to: overfitting, signature: true, sentence: "Ridge regression controls overfitting", explanation: "Regularization works as a penalty on big weights." }
+- { from: lasso, type: controls, to: overfitting, signature: true, sentence: "Lasso controls overfitting", explanation: "Regularization works as a penalty on big weights." }
+- { from: bagging-method, type: needs, to: bootstrap, signature: true, sentence: "Bagging needs the bootstrap", explanation: "It is the same resampling trick from statistics." }
+- { from: random-forest, type: fixes-weakness-of, to: decision-tree, signature: true, sentence: "Random forest fixes the variance of a decision tree", explanation: "A single tree has high variance, and averaging many varied trees cuts it." }
+- { from: gradient-boosting, type: fixes-weakness-of, to: decision-stump, signature: true, sentence: "Gradient boosting fixes the bias of a decision stump", explanation: "A tiny tree has high bias, and adding many of them reduces it." }
+- { from: neural-network, type: is-built-from, to: logistic-regression, signature: true, sentence: "A neural network is built from logistic regressions", explanation: "One neuron is a logistic regression." }
+- { from: backpropagation, type: needs, to: chain-rule, signature: true, sentence: "Backpropagation needs the chain rule", explanation: "Backprop is the chain rule, applied over and over." }
+- { from: pca, type: needs, to: eigen-svd, signature: true, sentence: "PCA needs eigenvectors and SVD", explanation: "They give the directions of most variance." }
+- { from: naive-bayes, type: needs, to: bayes-rule, signature: true, sentence: "Naive Bayes needs Bayes' rule", explanation: "Generative classifiers flip conditional probabilities." }
+- { from: lda-classifier, type: needs, to: bayes-rule, signature: true, sentence: "The LDA classifier needs Bayes' rule", explanation: "Generative classifiers flip conditional probabilities." }
+- { from: qda, type: needs, to: bayes-rule, signature: true, sentence: "QDA needs Bayes' rule", explanation: "Generative classifiers flip conditional probabilities." }
+- { from: knn, type: needs, to: distance, signature: true, sentence: "k-nearest neighbors needs distance to find neighbors", explanation: "This is why feature scaling matters." }
+- { from: k-means, type: needs, to: distance, signature: true, sentence: "k-means needs distance to assign points to centers", explanation: "This is why feature scaling matters." }
+- { from: cross-validation, type: controls, to: hyperparameters, signature: true, sentence: "Cross-validation controls how hyperparameters are chosen", explanation: "It is how tuning is done honestly." }
+- { from: econometric-ols, type: not-same-as, to: ols, signature: true, sentence: "Econometric OLS is not the same as OLS for prediction", explanation: "Same formula, different goal: explain versus predict." }
+- { from: hypothesis-testing, type: needs, to: sampling-distributions, signature: true, sentence: "Hypothesis testing needs sampling distributions", explanation: "p-values come from imagined repeated samples." }

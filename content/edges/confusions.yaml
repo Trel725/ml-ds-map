@@ -1,0 +1,4 @@
+# Confusable names, shown with a "not the same as" link.
+- { from: lda-classifier, type: not-same-as, to: topic-models, sentence: "The LDA classifier is not the same as LDA topic models", explanation: "Linear discriminant analysis classifies points. Latent Dirichlet allocation finds topics in text. They only share initials." }
+- { from: logistic-regression, type: not-same-as, to: ols, sentence: "Logistic regression is not the same as linear regression", explanation: "Both use a weighted sum of features. Logistic regression bends it into a probability for yes-or-no targets." }
+- { from: log-loss, type: not-same-as, to: loss-function, sentence: "Log loss is one loss, not the general idea of loss", explanation: "Log loss is a specific loss for probabilities. A metric like accuracy is often what you report instead." }

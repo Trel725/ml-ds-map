@@ -1,0 +1,19 @@
+# Which tools implement which ideas. Group endpoints cover a whole family.
+- { from: linear-algebra, type: implemented-in, to: numpy, sentence: "Linear algebra is implemented in NumPy" }
+- { from: data-preparation, type: implemented-in, to: pandas, sentence: "Data preparation is implemented in pandas" }
+- { from: feature-engineering, type: implemented-in, to: pandas, sentence: "Feature engineering is implemented in pandas" }
+- { from: reading-plots, type: implemented-in, to: matplotlib-seaborn, sentence: "Reading plots is done with matplotlib and seaborn" }
+- { from: linear-models, type: implemented-in, to: scikit-learn, sentence: "Linear models are implemented in scikit-learn" }
+- { from: trees, type: implemented-in, to: scikit-learn, sentence: "Decision trees are implemented in scikit-learn" }
+- { from: bagging, type: implemented-in, to: scikit-learn, sentence: "Bagging and random forests are implemented in scikit-learn" }
+- { from: clustering, type: implemented-in, to: scikit-learn, sentence: "Clustering methods are implemented in scikit-learn" }
+- { from: dimensionality-reduction, type: implemented-in, to: scikit-learn, sentence: "PCA and t-SNE are implemented in scikit-learn" }
+- { from: cross-validation, type: implemented-in, to: scikit-learn, sentence: "Cross-validation is implemented in scikit-learn" }
+- { from: econometrics, type: implemented-in, to: statsmodels, sentence: "Econometric models are implemented in statsmodels" }
+- { from: hypothesis-testing, type: implemented-in, to: statsmodels, sentence: "Hypothesis tests are implemented in statsmodels" }
+- { from: time-series-models, type: implemented-in, to: statsmodels, sentence: "ARIMA and exponential smoothing are implemented in statsmodels" }
+- { from: xgboost, type: implemented-in, to: xgboost-lightgbm, sentence: "XGBoost is implemented in its own library" }
+- { from: lightgbm, type: implemented-in, to: xgboost-lightgbm, sentence: "LightGBM is implemented in its own library" }
+- { from: neural-networks, type: implemented-in, to: pytorch, sentence: "Neural networks are implemented in PyTorch" }
+- { from: backpropagation, type: implemented-in, to: pytorch, sentence: "Backpropagation is done for you by PyTorch" }
+- { from: text-processing, type: implemented-in, to: nltk-spacy, sentence: "Text processing is implemented in NLTK and spaCy" }

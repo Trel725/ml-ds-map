@@ -1,0 +1,59 @@
+# needs edges from the algorithms layer.
+- { from: ols, type: needs, to: loss-function, sentence: "OLS needs a loss function, squared error" }
+- { from: ols, type: needs, to: projections, sentence: "OLS needs projections" }
+- { from: ridge, type: needs, to: ols, sentence: "Ridge regression needs OLS" }
+- { from: ridge, type: needs, to: regularization, sentence: "Ridge regression needs regularization" }
+- { from: lasso, type: needs, to: ols, sentence: "Lasso needs OLS" }
+- { from: lasso, type: needs, to: regularization, sentence: "Lasso needs regularization" }
+- { from: elastic-net, type: needs, to: ridge, sentence: "Elastic net needs ridge regression" }
+- { from: elastic-net, type: needs, to: lasso, sentence: "Elastic net needs lasso" }
+- { from: logistic-regression, type: needs, to: log-loss, sentence: "Logistic regression needs log loss" }
+- { from: logistic-regression, type: needs, to: basic-probability, sentence: "Logistic regression needs basic probability" }
+- { from: glm, type: needs, to: ols, sentence: "Generalized linear models need OLS" }
+- { from: glm, type: needs, to: distributions, sentence: "Generalized linear models need distributions" }
+
+- { from: perceptron, type: needs, to: dot-product, sentence: "A perceptron needs the dot product" }
+- { from: neural-network, type: needs, to: perceptron, sentence: "A neural network needs the perceptron" }
+- { from: neural-network, type: needs, to: backpropagation, sentence: "A neural network needs backpropagation" }
+- { from: backpropagation, type: needs, to: gradient-descent, sentence: "Backpropagation needs gradient descent" }
+
+- { from: decision-tree, type: needs, to: greedy-search, sentence: "A decision tree needs greedy search to choose splits" }
+- { from: decision-tree, type: needs, to: features-and-target, sentence: "A decision tree needs features and target" }
+- { from: decision-stump, type: needs, to: decision-tree, sentence: "A decision stump needs the decision tree" }
+
+- { from: bagging-method, type: needs, to: bias-variance, sentence: "Bagging needs the bias-variance tradeoff" }
+- { from: random-forest, type: needs, to: bagging-method, sentence: "Random forest needs bagging" }
+- { from: random-forest, type: needs, to: decision-tree, sentence: "Random forest needs decision trees" }
+
+- { from: adaboost, type: needs, to: decision-stump, sentence: "AdaBoost needs decision stumps" }
+- { from: gradient-boosting, type: needs, to: decision-tree, sentence: "Gradient boosting needs decision trees" }
+- { from: gradient-boosting, type: needs, to: loss-function, sentence: "Gradient boosting needs a loss function" }
+- { from: xgboost, type: needs, to: gradient-boosting, sentence: "XGBoost needs gradient boosting" }
+- { from: xgboost, type: needs, to: regularization, sentence: "XGBoost needs regularization" }
+- { from: lightgbm, type: needs, to: gradient-boosting, sentence: "LightGBM needs gradient boosting" }
+
+- { from: naive-bayes, type: needs, to: independence, sentence: "Naive Bayes needs independence" }
+- { from: lda-classifier, type: needs, to: distributions, sentence: "The LDA classifier needs distributions" }
+- { from: qda, type: needs, to: lda-classifier, sentence: "QDA needs the LDA classifier" }
+- { from: gaussian-mixtures, type: needs, to: distributions, sentence: "Gaussian mixtures need distributions" }
+- { from: gaussian-mixtures, type: needs, to: k-means, sentence: "Gaussian mixtures need k-means" }
+
+- { from: knn, type: needs, to: feature-scaling, sentence: "k-nearest neighbors needs feature scaling" }
+
+- { from: svm, type: needs, to: dot-product, sentence: "A support vector machine needs the dot product" }
+- { from: svm, type: needs, to: distance, sentence: "A support vector machine needs distance to measure the margin" }
+- { from: kernel-trick, type: needs, to: svm, sentence: "The kernel trick needs the support vector machine" }
+- { from: kernel-trick, type: needs, to: dot-product, sentence: "The kernel trick needs the dot product" }
+
+- { from: k-means, type: needs, to: averages-and-spread, sentence: "k-means needs averages" }
+- { from: hierarchical-clustering, type: needs, to: distance, sentence: "Hierarchical clustering needs distance" }
+- { from: dbscan, type: needs, to: distance, sentence: "DBSCAN needs distance" }
+
+- { from: pca, type: needs, to: expectation-variance, sentence: "PCA needs variance" }
+- { from: t-sne, type: needs, to: distance, sentence: "t-SNE needs distance" }
+- { from: t-sne, type: needs, to: distributions, sentence: "t-SNE needs distributions" }
+- { from: umap, type: needs, to: distance, sentence: "UMAP needs distance" }
+
+- { from: arima, type: needs, to: autocorrelation, sentence: "ARIMA needs autocorrelation" }
+- { from: arima, type: needs, to: stationarity, sentence: "ARIMA needs stationarity" }
+- { from: exponential-smoothing, type: needs, to: trend-seasonality, sentence: "Exponential smoothing needs trend and seasonality" }
