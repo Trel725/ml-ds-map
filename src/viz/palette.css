@@ -1,0 +1,151 @@
+/* Same colors mean the same things in every visualization. */
+:root {
+  --viz-train: #2f5aa8;
+  --viz-test: #c2601a;
+  --viz-prediction: #1d6e4f;
+  --viz-error: #c0284f;
+  --viz-axis: #6b7570;
+  --viz-grid: #dfe4e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --viz-train: #8fb0f0;
+    --viz-test: #f2a05c;
+    --viz-prediction: #6fd0a6;
+    --viz-error: #f27a98;
+    --viz-axis: #9aa59f;
+    --viz-grid: #2c3531;
+  }
+}
+
+:root[data-theme='dark'] {
+  --viz-train: #8fb0f0;
+  --viz-test: #f2a05c;
+  --viz-prediction: #6fd0a6;
+  --viz-error: #f27a98;
+  --viz-axis: #9aa59f;
+  --viz-grid: #2c3531;
+}
+
+.viz {
+  margin-top: 22px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.viz-takeaway {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.viz-figure {
+  margin: 0;
+}
+
+.viz-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.viz-status p,
+.viz-fallback {
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.viz-slider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-slider input {
+  width: 140px;
+  accent-color: var(--viz-prediction);
+}
+
+.viz-slider output {
+  min-width: 3.5em;
+  font-variant-numeric: tabular-nums;
+}
+
+.viz-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  border-radius: 999px;
+  padding: 3px 10px 3px 4px;
+  cursor: pointer;
+}
+
+.viz-switch-knob {
+  width: 26px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--line);
+  position: relative;
+}
+
+.viz-switch-knob::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--fg);
+  transition: transform var(--motion);
+}
+
+.viz-switch[aria-checked='true'] .viz-switch-knob {
+  background: var(--viz-prediction);
+}
+
+.viz-switch[aria-checked='true'] .viz-switch-knob::after {
+  transform: translateX(10px);
+}
+
+.viz-readout {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg);
+}
+
+.viz-handle {
+  cursor: grab;
+}
+
+.viz-handle:focus-visible {
+  outline: none;
+  stroke: var(--focus);
+  stroke-width: 3;
+}
+
+.viz-axis text {
+  font-size: 12px;
+  fill: var(--viz-axis);
+}
+
+.viz-axis line,
+.viz-axis path {
+  stroke: var(--viz-axis);
+}
