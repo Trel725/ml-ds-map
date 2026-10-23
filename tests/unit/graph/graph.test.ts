@@ -13,7 +13,7 @@ test('indexes nodes, groups and edges by id', () => {
   expect(g.groupsById.get('g-alg')!.layer).toBe('algorithms');
   expect(g.edgesById.has('derivative--needs--slope')).toBe(true);
 });
-test('membersByGroup keeps file order', () => expect(g.membersByGroup.get('g-alg')!.map((n) => n.id)).toEqual(['ols']));
+test('membersByGroup keeps file order', () => expect(g.membersByGroup.get('g-alg')!.map((n) => n.id)).toEqual(['ols', 'ridge']));
 test('out and in are [] when there are none', () => {
   expect(g.out.get('slope')).toEqual([]);
   expect(g.in.get('ols')).toEqual([]);
@@ -23,4 +23,4 @@ test('neededBy(slope) is [derivative]', () => expect(neededBy(g, 'slope').map((n
 test('directEdges(ols) has needs, solves and implemented-in', () =>
   expect(directEdges(g, 'ols').map((e) => e.type).sort()).toEqual(['implemented-in', 'needs', 'solves']));
 test('directEdges(derivative) has in and out', () =>
-  expect(directEdges(g, 'derivative').map((e) => e.id).sort()).toEqual(['derivative--needs--slope', 'overfitting--needs--derivative']));
+  expect(directEdges(g, 'derivative').map((e) => e.id).sort()).toEqual(['derivative--needs--slope', 'overfitting--needs--derivative', 'ridge--needs--derivative']));

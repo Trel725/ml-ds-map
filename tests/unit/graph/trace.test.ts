@@ -2,7 +2,7 @@ import { beforeAll, expect, test } from 'vitest';
 import type { Content } from '../../../src/data/schema';
 import { buildGraph } from '../../../src/graph/graph';
 import type { Graph } from '../../../src/graph/graph';
-import { traceDown } from '../../../src/graph/trace';
+import { recipeSet, traceDown, traceUp } from '../../../src/graph/trace';
 import { loadValid } from '../helpers/fixtures';
 import { realGraph } from '../helpers/real';
 
@@ -58,4 +58,44 @@ test('real content: traceDown(gradient-descent) starts with a foundation and con
   expect(real.nodesById.get(t.order[0])!.layer).toBe('foundations');
   expect(t.order).toContain('derivative');
   expect(t.order.indexOf('slope')).toBeLessThan(t.order.indexOf('derivative'));
+});
+
+test('traceUp(slope) reaches every node that needs it transitively, and nothing else', () => {
+  const t = traceUp(g, 'slope');
+  expect(t.nodeIds).toEqual(new Set(['slope', 'derivative', 'overfitting', 'ols', 'ridge']));
+  expect(t.edgeIds).toEqual(new Set(['derivative--needs--slope', 'overfitting--needs--derivative', 'ols--needs--overfitting', 'ridge--needs--derivative']));
+});
+test('traceUp from a node nobody needs returns an empty order', () => {
+  const t = traceUp(g, 'ols');
+  expect(t.order).toEqual([]);
+  expect(t.nodeIds).toEqual(new Set(['ols']));
+  expect(t.edgeIds.size).toBe(0);
+});
+test('traceUp order puts lower layers first', () =>
+  expect(traceUp(g, 'slope').order).toEqual(['derivative', 'overfitting', 'ols', 'ridge']));
+test('traceDown keeps working after sharing the search', () =>
+  expect(traceDown(g, 'ridge').order).toEqual(['slope', 'derivative']));
+test('recipeSet holds the node, its slot nodes and the edges between them', () => {
+  const r = recipeSet(g, 'ridge');
+  expect(r.nodeIds).toEqual(new Set(['ridge', 'regression', 'derivative']));
+  expect(r.edgeIds).toEqual(new Set(['ridge--needs--derivative']));
+});
+test('recipeSet of a node without a recipe is just that node', () => {
+  const r = recipeSet(g, 'slope');
+  expect(r.nodeIds).toEqual(new Set(['slope']));
+  expect(r.edgeIds.size).toBe(0);
+});
+test('recipeSet skips a slot node missing from the graph', () => {
+  const c = g.content;
+  const nodes = c.nodes.map((n) =>
+    n.id === 'ridge' ? { ...n, recipe: { ...n.recipe!, evaluation: { text: 'Test error.', node: 'ghost' } } } : n,
+  );
+  const r = recipeSet(buildGraph({ ...c, nodes }), 'ridge');
+  expect(r.nodeIds.has('ghost')).toBe(false);
+  expect(r.nodeIds).toEqual(new Set(['ridge', 'regression', 'derivative']));
+});
+test('real content: traceUp(slope) reaches gradient descent and backpropagation', async () => {
+  const t = traceUp(await realGraph(), 'slope');
+  expect(t.nodeIds.has('gradient-descent')).toBe(true);
+  expect(t.nodeIds.has('backpropagation')).toBe(true);
 });

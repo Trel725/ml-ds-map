@@ -10,22 +10,29 @@ export interface Trace {
   edgeIds: Set<string>;
 }
 
-/** Everything `nodeId` needs, directly or indirectly, in learning order. */
-export function traceDown(g: Graph, nodeId: string): Trace {
+/** Breadth-first search along `needs` edges: outgoing (what it needs) or incoming (what needs it). */
+function reachNeeds(g: Graph, nodeId: string, direction: 'down' | 'up'): { nodeIds: Set<string>; edgeIds: Set<string> } {
   const nodeIds = new Set([nodeId]);
   const edgeIds = new Set<string>();
   const queue = [nodeId];
   while (queue.length) {
     const id = queue.shift()!;
-    for (const e of g.out.get(id) ?? []) {
-      if (e.type !== 'needs' || !g.nodesById.has(e.to)) continue;
+    for (const e of (direction === 'down' ? g.out : g.in).get(id) ?? []) {
+      const next = direction === 'down' ? e.to : e.from;
+      if (e.type !== 'needs' || !g.nodesById.has(next)) continue;
       edgeIds.add(e.id);
-      if (!nodeIds.has(e.to)) {
-        nodeIds.add(e.to);
-        queue.push(e.to);
+      if (!nodeIds.has(next)) {
+        nodeIds.add(next);
+        queue.push(next);
       }
     }
   }
+  return { nodeIds, edgeIds };
+}
+
+/** Everything `nodeId` needs, directly or indirectly, in learning order. */
+export function traceDown(g: Graph, nodeId: string): Trace {
+  const { nodeIds, edgeIds } = reachNeeds(g, nodeId, 'down');
 
   // Kahn's algorithm on the reachable subgraph: a node is ready once all its prerequisites are placed.
   const reach = [...nodeIds].filter((id) => id !== nodeId);
@@ -56,4 +63,25 @@ export function traceDown(g: Graph, nodeId: string): Trace {
     }
   }
   return { order, nodeIds, edgeIds };
+}
+
+/** Everything that needs `nodeId`, directly or indirectly, lower layers first. */
+export function traceUp(g: Graph, nodeId: string): Trace {
+  const { nodeIds, edgeIds } = reachNeeds(g, nodeId, 'up');
+  const order = [...nodeIds]
+    .filter((id) => id !== nodeId)
+    .sort((a, b) => byLayerThenLabel(g.nodesById.get(a)!, g.nodesById.get(b)!));
+  return { order, nodeIds, edgeIds };
+}
+
+/** The node, the nodes its recipe slots link to, and every edge between it and those slot nodes. */
+export function recipeSet(g: Graph, nodeId: string): { nodeIds: Set<string>; edgeIds: Set<string> } {
+  const n = g.nodesById.get(nodeId);
+  const slots = [...Object.values(n?.recipe ?? {}), ...Object.values(n?.reducedRecipe ?? {})];
+  const slotIds = new Set(slots.flatMap((s) => (s.node !== undefined && s.node !== nodeId && g.nodesById.has(s.node) ? [s.node] : [])));
+  const edgeIds = new Set<string>();
+  for (const e of [...(g.out.get(nodeId) ?? []), ...(g.in.get(nodeId) ?? [])]) {
+    if (slotIds.has(e.from === nodeId ? e.to : e.from)) edgeIds.add(e.id);
+  }
+  return { nodeIds: new Set([nodeId, ...slotIds]), edgeIds };
 }

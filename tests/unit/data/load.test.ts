@@ -5,7 +5,7 @@ import { formatIssue } from '../../../src/data/issues';
 test('valid fixture loads with no issues', async () => {
   const { content, issues } = await loadContent('tests/fixtures/valid/content');
   expect(issues).toEqual([]);
-  expect(content.nodes.map((n) => n.id).sort()).toEqual(['derivative', 'ols', 'overfitting', 'regression', 'sklearn', 'slope']);
+  expect(content.nodes.map((n) => n.id).sort()).toEqual(['derivative', 'ols', 'overfitting', 'regression', 'ridge', 'sklearn', 'slope']);
   expect(content.nodes.find((n) => n.id === 'slope')!.source).toBe('content/nodes/foundations/g-found.yaml');
 });
 test('layer and group come from the file path', async () => {

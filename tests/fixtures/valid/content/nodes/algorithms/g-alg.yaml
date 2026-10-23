@@ -4,3 +4,15 @@
   kind: algorithm
   oneLiner: Fits the straight line with the smallest squared errors.
   intuition: Draw the line that sits closest to all points. Closeness is measured with squares.
+
+- id: ridge
+  label: Ridge
+  kind: algorithm
+  oneLiner: OLS with a penalty on big weights.
+  intuition: It fits a line like OLS. Big weights cost extra.
+  recipe:
+    problem: { text: Regression., node: regression }
+    modelFamily: { text: A line. }
+    loss: { text: Squared error. }
+    optimizer: { text: Slopes., node: derivative }
+    evaluation: { text: Test error. }
