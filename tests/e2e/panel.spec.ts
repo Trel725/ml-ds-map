@@ -112,6 +112,51 @@ test('a concept node has no recipe and no strengths section', async ({ page }) =
   await expect(page.getByRole('button', { name: 'Light up the recipe' })).toHaveCount(0);
 });
 
+test('math section opens and renders KaTeX', async ({ page }) => {
+  await gotoMap(page, '#/n/ols');
+  const math = page.getByTestId('math');
+  await expect(math).not.toHaveAttribute('open', '');
+  await math.locator('summary').click();
+  await expect(math.locator('.katex-display')).toBeVisible();
+  await expect(math).toContainText('The fitted weights, one per feature.');
+  await expect(math.getByTestId('math-raw')).toHaveCount(0);
+});
+
+test('KaTeX is not requested before the math section opens', async ({ page }) => {
+  const urls: string[] = [];
+  page.on('request', (r) => urls.push(r.url()));
+  await gotoMap(page, '#/n/ols');
+  await expect(page.getByTestId('panel')).toBeVisible();
+  await expect(page.getByTestId('math')).toBeVisible();
+  expect(urls.some((u) => /katex/i.test(u))).toBe(false);
+  await page.getByTestId('math').locator('summary').click();
+  await expect(page.getByTestId('math').locator('.katex-display')).toBeVisible();
+  expect(urls.some((u) => /katex/i.test(u))).toBe(true);
+});
+
+test('code, confusions and resources render for logistic regression', async ({ page }) => {
+  await gotoMap(page, '#/n/logistic-regression');
+  await expect(page.getByTestId('code')).toContainText('sklearn');
+  await expect(page.getByRole('region', { name: 'In code' }).locator('[data-node-ref="scikit-learn"]')).toBeVisible();
+  const confusions = page.getByRole('region', { name: 'Common confusions' });
+  await expect(confusions).toContainText('Not the same as');
+  await expect(confusions).toContainText('Despite its name');
+  await confusions.locator('[data-testid="confusion-chip"][data-node-ref="ols"]').click();
+  await expect(page).toHaveURL(/#\/n\/ols$/);
+  await page.goBack();
+  const links = page.getByTestId('resources').locator('a');
+  expect(await links.count()).toBeGreaterThanOrEqual(1);
+  await expect(links.first()).toHaveAttribute('target', '_blank');
+  await expect(links.first()).toHaveAttribute('rel', 'noopener noreferrer');
+});
+
+test('the not-same-as row also shows on the other end of the edge', async ({ page }) => {
+  await gotoMap(page, '#/n/topic-models');
+  const confusions = page.getByRole('region', { name: 'Common confusions' });
+  await expect(confusions.locator('[data-testid="confusion-chip"][data-node-ref="lda-classifier"]')).toBeVisible();
+  await expect(confusions).toContainText('They only share initials.');
+});
+
 test('section order is fixed', async ({ page }) => {
   await gotoMap(page, '#/n/ols');
   const headings = await page.getByTestId('panel').locator('h3').allTextContents();

@@ -1,6 +1,10 @@
 import { useGraph } from '../app/StoreContext';
+import { CodeSection } from './sections/CodeSection';
+import { Confusions } from './sections/Confusions';
+import { GoFurther } from './sections/GoFurther';
 import { Header } from './sections/Header';
 import { Intuition } from './sections/Intuition';
+import { MathSection } from './sections/MathSection';
 import { NeedsFirst } from './sections/NeedsFirst';
 import { RecipeCard } from './sections/RecipeCard';
 import { ShowsUpIn } from './sections/ShowsUpIn';
@@ -21,6 +25,11 @@ export function NodePanel({ nodeId }: { nodeId: string }) {
       <ShowsUpIn node={node} />
       <NeedsFirst node={node} />
       <StrengthsWeaknesses node={node} />
+      {/* Keyed so the section starts collapsed again on every node. */}
+      {node.formula && <MathSection key={node.id} formula={node.formula} />}
+      <CodeSection node={node} />
+      <Confusions node={node} />
+      <GoFurther node={node} />
     </article>
   );
 }

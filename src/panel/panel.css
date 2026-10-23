@@ -195,3 +195,82 @@
   font-size: 14px;
   color: var(--muted);
 }
+
+.math summary {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.math[open] summary {
+  margin-bottom: 8px;
+}
+
+.math-formula {
+  overflow-x: auto;
+  padding: 4px 0;
+}
+
+.math-symbols {
+  margin: 8px 0 0;
+  display: grid;
+  gap: 6px;
+}
+
+.math-symbol {
+  display: grid;
+  grid-template-columns: minmax(3.5em, auto) 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.math-symbol dd {
+  margin: 0;
+  font-family: var(--font-read);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.math-loading {
+  color: var(--muted);
+}
+
+.code {
+  margin: 10px 0 0;
+  padding: 12px 14px;
+  overflow-x: auto;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.not-same {
+  margin-bottom: 10px;
+}
+
+.not-same-label {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.not-same p {
+  margin: 6px 0 0;
+}
+
+.confusion-list,
+.resources {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+  font-family: var(--font-read);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.resources a {
+  color: var(--fg);
+}
