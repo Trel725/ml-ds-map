@@ -23,4 +23,5 @@ export const registry: Record<VizId, VizLoader> = {
   'k-means': () => import('./k-means'),
   pca: () => import('./pca'),
   'logistic-regression': () => import('./logistic-regression'),
+  'neuron-to-network': () => import('./neuron-to-network'),
 };

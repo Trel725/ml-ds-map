@@ -121,6 +121,7 @@
       url: https://mlu-explain.github.io/neural-networks/
     - title: "PyTorch: Build the neural network"
       url: https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html
+  viz: neuron-to-network
 
 - id: backpropagation
   label: Backpropagation

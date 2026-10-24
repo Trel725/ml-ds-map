@@ -163,6 +163,11 @@ test('logistic-regression', async ({ page }) => {
   await expect(readout).toHaveText(/^Weight 0\.8 · bias -10\.0 · log loss \d+\.\d\d · best 0\.23$/);
 });
 
+test('neuron-to-network', async ({ page }) => {
+  const { readout } = await exercise(page, 'neural-network', 'neuron-to-network', (v) => v.getByRole('slider', { name: 'Hidden units' }), right3);
+  await expect(readout).toHaveText(/^4 hidden units · training accuracy \d+%$/);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -172,7 +177,7 @@ test('every visualization renders', async ({ page }) => {
     ['cross-validation', 'cross-validation'], ['random-forest', 'random-forest'],
     ['gradient-boosting', 'gradient-boosting'], ['knn', 'knn'],
     ['k-means', 'k-means'], ['pca', 'pca'],
-    ['logistic-regression', 'logistic-regression'],
+    ['logistic-regression', 'logistic-regression'], ['neural-network', 'neuron-to-network'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

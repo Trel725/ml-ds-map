@@ -16,5 +16,6 @@ export const VIZ_IDS = [
   'k-means',
   'pca',
   'logistic-regression',
+  'neuron-to-network',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];
