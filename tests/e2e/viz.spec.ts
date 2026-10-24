@@ -168,6 +168,15 @@ test('neuron-to-network', async ({ page }) => {
   await expect(readout).toHaveText(/^4 hidden units · training accuracy \d+%$/);
 });
 
+test('backpropagation', async ({ page }) => {
+  const { readout } = await exercise(page, 'backpropagation', 'backpropagation', (v) => v.getByRole('button', { name: 'Step' }), ['Enter']);
+  await expect(readout).toHaveText('Step 2 of 6 · forward: output');
+  for (let i = 0; i < 4; i++) await page.keyboard.press('Enter');
+  await expect(readout).toHaveText('Step 6 of 6 · backward: weight gradients');
+  await page.keyboard.press('Enter');
+  await expect(readout).toHaveText('Step 1 of 6 · forward: hidden units');
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -178,6 +187,7 @@ test('every visualization renders', async ({ page }) => {
     ['gradient-boosting', 'gradient-boosting'], ['knn', 'knn'],
     ['k-means', 'k-means'], ['pca', 'pca'],
     ['logistic-regression', 'logistic-regression'], ['neural-network', 'neuron-to-network'],
+    ['backpropagation', 'backpropagation'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

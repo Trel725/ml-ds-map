@@ -160,3 +160,4 @@
       url: https://www.3blue1brown.com/lessons/backpropagation-calculus
     - title: "PyTorch: Automatic differentiation"
       url: https://pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html
+  viz: backpropagation
