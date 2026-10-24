@@ -14,6 +14,7 @@ test.each([
   ['#/n/gradient-descent', { kind: 'node', id: 'gradient-descent' }],
   ['#/e/derivative--needs--slope', { kind: 'edge', id: 'derivative--needs--slope' }],
   ['', null], ['#/', null], ['#/n/', 'invalid'], ['#/x/foo', 'invalid'], ['#/n/Gradient%20Descent', 'invalid'], ['#garbage', 'invalid'],
+  ['#/gallery', 'gallery'], ['#/gallery/x', 'invalid'],
 ])('parseHash(%s)', (h, want) => expect(parseHash(h)).toEqual(want));
 
 test('formatHash round-trips', () => {
@@ -64,5 +65,34 @@ test('hashchange selects the new node', () => {
   at('#/n/pca');
   window.dispatchEvent(new HashChangeEvent('hashchange'));
   expect(s.getState().selection).toEqual({ kind: 'node', id: 'pca' });
+  stop();
+});
+
+test('formatHash with the gallery view', () => {
+  expect(formatHash({ kind: 'node', id: 'ols' }, 'gallery')).toBe('#/gallery');
+  expect(formatHash(null, 'gallery')).toBe('#/gallery');
+});
+test('#/gallery opens the gallery; leaving it restores the node hash', () => {
+  at('#/n/ols');
+  const s = createAppStore(g, null);
+  const stop = startHashSync(s, g, window);
+  window.location.hash = '#/gallery';
+  window.dispatchEvent(new HashChangeEvent('hashchange'));
+  expect(s.getState().view).toBe('gallery');
+  s.getState().closeGallery();
+  expect(window.location.hash).toBe('#/n/ols');
+  s.getState().openGallery();
+  expect(window.location.hash).toBe('#/gallery');
+  stop();
+});
+test('a node hash while in the gallery returns to the map', () => {
+  at('#/gallery');
+  const s = createAppStore(g, null);
+  const stop = startHashSync(s, g, window);
+  expect(s.getState().view).toBe('gallery');
+  window.location.hash = '#/n/gradient';
+  window.dispatchEvent(new HashChangeEvent('hashchange'));
+  expect(s.getState().view).toBe('map');
+  expect(s.getState().selection).toEqual({ kind: 'node', id: 'gradient' });
   stop();
 });

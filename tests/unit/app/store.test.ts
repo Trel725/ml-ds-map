@@ -222,3 +222,35 @@ test('escape ends a tour started normally, then clears its selection', () => {
   s.getState().escape();
   expect(s.getState().selection).toBeNull();
 });
+
+test('view starts on the map; openGallery and closeGallery switch it', () => {
+  const s = createAppStore(g, null);
+  expect(s.getState().view).toBe('map');
+  s.getState().openGallery();
+  expect(s.getState().view).toBe('gallery');
+  s.getState().closeGallery();
+  expect(s.getState().view).toBe('map');
+});
+test('openGallery keeps the selection and ends a tour', () => {
+  const s = createAppStore(g, null);
+  s.getState().startTour('how-a-model-learns');
+  const sel = s.getState().selection;
+  s.getState().openGallery();
+  expect(s.getState().tour).toBeNull();
+  expect(s.getState().highlight.mode).toBe('none');
+  expect(s.getState().selection).toEqual(sel);
+});
+test('select returns to the map', () => {
+  const s = createAppStore(g, null);
+  s.getState().openGallery();
+  s.getState().select({ kind: 'node', id: 'ols' });
+  expect(s.getState().view).toBe('map');
+});
+test('escape closes the gallery before clearing the selection', () => {
+  const s = createAppStore(g, null);
+  s.getState().select({ kind: 'node', id: 'ols' });
+  s.getState().openGallery();
+  s.getState().escape();
+  expect(s.getState().view).toBe('map');
+  expect(s.getState().selection).toEqual({ kind: 'node', id: 'ols' });
+});

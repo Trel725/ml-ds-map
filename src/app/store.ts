@@ -11,9 +11,12 @@ import type { KV } from './storage';
 export type { Selection };
 export type Theme = 'system' | 'light' | 'dark';
 export type ZoomLevel = 'layers' | 'groups' | 'nodes';
+export type View = 'map' | 'gallery';
 export type HighlightMode = 'none' | 'trace-down' | 'trace-up' | 'recipe' | 'lens' | 'tour';
 
 export interface AppState {
+  /** The gallery replaces the map and panel; the selection is kept for the way back. */
+  view: View;
   selection: Selection | null;
   expandedGroups: Set<string>;
   zoomLevel: ZoomLevel;
@@ -29,7 +32,7 @@ export interface AppState {
 }
 
 export interface AppActions {
-  /** `reveal` expands the node's group and requests focus. */
+  /** `reveal` expands the node's group and requests focus. Always returns to the map. */
   select(sel: Selection, opts?: { reveal?: boolean }): void;
   /** Also clears the highlight unless a tour or lens fills it. */
   clearSelection(): void;
@@ -44,8 +47,11 @@ export interface AppActions {
   traceRecipe(nodeId: string): void;
   /** One lens at a time: switches to `lens`, or turns it off if it is already on. Ends a tour. */
   toggleLens(lens: LensId): void;
-  /** Steps back one layer: ends the tour, else clears the selection, else turns off the lens. */
+  /** Steps back one layer: closes the gallery, else ends the tour, else clears the selection, else turns off the lens. */
   escape(): void;
+  /** Ends any tour; keeps the selection. */
+  openGallery(): void;
+  closeGallery(): void;
   startTour(id: string): void;
   tourStep(delta: 1 | -1): void;
   endTour(): void;
@@ -102,6 +108,7 @@ export function createAppStore(graph: Graph, kv: KV | null): AppStore {
     };
 
     return {
+      view: 'map',
       selection: null,
       expandedGroups,
       zoomLevel: !visited ? 'layers' : expandedGroups.size > 0 ? 'nodes' : 'groups',
@@ -126,6 +133,7 @@ export function createAppStore(graph: Graph, kv: KV | null): AppStore {
           focusRequest = { id: ids[0], nonce: ++nonce };
         }
         set({
+          view: 'map',
           selection: sel,
           breadcrumb,
           expandedGroups: expanded,
@@ -191,7 +199,8 @@ export function createAppStore(graph: Graph, kv: KV | null): AppStore {
 
       escape() {
         const s = get();
-        if (s.tour) s.endTour();
+        if (s.view === 'gallery') s.closeGallery();
+        else if (s.tour) s.endTour();
         else if (s.selection) s.clearSelection();
         else if (s.activeLens) s.toggleLens(s.activeLens);
       },
@@ -210,6 +219,15 @@ export function createAppStore(graph: Graph, kv: KV | null): AppStore {
         const step = tour.step + delta;
         if (step >= t.stops.length) return get().endTour();
         goToStop(tour.id, Math.max(0, step));
+      },
+
+      openGallery() {
+        get().endTour();
+        set({ view: 'gallery' });
+      },
+
+      closeGallery() {
+        set({ view: 'map' });
       },
 
       endTour() {
