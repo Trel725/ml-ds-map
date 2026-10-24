@@ -22,5 +22,6 @@ export const VIZ_IDS = [
   'bootstrap',
   'hypothesis-test',
   'omitted-variable-bias',
+  'tf-idf',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];

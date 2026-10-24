@@ -208,6 +208,16 @@ test('omitted-variable-bias', async ({ page }) => {
   await expect(readout).toHaveText('Size coefficient 2.09 (with distance)');
 });
 
+test('tf-idf', async ({ page }) => {
+  const format = /^Highest weight: "[a-z]+" in sentence [1-3] · lowest: "[a-z]+"$/;
+  await gotoMap(page, '#/n/tf-idf');
+  await expect(page.locator('[data-viz-id="tf-idf"] [data-testid="viz-readout"]')).toHaveText(format);
+  const { viz, readout } = await exercise(page, 'tf-idf', 'tf-idf', (v) => v.getByRole('textbox', { name: 'Sentence 1' }), ['ControlOrMeta+a', 'Backspace']);
+  await expect(readout).toHaveText(format);
+  for (const n of [2, 3]) await viz.getByRole('textbox', { name: `Sentence ${n}` }).fill('');
+  await expect(readout).toHaveText('Type a sentence to see word weights');
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -221,6 +231,7 @@ test('every visualization renders', async ({ page }) => {
     ['backpropagation', 'backpropagation'], ['sampling-distributions', 'sampling-distribution'],
     ['central-limit-theorem', 'sampling-distribution'], ['bootstrap', 'bootstrap'],
     ['hypothesis-testing', 'hypothesis-test'], ['omitted-variable-bias', 'omitted-variable-bias'],
+    ['tf-idf', 'tf-idf'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

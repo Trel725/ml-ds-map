@@ -171,3 +171,25 @@
   font-size: 13px;
   color: var(--muted);
 }
+
+.viz-text-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.viz-text-input label {
+  min-width: 6.5em;
+}
+
+.viz-text-input input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+}

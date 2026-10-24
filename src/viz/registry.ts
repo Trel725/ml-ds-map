@@ -29,4 +29,5 @@ export const registry: Record<VizId, VizLoader> = {
   bootstrap: () => import('./bootstrap'),
   'hypothesis-test': () => import('./hypothesis-test'),
   'omitted-variable-bias': () => import('./omitted-variable-bias'),
+  'tf-idf': () => import('./tf-idf'),
 };

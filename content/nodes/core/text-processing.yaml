@@ -58,6 +58,7 @@
       url: https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
     - title: "scikit-learn: Tf-idf term weighting"
       url: https://scikit-learn.org/stable/modules/feature_extraction.html
+  viz: tf-idf
 
 - id: word-embeddings
   label: Word embeddings
