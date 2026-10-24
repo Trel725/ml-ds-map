@@ -141,6 +141,20 @@ test('k-means', async ({ page }) => {
   await expect(readout).toHaveText(/^Step 0 · assign · total distance \d+\.\d$/);
 });
 
+test('pca', async ({ page }) => {
+  const { viz, readout } = await exercise(page, 'pca', 'pca', (v) => v.getByRole('slider', { name: 'Angle' }), right3);
+  const format = /^Angle \d+° · keeps \d+% of the spread · best is \d+% at \d+°$/;
+  await expect(readout).toHaveText(format);
+  const slider = viz.getByRole('slider', { name: 'Angle' });
+  await slider.focus();
+  await page.keyboard.press('Home');
+  await expect(readout).toHaveText(/^Angle 0° · /);
+  const atZero = (await readout.textContent())!.split(' · ')[1];
+  await page.keyboard.press('End');
+  await expect(readout).toHaveText(/^Angle 180° · /);
+  expect((await readout.textContent())!.split(' · ')[1]).toBe(atZero);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -149,7 +163,7 @@ test('every visualization renders', async ({ page }) => {
     ['loss-function', 'loss-functions'], ['regularization', 'regularization'],
     ['cross-validation', 'cross-validation'], ['random-forest', 'random-forest'],
     ['gradient-boosting', 'gradient-boosting'], ['knn', 'knn'],
-    ['k-means', 'k-means'],
+    ['k-means', 'k-means'], ['pca', 'pca'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

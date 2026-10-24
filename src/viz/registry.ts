@@ -21,4 +21,5 @@ export const registry: Record<VizId, VizLoader> = {
   'gradient-boosting': () => import('./gradient-boosting'),
   knn: () => import('./knn'),
   'k-means': () => import('./k-means'),
+  pca: () => import('./pca'),
 };

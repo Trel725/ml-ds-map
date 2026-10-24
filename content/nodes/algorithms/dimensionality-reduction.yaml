@@ -50,6 +50,7 @@
       url: https://scikit-learn.org/stable/modules/decomposition.html
     - title: "ISLR, chapter 12: Principal components analysis"
       url: https://www.statlearning.com/
+  viz: pca
 
 - id: t-sne
   label: t-SNE

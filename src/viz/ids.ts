@@ -14,5 +14,6 @@ export const VIZ_IDS = [
   'gradient-boosting',
   'knn',
   'k-means',
+  'pca',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];
