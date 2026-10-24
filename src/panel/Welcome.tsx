@@ -1,6 +1,6 @@
 import { useApp, useGraph } from '../app/StoreContext';
 
-const FIRST_TOUR = 'how-a-model-learns';
+export const FIRST_TOUR = 'how-a-model-learns';
 /** The product spec's numbering for tours 2–5; tours not listed follow in content order. */
 const TOUR_ORDER = ['from-tree-to-forest', 'why-logs-are-everywhere', 'explain-vs-predict', 'from-neuron-to-network'];
 

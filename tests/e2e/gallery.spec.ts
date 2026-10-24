@@ -33,6 +33,7 @@ test('a topic chip opens the node on the map; Back returns to the gallery', asyn
 
 test('Escape leaves the gallery for the map', async ({ page }) => {
   await gotoMap(page, '#/gallery');
+  await expect(page.getByRole('main', { name: 'Visualizations' })).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.locator('svg.map')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Gallery' })).toHaveAttribute('aria-pressed', 'false');
