@@ -74,6 +74,29 @@ test('the tour runs over the panel', async ({ page }) => {
   await expect(page).not.toHaveURL(first);
 });
 
+test('a topic tapped in the list is drawn selected when the window widens', async ({ page }) => {
+  await gotoMap(page);
+  await page.locator('.list-item[data-node-id="random-forest"]').click();
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await expect(page.locator('[data-node-id="random-forest"]')).toHaveAttribute('aria-pressed', 'true');
+});
+
+test('during a tour the end of the panel can scroll clear of the tour card', async ({ page }) => {
+  await gotoMap(page);
+  await page.getByRole('button', { name: 'Start the tour' }).click();
+  const card = await page.getByTestId('tour-card').boundingBox();
+  await page.locator('.panel-area').evaluate((el) => el.scrollTo({ top: el.scrollHeight }));
+  const last = await page.locator('.panel-section').last().boundingBox();
+  expect(last!.y + last!.height).toBeLessThanOrEqual(card!.y);
+});
+
+test('opening a panel from the list moves focus to Back to list', async ({ page }) => {
+  await gotoMap(page);
+  await page.locator('.list-item[data-node-id="slope"]').focus();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('button', { name: 'Back to list' })).toBeFocused();
+});
+
 test('resizing across 768 px keeps the selection', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await gotoMap(page, '#/n/ols');

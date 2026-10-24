@@ -77,6 +77,20 @@ export function MapView() {
   const viewportRef = useRef<SVGGElement>(null);
   const { fit, fitReadable, centerOn } = useZoom(svgRef, viewportRef, lay);
 
+  // Coming back from the list view, the selection's groups may still be closed: open them so it is drawn.
+  useEffect(() => {
+    if (!selection) return;
+    const edge = selection.kind === 'edge' ? graph.edgesById.get(selection.id) : undefined;
+    const ids = edge ? [edge.from, edge.to] : [selection.id];
+    const closed = ids.flatMap((id) => {
+      const n = graph.nodesById.get(id);
+      return n && n.kind !== 'tool' && !expanded.has(n.group) ? [n.group] : [];
+    });
+    if (closed.length > 0) expandGroups(closed);
+    // Only on mount: later collapses are the user's choice.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Frame the map once on mount; later layout changes keep the user's pan and zoom.
   const framed = useRef(false);
   useEffect(() => {

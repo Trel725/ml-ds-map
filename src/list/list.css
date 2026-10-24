@@ -91,6 +91,11 @@
   max-height: none;
 }
 
+/* Room to scroll the panel's end clear of the tour card. */
+.small-screen:has(.tour-card) .panel-area {
+  padding-bottom: 260px;
+}
+
 .small-screen .tour-card {
   position: fixed;
 }

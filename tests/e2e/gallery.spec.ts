@@ -31,6 +31,12 @@ test('a topic chip opens the node on the map; Back returns to the gallery', asyn
   await expect(page.getByRole('main', { name: 'Visualizations' })).toBeVisible();
 });
 
+test('Back to map returns focus to the Gallery button', async ({ page }) => {
+  await gotoMap(page, '#/gallery');
+  await page.getByRole('button', { name: 'Back to map' }).click();
+  await expect(page.getByRole('button', { name: 'Gallery' })).toBeFocused();
+});
+
 test('Escape leaves the gallery for the map', async ({ page }) => {
   await gotoMap(page, '#/gallery');
   await expect(page.getByRole('main', { name: 'Visualizations' })).toBeVisible();
