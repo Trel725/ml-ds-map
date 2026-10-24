@@ -155,6 +155,14 @@ test('pca', async ({ page }) => {
   expect((await readout.textContent())!.split(' · ')[1]).toBe(atZero);
 });
 
+test('logistic-regression', async ({ page }) => {
+  const { viz, readout } = await exercise(page, 'logistic-regression', 'logistic-regression', (v) => v.getByRole('slider', { name: 'Weight' }), right3);
+  await expect(readout).toHaveText(/^Weight 0\.8 · bias -2\.0 · log loss \d\.\d\d · best 0\.23$/);
+  await viz.getByRole('slider', { name: 'Bias' }).focus();
+  await page.keyboard.press('Home');
+  await expect(readout).toHaveText(/^Weight 0\.8 · bias -10\.0 · log loss \d+\.\d\d · best 0\.23$/);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -164,6 +172,7 @@ test('every visualization renders', async ({ page }) => {
     ['cross-validation', 'cross-validation'], ['random-forest', 'random-forest'],
     ['gradient-boosting', 'gradient-boosting'], ['knn', 'knn'],
     ['k-means', 'k-means'], ['pca', 'pca'],
+    ['logistic-regression', 'logistic-regression'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

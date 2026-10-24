@@ -300,6 +300,7 @@
     - econometrics
     - nlp
     - neural-nets
+  viz: logistic-regression
 
 - id: glm
   label: Generalized linear models
