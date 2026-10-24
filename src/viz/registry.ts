@@ -19,4 +19,5 @@ export const registry: Record<VizId, VizLoader> = {
   'cross-validation': () => import('./cross-validation'),
   'random-forest': () => import('./random-forest'),
   'gradient-boosting': () => import('./gradient-boosting'),
+  knn: () => import('./knn'),
 };

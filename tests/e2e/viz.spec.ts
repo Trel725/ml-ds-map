@@ -121,6 +121,17 @@ test('gradient-boosting', async ({ page }) => {
   await expect(readout).toHaveText(/^0 trees · training error \d+$/);
 });
 
+test('knn', async ({ page }) => {
+  const { viz, readout } = await exercise(page, 'knn', 'knn', (v) => v.getByRole('switch', { name: 'Scale features' }), ['Space']);
+  const format = /^Neighbors: [0-5] spam, [0-5] not spam · prediction (spam|not spam) · features (scaled|unscaled)$/;
+  await expect(readout).toHaveText(format);
+  await expect(readout).toContainText('features scaled');
+  await viz.getByRole('slider', { name: 'Query email' }).focus();
+  for (let i = 0; i < 24; i++) await page.keyboard.press('ArrowLeft');
+  for (let i = 0; i < 18; i++) await page.keyboard.press('ArrowDown');
+  await expect(readout).toHaveText(/^Neighbors: 0 spam, 5 not spam · prediction not spam · features scaled$/);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -128,7 +139,7 @@ test('every visualization renders', async ({ page }) => {
     ['classification', 'classification-threshold'], ['bayes-rule', 'bayes-rule'],
     ['loss-function', 'loss-functions'], ['regularization', 'regularization'],
     ['cross-validation', 'cross-validation'], ['random-forest', 'random-forest'],
-    ['gradient-boosting', 'gradient-boosting'],
+    ['gradient-boosting', 'gradient-boosting'], ['knn', 'knn'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

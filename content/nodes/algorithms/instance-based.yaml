@@ -54,3 +54,4 @@
       url: https://scikit-learn.org/stable/modules/neighbors.html
     - title: "ISLR, chapter 2: K-nearest neighbors"
       url: https://www.statlearning.com/
+  viz: knn
