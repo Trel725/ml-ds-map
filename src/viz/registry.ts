@@ -27,4 +27,5 @@ export const registry: Record<VizId, VizLoader> = {
   backpropagation: () => import('./backpropagation'),
   'sampling-distribution': () => import('./sampling-distribution'),
   bootstrap: () => import('./bootstrap'),
+  'hypothesis-test': () => import('./hypothesis-test'),
 };

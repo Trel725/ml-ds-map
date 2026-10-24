@@ -20,5 +20,6 @@ export const VIZ_IDS = [
   'backpropagation',
   'sampling-distribution',
   'bootstrap',
+  'hypothesis-test',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];

@@ -147,6 +147,7 @@
       url: https://www.statsmodels.org/stable/generated/statsmodels.stats.weightstats.ttest_ind.html
   lenses:
     - econometrics
+  viz: hypothesis-test
 
 - id: bootstrap
   label: Bootstrap

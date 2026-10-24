@@ -194,6 +194,13 @@ test('bootstrap', async ({ page }) => {
   await expect(readout).toHaveText(/^40 resamples · middle 95% of means \d+–\d+$/);
 });
 
+test('hypothesis-test', async ({ page }) => {
+  await gotoMap(page, '#/n/hypothesis-testing');
+  await expect(page.locator('[data-viz-id="hypothesis-test"] [data-testid="viz-readout"]')).toHaveText(/^Real gap \d+\.\d\d links · no shuffles yet$/);
+  const { readout } = await exercise(page, 'hypothesis-testing', 'hypothesis-test', (v) => v.getByRole('button', { name: 'Shuffle 50' }), ['Enter', 'Enter']);
+  await expect(readout).toHaveText(/^100 shuffles · 0 as extreme as the real gap · p ≈ 0\.000$/);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -206,6 +213,7 @@ test('every visualization renders', async ({ page }) => {
     ['logistic-regression', 'logistic-regression'], ['neural-network', 'neuron-to-network'],
     ['backpropagation', 'backpropagation'], ['sampling-distributions', 'sampling-distribution'],
     ['central-limit-theorem', 'sampling-distribution'], ['bootstrap', 'bootstrap'],
+    ['hypothesis-testing', 'hypothesis-test'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {
