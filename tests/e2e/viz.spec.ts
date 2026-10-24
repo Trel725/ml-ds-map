@@ -201,6 +201,13 @@ test('hypothesis-test', async ({ page }) => {
   await expect(readout).toHaveText(/^100 shuffles · 0 as extreme as the real gap · p ≈ 0\.000$/);
 });
 
+test('omitted-variable-bias', async ({ page }) => {
+  await gotoMap(page, '#/n/omitted-variable-bias');
+  await expect(page.locator('[data-viz-id="omitted-variable-bias"] [data-testid="viz-readout"]')).toHaveText('Size coefficient -0.49 (without distance)');
+  const { readout } = await exercise(page, 'omitted-variable-bias', 'omitted-variable-bias', (v) => v.getByRole('switch', { name: 'Include distance to centre' }), ['Space']);
+  await expect(readout).toHaveText('Size coefficient 2.09 (with distance)');
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -213,7 +220,7 @@ test('every visualization renders', async ({ page }) => {
     ['logistic-regression', 'logistic-regression'], ['neural-network', 'neuron-to-network'],
     ['backpropagation', 'backpropagation'], ['sampling-distributions', 'sampling-distribution'],
     ['central-limit-theorem', 'sampling-distribution'], ['bootstrap', 'bootstrap'],
-    ['hypothesis-testing', 'hypothesis-test'],
+    ['hypothesis-testing', 'hypothesis-test'], ['omitted-variable-bias', 'omitted-variable-bias'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

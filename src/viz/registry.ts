@@ -28,4 +28,5 @@ export const registry: Record<VizId, VizLoader> = {
   'sampling-distribution': () => import('./sampling-distribution'),
   bootstrap: () => import('./bootstrap'),
   'hypothesis-test': () => import('./hypothesis-test'),
+  'omitted-variable-bias': () => import('./omitted-variable-bias'),
 };

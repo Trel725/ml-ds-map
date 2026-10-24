@@ -21,5 +21,6 @@ export const VIZ_IDS = [
   'sampling-distribution',
   'bootstrap',
   'hypothesis-test',
+  'omitted-variable-bias',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];

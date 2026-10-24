@@ -86,6 +86,7 @@
   resources:
     - title: "scikit-learn: Failure of machine learning to infer causal effects"
       url: https://scikit-learn.org/stable/auto_examples/inspection/plot_causal_interpretation.html
+  viz: omitted-variable-bias
 
 - id: instrumental-variables
   label: Instrumental variables
