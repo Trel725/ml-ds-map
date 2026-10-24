@@ -20,4 +20,5 @@ export const registry: Record<VizId, VizLoader> = {
   'random-forest': () => import('./random-forest'),
   'gradient-boosting': () => import('./gradient-boosting'),
   knn: () => import('./knn'),
+  'k-means': () => import('./k-means'),
 };

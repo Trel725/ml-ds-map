@@ -132,6 +132,15 @@ test('knn', async ({ page }) => {
   await expect(readout).toHaveText(/^Neighbors: 0 spam, 5 not spam · prediction not spam · features scaled$/);
 });
 
+test('k-means', async ({ page }) => {
+  const { viz, readout } = await exercise(page, 'k-means', 'k-means', (v) => v.getByRole('button', { name: 'Step' }), ['Enter']);
+  await expect(readout).toHaveText(/^Step 1 · move · total distance \d+\.\d$/);
+  for (let i = 0; i < 30; i++) await page.keyboard.press('Enter');
+  await expect(readout).toHaveText(/^Step 31 · (assign|move) · total distance \d+\.\d · converged$/);
+  await viz.getByRole('button', { name: 'Reset' }).click();
+  await expect(readout).toHaveText(/^Step 0 · assign · total distance \d+\.\d$/);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -140,6 +149,7 @@ test('every visualization renders', async ({ page }) => {
     ['loss-function', 'loss-functions'], ['regularization', 'regularization'],
     ['cross-validation', 'cross-validation'], ['random-forest', 'random-forest'],
     ['gradient-boosting', 'gradient-boosting'], ['knn', 'knn'],
+    ['k-means', 'k-means'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

@@ -13,5 +13,6 @@ export const VIZ_IDS = [
   'random-forest',
   'gradient-boosting',
   'knn',
+  'k-means',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];

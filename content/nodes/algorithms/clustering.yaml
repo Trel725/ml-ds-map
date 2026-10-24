@@ -50,6 +50,7 @@
       url: https://scikit-learn.org/stable/modules/clustering.html
     - title: "ISLR, chapter 12: Clustering methods"
       url: https://www.statlearning.com/
+  viz: k-means
 
 - id: hierarchical-clustering
   label: Hierarchical clustering
