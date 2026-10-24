@@ -7,5 +7,6 @@ export const VIZ_IDS = [
   'decision-tree',
   'classification-threshold',
   'bayes-rule',
+  'loss-functions',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];

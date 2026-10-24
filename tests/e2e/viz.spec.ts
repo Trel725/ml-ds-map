@@ -79,11 +79,17 @@ test('bayes-rule', async ({ page }) => {
   await expect(readout).toHaveText(/^Base rate \d+\.\d% · \d+ true positives, \d+ false positives · chance of the condition after a positive test \d+%$/);
 });
 
-test('every P1 visualization renders', async ({ page }) => {
+test('loss-functions', async ({ page }) => {
+  const { readout } = await exercise(page, 'loss-function', 'loss-functions', (v) => v.getByRole('slider', { name: 'Prediction' }), right3);
+  await expect(readout).toHaveText(/^Prediction 0\.53 · squared 0\.22 · absolute 0\.47 · log 0\.63$/);
+});
+
+test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
     ['ols', 'ols-fit'], ['overfitting', 'overfitting'], ['decision-tree', 'decision-tree'],
     ['classification', 'classification-threshold'], ['bayes-rule', 'bayes-rule'],
+    ['loss-function', 'loss-functions'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

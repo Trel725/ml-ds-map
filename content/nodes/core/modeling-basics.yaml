@@ -36,6 +36,7 @@
       url: https://scikit-learn.org/stable/auto_examples/linear_model/plot_sgd_loss_functions.html
     - title: "scikit-learn: Metrics and scoring"
       url: https://scikit-learn.org/stable/modules/model_evaluation.html
+  viz: loss-functions
 
 - id: log-loss
   label: Log loss
