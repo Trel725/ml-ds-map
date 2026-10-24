@@ -22,6 +22,8 @@ function HypothesisTest() {
   const diffs = useMemo(() => shuffledDiffs(values, labels, n, mulberry32(SEED)), [values, labels, n]);
   const extreme = diffs.filter((d) => Math.abs(d) >= Math.abs(observed) - 1e-12).length;
   const p = pValue(observed, diffs);
+  // With no shuffle as extreme, p is only known to be below 1/n: never show it as zero.
+  const pText = extreme === 0 ? `p < ${Number((1 / n).toPrecision(2))}` : `p ≈ ${p.toFixed(3)}`;
 
   const lim = Math.ceil(Math.abs(observed) + 0.5);
   const x = scaleLinear().domain([-lim, lim]).range([44, W - 10]);
@@ -49,7 +51,7 @@ function HypothesisTest() {
         <StepButton label="Shuffle 50" onStep={() => setN((v) => v + BATCH)} />
       </div>
       <Readout>
-        {n === 0 ? `Real gap ${observed.toFixed(2)} links · no shuffles yet` : `${n} shuffles · ${extreme} as extreme as the real gap · p ≈ ${p.toFixed(3)}`}
+        {n === 0 ? `Real gap ${observed.toFixed(2)} links · no shuffles yet` : `${n} shuffles · ${extreme} as extreme as the real gap · ${pText}`}
       </Readout>
     </>
   );

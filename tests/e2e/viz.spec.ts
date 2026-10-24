@@ -199,7 +199,8 @@ test('hypothesis-test', async ({ page }) => {
   await gotoMap(page, '#/n/hypothesis-testing');
   await expect(page.locator('[data-viz-id="hypothesis-test"] [data-testid="viz-readout"]')).toHaveText(/^Real gap \d+\.\d\d links · no shuffles yet$/);
   const { readout } = await exercise(page, 'hypothesis-testing', 'hypothesis-test', (v) => v.getByRole('button', { name: 'Shuffle 50' }), ['Enter', 'Enter']);
-  await expect(readout).toHaveText(/^100 shuffles · 0 as extreme as the real gap · p ≈ 0\.000$/);
+  // None of the shuffles matched the real gap: the readout gives a bound, never "p ≈ 0".
+  await expect(readout).toHaveText(/^100 shuffles · 0 as extreme as the real gap · p < 0\.01$/);
 });
 
 test('omitted-variable-bias', async ({ page }) => {
