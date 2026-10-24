@@ -26,4 +26,5 @@ export const registry: Record<VizId, VizLoader> = {
   'neuron-to-network': () => import('./neuron-to-network'),
   backpropagation: () => import('./backpropagation'),
   'sampling-distribution': () => import('./sampling-distribution'),
+  bootstrap: () => import('./bootstrap'),
 };

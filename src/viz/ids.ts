@@ -19,5 +19,6 @@ export const VIZ_IDS = [
   'neuron-to-network',
   'backpropagation',
   'sampling-distribution',
+  'bootstrap',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];

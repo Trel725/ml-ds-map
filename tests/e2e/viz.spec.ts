@@ -187,6 +187,13 @@ test('sampling-distribution', async ({ page }) => {
   await expect(readout).toHaveText(/^Sample size 1 · 100 means drawn · spread of means \d+$/);
 });
 
+test('bootstrap', async ({ page }) => {
+  await gotoMap(page, '#/n/bootstrap');
+  await expect(page.locator('[data-viz-id="bootstrap"] [data-testid="viz-readout"]')).toHaveText('No resamples yet');
+  const { readout } = await exercise(page, 'bootstrap', 'bootstrap', (v) => v.getByRole('button', { name: 'Draw 20' }), ['Enter', 'Enter']);
+  await expect(readout).toHaveText(/^40 resamples · middle 95% of means \d+–\d+$/);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -198,7 +205,7 @@ test('every visualization renders', async ({ page }) => {
     ['k-means', 'k-means'], ['pca', 'pca'],
     ['logistic-regression', 'logistic-regression'], ['neural-network', 'neuron-to-network'],
     ['backpropagation', 'backpropagation'], ['sampling-distributions', 'sampling-distribution'],
-    ['central-limit-theorem', 'sampling-distribution'],
+    ['central-limit-theorem', 'sampling-distribution'], ['bootstrap', 'bootstrap'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

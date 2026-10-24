@@ -181,6 +181,7 @@
       url: https://www.statlearning.com/
     - title: "scikit-learn: resample"
       url: https://scikit-learn.org/stable/modules/generated/sklearn.utils.resample.html
+  viz: bootstrap
 
 - id: correlation-causation
   label: Correlation vs causation
