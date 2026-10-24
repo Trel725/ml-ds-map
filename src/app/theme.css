@@ -149,6 +149,48 @@ button {
   flex: 1;
 }
 
+.lens-chips {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.lens-chip {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.lens-chip:hover {
+  border-color: var(--muted);
+}
+
+.lens-chip[aria-pressed='true'] {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+  font-weight: 700;
+}
+
+.welcome-more {
+  margin: 24px 0 8px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.tour-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+}
+
 .button {
   border: 1px solid var(--line);
   background: var(--surface);
