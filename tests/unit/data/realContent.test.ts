@@ -2,6 +2,7 @@ import { expect, test } from 'vitest';
 import { buildContent } from '../../../src/data/build';
 import { formatIssue } from '../../../src/data/issues';
 import { checkResourceUrl } from '../../../src/data/links';
+import { VIZ_IDS } from '../../../src/viz/ids';
 import { realContent } from '../helpers/real';
 
 test('real content builds in strict mode', async () => {
@@ -125,3 +126,9 @@ test.each(TOURS)('tour %s has its title and stops', async (id, title, stops) => 
   expect(t?.stops.map((s) => s.node)).toEqual(stops);
 });
 test('there are 5 tours', async () => expect((await realContent()).tours.length).toBe(5));
+
+test('all 25 visualizations are wired to at least one node', async () => {
+  const used = new Set((await realContent()).nodes.flatMap((n) => (n.viz ? [n.viz] : [])));
+  expect(VIZ_IDS).toHaveLength(25);
+  for (const id of VIZ_IDS) expect(used.has(id), id).toBe(true);
+});

@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
+import { VIZ_IDS } from '../../src/viz/ids';
 import { gotoMap } from './helpers';
 
 /** Opens a node, waits for its visualization, operates one control by keyboard and expects the readout to change. */
@@ -241,6 +242,7 @@ test('every visualization renders', async ({ page }) => {
     ['hypothesis-testing', 'hypothesis-test'], ['omitted-variable-bias', 'omitted-variable-bias'],
     ['tf-idf', 'tf-idf'], ['trend-seasonality', 'time-series-decomposition'],
   ];
+  expect(new Set(pairs.map(([, id]) => id))).toEqual(new Set(VIZ_IDS));
   await gotoMap(page);
   for (const [node, id] of pairs) {
     await page.evaluate((h) => (window.location.hash = h), `#/n/${node}`);
