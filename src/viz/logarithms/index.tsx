@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { Axis } from '../Axis';
 import { Slider } from '../controls/Slider';
 import { Toggle } from '../controls/Toggle';
-import { flatPrices } from '../datasets';
+import { skewedPrices } from '../datasets';
 import { Readout } from '../Readout';
 import type { VizModule } from '../types';
 import { histogram, powerOfTen } from './model';
@@ -18,7 +18,6 @@ const short = (v: number) => (v >= 1e6 ? `${v / 1e6}M` : v >= 1e3 ? `${v / 1e3}k
 const grouped = (v: number) => Math.round(v).toLocaleString('en-US');
 
 /** Flat prices pushed through a power of ten, so the histogram has a long right tail. */
-const skewedPrices = () => flatPrices().map((p) => 1000 * 10 ** (p.price / 100));
 
 function Logarithms() {
   const [power, setPower] = useState(3); // slider position: x = 10^power

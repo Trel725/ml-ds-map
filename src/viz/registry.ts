@@ -25,4 +25,5 @@ export const registry: Record<VizId, VizLoader> = {
   'logistic-regression': () => import('./logistic-regression'),
   'neuron-to-network': () => import('./neuron-to-network'),
   backpropagation: () => import('./backpropagation'),
+  'sampling-distribution': () => import('./sampling-distribution'),
 };

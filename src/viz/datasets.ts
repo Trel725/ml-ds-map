@@ -52,3 +52,11 @@ export function emails(): Email[] {
   mail = withSplits(rows, rand, 60);
   return mail;
 }
+
+let skewed: number[] | null = null;
+
+/** The flat prices pushed through an exponential: a long right tail, for logs and sampling. */
+export function skewedPrices(): number[] {
+  skewed ??= flatPrices().map((p) => 1000 * 10 ** (p.price / 100));
+  return skewed;
+}

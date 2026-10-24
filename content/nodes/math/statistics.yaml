@@ -22,6 +22,7 @@
       url: https://seeing-theory.brown.edu/frequentist-inference/index.html
     - title: "3Blue1Brown: The central limit theorem"
       url: https://www.3blue1brown.com/lessons/clt
+  viz: sampling-distribution
 
 - id: central-limit-theorem
   label: Central limit theorem
@@ -49,6 +50,7 @@
       url: https://www.3blue1brown.com/lessons/clt
     - title: "Seeing Theory: Probability distributions"
       url: https://seeing-theory.brown.edu/probability-distributions/index.html
+  viz: sampling-distribution
 
 - id: standard-errors
   label: Standard errors

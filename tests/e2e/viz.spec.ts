@@ -177,6 +177,16 @@ test('backpropagation', async ({ page }) => {
   await expect(readout).toHaveText('Step 1 of 6 · forward: hidden units');
 });
 
+test('sampling-distribution', async ({ page }) => {
+  const { viz, readout } = await exercise(page, 'central-limit-theorem', 'sampling-distribution', (v) => v.getByRole('slider', { name: 'Sample size' }), right3);
+  await expect(readout).toHaveText(/^Sample size 13 · 100 means drawn · spread of means \d+$/);
+  await viz.getByRole('button', { name: 'Draw 100' }).click();
+  await expect(readout).toHaveText(/^Sample size 13 · 200 means drawn · spread of means \d+$/);
+  await viz.getByRole('slider', { name: 'Sample size' }).focus();
+  await page.keyboard.press('Home');
+  await expect(readout).toHaveText(/^Sample size 1 · 100 means drawn · spread of means \d+$/);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -187,7 +197,8 @@ test('every visualization renders', async ({ page }) => {
     ['gradient-boosting', 'gradient-boosting'], ['knn', 'knn'],
     ['k-means', 'k-means'], ['pca', 'pca'],
     ['logistic-regression', 'logistic-regression'], ['neural-network', 'neuron-to-network'],
-    ['backpropagation', 'backpropagation'],
+    ['backpropagation', 'backpropagation'], ['sampling-distributions', 'sampling-distribution'],
+    ['central-limit-theorem', 'sampling-distribution'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {
