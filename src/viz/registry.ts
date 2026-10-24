@@ -17,4 +17,5 @@ export const registry: Record<VizId, VizLoader> = {
   'loss-functions': () => import('./loss-functions'),
   regularization: () => import('./regularization'),
   'cross-validation': () => import('./cross-validation'),
+  'random-forest': () => import('./random-forest'),
 };

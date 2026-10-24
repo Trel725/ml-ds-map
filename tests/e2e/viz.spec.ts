@@ -102,13 +102,21 @@ test('cross-validation', async ({ page }) => {
   await expect(readout).toHaveText(/^Fold 1 of 5 · /);
 });
 
+test('random-forest', async ({ page }) => {
+  const { viz, readout } = await exercise(page, 'random-forest', 'random-forest', (v) => v.getByRole('slider', { name: 'Trees' }), right3);
+  await expect(readout).toHaveText(/^4 trees · test accuracy \d+%$/);
+  await viz.getByRole('slider', { name: 'Trees' }).focus();
+  await page.keyboard.press('End');
+  await expect(readout).toHaveText(/^25 trees · test accuracy \d+%$/);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
     ['ols', 'ols-fit'], ['overfitting', 'overfitting'], ['decision-tree', 'decision-tree'],
     ['classification', 'classification-threshold'], ['bayes-rule', 'bayes-rule'],
     ['loss-function', 'loss-functions'], ['regularization', 'regularization'],
-    ['cross-validation', 'cross-validation'],
+    ['cross-validation', 'cross-validation'], ['random-forest', 'random-forest'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

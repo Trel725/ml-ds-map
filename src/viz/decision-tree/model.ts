@@ -14,19 +14,24 @@ export interface Region {
   label: Label;
 }
 
-const FEATURES: Feature[] = ['links', 'capsShare'];
+export const FEATURES: Feature[] = ['links', 'capsShare'];
 
 const gini = (pos: number, n: number) => (n === 0 ? 0 : 1 - (pos / n) ** 2 - ((n - pos) / n) ** 2);
 const majority = (pts: Sample[]): Label => (pts.filter((p) => p.label === 1).length * 2 >= pts.length ? 1 : 0);
 
+export interface GrowOptions {
+  /** The features a split may use, asked once per split. Defaults to both. */
+  featuresAt?: () => Feature[];
+}
+
 /** CART with Gini impurity: the best yes/no cut at each step, until pure or at `maxDepth`. */
-export function growTree(points: Sample[], maxDepth: number): Tree {
+export function growTree(points: Sample[], maxDepth: number, opts: GrowOptions = {}): Tree {
   const pos = points.filter((p) => p.label === 1).length;
   if (maxDepth <= 0 || pos === 0 || pos === points.length) return { leaf: true, label: majority(points) };
 
   const parent = gini(pos, points.length);
   let best: { feature: Feature; threshold: number; score: number } | null = null;
-  for (const feature of FEATURES) {
+  for (const feature of opts.featuresAt?.() ?? FEATURES) {
     const sorted = [...points].sort((a, b) => a[feature] - b[feature]);
     let leftPos = 0;
     for (let i = 1; i < sorted.length; i++) {
@@ -50,10 +55,12 @@ export function growTree(points: Sample[], maxDepth: number): Tree {
     left: growTree(
       points.filter((p) => p[feature] <= threshold),
       maxDepth - 1,
+      opts,
     ),
     right: growTree(
       points.filter((p) => p[feature] > threshold),
       maxDepth - 1,
+      opts,
     ),
   };
 }

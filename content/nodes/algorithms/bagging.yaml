@@ -110,3 +110,4 @@
       url: https://scikit-learn.org/stable/modules/ensemble.html
     - title: "ISLR, chapter 8: Random forests"
       url: https://www.statlearning.com/
+  viz: random-forest
