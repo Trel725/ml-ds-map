@@ -7,6 +7,11 @@
   analogy: "A speedometer reading at one instant."
   showsUpIn: "Every training step that walks a loss downhill."
   viz: slope-derivative
+  resources:
+    - title: "3Blue1Brown: The paradox of the derivative"
+      url: https://www.3blue1brown.com/lessons/derivatives
+    - title: "3Blue1Brown: Limits"
+      url: https://www.3blue1brown.com/lessons/limits
   formula:
     tex: f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}
     symbols:
@@ -16,11 +21,8 @@
         meaning: A tiny step to the side.
       - symbol: \lim_{h \to 0}
         meaning: What the slope settles on as the step shrinks to nothing.
-  resources:
-    - title: "3Blue1Brown: The paradox of the derivative"
-      url: https://www.3blue1brown.com/lessons/derivatives
-    - title: "3Blue1Brown: Limits"
-      url: https://www.3blue1brown.com/lessons/limits
+      - symbol: f
+        meaning: The function, such as the loss.
 
 - id: gradient
   label: Gradient
@@ -30,6 +32,13 @@
   intuition: "With many inputs, you can ask for the slope along each one. A partial derivative is one such slope. The gradient collects them all and points uphill. It is like a compass that points up the steepest hill."
   analogy: "A compass that points up the steepest hill."
   showsUpIn: "Gradient descent, backpropagation and every neural network."
+  confusions:
+    - The gradient points uphill. Training steps go the opposite way.
+  resources:
+    - title: "3Blue1Brown: Gradient descent"
+      url: https://www.3blue1brown.com/lessons/gradient-descent
+    - title: "NumPy: numpy.gradient"
+      url: https://numpy.org/doc/stable/reference/generated/numpy.gradient.html
   formula:
     tex: \nabla L(w) = \left( \frac{\partial L}{\partial w_1}, \ldots, \frac{\partial L}{\partial w_n} \right)
     symbols:
@@ -39,13 +48,10 @@
         meaning: The slope of the loss when only weight one moves.
       - symbol: n
         meaning: The number of weights.
-  confusions:
-    - The gradient points uphill. Training steps go the opposite way.
-  resources:
-    - title: "3Blue1Brown: Gradient descent"
-      url: https://www.3blue1brown.com/lessons/gradient-descent
-    - title: "NumPy: numpy.gradient"
-      url: https://numpy.org/doc/stable/reference/generated/numpy.gradient.html
+      - symbol: L
+        meaning: The loss.
+      - symbol: w
+        meaning: The weights, one per parameter.
 
 - id: chain-rule
   label: Chain rule

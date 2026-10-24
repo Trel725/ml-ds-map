@@ -122,15 +122,6 @@
     - text: Struggles when clusters have different densities.
     - text: The distance setting is hard to choose.
       fixedBy: hyperparameter-tuning
-  formula:
-    tex: "N_\\varepsilon(x) = \\{ z : \\lVert x - z \\rVert \\le \\varepsilon \\}, \\quad |N_\\varepsilon(x)| \\ge m"
-    symbols:
-      - symbol: \varepsilon
-        meaning: The neighborhood radius.
-      - symbol: N_\varepsilon(x)
-        meaning: All points within that radius of x.
-      - symbol: m
-        meaning: The minimum neighbors for x to count as a dense core point.
   code:
     tool: scikit-learn
     snippet: |
@@ -141,3 +132,16 @@
   resources:
     - title: "scikit-learn: DBSCAN"
       url: https://scikit-learn.org/stable/modules/clustering.html
+  formula:
+    tex: "N_\\varepsilon(x) = \\{ z : \\lVert x - z \\rVert \\le \\varepsilon \\}, \\quad |N_\\varepsilon(x)| \\ge m"
+    symbols:
+      - symbol: \varepsilon
+        meaning: The neighborhood radius.
+      - symbol: N_\varepsilon(x)
+        meaning: All points within that radius of x.
+      - symbol: m
+        meaning: The minimum neighbors for x to count as a dense core point.
+      - symbol: z
+        meaning: Any other point in the data.
+      - symbol: x
+        meaning: The point being checked.

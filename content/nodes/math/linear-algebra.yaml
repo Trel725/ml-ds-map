@@ -126,6 +126,11 @@
   intuition: "Most directions get turned by a matrix, but a few only get stretched. Those are the eigenvectors. SVD finds the main directions of any table of data. It is like finding the grain in a piece of wood."
   analogy: "Finding the grain in a piece of wood."
   showsUpIn: "PCA and other ways to compress data."
+  resources:
+    - title: "3Blue1Brown: Eigenvectors and eigenvalues"
+      url: https://www.3blue1brown.com/lessons/eigenvalues
+    - title: "NumPy: numpy.linalg.svd"
+      url: https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html
   formula:
     tex: A v = \lambda v, \qquad X = U \Sigma V^\top
     symbols:
@@ -137,8 +142,7 @@
         meaning: Matrices of special directions, for rows and for columns.
       - symbol: \Sigma
         meaning: The stretch along each direction, largest first.
-  resources:
-    - title: "3Blue1Brown: Eigenvectors and eigenvalues"
-      url: https://www.3blue1brown.com/lessons/eigenvalues
-    - title: "NumPy: numpy.linalg.svd"
-      url: https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html
+      - symbol: A
+        meaning: A square matrix, such as a table of correlations.
+      - symbol: X
+        meaning: A data table, one row per example.

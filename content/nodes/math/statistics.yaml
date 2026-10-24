@@ -60,15 +60,6 @@
   intuition: "Any estimate from data is a little off. The standard error measures the typical size of that wobble. Bigger samples give smaller wobbles. It is like the plus-or-minus on an opinion poll."
   analogy: "The plus-or-minus on an opinion poll."
   showsUpIn: "Regression tables in statsmodels and in econometrics."
-  formula:
-    tex: \operatorname{SE}(\bar{X}) = \frac{s}{\sqrt{n}}
-    symbols:
-      - symbol: \operatorname{SE}
-        meaning: The standard error, how much the estimate wobbles.
-      - symbol: s
-        meaning: The standard deviation of the data.
-      - symbol: n
-        meaning: The sample size.
   confusions:
     - The standard error is not the standard deviation. It shrinks as the sample grows.
   resources:
@@ -78,6 +69,17 @@
       url: https://seeing-theory.brown.edu/frequentist-inference/index.html
   lenses:
     - econometrics
+  formula:
+    tex: \operatorname{SE}(\bar{X}) = \frac{s}{\sqrt{n}}
+    symbols:
+      - symbol: \operatorname{SE}
+        meaning: The standard error, how much the estimate wobbles.
+      - symbol: s
+        meaning: The standard deviation of the data.
+      - symbol: n
+        meaning: The sample size.
+      - symbol: \bar{X}
+        meaning: The estimate, here a sample mean.
 
 - id: confidence-intervals
   label: Confidence intervals
@@ -119,17 +121,6 @@
   intuition: "Assume nothing interesting is going on. Then ask how often chance alone would produce your result. That frequency is the p-value. It is like a courtroom that presumes innocence until the evidence is strong."
   analogy: "A courtroom that presumes innocence until the evidence is strong."
   showsUpIn: "Coefficient tests, A/B tests and model comparisons."
-  formula:
-    tex: p = P(|T| \ge |t_{\text{obs}}| \mid H_0)
-    symbols:
-      - symbol: p
-        meaning: The p-value.
-      - symbol: T
-        meaning: The test statistic you would get from pure chance.
-      - symbol: t_{\text{obs}}
-        meaning: The statistic you actually observed.
-      - symbol: H_0
-        meaning: The null hypothesis, that there is no real effect.
   code:
     tool: statsmodels
     snippet: |
@@ -148,6 +139,19 @@
   lenses:
     - econometrics
   viz: hypothesis-test
+  formula:
+    tex: p = P(|T| \ge |t_{\text{obs}}| \mid H_0)
+    symbols:
+      - symbol: p
+        meaning: The p-value.
+      - symbol: T
+        meaning: The test statistic you would get from pure chance.
+      - symbol: t_{\text{obs}}
+        meaning: The statistic you actually observed.
+      - symbol: H_0
+        meaning: The null hypothesis, that there is no real effect.
+      - symbol: P
+        meaning: The chance, worked out as if the null hypothesis were true.
 
 - id: bootstrap
   label: Bootstrap

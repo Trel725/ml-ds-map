@@ -31,19 +31,6 @@
       fixedBy: logistic-regression
     - text: Sensitive to feature scaling and its settings.
       fixedBy: feature-scaling
-  formula:
-    tex: \min_{w, b} \tfrac{1}{2} \lVert w \rVert^2 + C \sum_i \max(0, 1 - y_i (w^\top x_i + b))
-    symbols:
-      - symbol: w
-        meaning: The weights that set the boundary's direction.
-      - symbol: \lVert w \rVert^2
-        meaning: Small weights mean a wide gap.
-      - symbol: C
-        meaning: How much each point inside the gap costs.
-      - symbol: y_i
-        meaning: The class of example i, written as plus or minus one.
-      - symbol: \max(0, \ldots)
-        meaning: The hinge. Points safely past the gap cost nothing.
   code:
     tool: scikit-learn
     snippet: |
@@ -58,6 +45,23 @@
       url: https://scikit-learn.org/stable/modules/svm.html
     - title: "ISLR, chapter 9: Support vector machines"
       url: https://www.statlearning.com/
+  formula:
+    tex: \min_{w, b} \tfrac{1}{2} \lVert w \rVert^2 + C \sum_i \max(0, 1 - y_i (w^\top x_i + b))
+    symbols:
+      - symbol: w
+        meaning: The weights that set the boundary's direction.
+      - symbol: \lVert w \rVert^2
+        meaning: Small weights mean a wide gap.
+      - symbol: C
+        meaning: How much each point inside the gap costs.
+      - symbol: y_i
+        meaning: The class of example i, written as plus or minus one.
+      - symbol: \max(0, \ldots)
+        meaning: The hinge. Points safely past the gap cost nothing.
+      - symbol: x_i
+        meaning: The features of example i.
+      - symbol: b
+        meaning: The bias, which shifts the boundary.
 
 - id: kernel-trick
   label: Kernel trick

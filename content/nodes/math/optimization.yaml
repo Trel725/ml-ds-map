@@ -6,6 +6,9 @@
   intuition: "Each setting of the parameters gives an error. Plot error against settings and you get hills and valleys. Training means finding a low valley. It is like a hilly country seen from a plane."
   analogy: "A hilly country seen from a plane."
   showsUpIn: "Every training process, which searches this surface for a low point."
+  resources:
+    - title: "3Blue1Brown: Gradient descent"
+      url: https://www.3blue1brown.com/lessons/gradient-descent
   formula:
     tex: L(w) = \frac{1}{n} \sum_{i=1}^{n} \ell(y_i, f(x_i; w))
     symbols:
@@ -17,9 +20,8 @@
         meaning: The loss on one example.
       - symbol: n
         meaning: The number of training examples.
-  resources:
-    - title: "3Blue1Brown: Gradient descent"
-      url: https://www.3blue1brown.com/lessons/gradient-descent
+      - symbol: y_i
+        meaning: The true answer for example i.
 
 - id: analytical-solution
   label: Analytical solution
@@ -92,6 +94,15 @@
   intuition: "Plain gradient descent looks at all the data before each step. SGD looks at a small random batch, so steps are quick but noisy. Adam also adapts the step size for each parameter. It is like asking a few people for directions instead of everyone."
   analogy: "Asking a few people for directions instead of everyone."
   showsUpIn: "Training almost every neural network."
+  confusions:
+    - Stochastic means each step uses a random small batch, not the whole dataset.
+  resources:
+    - title: "PyTorch: Optimizing model parameters"
+      url: https://pytorch.org/tutorials/beginner/basics/optimization_tutorial.html
+    - title: "PyTorch: torch.optim.Adam"
+      url: https://pytorch.org/docs/stable/generated/torch.optim.Adam.html
+  lenses:
+    - neural-nets
   formula:
     tex: w \leftarrow w - \eta \, \frac{\hat{m}}{\sqrt{\hat{v}} + \epsilon}
     symbols:
@@ -103,15 +114,8 @@
         meaning: The learning rate.
       - symbol: \epsilon
         meaning: A tiny number that avoids dividing by zero.
-  confusions:
-    - Stochastic means each step uses a random small batch, not the whole dataset.
-  resources:
-    - title: "PyTorch: Optimizing model parameters"
-      url: https://pytorch.org/tutorials/beginner/basics/optimization_tutorial.html
-    - title: "PyTorch: torch.optim.Adam"
-      url: https://pytorch.org/docs/stable/generated/torch.optim.Adam.html
-  lenses:
-    - neural-nets
+      - symbol: w
+        meaning: The weights being trained.
 
 - id: learning-rate
   label: Learning rate
@@ -146,6 +150,9 @@
   intuition: "A convex loss curves up everywhere, like a bowl. Any downhill path ends at the same lowest point. Bumpy losses have local dips where you can get stuck. It is like a marble in a salad bowl, which always finds the middle."
   analogy: "A marble in a salad bowl."
   showsUpIn: "Why linear and logistic regression train reliably, unlike neural networks."
+  resources:
+    - title: "scikit-learn: Convex loss functions"
+      url: https://scikit-learn.org/stable/auto_examples/linear_model/plot_sgd_loss_functions.html
   formula:
     tex: L(t a + (1 - t) b) \le t L(a) + (1 - t) L(b)
     symbols:
@@ -155,9 +162,8 @@
         meaning: A share between zero and one, picking a point between them.
       - symbol: \le
         meaning: The curve never rises above the straight line joining a and b.
-  resources:
-    - title: "scikit-learn: Convex loss functions"
-      url: https://scikit-learn.org/stable/auto_examples/linear_model/plot_sgd_loss_functions.html
+      - symbol: L
+        meaning: The loss, as a function of the weights.
 
 - id: newtons-method
   label: Newton's method
@@ -188,6 +194,9 @@
   intuition: "A greedy method picks the best option at each step. It never goes back to change earlier choices. This is fast but can miss the overall best answer. It is like always taking the biggest coin when giving change."
   analogy: "Always taking the biggest coin when giving change."
   showsUpIn: "How decision trees choose their splits."
+  resources:
+    - title: "scikit-learn: Decision trees"
+      url: https://scikit-learn.org/stable/modules/tree.html
   formula:
     tex: s^* = \arg\min_{s} \left( L_{\text{left}}(s) + L_{\text{right}}(s) \right)
     symbols:
@@ -197,6 +206,5 @@
         meaning: The best split right now, chosen without looking ahead.
       - symbol: L_{\text{left}}, L_{\text{right}}
         meaning: The error left on each side of the split.
-  resources:
-    - title: "scikit-learn: Decision trees"
-      url: https://scikit-learn.org/stable/modules/tree.html
+      - symbol: \arg\min_s
+        meaning: The split that gives the smallest error.

@@ -124,6 +124,11 @@
   intuition: "Likelihood asks how probable your data is under some parameter values. Maximum likelihood picks the values that make it most probable. Logs turn the product of many chances into an easy sum. It is like picking the suspect whose story best fits the evidence."
   analogy: "Picking the suspect whose story best fits the evidence."
   showsUpIn: "Logistic regression, OLS under normal noise and most statistical models."
+  confusions:
+    - Likelihood is about the parameters given fixed data. It is not the chance the parameters are true.
+  resources:
+    - title: "Seeing Theory: Frequentist inference"
+      url: https://seeing-theory.brown.edu/frequentist-inference/index.html
   formula:
     tex: \hat{\theta} = \arg\max_\theta \sum_{i=1}^{n} \log p(x_i \mid \theta)
     symbols:
@@ -135,8 +140,9 @@
         meaning: Turns the product of chances into an easier sum.
       - symbol: \hat{\theta}
         meaning: The parameters that make the data most likely.
-  confusions:
-    - Likelihood is about the parameters given fixed data. It is not the chance the parameters are true.
-  resources:
-    - title: "Seeing Theory: Frequentist inference"
-      url: https://seeing-theory.brown.edu/frequentist-inference/index.html
+      - symbol: x_i
+        meaning: Data point i.
+      - symbol: n
+        meaning: The number of data points.
+      - symbol: \arg\max_\theta
+        meaning: The parameters that give the largest value.

@@ -88,17 +88,6 @@
     - text: Assumes every class has the same cloud shape.
       fixedBy: qda
     - text: Boundaries are straight lines.
-  formula:
-    tex: \delta_k(x) = x^\top \Sigma^{-1} \mu_k - \tfrac{1}{2} \mu_k^\top \Sigma^{-1} \mu_k + \log \pi_k
-    symbols:
-      - symbol: \delta_k(x)
-        meaning: The score for class k. The highest score wins.
-      - symbol: \mu_k
-        meaning: The center of class k's cloud.
-      - symbol: \Sigma
-        meaning: The shared shape and tilt of all clouds.
-      - symbol: \pi_k
-        meaning: How common class k is.
   code:
     tool: scikit-learn
     snippet: |
@@ -111,6 +100,21 @@
       url: https://scikit-learn.org/stable/modules/lda_qda.html
     - title: "ISLR, chapter 4: Discriminant analysis"
       url: https://www.statlearning.com/
+  formula:
+    tex: \delta_k(x) = x^\top \Sigma^{-1} \mu_k - \tfrac{1}{2} \mu_k^\top \Sigma^{-1} \mu_k + \log \pi_k
+    symbols:
+      - symbol: \delta_k(x)
+        meaning: The score for class k. The highest score wins.
+      - symbol: \mu_k
+        meaning: The center of class k's cloud.
+      - symbol: \Sigma
+        meaning: The shared shape and tilt of all clouds.
+      - symbol: \pi_k
+        meaning: How common class k is.
+      - symbol: x
+        meaning: The features of the new point.
+      - symbol: \Sigma^{-1}
+        meaning: The inverse of that shape, which undoes its stretch.
 
 - id: qda
   label: QDA

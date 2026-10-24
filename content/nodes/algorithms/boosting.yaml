@@ -145,6 +145,18 @@
       fixedBy: hyperparameter-tuning
     - text: Slower than LightGBM on very large data.
       fixedBy: lightgbm
+  code:
+    tool: xgboost-lightgbm
+    snippet: |
+      from xgboost import XGBRegressor
+      model = XGBRegressor(n_estimators=500, learning_rate=0.05, max_depth=4)
+      model.fit(X_train, y_train)
+      predictions = model.predict(X_test)
+  confusions:
+    - XGBoost is not a new kind of model. It is a carefully engineered gradient boosting.
+  resources:
+    - title: "scikit-learn: Gradient boosting (same ideas)"
+      url: https://scikit-learn.org/stable/modules/ensemble.html
   formula:
     tex: \mathcal{L} = \sum_i \ell(y_i, \hat{y}_i) + \sum_k \left( \gamma T_k + \tfrac{1}{2} \lambda \lVert w_k \rVert^2 \right)
     symbols:
@@ -158,18 +170,10 @@
         meaning: The leaf values of tree k.
       - symbol: \lambda
         meaning: The penalty on large leaf values.
-  code:
-    tool: xgboost-lightgbm
-    snippet: |
-      from xgboost import XGBRegressor
-      model = XGBRegressor(n_estimators=500, learning_rate=0.05, max_depth=4)
-      model.fit(X_train, y_train)
-      predictions = model.predict(X_test)
-  confusions:
-    - XGBoost is not a new kind of model. It is a carefully engineered gradient boosting.
-  resources:
-    - title: "scikit-learn: Gradient boosting (same ideas)"
-      url: https://scikit-learn.org/stable/modules/ensemble.html
+      - symbol: \mathcal{L}
+        meaning: The total objective XGBoost makes small.
+      - symbol: \hat{y}_i
+        meaning: The prediction for example i.
 
 - id: lightgbm
   label: LightGBM

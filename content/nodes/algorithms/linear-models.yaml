@@ -213,6 +213,16 @@
     - text: Two settings to tune instead of one.
       fixedBy: hyperparameter-tuning
     - text: Still only draws straight lines.
+  code:
+    tool: scikit-learn
+    snippet: |
+      from sklearn.linear_model import ElasticNet
+      model = ElasticNet(alpha=0.1, l1_ratio=0.5)
+      model.fit(X_train, y_train)
+      predictions = model.predict(X_test)
+  resources:
+    - title: "scikit-learn: Elastic-Net"
+      url: https://scikit-learn.org/stable/modules/linear_model.html
   formula:
     tex: \min_\beta \sum_i (y_i - x_i^\top \beta)^2 + \lambda \left( \alpha \sum_j |\beta_j| + (1 - \alpha) \sum_j \beta_j^2 \right)
     symbols:
@@ -224,16 +234,8 @@
         meaning: The overall penalty strength.
       - symbol: \alpha
         meaning: The mix. One is pure Lasso, zero is pure Ridge.
-  code:
-    tool: scikit-learn
-    snippet: |
-      from sklearn.linear_model import ElasticNet
-      model = ElasticNet(alpha=0.1, l1_ratio=0.5)
-      model.fit(X_train, y_train)
-      predictions = model.predict(X_test)
-  resources:
-    - title: "scikit-learn: Elastic-Net"
-      url: https://scikit-learn.org/stable/modules/linear_model.html
+      - symbol: y_i
+        meaning: The true answer for example i.
 
 - id: logistic-regression
   label: Logistic regression
