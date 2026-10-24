@@ -8,5 +8,6 @@ export const VIZ_IDS = [
   'classification-threshold',
   'bayes-rule',
   'loss-functions',
+  'regularization',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];

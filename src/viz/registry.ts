@@ -15,4 +15,5 @@ export const registry: Record<VizId, VizLoader> = {
   'classification-threshold': () => import('./classification-threshold'),
   'bayes-rule': () => import('./bayes-rule'),
   'loss-functions': () => import('./loss-functions'),
+  regularization: () => import('./regularization'),
 };

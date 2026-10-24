@@ -43,6 +43,7 @@
       url: https://scikit-learn.org/stable/auto_examples/linear_model/plot_ridge_path.html
     - title: "ISLR, chapter 6: Shrinkage methods"
       url: https://www.statlearning.com/
+  viz: regularization
 
 - id: curse-of-dimensionality
   label: Curse of dimensionality

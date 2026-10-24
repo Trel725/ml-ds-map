@@ -15,12 +15,18 @@ export function evalPoly(coeffs: number[], s: number): number {
   return v;
 }
 
-/** Least squares polynomial fit via Householder QR. Returns coefficients in scaled x. */
+/** Least squares polynomial fit. Returns coefficients in scaled x. */
 export function fitPolynomial(points: Pt[], degree: number): number[] {
-  const n = points.length;
-  const m = degree + 1;
-  const A = points.map((p) => Array.from({ length: m }, (_, j) => toScaled(p.x) ** j));
-  const b = points.map((p) => p.y);
+  const A = points.map((p) => Array.from({ length: degree + 1 }, (_, j) => toScaled(p.x) ** j));
+  return leastSquares(A, points.map((p) => p.y));
+}
+
+/** Solves min ‖A c − b‖² via Householder QR. A has one row per equation; inputs are not modified. */
+export function leastSquares(rows: number[][], rhs: number[]): number[] {
+  const A = rows.map((r) => [...r]);
+  const b = [...rhs];
+  const n = A.length;
+  const m = A[0]?.length ?? 0;
 
   for (let k = 0; k < m; k++) {
     let norm = 0;
