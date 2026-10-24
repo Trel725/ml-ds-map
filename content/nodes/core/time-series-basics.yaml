@@ -11,6 +11,7 @@
       url: https://www.statsmodels.org/stable/examples/notebooks/generated/stl_decomposition.html
     - title: "statsmodels: seasonal_decompose"
       url: https://www.statsmodels.org/stable/generated/statsmodels.tsa.seasonal.seasonal_decompose.html
+  viz: time-series-decomposition
 
 - id: stationarity
   label: Stationarity

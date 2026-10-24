@@ -23,5 +23,6 @@ export const VIZ_IDS = [
   'hypothesis-test',
   'omitted-variable-bias',
   'tf-idf',
+  'time-series-decomposition',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];

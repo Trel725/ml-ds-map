@@ -218,6 +218,14 @@ test('tf-idf', async ({ page }) => {
   await expect(readout).toHaveText('Type a sentence to see word weights');
 });
 
+test('time-series-decomposition', async ({ page }) => {
+  const { viz, readout } = await exercise(page, 'trend-seasonality', 'time-series-decomposition', (v) => v.getByRole('slider', { name: 'Trend' }), right3);
+  await expect(readout).toHaveText(/^Trend 0\.8 per month · seasonal swing ±\d+$/);
+  await viz.getByRole('slider', { name: 'Season' }).focus();
+  await page.keyboard.press('Home');
+  await expect(readout).toHaveText(/^Trend 0\.8 per month · seasonal swing ±[0-2]$/);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -231,7 +239,7 @@ test('every visualization renders', async ({ page }) => {
     ['backpropagation', 'backpropagation'], ['sampling-distributions', 'sampling-distribution'],
     ['central-limit-theorem', 'sampling-distribution'], ['bootstrap', 'bootstrap'],
     ['hypothesis-testing', 'hypothesis-test'], ['omitted-variable-bias', 'omitted-variable-bias'],
-    ['tf-idf', 'tf-idf'],
+    ['tf-idf', 'tf-idf'], ['trend-seasonality', 'time-series-decomposition'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {
