@@ -9,5 +9,6 @@ export const VIZ_IDS = [
   'bayes-rule',
   'loss-functions',
   'regularization',
+  'cross-validation',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];

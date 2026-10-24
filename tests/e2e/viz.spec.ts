@@ -94,12 +94,21 @@ test('regularization', async ({ page }) => {
   await expect(readout).toHaveText(/^Lasso · penalty 100 · [0-4] of 9 weights non-zero/);
 });
 
+test('cross-validation', async ({ page }) => {
+  const { viz, readout } = await exercise(page, 'cross-validation', 'cross-validation', (v) => v.getByRole('button', { name: 'Next fold' }), ['Enter']);
+  await expect(readout).toHaveText(/^Fold 2 of 5 · test error \d+ · average so far \d+$/);
+  await viz.getByRole('button', { name: 'Next fold' }).focus();
+  for (let i = 0; i < 4; i++) await page.keyboard.press('Enter');
+  await expect(readout).toHaveText(/^Fold 1 of 5 · /);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
     ['ols', 'ols-fit'], ['overfitting', 'overfitting'], ['decision-tree', 'decision-tree'],
     ['classification', 'classification-threshold'], ['bayes-rule', 'bayes-rule'],
     ['loss-function', 'loss-functions'], ['regularization', 'regularization'],
+    ['cross-validation', 'cross-validation'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

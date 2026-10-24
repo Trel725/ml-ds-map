@@ -16,4 +16,5 @@ export const registry: Record<VizId, VizLoader> = {
   'bayes-rule': () => import('./bayes-rule'),
   'loss-functions': () => import('./loss-functions'),
   regularization: () => import('./regularization'),
+  'cross-validation': () => import('./cross-validation'),
 };

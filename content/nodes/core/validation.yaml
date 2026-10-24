@@ -43,6 +43,7 @@
       url: https://scikit-learn.org/stable/modules/cross_validation.html
     - title: "ISLR, chapter 5: Resampling methods"
       url: https://www.statlearning.com/
+  viz: cross-validation
 
 - id: hyperparameter-tuning
   label: Hyperparameter tuning
