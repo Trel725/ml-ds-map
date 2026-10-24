@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
+import { Gallery } from '../gallery/Gallery';
 import { MapView } from '../map/MapView';
 import { Panel } from '../panel/Panel';
 import { TourCard } from '../tours/TourCard';
 import { Notice } from './Notice';
-import { useAppStore } from './StoreContext';
+import { useApp, useAppStore } from './StoreContext';
 import { TopBar } from './TopBar';
 
 export function App() {
   const store = useAppStore();
+  const view = useApp((s) => s.view);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -20,11 +22,17 @@ export function App() {
   return (
     <div className="app">
       <TopBar />
-      <div className="map-column">
-        <MapView />
-        <TourCard />
-      </div>
-      <Panel />
+      {view === 'gallery' ? (
+        <Gallery />
+      ) : (
+        <>
+          <div className="map-column">
+            <MapView />
+            <TourCard />
+          </div>
+          <Panel />
+        </>
+      )}
       <Notice />
     </div>
   );
