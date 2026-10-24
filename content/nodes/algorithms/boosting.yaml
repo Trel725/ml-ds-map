@@ -111,6 +111,7 @@
       url: https://scikit-learn.org/stable/modules/ensemble.html
     - title: "ISLR, chapter 8: Boosting"
       url: https://www.statlearning.com/
+  viz: gradient-boosting
 
 - id: xgboost
   label: XGBoost

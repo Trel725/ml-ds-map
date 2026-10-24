@@ -110,6 +110,17 @@ test('random-forest', async ({ page }) => {
   await expect(readout).toHaveText(/^25 trees · test accuracy \d+%$/);
 });
 
+test('gradient-boosting', async ({ page }) => {
+  const { viz, readout } = await exercise(page, 'gradient-boosting', 'gradient-boosting', (v) => v.getByRole('button', { name: 'Add a tree' }), ['Enter', 'Enter']);
+  await expect(readout).toHaveText(/^2 trees · training error \d+$/);
+  const add = viz.getByRole('button', { name: 'Add a tree' });
+  for (let i = 0; i < 28; i++) await page.keyboard.press('Enter');
+  await expect(readout).toHaveText(/^30 trees · /);
+  await expect(add).toBeDisabled();
+  await viz.getByRole('button', { name: 'Reset' }).click();
+  await expect(readout).toHaveText(/^0 trees · training error \d+$/);
+});
+
 test('every visualization renders', async ({ page }) => {
   const pairs = [
     ['exponents-and-logarithms', 'logarithms'], ['derivative', 'slope-derivative'], ['gradient-descent', 'gradient-descent'],
@@ -117,6 +128,7 @@ test('every visualization renders', async ({ page }) => {
     ['classification', 'classification-threshold'], ['bayes-rule', 'bayes-rule'],
     ['loss-function', 'loss-functions'], ['regularization', 'regularization'],
     ['cross-validation', 'cross-validation'], ['random-forest', 'random-forest'],
+    ['gradient-boosting', 'gradient-boosting'],
   ];
   await gotoMap(page);
   for (const [node, id] of pairs) {

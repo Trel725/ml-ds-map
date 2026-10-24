@@ -11,5 +11,6 @@ export const VIZ_IDS = [
   'regularization',
   'cross-validation',
   'random-forest',
+  'gradient-boosting',
 ] as const;
 export type VizId = (typeof VIZ_IDS)[number];
