@@ -11,11 +11,12 @@ beforeAll(async () => {
   ({ groups, nodes } = await realContent());
 });
 
+const byKey = ([a]: [string, unknown], [b]: [string, unknown]) => (a < b ? -1 : a > b ? 1 : 0);
 const serialize = (l: Layout) => ({
   lanes: l.lanes,
-  groupBoxes: [...l.groupBoxes.entries()].sort(([a], [b]) => a.localeCompare(b)),
-  nodePositions: [...l.nodePositions.entries()].sort(([a], [b]) => a.localeCompare(b)),
-  toolPositions: [...l.toolPositions.entries()].sort(([a], [b]) => a.localeCompare(b)),
+  groupBoxes: [...l.groupBoxes.entries()].sort(byKey),
+  nodePositions: [...l.nodePositions.entries()].sort(byKey),
+  toolPositions: [...l.toolPositions.entries()].sort(byKey),
   width: l.width,
   height: l.height,
 });

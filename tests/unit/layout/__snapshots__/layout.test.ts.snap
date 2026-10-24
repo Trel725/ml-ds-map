@@ -479,6 +479,16 @@ exports[`allExpanded > snapshot 1`] = `
       },
     ],
     [
+      "chain-rule",
+      {
+        "h": 44,
+        "visible": true,
+        "w": 150,
+        "x": 1140,
+        "y": 616,
+      },
+    ],
+    [
       "class-imbalance",
       {
         "h": 44,
@@ -896,16 +906,6 @@ exports[`allExpanded > snapshot 1`] = `
         "w": 150,
         "x": 2706,
         "y": 644,
-      },
-    ],
-    [
-      "chain-rule",
-      {
-        "h": 44,
-        "visible": true,
-        "w": 150,
-        "x": 1140,
-        "y": 616,
       },
     ],
     [
@@ -2056,6 +2056,16 @@ exports[`collapsed > snapshot 1`] = `
       },
     ],
     [
+      "chain-rule",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 288,
+        "y": 260,
+      },
+    ],
+    [
       "class-imbalance",
       {
         "h": 40,
@@ -2472,16 +2482,6 @@ exports[`collapsed > snapshot 1`] = `
         "visible": false,
         "w": 112,
         "x": 704,
-        "y": 260,
-      },
-    ],
-    [
-      "chain-rule",
-      {
-        "h": 40,
-        "visible": false,
-        "w": 96,
-        "x": 288,
         "y": 260,
       },
     ],
@@ -3633,6 +3633,16 @@ exports[`oneExpanded > snapshot 1`] = `
       },
     ],
     [
+      "chain-rule",
+      {
+        "h": 40,
+        "visible": false,
+        "w": 96,
+        "x": 288,
+        "y": 310,
+      },
+    ],
+    [
       "class-imbalance",
       {
         "h": 40,
@@ -4049,16 +4059,6 @@ exports[`oneExpanded > snapshot 1`] = `
         "visible": false,
         "w": 112,
         "x": 1236,
-        "y": 310,
-      },
-    ],
-    [
-      "chain-rule",
-      {
-        "h": 40,
-        "visible": false,
-        "w": 96,
-        "x": 288,
         "y": 310,
       },
     ],
