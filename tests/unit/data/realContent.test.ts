@@ -68,6 +68,20 @@ test('required fixedBy links', async () => {
   expect(fixers('perceptron')).toContain('neural-network');
 });
 
+test('"Fixed by" names a cure, not the problem or a definition', async () => {
+  const c = await realContent();
+  const fixers = (id: string) => (c.nodes.find((n) => n.id === id)!.weaknesses ?? []).map((w) => w.fixedBy);
+  // Each of these once pointed at the cause or a prerequisite rather than at something that fixes it.
+  expect(fixers('knn')).not.toContain('curse-of-dimensionality');
+  expect(fixers('knn')).toContain('pca');
+  expect(fixers('arima')).not.toContain('stationarity');
+  expect(fixers('exponential-smoothing')).not.toContain('lag-features');
+  expect(fixers('exponential-smoothing')).toContain('gradient-boosting');
+  expect(fixers('decision-tree')).not.toContain('hyperparameters');
+  expect(fixers('decision-tree')).toContain('hyperparameter-tuning');
+  expect(fixers('decision-stump')).not.toContain('adaboost');
+});
+
 test('every math node has a formula', async () => {
   const c = await realContent();
   for (const n of c.nodes.filter((n) => n.kind === 'math')) expect(n.formula, n.id).toBeDefined();

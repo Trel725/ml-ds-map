@@ -24,10 +24,6 @@
   strengths:
     - text: A well-understood classic with prediction intervals.
     - text: Works with short series.
-  weaknesses:
-    - text: The series must be made stationary first.
-      fixedBy: stationarity
-    - text: Captures only linear patterns.
   formula:
     tex: y'_t = c + \sum_{i=1}^{p} \phi_i y'_{t-i} + \sum_{j=1}^{q} \theta_j \varepsilon_{t-j} + \varepsilon_t
     symbols:
@@ -57,6 +53,9 @@
       url: https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima.model.ARIMA.html
     - title: "statsmodels: ARMA example with sunspots"
       url: https://www.statsmodels.org/stable/examples/notebooks/generated/tsa_arma_0.html
+  weaknesses:
+    - text: Needs a series that is stationary after differencing, which is not always possible.
+    - text: Captures only linear patterns.
 
 - id: exponential-smoothing
   label: Exponential smoothing
@@ -84,10 +83,6 @@
   strengths:
     - text: Simple, fast and often hard to beat.
     - text: Handles trend and seasonality with small extensions.
-  weaknesses:
-    - text: Can't use outside features like price or weather.
-      fixedBy: lag-features
-    - text: Assumes the recent pattern continues.
   formula:
     tex: \ell_t = \alpha y_t + (1 - \alpha) \ell_{t-1}
     symbols:
@@ -107,3 +102,7 @@
   resources:
     - title: "statsmodels: Exponential smoothing"
       url: https://www.statsmodels.org/stable/examples/notebooks/generated/exponential_smoothing.html
+  weaknesses:
+    - text: Can't use outside features like price or weather.
+      fixedBy: gradient-boosting
+    - text: Assumes the recent pattern continues.

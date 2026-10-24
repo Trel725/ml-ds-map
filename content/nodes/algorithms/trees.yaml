@@ -25,11 +25,6 @@
     - text: Easy to read and explain as a flowchart.
     - text: Needs no feature scaling and handles mixed feature types.
     - text: Captures interactions between features on its own.
-  weaknesses:
-    - text: High variance. Small changes in data give a very different tree.
-      fixedBy: random-forest
-    - text: Deep trees overfit badly.
-      fixedBy: hyperparameters
   formula:
     tex: G = 1 - \sum_k p_k^2
     symbols:
@@ -55,6 +50,11 @@
       url: https://scikit-learn.org/stable/modules/tree.html
     - title: "ISLR, chapter 8: Tree-based methods"
       url: https://www.statlearning.com/
+  weaknesses:
+    - text: High variance. Small changes in data give a very different tree.
+      fixedBy: random-forest
+    - text: Deep trees overfit badly unless the depth is tuned on held-out data.
+      fixedBy: hyperparameter-tuning
 
 - id: decision-stump
   label: Decision stump
@@ -66,11 +66,6 @@
   strengths:
     - text: Tiny, fast and impossible to overfit badly.
     - text: The perfect weak learner for boosting.
-  weaknesses:
-    - text: High bias. One question can't capture much.
-      fixedBy: gradient-boosting
-    - text: Sees only one feature at a time.
-      fixedBy: adaboost
   code:
     tool: scikit-learn
     snippet: |
@@ -81,3 +76,8 @@
   resources:
     - title: "scikit-learn: AdaBoost with stumps"
       url: https://scikit-learn.org/stable/modules/ensemble.html
+  weaknesses:
+    - text: High bias. One question can't capture much.
+      fixedBy: gradient-boosting
+    - text: Sees only one feature at a time, so it misses interactions.
+      fixedBy: decision-tree

@@ -22,12 +22,6 @@
   strengths:
     - text: Simple and needs no training.
     - text: Draws boundaries of any shape.
-  weaknesses:
-    - text: Slow to predict on big data, since it compares with every example.
-    - text: Unscaled features distort the distances.
-      fixedBy: feature-scaling
-    - text: Works poorly with many features.
-      fixedBy: curse-of-dimensionality
   formula:
     tex: \hat{y}(x) = \frac{1}{k} \sum_{i \in N_k(x)} y_i
     symbols:
@@ -55,3 +49,9 @@
     - title: "ISLR, chapter 2: K-nearest neighbors"
       url: https://www.statlearning.com/
   viz: knn
+  weaknesses:
+    - text: Slow to predict on big data, since it compares with every example.
+    - text: Unscaled features distort the distances.
+      fixedBy: feature-scaling
+    - text: Works poorly with many features, because every point ends up far from every other.
+      fixedBy: pca
