@@ -16,6 +16,7 @@ export function Welcome() {
         Each band is a layer of ideas, with the math you already know at the bottom. Pick any topic to see what it needs and
         what it leads to.
       </p>
+      <p className="welcome-keys">Keyboard: Tab moves between topics, Enter opens one, arrow keys follow its connections.</p>
       <button type="button" className="button button-primary" onClick={() => startTour(FIRST_TOUR)}>
         Start the tour
       </button>
